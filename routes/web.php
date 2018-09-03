@@ -36,22 +36,27 @@ Route::get('Manufacturing/home', 'Forms\AllFormsController@manufacturing')->name
 
 Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
 
-//Begining of crud functions
-//Route::get('Agriculture/sugar_yield/{id}', array('as' => 'search_id', 'uses' =>'Forms\Agriculture@show'));
-// Route::get('Agriculture/', 'Forms\Agriculture@index')->name('Agriculture');
-// Route::resource('agriculture','Forms\Agriculture');
-// Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agirculture\Agriculture@show'));
 
 Route::get('agriculture_area_under_sugarcane_harvested_production_avg_yield/', 'Forms\Agriculture\Agriculture_Sugar@index')->name('agriculture_area_under_sugarcane_harvested_production_avg_yield');
 Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@show'));
 
 
 
-// Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
-// Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
-
 Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@store'));
 Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@update'));
+
+//@Charles
+
+//feetch
+Route::get('education_approved_degree_diploma_programs/', 'Forms\Education\AprrovedDegreeDiplomaPrograms@index')->name('education_approved_degree_diploma_programs');
+//post to save
+Route::post('diploma/store', array('as' => 'storeDiploma', 'uses' => 'Forms\Education\AprrovedDegreeDiplomaPrograms@store'));
+//post to update
+Route::post('diploma/update', array('as' => 'updateDiploma', 'uses' => 'Forms\Education\AprrovedDegreeDiplomaPrograms@update'));
+
+
+//show a specific id
+Route::get('diploma/approved/{id}', array('as' => 'fetchDiploma', 'uses' => 'Forms\Education\AprrovedDegreeDiplomaPrograms@show'));
 
 
 //End of loading various sectors
