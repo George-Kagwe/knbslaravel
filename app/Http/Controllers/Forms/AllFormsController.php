@@ -19,7 +19,7 @@ class AllFormsController  extends Controller
         	        ['datasets' =>$data_national]
 
         	      );    	
-    }
+    } 
 
      public function Education(){
     	$data_national = DB::table('health_sectors')

@@ -207,8 +207,7 @@ Route::get('environment/all_land_and_climate_topography_altitude',
   'Endpoints\Environment@get_land_and_climate_topography_altitude')->
     name( 'land_and_climate_topography_altitude');
 
-=======
-    name( 'environment_and_natural_resources_water_purification_points');
+   
 //@George Muchiri
 //land_and_climate_rainfall
 Route::get('environment/all_land_and_climate_rainfall', 
@@ -469,7 +468,7 @@ Route::get('Health/health_kihibs_health_insurance_cover_by_type', 'Endpoints\Hea
 //Health
 //health_kihibs_incidence_of_sickness_injury @fredrick muiruri
 Route::get('Health/health_kihibs_incidence_of_sickness_injury', 'Endpoints\Health@health_kihibs_incidence_of_sickness_injury')->name('health_kihibs_incidence_of_sickness_injury');
-dc
+
 // @George Muchiri
 // governance_cases_forwarded_and_action_taken route
 Route::get('governance/all_governance_cases_forwarded_and_action_taken', 'Endpoints\Governance@get_governance_cases_forwarded_and_action_taken')->name('governance_cases_forwarded_and_action_taken');
