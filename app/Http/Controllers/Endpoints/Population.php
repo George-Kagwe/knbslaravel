@@ -10,7 +10,7 @@ class Population extends Controller
 {
     
    // @George Muchiri 
-   // get population_by_sex_and_age_groupsx
+   // get population_by_sex_and_age_groups
 
     public function get_population_by_sex_and_age_groups(){
     
@@ -692,6 +692,454 @@ class Population extends Controller
 
 
     } 
+
+
+
+	   // @George Muchiri 
+      // get population_kihibs_by_broad_age_group
+
+    public function get_population_kihibs_by_broad_age_group(){
+    
+           $data= DB::table('population_kihibs_by_broad_age_group')
+           ->join('health_counties', 'population_kihibs_by_broad_age_group.county_id', '=', 'health_counties.county_id')
+               
+            
+                ->get();
+
+    	
+
+            $county = array();
+			$county['name'] = 'County';
+		
+		    $series1 = array();
+			$series1['name'] = 'Range 0-14 ';
+
+			$series2 = array();
+			$series2['name'] = 'Range 15-64';
+
+           
+	        $series3 = array();
+			$series3['name'] = 'Over 65';
+
+			$series4 = array();
+			$series4['name'] = 'Not Stated';
+
+            $series5 = array();
+			$series5['name'] = 'Age Depend Ratio';
+			 
+            $series6 = array();
+			$series6['name'] = 'Child Depend Ratio';
+
+
+			$series7 = array();
+			$series7['name'] = 'Old Age Depend Ratio';
+
+            
+			$series8 = array();
+			$series8['name'] ='Individuals';
+
+
+			foreach ($data as $row)
+			{
+			$county['data'][] = $row->county_name;
+			$series1['data'][] = $row->range_0_14;
+			$series2['data'][] = $row->range_15_64;
+			$series3['data'][] = $row->over_65;
+			$series4['data'][] = $row->not_stated;
+			$series5['data'][] = $row->age_depend_ratio;
+			$series6['data'][] = $row->child_depend_ratio;
+		    $series7['data'][] = $row->old_age_depend_ratio;
+		    $series8['data'][] = $row->individuals;
+		
+
+			}
+			 
+			$result = array();
+	        array_push($result,$county);
+	        array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			array_push($result,$series4);
+			array_push($result,$series5);
+			array_push($result,$series6);
+			array_push($result,$series7);
+			array_push($result,$series8);
+         
+          
+          
+			print json_encode($result, JSON_NUMERIC_CHECK);
+
+
+    } 
+ 
+	    // @George Muchiri 
+        // get population_kihibs_children_under_18_by_orphanhood
+
+
+        public function get_population_kihibs_children_under_18_by_orphanhood(){
+    
+       $data= DB::table('population_kihibs_children_under_18_by_orphanhood')
+           ->join('health_counties', 
+           	'population_kihibs_children_under_18_by_orphanhood.county_id', '=', 'health_counties.county_id')->get();
+    	
+
+            $county = array();
+			$county['name'] = 'County';
+		
+		    $series1 = array();
+			$series1['name'] = 'Living with both';
+
+			$series2 = array();
+			$series2['name'] = 'Father Alive';
+
+           
+	        $series3 = array();
+			$series3['name'] = 'Father Deceased';
+
+			$series4 = array();
+			$series4['name'] = 'Mother Alive';
+
+            $series5 = array();
+			$series5['name'] = 'Mother Deceased';
+			 
+            $series6 = array();
+			$series6['name'] = 'Both Alive';
+
+
+			$series7 = array();
+			$series7['name'] = 'Only Father Alive';
+
+            
+			$series8 = array();
+			$series8['name'] ='Only Mother Alive';
+
+
+            
+			$series9 = array();
+			$series9['name'] ='Both Parents Deceased';
+
+
+			$series10= array();
+			$series10['name'] ='Missing Info';
+
+
+			$series11 = array();
+			$series11['name'] ='Orphanhod';
+
+
+			$series12= array();
+			$series12['name'] ='Individuals';
+
+
+		
+			foreach ($data as $row)
+			{
+			$county['data'][] = $row->county_name;
+			$series1['data'][] = $row->living_with_both;
+			$series2['data'][] = $row->father_alive;
+			$series3['data'][] = $row->father_deceased;
+			$series4['data'][] = $row->mother_alive;
+			$series5['data'][] = $row->mother_deceased;
+			$series6['data'][] = $row->both_alive;
+		    $series7['data'][] = $row->only_father_alive;
+		    $series8['data'][] = $row->only_mother_alive;
+		    $series9['data'][] = $row->both_parents_deceased;
+		    $series10['data'][] = $row->missing_info;
+	        $series11['data'][] = $row->orphanhood;
+		    $series12['data'][] = $row->individuals;
+		
+
+			}
+			 
+			$result = array();
+	        array_push($result,$county);
+	        array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			array_push($result,$series4);
+			array_push($result,$series5);
+			array_push($result,$series6);
+			array_push($result,$series7);
+			array_push($result,$series8);
+         	array_push($result,$series9);
+			array_push($result,$series10);
+			array_push($result,$series11);
+			array_push($result,$series12);
+         
+          
+          
+			print json_encode($result, JSON_NUMERIC_CHECK);
+
+
+    } 
+
+
+	   // @George Muchiri 
+      // get population_kihibs_distribution_by_sex
+
+    public function get_population_kihibs_distribution_by_sex(){
+    
+           $data= DB::table('population_kihibs_distribution_by_sex')
+           ->join('health_counties', 'population_kihibs_distribution_by_sex.county_id', '=', 'health_counties.county_id')
+               
+            
+                ->get();
+
+    	
+
+            $county = array();
+			$county['name'] = 'County';
+		
+		    $series1 = array();
+			$series1['name'] = 'Male Individauls ';
+
+			$series2 = array();
+			$series2['name'] = 'Male Percent';
+
+           
+	        $series3 = array();
+			$series3['name'] = 'Female Individuals';
+
+			$series4 = array();
+			$series4['name'] = 'Female Percent';
+
+            $series5 = array();
+			$series5['name'] = 'Sex Ratio';
+			 
+            $series6 = array();
+			$series6['name'] = 'Individuals';
+
+
+
+			$series8['name'] ='Individuals';
+
+
+			foreach ($data as $row)
+			{
+			$county['data'][] = $row->county_name;
+			$series1['data'][] = $row->male_individuals;
+			$series2['data'][] = $row->male_per_cent;
+			$series3['data'][] = $row->female_individuals	;
+			$series4['data'][] = $row->female_per_cent;
+			$series5['data'][] = $row->sex_ratio;
+			$series6['data'][] = $row->individuals;
+		 
+		
+
+			}
+			 
+			$result = array();
+	        array_push($result,$county);
+	        array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			array_push($result,$series4);
+			array_push($result,$series5);
+			array_push($result,$series6);
+		
+         
+          
+          
+			print json_encode($result, JSON_NUMERIC_CHECK);
+
+
+    } 
+      // @George Muchiri 
+      // get population_kihibs_distribution_of_households_by_size
+
+    public function get_population_kihibs_distribution_of_households_by_size(){
+    
+           $data= DB::table('population_kihibs_distribution_of_households_by_size')
+           ->join('health_counties', 
+           	'population_kihibs_distribution_of_households_by_size.county_id', '=', 'health_counties.county_id')
+               
+            
+                ->get();
+
+    	
+
+            $county = array();
+			$county['name'] = 'County';
+		
+		    $series1 = array();
+			$series1['name'] = 'range_1_2_persons ';
+
+			$series2 = array();
+			$series2['name'] = 'range_3_4_persons';
+
+           
+	        $series3 = array();
+			$series3['name'] = 'range_5_6_persons	';
+
+			$series4 = array();
+			$series4['name'] = 'Over 7 Persons';
+
+            $series5 = array();
+			$series5['name'] = 'Households';
+			 
+            $series6 = array();
+			$series6['name'] = 'Mean Household Size';
+
+
+
+			foreach ($data as $row)
+			{
+			$county['data'][] = $row->county_name;
+			$series1['data'][] = $row->range_1_2_persons;
+			$series2['data'][] = $row->range_3_4_persons;
+			$series3['data'][] = $row->range_5_6_persons;
+			$series4['data'][] = $row->over_7_persons;
+			$series5['data'][] = $row->households;
+			$series6['data'][] = $row->mean_hhold_size;
+		 
+		
+
+			}
+			 
+			$result = array();
+	        array_push($result,$county);
+	        array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			array_push($result,$series4);
+			array_push($result,$series5);
+			array_push($result,$series6);
+		
+         
+          
+          
+			print json_encode($result, JSON_NUMERIC_CHECK);
+
+
+    } 
+
+
+      // @George Muchiri 
+      // get population_kihibs_hholds_by_sex_of_household_head
+
+
+    public function get_population_kihibs_hholds_by_sex_of_household_head(){
+    
+           $data= DB::table('population_kihibs_hholds_by_sex_of_household_head')
+           ->join('health_counties', 
+           	'population_kihibs_hholds_by_sex_of_household_head.county_id', '=', 'health_counties.county_id')->get();
+
+    	
+
+            $county = array();
+			$county['name'] = 'County';
+		
+		    $series1 = array();
+			$series1['name'] = 'Male ';
+
+			$series2 = array();
+			$series2['name'] = 'Female';
+
+           
+	        $series3 = array();
+			$series3['name'] = 'Household';
+
+			foreach ($data as $row)
+			{
+			$county['data'][] = $row->county_name;
+			$series1['data'][] = $row->male;
+			$series2['data'][] = $row->female;
+			$series3['data'][] = $row->households;
+		
+		
+
+			}
+			 
+			$result = array();
+	        array_push($result,$county);
+	        array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+	
+		
+         
+          
+          
+			print json_encode($result, JSON_NUMERIC_CHECK);
+
+
+    } 
+
+
+      // @George Muchiri 
+      // get population_kihibs_marital_status_above_18_years
+
+    public function get_population_kihibs_marital_status_above_18_years(){
+    
+           $data= DB::table('population_kihibs_marital_status_above_18_years')
+           ->join('health_counties', 
+           	'population_kihibs_marital_status_above_18_years.county_id', '=', 'health_counties.county_id')
+               
+            
+                ->get();
+
+    	
+
+            $county = array();
+			$county['name'] = 'County';
+		
+		    $series1 = array();
+			$series1['name'] = 'Monogamous ';
+
+			$series2 = array();
+			$series2['name'] = 'Polygamous';
+
+           
+	        $series3 = array();
+			$series3['name'] = 'Living Together';
+
+			$series4 = array();
+			$series4['name'] = 'Seperated';
+
+            $series5 = array();
+			$series5['name'] = 'Divorced';
+			 
+            $series6 = array();
+			$series6['name'] = 'Widow/Widower';
+
+            $series7 = array();
+			$series7['name'] = 'Never Married';
+
+
+			$series8 = array();
+			$series8['name'] = 'Individuals';
+
+			foreach ($data as $row)
+			{
+			$county['data'][] = $row->county_name;
+			$series1['data'][] = $row->monogamous;
+			$series2['data'][] = $row->polygamous;
+			$series3['data'][] = $row->living_together;
+			$series4['data'][] = $row->seperated;
+			$series5['data'][] = $row->divorced;
+			$series6['data'][] = $row->widow_widower;
+		    $series7['data'][] = $row->never_married;	
+			$series8['data'][] = $row->individuals;
+
+			}
+			 
+			$result = array();
+	        array_push($result,$county);
+	        array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			array_push($result,$series4);
+			array_push($result,$series5);
+			array_push($result,$series6);
+		
+         
+          
+          
+			print json_encode($result, JSON_NUMERIC_CHECK);
+
+
+    } 
+
 
 
 }

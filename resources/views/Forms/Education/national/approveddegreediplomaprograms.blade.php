@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-  <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
 
-    <!-- CSFR token for ajax call -->
-    <!-- <meta name="_token" content="{{ csrf_token() }}"/> -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>KNBS </title>
 
-    <title>Sugarcane Yields</title>
+    <!-- Bootstrap -->
+    <link href="{{asset('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{asset('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
-    <style>
+    <!-- Custom Theme Style -->
+    <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+         <style>
 
                   #snackbar {
                       visibility: hidden;
@@ -61,12 +66,130 @@
                       to {top: 0; opacity: 0;}
                   }
     </style>
+  </head>
 
-</head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>KNBS</span></a>
+            </div>
 
-<body>
-    
+            <div class="clearfix"></div>
 
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <!-- <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div> -->
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2></h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+               
+                <ul class="nav side-menu">
+                    <li><a href="{{ route('Finance/home') }}"><i class="fa fa-money"></i>Public Finance</a></li>
+                    <li><a href="{{ route('Education/home') }}"><i class="fa fa-money"></i>Education</a></li>
+                    <li><a href="{{ route('Health/home') }}"><i class="fa fa-money"></i>Public Health</a></li>
+                     <li><a href="{{ route('Agriculture/home') }}"><i class="fa fa-money"></i>Agriculture</a></li>
+                    <li><a href="{{ route('Population/home') }}"><i class="fa fa-money"></i>Population</a></li>
+                    <li><a href="{{ route('Governance/home') }}"><i class="fa fa-money"></i>Governance</a></li>
+                    <li><a href="{{ route('ICT/home') }}"><i class="fa fa-money"></i>ICT</a></li>
+                     <li><a href="{{ route('Environment/home') }}"><i class="fa fa-money"></i>Environment And <br>Natural Resources</a></li>
+                    <li><a href="{{ route('Manufacturing/home') }}"><i class="fa fa-money"></i>Manufacturng</a></li>
+                    <li><a href="{{ route('Energy/home') }}"><i class="fa fa-money"></i>Energy</a></li>
+                     <li><a href="{{ route('Labour/home') }}"><i class="fa fa-money"></i>Labour</a></li>
+                    <li><a href="{{ route('CPI/home') }}"><i class="fa fa-money"></i>Consumer Price Index</a></li>
+                    <li><a href="{{ route('Administrative/home') }}"><i class="fa fa-money"></i>Administrative and Political</a></li>
+                     <li><a href="{{ route('Trade/home') }}"><i class="fa fa-money"></i>Trade</a></li>
+                    <li><a href="{{ route('Tourism/home') }}"><i class="fa fa-money"></i>Tourism</a></li>
+                    <li><a href="{{ route('Building/home') }}"><i class="fa fa-money"></i>Building and Construction</a></li>
+                    <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
+                     <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
+                     <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
+                </ul>
+              </div>
+              
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                   <!--  <li><a href="javascript:;"> Profile</a></li> -->
+                   <!--  <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li> -->
+                    <li><a href="javascript:;">Help</a></li>
+                   
+                     <li> <a href=""
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out pull-right"></i>
+                                    </a>
+
+
+                      <form id="logout-form" action="" method="POST" style="display: none;">
+                                        @csrf
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+
+               
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+ <!-- page content -->
+       
  <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
@@ -81,9 +204,9 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Sugar cane Yield</center></h5>
+                              <h5><center>Approved degree  and diploma Programs</center></h5>
                               <br />
-                              <button class="btn btn-danger" onclick="add_conservancy()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
+                              <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
                               <br />
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
@@ -91,10 +214,10 @@
                                         <tr>
                                          
                                            <th>ID</th>                                          
-                                           <th>Area under cane</th>
-                                           <th>Are Harvested</th>
-                                           <th>Production Tonnes</th>
-                                           <th>Average yield tonnes</th>
+                                           <th>Approved degree programmes</th>
+                                           <th>Approved private university degree programmes</th>
+                                           <th>Validated diploma programmes</th>
+                                           
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -103,15 +226,14 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->area_id}}</td>
-                                                <td>{{$post->area_under_cane_ha}}</td>
-                                                <td>{{$post->area_harvested_ha}}</td>
-                                                <td>{{$post->production_tonnes}}</td>
-                                                <td>{{$post->average_yield_tonnes_per_ha}}</td>
+                                                <td>{{$post->approved_id}}</td>
+                                                <td>{{$post->approved_degree_programmes}}</td>
+                                                <td>{{$post->approved_private_university_degreeprogrammes}}</td>
+                                                <td>{{$post->validated_diploma_programmes}}</td>
                                                 <td>{{$post->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit_conservancy(<?php echo $post->area_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->approved_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -124,10 +246,10 @@
                                       <tfoot>
                                         <tr>
                                            <th>ID</th>                                          
-                                           <th>Area under cane</th>
-                                           <th>Are Harvested</th>
-                                           <th>Production Tonnes</th>
-                                           <th>Average yield tonnes</th>
+                                           <th>Approved degree programmes</th>
+                                           <th>Approved private university degree programmes</th>
+                                           <th>Validated diploma programmes</th>
+                                           
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -164,7 +286,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          approved_degree_programmes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -174,7 +296,7 @@
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          approved_private_university_degreeprogrammes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -184,27 +306,7 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          production_tonnes: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           average_yield_tonnes_per_ha: {
+                                          validated_diploma_programmes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -214,6 +316,8 @@
                                                 }
                                               }
                                           }
+                                          
+                                           
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -222,7 +326,7 @@
                       var table;
 
 
-                      function add_conservancy()
+                      function add()
                       {
                         save_method = 'add';
                         $('#form')[0].reset(); // reset form on modals
@@ -230,9 +334,9 @@
                       //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
                       }
 
-                      function edit_conservancy(id)
+                      function edit(id)
                       {
-                        var url = '{{ route("fetchSugar", ":id") }}';
+                        var url = '{{ route("fetchDiploma", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -245,11 +349,10 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.area_id);
-                              $('[name="area_under_cane_ha"]').val(data.area_under_cane_ha);
-                              $('[name="area_harvested_ha"]').val(data.area_harvested_ha);
-                              $('[name="production_tonnes"]').val(data.production_tonnes);
-                              $('[name="average_yield_tonnes_per_ha"]').val(data.average_yield_tonnes_per_ha);
+                              $('[name="id"]').val(data.approved_id);
+                              $('[name="approved_degree_programmes"]').val(data.approved_degree_programmes);
+                              $('[name="approved_private_university_degreeprogrammes"]').val(data.approved_private_university_degreeprogrammes);
+                              $('[name="validated_diploma_programmes"]').val(data.validated_diploma_programmes);
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -270,7 +373,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeSugar') }}";
+                            url = "{{ route('storeDiploma') }}";
 
                         }
                         else
@@ -278,7 +381,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateSugar') }}";
+                          url = "{{ route('updateDiploma') }}";
                         }
                           
                       
@@ -320,28 +423,7 @@
                           
                           }});}
 
-                      function delete_conservancy(id)
-                      {
-                        if(confirm('Are you sure delete this data?'))
-                        {
-                          // ajax delete data from database
-                            $.ajax({
-                              url : "{{asset('/Agriculture/show/')}}",
-                              type: "POST",
-                              dataType: "JSON",
-                              success: function(data)
-                              {
-                                 
-                                 location.reload();
-                              },
-                              error: function (jqXHR, textStatus, errorThrown)
-                              {
-                                  alert('Error deleting data');
-                              }
-                          });
-
-                        }
-                      }
+                     
 
                       function myFunction() {
                               var x = document.getElementById("snackbar");
@@ -366,35 +448,30 @@
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Area Under Cane</label>
+                                <label class="control-label col-md-3">Approved Degree Programs</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="area_under_cane_ha" class="form-control" type="text">
-                                  @if ($errors->has('area_under_cane_ha'))
+                                 <input name="approved_degree_programmes" class="form-control" type="text">
+                                  @if ($errors->has('approved_degree_programmes'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('area_under_cane_ha') }}</strong>
+                                        <strong>{{ $errors->first('approved_degree_programmes') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Area Harvested</label>
+                                <label class="control-label col-md-3">approved private university degreeprogrammes</label>
                                 <div class="col-md-9">
-                                  <input name="area_harvested_ha"  class="form-control" type="text">
+                                  <input name="approved_private_university_degreeprogrammes"  class="form-control" type="text">
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Production Tonnes</label>
+                                <label class="control-label col-md-3">Validated diploma programmes</label>
                                 <div class="col-md-9">
-                                  <input name="production_tonnes"  class="form-control" type="text">
+                                  <input name="validated_diploma_programmes"  class="form-control" type="text">
                                 </div>
                               </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Average Yield Tonnes</label>
-                                <div class="col-md-9">
-                                  <input name="average_yield_tonnes_per_ha"  class="form-control" type="text">
-                                </div>
-                              </div>
+                              
                               
                               
                               <div class="form-group">
@@ -441,7 +518,50 @@
         
    </div>
   <!-- page content -->
+  <!-- page content -->
    
 
-</body>
+
+ <!-- footer content -->
+        <footer>
+         <!--  <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div> -->
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+   <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> --> -->
+    <!-- Bootstrap -->
+    <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{asset('vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{asset('vendors/nprogress/nprogress.js')}}"></script>
+    <!-- Chart.js -->
+    <script src="{{asset('vendors/Chart.js/dist/Chart.min.js')}}"></script>
+    <!-- jQuery Sparklines -->
+    <script src="{{asset('vendors/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
+    <!-- Flot -->
+    <script src="{{asset('vendors/Flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.time.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.stack.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <!-- Flot plugins -->
+    <script src="{{asset('vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
+    <script src="{{asset('vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+    <script src="{{asset('vendors/flot.curvedlines/curvedLines.js')}}"></script>
+    <!-- DateJS -->
+    <script src="{{asset('vendors/DateJS/build/date.js')}}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="{{asset('build/js/custom.min.js')}}"></script>
+  </body>
 </html>

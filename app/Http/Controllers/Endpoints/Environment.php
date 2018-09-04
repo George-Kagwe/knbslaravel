@@ -13,21 +13,6 @@ class Environment extends Controller
 
 
 
- public function get_environment_and_natural_resources_average_export_prices_ash(){
-    
-           $data= DB::table('environment_and_natural_resources_average_export_prices_ash')->get();
-
-           $year = array();
-			$year['name'] = 'year';
-				 
-		
-			 
-			$series1 = array();
-			$series1['name'] = 'Soda Ash ';
-
-    //function to get data average_export_prices_ash
-}
-
       public function get_environment_and_natural_resources_average_export_prices_ash(){
     	$data = DB::table('environment_and_natural_resources_average_export_prices_ash')->get();
 
@@ -61,15 +46,15 @@ class Environment extends Controller
     }
 
 
-    }
+    
 
 
 
 
 
 
-
-// get environment_and_natural_resources_development_expenditure_water
+  
+    // get environment_and_natural_resources_development_expenditure_water
 
 
     public function get_environment_and_natural_resources_development_expenditure_water(){
@@ -638,10 +623,6 @@ public function get_environment_and_natural_resources_value_of_total_mineral(){
 }
 
 
-
-
-
-
 // get environment_and_natural_resources_water_purification_points
 
 public function get_environment_and_natural_resources_water_purification_points(){
@@ -667,6 +648,189 @@ public function get_environment_and_natural_resources_water_purification_points(
 			$series1['data'][] = $row->water_purification_points;
 			$series2['data'][] = $row->boreholes_total;
 			$series3['data'][] = $row->public;
+						
+			}
+			 
+			$result = array();
+			array_push($result,$year);
+			array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			
+					
+			print json_encode($result, JSON_NUMERIC_CHECK);
+    
+
+}
+
+ // @George Muchiri
+// get land_and_climate_rainfall
+
+public function get_land_and_climate_rainfall(){
+    	$data = DB::table('land_and_climate_rainfall')
+
+    	         ->join('health_counties', 
+           	'land_and_climate_rainfall.county_id', '=', 'health_counties.county_id')
+               
+                 ->join('land_and_climate_rainfall_ids', 
+           	'land_and_climate_rainfall.rainfall_id', '=', 'land_and_climate_rainfall_ids.rainfall_id')
+               
+                ->get();
+
+
+    	    $year = array();
+			$year['name'] = 'Year';
+		
+	 
+			$series1 = array();
+			$series1['name'] = 'County';
+			
+			$series2 = array();
+			$series2['name'] = 'Rainfall ';
+
+			$series3 = array();
+			$series3['name'] = 'Rainfall in MM';
+
+			 
+			foreach ($data as $row)
+			{
+			$year['data'][] = $row->year;
+			$series1['data'][] = $row->county_name;
+			$series2['data'][] = $row->rainFall;
+			$series3['data'][] = $row->rainfall_in_mm;
+						
+			}
+			 
+			$result = array();
+			array_push($result,$year);
+			array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			
+					
+			print json_encode($result, JSON_NUMERIC_CHECK);
+    
+
+}
+
+     // @George Muchiri
+     // get land_and_climate_surface_area_by_category
+
+public function get_land_and_climate_surface_area_by_category(){
+    	$data = DB::table('land_and_climate_surface_area_by_category')        
+    	       ->join('health_counties','land_and_climate_surface_area_by_category.county_id', 
+    	       	'=', 'health_counties.county_id')
+    	       ->join('land_and_climate_surface_area_by_category_ids', 
+           	'land_and_climate_surface_area_by_category.category_id', '=', 
+           	'land_and_climate_surface_area_by_category_ids.category_id')->get();
+
+
+	 
+			$series1 = array();
+			$series1['name'] = 'County';
+			
+			$series2 = array();
+			$series2['name'] = 'Category';
+
+			$series3 = array();
+			$series3['name'] = 'Area Per Sq Km';
+
+			 
+			foreach ($data as $row)
+			{
+			
+			$series1['data'][] = $row->county_name;
+			$series2['data'][] = $row->categories;
+			$series3['data'][] = $row->area_sq_km;
+						
+			}
+			 
+			$result = array();
+	
+			array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			
+					
+			print json_encode($result, JSON_NUMERIC_CHECK);
+    
+
+}
+
+      // @George Muchiri
+     // get land_and_climate_temperature
+
+public function get_land_and_climate_temperature(){
+    	$data = DB::table('land_and_climate_temperature')        
+    	       ->join('health_counties','land_and_climate_temperature.county_id', 
+    	       	'=', 'health_counties.county_id')
+    	       ->join('land_and_climate_temperature_ids', 
+           	'land_and_climate_temperature.temperature_id', '=', 
+           	'land_and_climate_temperature_ids.temperature_id')->get();
+
+
+	     	$year = array();
+			$year['name'] = 'Year';
+		
+			$series1 = array();
+			$series1['name'] = 'County';
+			
+			$series2 = array();
+			$series2['name'] = 'Temperatures';
+
+			$series3 = array();
+			$series3['name'] = 'Temparature Celsius Degrees';
+
+			 
+			foreach ($data as $row)
+			{
+			$year['data'][] = $row->year;
+			$series1['data'][] = $row->county_name;
+			$series2['data'][] = $row->temperatures;
+			$series3['data'][] = $row->temp_celsius_degrees;
+						
+			}
+			 
+			$result = array();
+			array_push($result,$year);
+			array_push($result,$series1);
+			array_push($result,$series2);
+			array_push($result,$series3);
+			
+					
+			print json_encode($result, JSON_NUMERIC_CHECK);
+    
+
+}
+
+
+     // @George Muchiri
+     // get land_and_climate_topography_altitude
+
+    public function get_land_and_climate_topography_altitude(){
+    	$data = DB::table('land_and_climate_topography_altitude')        
+    	       ->join('health_counties','land_and_climate_topography_altitude.county_id', 
+    	       	'=', 'health_counties.county_id')->get();
+
+            $year = array();
+			$year['name'] = 'Year';
+		
+			$series1 = array();
+			$series1['name'] = 'County';
+			
+			$series2 = array();
+			$series2['name'] = 'geography_type';
+
+			$series3 = array();
+			$series3['name'] = 'Temparature Celsius Degrees';
+
+			 
+			foreach ($data as $row)
+			{
+			$year['data'][] = $row->year;
+			$series1['data'][] = $row->county_name;
+			$series2['data'][] = $row->geography_type;
+			$series3['data'][] = $row->altitude_in_metres;
 						
 			}
 			 
