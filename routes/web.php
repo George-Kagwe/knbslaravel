@@ -21,24 +21,13 @@ Route::get('Agriculture/', 'Forms\Agriculture@index')->name('Agriculture');
 Route::resource('agriculture','Forms\Agriculture');
 Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agriculture@show'));
 
-<<<<<<< HEAD
+
 Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
 Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
 
 
 //End of crud functions
-=======
-<<<<<<< HEAD
-=======
 
-
-<<<<<<< HEAD
-=======
->>>>>>> 88d2380b2c6edb159ada04a1ea777b6d158e68bb
-
-
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
->>>>>>> 0c437656a46f40644e71803e0909fb8ba3d910df
 //@George Kagwe
 //route to fetch get_agriculture_area_under_sugarcane_harvested_production_avg_yield
 Route::get('agriculture/all_sugarcane_harvested', 'Endpoints\Agriculture@get_agriculture_area_under_sugarcane_harvested_production_avg_yield')->name('Agriculture');
@@ -942,10 +931,7 @@ Route::get('finance/all_finance_statement_of_national_government_operations',
 'Endpoints\Finance@get_finance_statement_of_national_government_operations')->name(
 	'finance_statement_of_national_government_operations');
 
-<<<<<<< HEAD
-=======
 
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
 // @Charles Ndirangu
 // CPI get cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya route
 Route::get('cpi/all_annual_avg_retail_prices_of_certain_consumer_goods_in', 'Endpoints\CPI@get_cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya')->name('cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya');
@@ -1035,17 +1021,7 @@ Route::get('building/all_quarterly_overal_construction_cost', 'Endpoints\Buildin
 // Building  building_and_construction_quarterly_residential_bulding_cost route
 Route::get('building/all_quarterly_residential_bulding_cost', 'Endpoints\Building@get_building_and_construction_quarterly_residential_bulding_cost')->name('building_and_construction_quarterly_residential_bulding_cost');
 
-<<<<<<< HEAD
-=======
 
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
->>>>>>> 0c437656a46f40644e71803e0909fb8ba3d910df
 //Tourism
 // @Charles Ndirangu
 // Building  tourism_arrivals route
@@ -1173,11 +1149,9 @@ Route::get('health/all_health_sectors', 'Endpoints\Health@health_sectors')->name
 Route::get('health/all_health_subcounty', 'Endpoints\Health@health_subcounty')->name('health_subcounty');
 //Health
 //health_use_of_mosquito_nets_by_children @fredrick muiruri
-<<<<<<< HEAD
 Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
-=======
+
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
 
 
 //Ict  ict_kihibs_households_owned_ict_equipment_services @david
@@ -1235,11 +1209,8 @@ Route::get('Ict/ict_kihibs_population_who_used_internet_by_place',
 Route::get('Ict/ict_kihibs_population_withmobilephone_andaveragesims', 
   'Endpoints\Ict@get_ict_kihibs_population_withmobilephone_andaveragesims')->
     name(' ict_kihibs_population_withmobilephone_andaveragesims');
-<<<<<<< HEAD
-=======
 
 
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
 
      //Poverty    poverty_consumption_expenditure_and_quintile_distribution @david
 Route::get('poverty/all_poverty_consumption_expenditure_and_quintile_distribution', 
@@ -1282,16 +1253,7 @@ Route::get('poverty/all_poverty_overall_estimates_by_residence_and_county',
     name('poverty_overall_estimates_by_residence_and_county');
 
 
-<<<<<<< HEAD
-=======
 
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
->>>>>>> 0c437656a46f40644e71803e0909fb8ba3d910df
 //Nutrition
 //health_nutritional_status_of_children @fredrick muiruri
 Route::get('nutrition/all_health_nutritional_status_of_children', 'Endpoints\Nutrition@health_nutritional_status_of_children')->name('health_nutritional_status_of_children');
@@ -1322,17 +1284,13 @@ Route::get('Housing/housing_conditions_kihibs_place_for_washing_hands_near_toile
 Route::get('Housing/housing_conditions_kihibs_owner_occupier_dwellings', 'Endpoints\Housing@housing_conditions_kihibs_owner_occupier_dwellings')->name('housing_conditions_kihibs_owner_occupier_dwellings');
 //Housing
 //housing_conditions_kihibs_methods_used_to_make_water_safer @fredrick muiruri
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 
 Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
+
 Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 
->>>>>>> 0c437656a46f40644e71803e0909fb8ba3d910df
+
 Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 
 // @George Muchiri
@@ -1398,7 +1356,3 @@ Route::get('Housing/housing_conditions_kihibs_main_toilet_facility',
 Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
 	'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
 	'housing_conditions_kihibs_main_wall_material');
-<<<<<<< HEAD
-
-=======
->>>>>>> a3a5dbb78bcbfe740cbf415a2d5e12f394e242fb
