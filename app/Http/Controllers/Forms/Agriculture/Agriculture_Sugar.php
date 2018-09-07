@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Forms;
+namespace App\Http\Controllers\Forms\Agriculture;
+
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,9 +11,11 @@ use Response;
 use App\Sugar_Harvested;
 use View;
 
-class Agriculture extends Controller
+
+class Agriculture_Sugar extends Controller
 {
-    /**
+    
+ /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

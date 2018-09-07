@@ -52,7 +52,7 @@
               <div class="menu_section">
                
                 <ul class="nav side-menu">
-                    <li><a href="{{ route('Finance/home') }}"><i class="fa fa-money"></i>Public Finance</a></li>
+                   <li><a href="{{ route('Finance/home') }}"><i class="fa fa-money"></i>Public Finance</a></li>
                     <li><a href="{{ route('Education/home') }}"><i class="fa fa-money"></i>Education</a></li>
                     <li><a href="{{ route('Health/home') }}"><i class="fa fa-money"></i>Public Health</a></li>
                      <li><a href="{{ route('Agriculture/home') }}"><i class="fa fa-money"></i>Agriculture</a></li>
@@ -60,7 +60,7 @@
                     <li><a href="{{ route('Governance/home') }}"><i class="fa fa-money"></i>Governance</a></li>
                     <li><a href="{{ route('ICT/home') }}"><i class="fa fa-money"></i>ICT</a></li>
                      <li><a href="{{ route('Environment/home') }}"><i class="fa fa-money"></i>Environment And <br>Natural Resources</a></li>
-                    <li><a href="{{ route('Manufacturing/home') }}"><i class="fa fa-money"></i>Manufacturng</a></li>
+                    <li><a href="{{ route('Manufacturing/home') }}"><i class="fa fa-money"></i>Manufacturing</a></li>
                     <li><a href="{{ route('Energy/home') }}"><i class="fa fa-money"></i>Energy</a></li>
                      <li><a href="{{ route('Labour/home') }}"><i class="fa fa-money"></i>Labour</a></li>
                     <li><a href="{{ route('CPI/home') }}"><i class="fa fa-money"></i>Consumer Price Index</a></li>
@@ -128,7 +128,7 @@
                                     </a>
 
 
-                      <form id="logout-form" action="" method="POST" style="display: none;">
+                      <form id="logout-form" action="" method="datasets" style="display: none;">
                                         @csrf
                       </form>
                     </li>
@@ -143,12 +143,59 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" style="background:#ffffff; color:#333;">
           
- 
+                      <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
+                                      <thead>
+                                        <tr>
+                                         
+                                           <th>Sector Name</th>                                          
+                                           <th>Report</th>
+                                           <th>Coverage</th>
+                                         
+                                           <th style="width:85px;">Action
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                      <?php foreach($datasets as $datasets){?>
+                                             <tr>
+                                                <td>{{$datasets->sector_name}}</td>
+                                                <td>{{$datasets->report}}</td>
+                                                <td>{{$datasets->coverage}}</td>                                  
+
+                                                <td>
+                                                  <button class="btn btn-primary" onclick="location.href='{{ url($datasets->table_name) }}'">Update Dataset</button>
+                                               
+                                                </td>
+                                              </tr>
+                                             <?php }?>
 
 
-           
+
+                                      </tbody>
+
+                                      <tfoot>
+                                        <tr>
+                                          <th>Sector Name</th>                                          
+                                           <th>Report</th>
+                                           <th>Coverage</th>
+                                          
+                                           <th style="width:85px;">Action
+                                          </th>
+                                         
+                                        </tr>
+                                      </tfoot>
+                      </table>
+
+              <script type="text/javascript" src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
+              <script type="text/javascript" src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+              <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
+              <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+              <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+            <script type="text/javascript">
+                  $('#table_id').DataTable();
+            </script>
         </div>
         <!-- /page content -->
 

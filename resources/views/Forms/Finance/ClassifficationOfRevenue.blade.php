@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-  <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.jpg') }}">
 
-    <!-- CSFR token for ajax call -->
-    <!-- <meta name="_token" content="{{ csrf_token() }}"/> -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>KNBS </title>
 
-    <title>Sugarcane Yields</title>
+    <!-- Bootstrap -->
+    <link href="{{asset('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{asset('vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{asset('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
-    <style>
+    <!-- Custom Theme Style -->
+    <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+
+         <style>
 
                   #snackbar {
                       visibility: hidden;
@@ -61,11 +65,127 @@
                       to {top: 0; opacity: 0;}
                   }
     </style>
+  </head>
 
-</head>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>KNBS</span></a>
+            </div>
 
-<body>
-    
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <!-- <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div> -->
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2></h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+               
+                <ul class="nav side-menu">
+                    <li><a href="{{ route('Finance/home') }}"><i class="fa fa-money"></i>Public Finance</a></li>
+                    <li><a href="{{ route('Education/home') }}"><i class="fa fa-money"></i>Education</a></li>
+                    <li><a href="{{ route('Health/home') }}"><i class="fa fa-money"></i>Public Health</a></li>
+                     <li><a href="{{ route('Agriculture/home') }}"><i class="fa fa-money"></i>Agriculture</a></li>
+                    <li><a href="{{ route('Population/home') }}"><i class="fa fa-money"></i>Population</a></li>
+                    <li><a href="{{ route('Governance/home') }}"><i class="fa fa-money"></i>Governance</a></li>
+                    <li><a href="{{ route('ICT/home') }}"><i class="fa fa-money"></i>ICT</a></li>
+                     <li><a href="{{ route('Environment/home') }}"><i class="fa fa-money"></i>Environment And <br>Natural Resources</a></li>
+                    <li><a href="{{ route('Manufacturing/home') }}"><i class="fa fa-money"></i>Manufacturng</a></li>
+                    <li><a href="{{ route('Energy/home') }}"><i class="fa fa-money"></i>Energy</a></li>
+                     <li><a href="{{ route('Labour/home') }}"><i class="fa fa-money"></i>Labour</a></li>
+                    <li><a href="{{ route('CPI/home') }}"><i class="fa fa-money"></i>Consumer Price Index</a></li>
+                    <li><a href="{{ route('Administrative/home') }}"><i class="fa fa-money"></i>Administrative and Political</a></li>
+                     <li><a href="{{ route('Trade/home') }}"><i class="fa fa-money"></i>Trade</a></li>
+                    <li><a href="{{ route('Tourism/home') }}"><i class="fa fa-money"></i>Tourism</a></li>
+                    <li><a href="{{ route('Building/home') }}"><i class="fa fa-money"></i>Building and Construction</a></li>
+                    <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
+                     <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
+                     <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
+                </ul>
+              </div>
+              
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                   <!--  <li><a href="javascript:;"> Profile</a></li> -->
+                   <!--  <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li> -->
+                    <li><a href="javascript:;">Help</a></li>
+                   
+                     <li> <a href=""
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out pull-right"></i>
+                                    </a>
+
+
+                      <form id="logout-form" action="" method="POST" style="display: none;">
+                                        @csrf
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+
+               
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
 
  <!-- page content -->
     <div class="right_col" role="main">
@@ -89,29 +209,52 @@
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
-                                         
-                                           <th>ID</th>                                          
-                                           <th>Area under cane</th>
-                                           <th>Are Harvested</th>
-                                           <th>Production Tonnes</th>
-                                           <th>Average yield tonnes</th>
+                                            
+                                          <th>Income Taxes/profits/capital gains</th>
+                                           <th>Property Taxes</th>
+                                           <th>VAT</th>
+                                           <th>Other goods and srvices</th>
+                                            <th>Taxes internationaltrade transactions</th>
+                                             <th>Other taxes not else  where
+                                             classified</th>
+                                              <th>Total tax revenue</th>
+                                               <th>Social  security contributions</th>
+                                                <th>Property income</th>
+                                               <th>Sale goods and services</th>
+                                                <th>Fines penalties and forfeitures</th>
+                                                <th>Repayments domestic lending</th>
+                                               
+                                                <th>Other receipts not else where classified</th>
+                                               <th>Total Non Tax revenue</th>
+                                              <th> Total</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($post as $post){?>
+                                      <?php foreach($finance as $finance){?>
                                              <tr>
-                                                <td>{{$post->area_id}}</td>
-                                                <td>{{$post->area_under_cane_ha}}</td>
-                                                <td>{{$post->area_harvested_ha}}</td>
-                                                <td>{{$post->production_tonnes}}</td>
-                                                <td>{{$post->average_yield_tonnes_per_ha}}</td>
-                                                <td>{{$post->year}}</td>                                      
-
+                                            
+                                                <td>{{$finance->taxes_income_profits_capitalgains}}</td>
+                                                <td>{{$finance->taxes_property}}</td>
+                                                <td>{{$finance->taxes_vat}}</td>
+                                                <td>{{$finance->taxes_othergoodsandservices}}</td>
+                                                <td>{{$finance->taxes_internationaltrade_transactions}}</td>
+                                                <td>{{$finance->other_taxes_notelsewhereclasified}}</td>
+                                                <td>{{$finance->totaltax_revenue}}</td>
+                                                <td>{{$finance->socialsecuritycontributions}}</td>
+                                                <td>{{$finance->property_income}}</td>                                      
+                                                <td>{{$finance->sale_goodsandservices}}</td>
+                                                <td>{{$finance->fines_penaltiesandforfeitures}}</td>
+                                                <td>{{$finance->repayments_domesticlending}}</td>
+                                                <td>{{$finance->other_receiptsnotelsehereclassified}}</td>
+                                                <td>{{$finance->total_nontax_revenue}}</td>
+                                                <td>{{$finance->total}}</td>
+                                                <td>{{$finance->year}}</td>
+                                               
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit_conservancy(<?php echo $post->area_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit_conservancy(<?php echo $finance->eonomicrevenue_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -123,11 +266,23 @@
 
                                       <tfoot>
                                         <tr>
-                                           <th>ID</th>                                          
-                                           <th>Area under cane</th>
-                                           <th>Are Harvested</th>
-                                           <th>Production Tonnes</th>
-                                           <th>Average yield tonnes</th>
+                                          <th>Income Taxes/profits/capital gains</th>
+                                           <th>Property Taxes</th>
+                                           <th>VAT</th>
+                                           <th>Other goods and srvices</th>
+                                            <th>Taxes internationaltrade transactions</th>
+                                             <th>Other taxes not else  where
+                                             classified</th>
+                                              <th>Total tax revenue</th>
+                                               <th>Social  security contributions</th>
+                                                <th>Property income</th>
+                                               <th>Sale goods and services</th>
+                                                <th>Fines penalties and forfeitures</th>
+                                                <th>Repayments domestic lending</th>
+                                               
+                                                <th>Other receipts not else where classified</th>
+                                               <th>Total Non Tax revenue</th>
+                                              <th> Total</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -291,7 +446,7 @@
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                   },
                               url : url,
-                              type: "POST",
+                              type: "finance",
                               data: data,
                               dataType: "JSON",
                               success: function(result)
@@ -327,7 +482,7 @@
                           // ajax delete data from database
                             $.ajax({
                               url : "{{asset('/Agriculture/show/')}}",
-                              type: "POST",
+                              type: "finance",
                               dataType: "JSON",
                               success: function(data)
                               {
@@ -443,5 +598,47 @@
   <!-- page content -->
    
 
-</body>
+
+ <!-- footer content -->
+        <footer>
+         <!--  <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div> -->
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> -->
+    <!-- Bootstrap -->
+    <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <!-- FastClick -->
+    <script src="{{asset('vendors/fastclick/lib/fastclick.js')}}"></script>
+    <!-- NProgress -->
+    <script src="{{asset('vendors/nprogress/nprogress.js')}}"></script>
+    <!-- Chart.js -->
+    <script src="{{asset('vendors/Chart.js/dist/Chart.min.js')}}"></script>
+    <!-- jQuery Sparklines -->
+    <script src="{{asset('vendors/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
+    <!-- Flot -->
+    <script src="{{asset('vendors/Flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.time.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.stack.js')}}"></script>
+    <script src="{{asset('vendors/Flot/jquery.flot.resize.js')}}"></script>
+    <!-- Flot plugins -->
+    <script src="{{asset('vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
+    <script src="{{asset('vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+    <script src="{{asset('vendors/flot.curvedlines/curvedLines.js')}}"></script>
+    <!-- DateJS -->
+    <script src="{{asset('vendors/DateJS/build/date.js')}}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{asset('vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{asset('vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="{{asset('build/js/custom.min.js')}}"></script>
+  </body>
 </html>
