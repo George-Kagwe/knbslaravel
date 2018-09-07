@@ -32,21 +32,34 @@ Route::get('Money/home', 'Forms\AllFormsController@money')->name('Money/home');
 Route::get('Transport/home', 'Forms\AllFormsController@transport')->name('Transport/home');
 Route::get('Manufacturing/home', 'Forms\AllFormsController@manufacturing')->name('Manufacturing/home');
 
-Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
-
-
-
-Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
-
-
-Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
-
-
 //Begining of crud functions
 //Route::get('Agriculture/sugar_yield/{id}', array('as' => 'search_id', 'uses' =>'Forms\Agriculture@show'));
-// Route::get('Agriculture/', 'Forms\Agriculture@index')->name('Agriculture');
-// Route::resource('agriculture','Forms\Agriculture');
-// Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agirculture\Agriculture@show'));
+Route::get('Agriculture/', 'Forms\Agriculture@index')->name('Agriculture');
+Route::resource('agriculture','Forms\Agriculture');
+Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agriculture@show'));
+
+
+Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
+Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
+
+
+//End of crud functions
+
+//@George Kagwe
+//route to fetch get_agriculture_area_under_sugarcane_harvested_production_avg_yield
+Route::get('agriculture/all_sugarcane_harvested', 'Endpoints\Agriculture@get_agriculture_area_under_sugarcane_harvested_production_avg_yield')->name('Agriculture');
+=======
+Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
+
+
+
+Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
+
+
+Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
+
+//Begining of crud functions
+
 
 Route::get('agriculture_area_under_sugarcane_harvested_production_avg_yield/', 'Forms\Agriculture\Agriculture_Sugar@index')->name('agriculture_area_under_sugarcane_harvested_production_avg_yield');
 Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@show'));
@@ -61,7 +74,7 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
     
-    Route::get('ClassifficationOfRevenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
+    Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
       
 
 
@@ -865,6 +878,7 @@ Route::get('finance/all_finance_statement_of_national_government_operations',
 'Endpoints\Finance@get_finance_statement_of_national_government_operations')->name(
   'finance_statement_of_national_government_operations');
 
+
 // @Charles Ndirangu
 // CPI get cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya route
 Route::get('cpi/all_annual_avg_retail_prices_of_certain_consumer_goods_in', 'Endpoints\CPI@get_cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya')->name('cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya');
@@ -1047,16 +1061,13 @@ Route::get('health/all_health_subcounty', 'Endpoints\Health@health_subcounty')->
 //Health
 //health_use_of_mosquito_nets_by_children @fredrick muiruri
 
-
 Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 
 
-
 Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
-
 
 //Ict  ict_kihibs_households_owned_ict_equipment_services @david
 Route::get('Ict/ict_kihibs_households_owned_ict_equipment_services', 
@@ -1103,6 +1114,7 @@ Route::get('Ict/ict_kihibs_population_who_used_internet_by_place',
 Route::get('Ict/ict_kihibs_population_withmobilephone_andaveragesims', 
   'Endpoints\Ict@get_ict_kihibs_population_withmobilephone_andaveragesims')->
     name(' ict_kihibs_population_withmobilephone_andaveragesims');
+
 
 
      //Poverty    poverty_consumption_expenditure_and_quintile_distribution @david
@@ -1164,6 +1176,14 @@ Route::get('Housing/housing_conditions_kihibs_place_for_washing_hands_near_toile
 //housing_conditions_kihibs_owner_occupier_dwellings @fredrick muiruri
 Route::get('Housing/housing_conditions_kihibs_owner_occupier_dwellings', 'Endpoints\Housing@housing_conditions_kihibs_owner_occupier_dwellings')->name('housing_conditions_kihibs_owner_occupier_dwellings');
 //Housing
+
+//housing_conditions_kihibs_methods_used_to_make_water_safer @fredrick muiruri
+
+Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+
+
+Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+
 //housing_conditions_kihibs_methods_used_to_make_water_safer @fredrick muiruri<<<<<<< HEAD
 
 Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
@@ -1276,6 +1296,4 @@ Route::get('Housing/housing_conditions_kihibs_main_toilet_facility',
 Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
 	'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
 	'housing_conditions_kihibs_main_wall_material');
-
-
 
