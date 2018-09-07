@@ -11,7 +11,7 @@
 */
 Route::get('/', function () {
     return view('layouts.admin');
-});
+}); 
 //load home pages for each sector
 Route::get('Finance/home', 'Forms\AllFormsController@finance')->name('Finance/home');
 Route::get('Education/home', 'Forms\AllFormsController@education')->name('Education/home');
@@ -80,18 +80,85 @@ Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Ag
 Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@update'));
 
 //@Charles
-
-//feetch
+//fetch
 Route::get('education_approved_degree_diploma_programs/', 'Forms\Education\AprrovedDegreeDiplomaPrograms@index')->name('education_approved_degree_diploma_programs');
+
+//@Charles
 //post to save
 Route::post('diploma/store', array('as' => 'storeDiploma', 'uses' => 'Forms\Education\AprrovedDegreeDiplomaPrograms@store'));
+
+//@Charles
 //post to update
 Route::post('diploma/update', array('as' => 'updateDiploma', 'uses' => 'Forms\Education\AprrovedDegreeDiplomaPrograms@update'));
 
-
+//@Charles
 //show a specific id
 Route::get('diploma/approved/{id}', array('as' => 'fetchDiploma', 'uses' => 'Forms\Education\AprrovedDegreeDiplomaPrograms@show'));
 
+//@Charles
+//fetch
+Route::get('tourism_tourist_arrivals/', 'Forms\Tourism\tourism_arrivals@index')->name('tourism_tourist_arrivals');
+
+//@Charles
+//post to save
+Route::post('tourist_arrivals/store', array('as' => 'storeTouristArrivals', 'uses' => 'Forms\Tourism\tourism_arrivals@store'));
+
+//@Charles
+//post to update
+Route::post('tourist_arrivals/update', array('as' => 'updateTouristArrivals', 'uses' => 'Forms\Tourism\tourism_arrivals@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourist_arrivals/approved/{id}', array('as' => 'fetchTouristArrivals', 'uses' => 'Forms\Tourism\tourism_arrivals@show'));
+
+//@Charles
+//fetch
+Route::get('tourism_departures/', 'Forms\Tourism\tourism_departures@index')->name('tourism_tourism_departures');
+
+//@Charles
+//post to save
+Route::post('tourism_departures/store', array('as' => 'storeTouristDepartures', 'uses' => 'Forms\Tourism\tourism_departures@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_departures/update', array('as' => 'updateTouristDepartures', 'uses' => 'Forms\Tourism\tourism_departures@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_departures/approved/{id}', array('as' => 'fetchTouristDepartures', 'uses' => 'Forms\Tourism\tourism_departures@show'));
+
+
+//@Charles
+//fetch
+Route::get('tourism_conferences/', 'Forms\Tourism\tourism_conference@index')->name('tourism_tourist_arrivals');
+
+//@Charles
+//post to save
+Route::post('tourism_conferences/store', array('as' => 'storeTouristConferences', 'uses' => 'Forms\Tourism\tourism_conference@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_conferences/update', array('as' => 'updateTouristConferences', 'uses' => 'Forms\Tourism\tourism_conference@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_conferences/approved/{id}', array('as' => 'fetchTouristConferences', 'uses' => 'Forms\Tourism\tourism_conference@show'));
+
+//@Charles
+//fetch
+Route::get('tourism_earnings/', 'Forms\Tourism\tourism_earnings@index')->name('tourism_tourist_arrivals');
+
+//@Charles
+//post to save
+Route::post('tourism_earnings/store', array('as' => 'storeTouristEarnings', 'uses' => 'Forms\Tourism\tourism_earnings@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_earnings/update', array('as' => 'updateTouristEarnings', 'uses' => 'Forms\Tourism\tourism_earnings@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_earnings/approved/{id}', array('as' => 'fetchTouristEarnings', 'uses' => 'Forms\Tourism\tourism_earnings@show'));
 
 // Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
 // Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
@@ -321,17 +388,7 @@ Route::get('manufacturing/all_quantum_indices_of_manufacturing_production',
   'Endpoints\Labour@get_labour_wage_employment_by_industry_in_public_sector')->
     name('labour_wage_employment_by_industry_in_public_sector');
 
-<<<<<<< HEAD
 
-
-
-
-
-
-
->>>>>>> 14b336a324ac27adf8072ea4ff64707667a55dc4
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Education
 //education_approved_degree_diploma_programs @fredrick muiruri
 Route::get('education/all_diploma_degree', 'Endpoints\Education@education_approved_degree_diploma_programs')->name('education_approved_degree_diploma_programs');
@@ -674,13 +731,7 @@ Route::get('population/all_population_households_type_floor_material_main_dwelli
 // @get_population_percentage_households_ownership_household_assets
 Route::get('population/all_population_percentage_households_ownership_household_assets', 
 'Endpoints\Population@get_population_percentage_households_ownership_household_assets')->name('population_percentage_households_ownership_household_assets');
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 // @George Muchiri
 // @get_population_populationbysexhouseholdsdensityandcensusyears
 Route::get('population/all_population_populationbysexhouseholdsdensityandcensusyears', 
@@ -850,7 +901,7 @@ Route::get('trade/all_trade_and_commerce_revenue_collection_by_amount', 'Endpoin
 // @Charles Ndirangu
 // Trade  trade_and_commerce_trading_centres route
 Route::get('trade/all_trade_and_commerce_trading_centres', 'Endpoints\Trade@get_trade_and_commerce_trading_centres')->name('trade_and_commerce_trading_centres');
-// @Charles Ndirangu
+// @Charles Ndirangu 
 // Trade  trade_and_commerce_value_of_total_exports_all_destinations route
 Route::get('trade/all_trade_and_commerce_value_of_total_exports_all_destinations', 'Endpoints\Trade@get_trade_and_commerce_value_of_total_exports_all_destinations')->name('trade_and_commerce_value_of_total_exports_all_destinations');
 // @Charles Ndirangu
@@ -879,11 +930,7 @@ Route::get('building/all_quarterly_overal_construction_cost', 'Endpoints\Buildin
 // Building  building_and_construction_quarterly_residential_bulding_cost route
 Route::get('building/all_quarterly_residential_bulding_cost', 'Endpoints\Building@get_building_and_construction_quarterly_residential_bulding_cost')->name('building_and_construction_quarterly_residential_bulding_cost');
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Tourism
 // @Charles Ndirangu
 // Building  tourism_arrivals route
@@ -912,11 +959,7 @@ Route::get('tourism/all_tourism_visitor_to_parks', 'Endpoints\Tourism@get_touris
 // @Charles Ndirangu
 // Building  tourism_visitors_to_museums route
 Route::get('tourism/all_tourism_visitors_to_museums', 'Endpoints\Tourism@get_tourism_visitors_to_museums')->name('tourism_visitors_to_museums');
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Health
 //health_kihibs_received_free_medical_services @fredrick muiruri
 Route::get('health/all_health_kihibs_received_free_medical_services', 'Endpoints\Health@health_kihibs_received_free_medical_services')->name('health_kihibs_received_free_medical_services');
@@ -1008,14 +1051,12 @@ Route::get('health/all_health_subcounty', 'Endpoints\Health@health_subcounty')->
 Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
-<<<<<<< HEAD
-=======
 
 
 
 Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
+
 
 //Ict  ict_kihibs_households_owned_ict_equipment_services @david
 Route::get('Ict/ict_kihibs_households_owned_ict_equipment_services', 
@@ -1057,23 +1098,13 @@ Route::get('Ict/ict_kihibs_population_that_used_internet_by_purpose',
 Route::get('Ict/ict_kihibs_population_who_used_internet_by_place', 
   'Endpoints\Ict@get_ict_kihibs_population_who_used_internet_by_place')->
     name('ict_kihibs_population_who_used_internet_by_place');
-<<<<<<< HEAD
-    
 
-=======
- 
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
      //Ict     ict_kihibs_population_withmobilephone_andaveragesims @david
 Route::get('Ict/ict_kihibs_population_withmobilephone_andaveragesims', 
   'Endpoints\Ict@get_ict_kihibs_population_withmobilephone_andaveragesims')->
     name(' ict_kihibs_population_withmobilephone_andaveragesims');
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
      //Poverty    poverty_consumption_expenditure_and_quintile_distribution @david
 Route::get('poverty/all_poverty_consumption_expenditure_and_quintile_distribution', 
   'Endpoints\poverty@get_poverty_consumption_expenditure_and_quintile_distribution')->
@@ -1103,12 +1134,7 @@ Route::get('poverty/all_poverty_overall_estimates_by_residence_and_county',
   'Endpoints\poverty@get_poverty_overall_estimates_by_residence_and_county')->
     name('poverty_overall_estimates_by_residence_and_county');
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Nutrition
 //health_nutritional_status_of_children @fredrick muiruri
 Route::get('nutrition/all_health_nutritional_status_of_children', 'Endpoints\Nutrition@health_nutritional_status_of_children')->name('health_nutritional_status_of_children');
@@ -1148,10 +1174,7 @@ Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_saf
 
 
 Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
-<<<<<<< HEAD
 
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 
 
 
@@ -1251,11 +1274,8 @@ Route::get('Housing/housing_conditions_kihibs_main_toilet_facility',
 // @George Muchiri
 // housing_conditions_kihibs_main_wall_material
 Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
-<<<<<<< HEAD
 	'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
 	'housing_conditions_kihibs_main_wall_material');
 
-=======
-  'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
-  'housing_conditions_kihibs_main_wall_material');
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
+
+
