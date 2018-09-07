@@ -48,7 +48,6 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 //@George Kagwe
 //route to fetch get_agriculture_area_under_sugarcane_harvested_production_avg_yield
 Route::get('agriculture/all_sugarcane_harvested', 'Endpoints\Agriculture@get_agriculture_area_under_sugarcane_harvested_production_avg_yield')->name('Agriculture');
-=======
 Route::get('Poverty/home', 'Forms\AllFormsController@poverty')->name('Poverty/home');
 
 
@@ -75,6 +74,10 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
     //1. finance classification of revenue
     
     Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
+
+   Route::get('finance_cdf_allocation_by_constituency/', 'Forms\Finance\CDFAllocation@index')->name('finance_cdf_allocation_by_constituency');
+   Route::get('cdf/fetch/{id}', array('as' => 'fetchCDF', 'uses' => 'Forms\Finance\CDFAllocation@show'));
+
       
 
 

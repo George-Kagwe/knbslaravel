@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Forms\Finance;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Validator;
+use Response;
+use App\Models\Finance\CDFAllocation_Model;
+use View;
+use Illuminate\Support\Facades\DB;
 
 class CDFAllocation extends Controller
 {
@@ -14,7 +20,22 @@ class CDFAllocation extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('finance_cdf_allocation_by_constituency')
+               ->join('health_counties', 'finance_cdf_allocation_by_constituency.county_id', '=', 'health_counties.county_id')
+                ->join('health_subcounty', 'finance_cdf_allocation_by_constituency.county_id', '=', 'health_subcounty.county_id')
+                ->get();
+
+                $counties = DB::table('health_counties')->get();
+
+                $subcounty = DB::table('health_subcounty')
+                          
+                          ->get();
+
+      
+        return view('forms.finance.CDFAllocation',
+                 
+                   ['post' =>$data,'counties' =>$counties,
+                   'subcounty' =>$subcounty]);
     }
 
     /**
@@ -46,7 +67,17 @@ class CDFAllocation extends Controller
      */
     public function show($id)
     {
-        //
+         // $data = DB::table('finance_cdf_allocation_by_constituency')
+         //              ->where('finance_cdf_allocation_by_constituency.cdf_allocation_id','=',$id)
+         //        ->get();
+
+
+          $cdf = CDFAllocation_Model::findOrfail($id);
+
+  
+     
+      
+         echo json_encode($cdf);
     }
 
     /**
