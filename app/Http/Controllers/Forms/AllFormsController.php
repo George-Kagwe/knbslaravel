@@ -237,5 +237,17 @@ class AllFormsController  extends Controller
 
         	      );    	
     }
+
+    public function housing(){
+        $data_national = DB::table('health_sectors')
+               ->orderBy('coverage',  '=', 'ASC')
+                ->where('sector_name',  'like', '%housing%')
+                ->get();
+
+        return view('Forms.datasets',
+                    ['datasets' =>$data_national]
+
+                  );        
+    }
       
 }

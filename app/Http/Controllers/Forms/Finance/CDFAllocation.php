@@ -70,8 +70,8 @@ class CDFAllocation extends Controller
     {
         
         $validator = \Validator::make($request->all(), [
-                          'county_id'=>'required',
-                          'subcounty_id'=>'required',
+                          'county_name'=>'required',
+                          'subcounty_name'=>'required',
                           'cdf_amount'=>'required|numeric',
                           'year'=>'required',
         ]);

@@ -31,6 +31,7 @@ Route::get('Building/home', 'Forms\AllFormsController@building')->name('Building
 Route::get('Money/home', 'Forms\AllFormsController@money')->name('Money/home');
 Route::get('Transport/home', 'Forms\AllFormsController@transport')->name('Transport/home');
 Route::get('Manufacturing/home', 'Forms\AllFormsController@manufacturing')->name('Manufacturing/home');
+Route::get('Housing/home', 'Forms\AllFormsController@housing')->name('Housing/home');
 
 //Begining of crud functions
 //Route::get('Agriculture/sugar_yield/{id}', array('as' => 'search_id', 'uses' =>'Forms\Agriculture@show'));
@@ -73,9 +74,6 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
-<<<<<<< HEAD
-    
-=======
 
 Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
 
@@ -88,9 +86,6 @@ Route::post('cdf/store', array('as' => 'storeCDF', 'uses' => 'Forms\Finance\CDFA
 Route::post('cdf/update', array('as' => 'updateCDF', 'uses' => 'Forms\Finance\CDFAllocation@update'));
 
 
-
->>>>>>> 89face6178436825f785a9727a658471f2542b09
-      
 
 
 Route::get('agriculture_area_under_sugarcane_harvested_production_avg_yield/', 'Forms\Agriculture\Agriculture_Sugar@index')->name('agriculture_area_under_sugarcane_harvested_production_avg_yield');
@@ -1576,7 +1571,7 @@ Route::get('Housing/housing_conditions_kihibs_main_toilet_facility',
 // @George Muchiri
 // housing_conditions_kihibs_main_wall_material
 Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
-<<<<<<< HEAD
+
   'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
   'housing_conditions_kihibs_main_wall_material');
 
@@ -2087,8 +2082,5 @@ Route::post('irrigation/store', array('as' => 'storeIrrigation', 'uses' => 'Form
 //post to update
 Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@update'));
 
-=======
-	'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
-	'housing_conditions_kihibs_main_wall_material');
->>>>>>> 89face6178436825f785a9727a658471f2542b09
+	
 
