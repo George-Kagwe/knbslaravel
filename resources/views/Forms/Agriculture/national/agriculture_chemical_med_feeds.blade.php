@@ -20,6 +20,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 
          <style>
 
@@ -188,6 +189,8 @@
         <!-- /top navigation -->
 
  <!-- page content -->
+       
+ <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
               
@@ -201,62 +204,52 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Classification of Revenue</center></h5>
+                              <h5><center>Chemical/Medicine Feed Input</center></h5>
                               <br />
-                              <button class="btn btn-danger" onclick="add_conservancy()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
+                              <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
                               <br />
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
-                                            <th>ID</th>
-                                          <th>Income Taxes/profits/capital gains</th>
-                                           <th>Property Taxes</th>
-                                           <th>VAT</th>
-                                           <th>Other goods and srvices</th>
-                                            <th>Taxes internationaltrade transactions</th>
-                                             <th>Other taxes not else  where
-                                             classified</th>
-                                              <th>Total tax revenue</th>
-                                               <th>Social  security contributions</th>
-                                                <th>Property income</th>
-                                               <th>Sale goods and services</th>
-                                                <th>Fines penalties and forfeitures</th>
-                                                <th>Repayments domestic lending</th>
-                                               
-                                                <th>Other receipts not else where classified</th>
-                                               <th>Total Non Tax revenue</th>
-                                              <th> Total</th>
+                                         
+                                           <th>ID</th>                                          
+                                           <th>Cattle Feed</th>
+                                           <th>Dips Spray Fluids</th>
+                                           <th>Fungicides</th>
+                                            <th>Herbicides</th>
+                                           <th>Insecticides</th>
+                                           <th>Other Feeds</th>
+                                           <th>Other Livestock Drugs</th>
+                                           <th>Pig Feed</th>
+                                           <th>Plant Hormones</th>
+                                           <th>Poultry Feeds</th>
+                                           <th>Vaccines</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                         <?php foreach($post as $post){?>
+                                      <?php foreach($post as $post){?>
                                              <tr>
-                                              
-                                               <td>{{$post->economicrevenue_id}}</td>
+                                                <td>{{$post->chemical_med_feed_inputs_id}}</td>
+                                                <td>{{$post->cattle_feed}}</td>
+                                                <td>{{$post->dips_spray_fluids}}</td>
+                                                <td>{{$post->fungicides}}</td>
+                                                <td>{{$post->herbicides}}</td>
+                                                <td>{{$post->insecticides}}</td>
+                                                <td>{{$post->other_feeds}}</td>
+                                               <td>{{$post->other_livestock_drugs}}</td>
+                                                <td>{{$post->pig_feed}}</td>
+                                                <td>{{$post->plant_hormones}}</td>
+                                               <td>{{$post->poultry_feed}}</td>
+                                                <td>{{$post->vaccines}}</td>
 
-                                                <td>{{$post->taxes_income_profits_capitalgains}}</td>
-                                                <td>{{$post->taxes_property}}</td>
-                                                <td>{{$post->taxes_vat}}</td>
-                                                <td>{{$post->taxes_othergoodsandservices}}</td>
-                                                <td>{{$post->taxes_internationaltrade_transactions}}</td>
-                                                <td>{{$post->other_taxes_notelsewhereclasified}}</td>
-                                                <td>{{$post->totaltax_revenue}}</td>
-                                                <td>{{$post->socialsecuritycontributions}}</td>
-                                                <td>{{$post->property_income}}</td>                                      
-                                                <td>{{$post->sale_goodsandservices}}</td>
-                                                <td>{{$post->fines_penaltiesandforfeitures}}</td>
-                                                <td>{{$post->repayments_domesticlending}}</td>
-                                                <td>{{$post->other_receiptsnotelsehereclassified}}</td>
-                                                <td>{{$post->total_nontax_revenue}}</td>
-                                                <td>{{$post->total}}</td>
-                                                <td>{{$post->year}}</td>
-                                               
+                                                <td>{{$post->year}}</td>                                      
+
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit_conservancy(<?php echo $post->economicrevenue_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->chemical_med_feed_inputs_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -268,25 +261,18 @@
 
                                       <tfoot>
                                         <tr>
-                                                                                      <th>ID</th>
-
-                                          <th>Income Taxes/profits/capital gains</th>
-                                           <th>Property Taxes</th>
-                                           <th>VAT</th>
-                                           <th>Other goods and srvices</th>
-                                            <th>Taxes internationaltrade transactions</th>
-                                             <th>Other taxes not else  where
-                                             classified</th>
-                                              <th>Total tax revenue</th>
-                                               <th>Social  security contributions</th>
-                                                <th>Property income</th>
-                                               <th>Sale goods and services</th>
-                                                <th>Fines penalties and forfeitures</th>
-                                                <th>Repayments domestic lending</th>
-                                               
-                                                <th>Other receipts not else where classified</th>
-                                               <th>Total Non Tax revenue</th>
-                                              <th> Total</th>
+                                           <th>ID</th>                                          
+                                           <th>Cattle Feed</th>
+                                           <th>Dips Spray Fluids</th>
+                                           <th>Fungicides</th>
+                                            <th>Herbicides</th>
+                                           <th>Insecticides</th>
+                                           <th>Other Feeds</th>
+                                           <th>Other Livestock Drugs</th>
+                                           <th>Pig Feed</th>
+                                           <th>Plant Hormones</th>
+                                           <th>Poultry Feeds</th>
+                                           <th>Vaccines</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -323,7 +309,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          taxes_income_profits_capitalgains: {
+                                          cattle_feed: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -333,7 +319,7 @@
                                                 }
                                               }
                                           },
-                                          taxes_property: {
+                                          dips_spray_fluids: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -343,135 +329,7 @@
                                                 }
                                               }
                                           },
-                                          taxes_vat: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          taxes_othergoodsandservices: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           taxes_internationaltrade_transactions: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                         other_taxes_notelsewhereclassified: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                             totaltax_revenue: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             socialsecuritycontributions: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             property_income: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             sale_goodsandservices: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             fines_penaltiesandforfeitures: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             repayments_domesticlending: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             other_receiptsnotelsehereclassified: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             total_nontax_revenue: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           total: {
+                                          fungicides: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -481,6 +339,106 @@
                                                 }
                                               }
                                           }
+                                          
+                                              herbicides: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+
+                                               insecticides: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+                                               other_feeds: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+
+                                               other_livestock_drugs: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+
+                                               pig_feed : {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+
+                                               plant_hormones: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+
+                                          
+                                               poultry_feed: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+                                          
+                                               vaccines: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }
+
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -489,7 +447,7 @@
                       var table;
 
 
-                      function add_conservancy()
+                      function add()
                       {
                         save_method = 'add';
                         $('#form')[0].reset(); // reset form on modals
@@ -497,9 +455,9 @@
                       //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
                       }
 
-                      function edit_conservancy(id)
+                      function edit(id)
                       {
-                        var url = '{{ route("fetchRevenue", ":id") }}';
+                        var url = '{{ route("fetchChemical", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -512,22 +470,23 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.economicrevenue_id);
-                              $('[name="taxes_income_profits_capitalgains"]').val(data.taxes_income_profits_capitalgains);
-                              $('[name="taxes_property"]').val(data.taxes_property);
-                              $('[name="taxes_vat"]').val(data.taxes_vat);
-                              $('[name="taxes_internationaltrade_transactions"]').val(data.taxes_internationaltrade_transactions);
-                              $('[name="other_taxes_notelsewhereclassified"]').val(data.other_taxes_notelsewhereclassified);
-                              $('[name="totaltax_revenue"]').val(data.totaltax_revenue);
-                              $('[name="socialsecuritycontributions"]').val(data.socialsecuritycontributions);
-                              $('[name="property_income"]').val(data.property_income);
-                              $('[name="sale_goodsandservices"]').val(data.sale_goodsandservices);
-                              $('[name="fines_penaltiesandforfeitures"]').val(data.fines_penaltiesandforfeitures);
-                              $('[name="repayments_domesticlending"]').val(data.repayments_domesticlending);
-                              $('[name="repayments_domesticlending"]').val(data.repayments_domesticlending);
-                              $('[name="other_receiptsnotelsehereclassified"]').val(data.other_receiptsnotelsehereclassified);
-                              $('[name="total_nontax_revenue"]').val(data.total_nontax_revenue);
-                              $('[name="total"]').val(data.total);
+                              $('[name="id"]').val(data.chemical_med_feed_inputs_id);
+                              $('[name="cattle_feed"]').val(data.cattle_feed);
+                              $('[name="dips_spray_fluids"]').val(data.dips_spray_fluids);
+                              $('[name="fungicides"]').val(data.fungicides);
+                                 $('[name="herbicides"]').val(data.herbicides);
+                              $('[name="insecticides"]').val(data.insecticides);
+                              $('[name="other_feeds"]').val(data.other_feeds);
+                                 $('[name="other_livestock_drugs"]').val(data.other_livestock_drugs);
+                              $('[name="pig_feed"]').val(data.pig_feed);
+                              $('[name="plant_hormones"]').val(data.plant_hormones);
+                              
+                              
+                              $('[name="poultry_feed"]').val(data.poultry_feed);
+                              $('[name="vaccines"]').val(data.vaccines);
+
+                        
+                              
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -548,14 +507,15 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeRevenue') }}";
+                            url = "{{ route('storeChemical') }}";
 
                         }
                         else
                         {
                            
-                       
-                          url = "{{ route('updateRevenue') }}";
+                          //  url = '{{ route("updateSugar", ":id") }}';
+                          // url=url.replace(':id', $('[name="id"]').val(data.area_id));
+                          url = "{{ route('updateChemical') }}";
                         }
                           
                       
@@ -568,7 +528,7 @@
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                   },
                               url : url,
-                              type: "Revenue",
+                              type: "POST",
                               data: data,
                               dataType: "JSON",
                               success: function(result)
@@ -597,28 +557,7 @@
                           
                           }});}
 
-                      function delete_conservancy(id)
-                      {
-                        if(confirm('Are you sure delete this data?'))
-                        {
-                          // ajax delete data from database
-                            $.ajax({
-                              url : "{{asset('/Agriculture/show/')}}",
-                              type: "finance",
-                              dataType: "JSON",
-                              success: function(data)
-                              {
-                                 
-                                 location.reload();
-                              },
-                              error: function (jqXHR, textStatus, errorThrown)
-                              {
-                                  alert('Error deleting data');
-                              }
-                          });
-
-                        }
-                      }
+                     
 
                       function myFunction() {
                               var x = document.getElementById("snackbar");
@@ -643,116 +582,87 @@
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes Income,Profits and Capital Gains </label>
+                                <label class="control-label col-md-3">Cattle Feed</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="taxes_income_profits_capitalgains" class="form-control" type="text">
-                                  @if ($errors->has('taxes_income_profits_capitalgains'))
+                                 <input name="cattle_feed" class="form-control" type="text">
+                                  @if ($errors->has('cattle_feed'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('taxes_income_profits_capitalgains') }}</strong>
+                                        <strong>{{ $errors->first('cattle_feed') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes Property</label>
+                                <label class="control-label col-md-3">Dips Spray Fluids</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_property"  class="form-control" type="text">
+                                  <input name="dips_spray_fluids"  class="form-control" type="text">
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes VAT</label>
+                                <label class="control-label col-md-3">Fungicides</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_vat"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes of Other Goods and Services </label>
-                                <div class="col-md-9">
-                                  <input name="taxes_othergoodsandservices"  class="form-control" type="text">
+                                  <input name="fungicides"  class="form-control" type="text">
                                 </div>
                               </div>
                               
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Taxes of International Trade Transactions</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Herbicides</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_internationaltrade_transactions"  class="form-control" type="text">
+                                  <input name="herbicides"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Insecticides</label>
+                                <div class="col-md-9">
+                                  <input name="insecticides"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Other Taxes not elsewhere Classified</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Other Feeds</label>
                                 <div class="col-md-9">
-                                  <input name="other_taxes_notelsewhereclassified"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total Tax Revenue</label>
-                                <div class="col-md-9">
-                                  <input name="totaltax_revenue"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Social Security Contributions</label>
-                                <div class="col-md-9">
-                                  <input name="socialsecuritycontributions"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Property Income</label>
-                                <div class="col-md-9">
-                                  <input name="property_income"  class="form-control" type="text">
+                                  <input name="other_feeds"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Sales of Goods and Services </label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Other Livestock Drugs</label>
                                 <div class="col-md-9">
-                                  <input name="sale_goodsandservices"  class="form-control" type="text">
+                                  <input name="other_livestock_drugs"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Fines,Penalties and Forfeitures</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Pig Feed</label>
                                 <div class="col-md-9">
-                                  <input name="fines_penaltiesandforfeitures"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Repayments of Domestic Lending</label>
-                                <div class="col-md-9">
-                                  <input name="repayments_domesticlending"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Other Receipts not elsewhere Classified</label>
-                                <div class="col-md-9">
-                                  <input name="other_receiptsnotelsehereclassified"  class="form-control" type="text">
+                                  <input name="pig_feed"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total Non Tax Revenue</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Plant Hormones</label>
                                 <div class="col-md-9">
-                                  <input name="total_nontax_revenue"  class="form-control" type="text">
+                                  <input name="plant_hormones"  class="form-control" type="text">
                                 </div>
                               </div>
 
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Poultry Feed</label>
                                 <div class="col-md-9">
-                                  <input name="total"  class="form-control" type="text">
+                                  <input name="poultry_feed"  class="form-control" type="text">
                                 </div>
                               </div>
+                              
 
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Vaccines</label>
+                                <div class="col-md-9">
+                                  <input name="vaccines"  class="form-control" type="text">
+                                </div>
+                              </div>
 
                               <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
@@ -766,7 +676,7 @@
                                     <option value="2012">2012</option>
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
+                                    <option value="2015">2015</option
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
                                     <option value="2018">2018</option>
@@ -798,6 +708,7 @@
         
    </div>
   <!-- page content -->
+  <!-- page content -->
    
 
 
@@ -813,7 +724,7 @@
     </div>
 
     <!-- jQuery -->
-    <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> -->
+   <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> --> -->
     <!-- Bootstrap -->
     <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->

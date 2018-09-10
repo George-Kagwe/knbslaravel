@@ -1,4 +1,4 @@
-fet<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -204,7 +204,7 @@ fet<!DOCTYPE html>
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Approved degree  and diploma Programs</center></h5>
+                              <h5><center>Cases Handled by Ethics Commision </center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -214,9 +214,9 @@ fet<!DOCTYPE html>
                                         <tr>
                                          
                                            <th>ID</th>                                          
-                                           <th>Approved degree programmes</th>
-                                           <th>Approved private university degree programmes</th>
-                                           <th>Validated diploma programmes</th>
+                                           <th>Action </th>
+                                           <th>No of Cases</th>
+                                     
                                            
                                            <th>Year</th>
                                            <th style="width:85px;">Action
@@ -226,14 +226,14 @@ fet<!DOCTYPE html>
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->approved_id}}</td>
-                                                <td>{{$post->approved_degree_programmes}}</td>
-                                                <td>{{$post->approved_private_university_degreeprogrammes}}</td>
-                                                <td>{{$post->validated_diploma_programmes}}</td>
+                                                <td>{{$post->cases_handled_id}}</td>
+                                                <td>{{$post->action_taken}}</td>
+                                                <td>{{$post->no_cases}}</td>
                                                 <td>{{$post->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->approved_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo 
+                                                    $post->cases_handled_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,10 +245,10 @@ fet<!DOCTYPE html>
 
                                       <tfoot>
                                         <tr>
+                                      
                                            <th>ID</th>                                          
-                                           <th>Approved degree programmes</th>
-                                           <th>Approved private university degree programmes</th>
-                                           <th>Validated diploma programmes</th>
+                                           <th>Action</th>
+                                           <th>No of Cases</th>
                                            
                                            <th>Year</th>
                                            <th style="width:85px;">Action
@@ -286,27 +286,17 @@ fet<!DOCTYPE html>
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          approved_degree_programmes: {
+                                          action_taken: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter text '
                                                   },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
+                                                   alpha: {                                                    
+                                                    message: 'Must be Alphabetic characters only'
                                                 }
                                               }
                                           },
-                                          approved_private_university_degreeprogrammes: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          validated_diploma_programmes: {
+                                            no_cases: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -316,6 +306,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           }
+                                          
                                           
                                            
                                       }
@@ -336,7 +327,7 @@ fet<!DOCTYPE html>
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchDiploma", ":id") }}';
+                        var url = '{{ route("fetchecase", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -349,10 +340,9 @@ fet<!DOCTYPE html>
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.approved_id);
-                              $('[name="approved_degree_programmes"]').val(data.approved_degree_programmes);
-                              $('[name="approved_private_university_degreeprogrammes"]').val(data.approved_private_university_degreeprogrammes);
-                              $('[name="validated_diploma_programmes"]').val(data.validated_diploma_programmes);
+                              $('[name="id"]').val(data.cases_handled_id);
+                              $('[name="action_taken"]').val(data.action_taken);
+                              $('[name="no_cases"]').val(data.no_cases);
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -373,7 +363,7 @@ fet<!DOCTYPE html>
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeDiploma') }}";
+                            url = "{{ route('storeecase') }}";
 
                         }
                         else
@@ -381,7 +371,7 @@ fet<!DOCTYPE html>
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateDiploma') }}";
+                          url = "{{ route('updateecase') }}";
                         }
                           
                       
@@ -448,29 +438,24 @@ fet<!DOCTYPE html>
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Approved Degree Programs</label>
+                                <label class="control-label col-md-3">Action</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="approved_degree_programmes" class="form-control" type="text">
-                                  @if ($errors->has('approved_degree_programmes'))
+                                 <input name="action_taken" class="form-control" type="text">
+                                  @if ($errors->has('action_taken'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('approved_degree_programmes') }}</strong>
+                                        <strong>{{ $errors->first('action_taken') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">approved private university degreeprogrammes</label>
+                                <label class="control-label col-md-3">No of Cases</label>
                                 <div class="col-md-9">
-                                  <input name="approved_private_university_degreeprogrammes"  class="form-control" type="text">
+                                  <input name="no_cases"  class="form-control" type="text">
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Validated diploma programmes</label>
-                                <div class="col-md-9">
-                                  <input name="validated_diploma_programmes"  class="form-control" type="text">
-                                </div>
-                              </div>
+                            
                               
                               
                               

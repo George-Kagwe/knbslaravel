@@ -61,7 +61,6 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
     
-    Route::get('ClassifficationOfRevenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
       
 
 
@@ -1201,3 +1200,469 @@ Route::get('Housing/housing_conditions_kihibs_main_toilet_facility',
 Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
   'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
   'housing_conditions_kihibs_main_wall_material');
+
+
+
+//@George Muchiri
+//fetch
+Route::get('governance_cases_forwarded_and_action_taken/', 'Forms\Governance\casesforwardedandactiontaken@index')->name('governance_cases_forwarded_and_action_taken');
+//post to save
+Route::post('case/store', array('as' => 'storecase', 'uses' => 'Forms\Governance\casesforwardedandactiontaken@store'));
+//post to update
+Route::post('case/update', array('as' => 'updatecase', 'uses' => 'Forms\Governance\casesforwardedandactiontaken@update'));
+//show a specific id
+Route::get('case/action/{id}', array('as' => 'fetchcase', 'uses' => 'Forms\Governance\casesforwardedandactiontaken@show'));
+
+//@George Muchiri
+//fetch
+Route::get('governance_cases_handled_by_ethics_commision/', 'Forms\Governance\caseshandledbyethicscommision@index')->name('governance_cases_handled_by_ethics_commision');
+//post to save
+Route::post('ecase/store', array('as' => 'storeecase', 'uses' => 'Forms\Governance\caseshandledbyethicscommision@store'));
+//post to update
+Route::post('ecase/update', array('as' => 'updateecase', 'uses' => 'Forms\Governance\caseshandledbyethicscommision@update'));
+//show a specific id
+Route::get('ecase/action/{id}', array('as' => 'fetchecase', 'uses' => 'Forms\Governance\caseshandledbyethicscommision@show'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_cases_handled_by_various_courts/', 'Forms\Governance\caseshandledbyvariouscourts@index')->name('governance_cases_handled_by_various_courts');
+//show a specific id
+Route::get('court/action/{id}', array('as' => 'fetchCourt', 'uses' => 'Forms\Governance\caseshandledbyvariouscourts@show'));
+//post to save
+Route::post('court/store', array('as' => 'storeCourt', 'uses' => 'Forms\Governance\caseshandledbyvariouscourts@store'));
+//post to update
+Route::post('court/update', array('as' => 'updateCourt', 'uses' => 'Forms\Governance\caseshandledbyvariouscourts@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_environmental_crimes_reported_to_nema/', 'Forms\Governance\environmental_crimes_reported_to_nema@index')->name('governance_environmental_crimes_reported_to_nema');
+//show a specific id
+Route::get('crimes/action/{id}', array('as' => 'fetchcrime', 'uses' => 'Forms\Governance\environmental_crimes_reported_to_nema@show'));
+//post to save
+Route::post('crimes/store', array('as' => 'storecrime', 'uses' => 'Forms\Governance\environmental_crimes_reported_to_nema@store'));
+//post to update
+Route::post('crimes/update', array('as' => 'updatecrime', 'uses' => 'Forms\Governance\environmental_crimes_reported_to_nema@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_murder_cases_and_convictions_obtained_by_high_court/', 'Forms\Governance\murder_cases_and_convictions_obtained_by_high_court@index')->name('governance_murder_cases_and_convictions_obtained_by_high_court');
+//show a specific id
+Route::get('murder/action/{id}', array('as' => 'fetchmurder', 'uses' => 'Forms\Governance\murder_cases_and_convictions_obtained_by_high_court@show'));
+//post to save
+Route::post('murder/store', array('as' => 'storemurder', 'uses' => 'Forms\Governance\murder_cases_and_convictions_obtained_by_high_court@store'));
+//post to update
+Route::post('murder/update', array('as' => 'updatemurder', 'uses' => 'Forms\Governance\murder_cases_and_convictions_obtained_by_high_court@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_convicted_prisoners_by_type_of_offence_and_sex/', 'Forms\Governance\convicted_prisoners_by_type_of_offence_and_sex@index')->name('governance_convicted_prisoners_by_type_of_offence_and_sex');
+//show a specific id
+Route::get('convictions/action/{id}', array('as' => 'fetchconvictions', 'uses' => 'Forms\Governance\convicted_prisoners_by_type_of_offence_and_sex@show'));
+//post to save
+Route::post('convictions/store', array('as' => 'storeconvictions', 'uses' => 'Forms\Governance\convicted_prisoners_by_type_of_offence_and_sex@store'));
+//post to update
+Route::post('convictions/update', array('as' => 'updateconvictions', 'uses' => 'Forms\Governance\convicted_prisoners_by_type_of_offence_and_sex@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_convicted_prison_population_by_age_and_sex/', 'Forms\Governance\convicted_prison_population_by_age_and_sex@index')->name('governance_convicted_prison_population_by_age_and_sex');
+//show a specific id
+Route::get('population/action/{id}', array('as' => 'fetchPopulation', 'uses' => 'Forms\Governance\convicted_prison_population_by_age_and_sex@show'));
+//post to save
+Route::post('population/store', array('as' => 'storePopulation', 'uses' => 'Forms\Governance\convicted_prison_population_by_age_and_sex@store'));
+//post to update
+Route::post('population/update', array('as' => 'updatePopulation', 'uses' => 'Forms\Governance\convicted_prison_population_by_age_and_sex@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_daily_average_population_of_prisoners_by_sex/', 'Forms\Governance\daily_average_population_of_prisoners_by_sex@index')->name('governance_daily_average_population_of_prisoners_by_sex');
+//show a specific id
+Route::get('average/action/{id}', array('as' => 'fetchaverage', 'uses' => 'Forms\Governance\daily_average_population_of_prisoners_by_sex@show'));
+//post to save
+Route::post('average/store', array('as' => 'storeaverage', 'uses' => 'Forms\Governance\daily_average_population_of_prisoners_by_sex@store'));
+//post to update
+Route::post('average/update', array('as' => 'updateaverage', 'uses' => 'Forms\Governance\daily_average_population_of_prisoners_by_sex@update'));
+
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_firearms_and_ammunition_recovered_or_surrendered/', 'Forms\Governance\firearms_and_ammunition_recovered_or_surrendered@index')->name('governance_firearms_and_ammunition_recovered_or_surrendered');
+//show a specific id
+Route::get('ammunition/action/{id}', array('as' => 'fetchammunition', 'uses' => 'Forms\Governance\firearms_and_ammunition_recovered_or_surrendered@show'));
+//post to save
+Route::post('ammunition/store', array('as' => 'storeammunition', 'uses' => 'Forms\Governance\firearms_and_ammunition_recovered_or_surrendered@store'));
+//post to update
+Route::post('ammunition/update', array('as' => 'updateammunition', 'uses' => 'Forms\Governance\firearms_and_ammunition_recovered_or_surrendered@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_magistrates_judges_and_practicing_lawyers/', 'Forms\Governance\magistrates_judges_and_practicing_lawyers@index')->name('governance_magistrates_judges_and_practicing_lawyers');
+//show a specific id
+Route::get('lawyers/action/{id}', array('as' => 'fetchlawyers', 'uses' => 'Forms\Governance\magistrates_judges_and_practicing_lawyers@show'));
+//post to save
+Route::post('lawyers/store', array('as' => 'storelawyers', 'uses' => 'Forms\Governance\magistrates_judges_and_practicing_lawyers@store'));
+//post to update
+Route::post('lawyers/update', array('as' => 'updatelawyers', 'uses' => 'Forms\Governance\magistrates_judges_and_practicing_lawyers@update'));
+
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_number_of_police_prisons_and_probation_officers/', 'Forms\Governance\number_of_police_prisons_and_probation_officers@index')->name('governance_number_of_police_prisons_and_probation_officers');
+//show a specific id
+Route::get('officers/action/{id}', array('as' => 'fetchofficers', 'uses' => 'Forms\Governance\number_of_police_prisons_and_probation_officers@show'));
+//post to save
+Route::post('officers/store', array('as' => 'storeofficers', 'uses' => 'Forms\Governance\number_of_police_prisons_and_probation_officers@store'));
+//post to update
+Route::post('officers/update', array('as' => 'updateofficers', 'uses' => 'Forms\Governance\number_of_police_prisons_and_probation_officers@update'));
+
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_number_of_refugees_by_age_and_sex/', 'Forms\Governance\number_of_refugees_by_age_and_sex@index')->name('governance_number_of_refugees_by_age_and_sex');
+//show a specific id
+Route::get('refugees/action/{id}', array('as' => 'fetchRefugees', 'uses' => 'Forms\Governance\number_of_refugees_by_age_and_sex@show'));
+//post to save
+Route::post('refugees/store', array('as' => 'storeRefugees', 'uses' => 'Forms\Governance\number_of_refugees_by_age_and_sex@store'));
+//post to update
+Route::post('refugees/update', array('as' => 'updateRefugees', 'uses' => 'Forms\Governance\number_of_refugees_by_age_and_sex@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_offenders_serving/', 'Forms\Governance\offenders_serving@index')->name('governance_offenders_serving');
+//show a specific id
+Route::get('offenders/action/{id}', array('as' => 'fetchoffenders', 'uses' => 'Forms\Governance\offenders_serving@show'));
+//post to save
+Route::post('offenders/store', array('as' => 'storeoffenders', 'uses' => 'Forms\Governance\offenders_serving@store'));
+//post to update
+Route::post('offenders/update', array('as' => 'updateoffenders', 'uses' => 'Forms\Governance\offenders_serving@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_passports_work_permits_and_foreigners_registered/', 'Forms\Governance\passports_work_permits_and_foreigners_registered@index')->name('governance_passports_work_permits_and_foreigners_registered');
+//show a specific id
+Route::get('passports/action/{id}', array('as' => 'fetchpassports', 'uses' => 'Forms\Governance\passports_work_permits_and_foreigners_registered@show'));
+//post to save
+Route::post('passports/store', array('as' => 'storepassports', 'uses' => 'Forms\Governance\passports_work_permits_and_foreigners_registered@store'));
+//post to update
+Route::post('passports/update', array('as' => 'updatepassports', 'uses' => 'Forms\Governance\passports_work_permits_and_foreigners_registered@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_persons_reported_committed_offences_related_to_drugs/', 'Forms\Governance\persons_reported_committed_offences_related_to_drugs@index')->name('governance_persons_reported_committed_offences_related_to_drugs');
+//show a specific id
+Route::get('persons/action/{id}', array('as' => 'fetchpersons', 'uses' => 'Forms\Governance\persons_reported_committed_offences_related_to_drugs@show'));
+//post to save
+Route::post('persons/store', array('as' => 'storepersons', 'uses' => 'Forms\Governance\persons_reported_committed_offences_related_to_drugs@store'));
+//post to update
+Route::post('persons/update', array('as' => 'updatepersons', 'uses' => 'Forms\Governance\persons_reported_committed_offences_related_to_drugs@update'));
+
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_persons_reported_to_have_committed_homicide_by_sex/', 'Forms\Governance\persons_reported_to_have_committed_homicide_by_sex@index')->name('governance_persons_reported_to_have_committed_homicide_by_sex');
+//show a specific id
+Route::get('persons/action/{id}', array('as' => 'fetchpersons', 'uses' => 'Forms\Governance\persons_reported_to_have_committed_homicide_by_sex@show'));
+//post to save
+Route::post('persons/store', array('as' => 'storepersons', 'uses' => 'Forms\Governance\persons_reported_to_have_committed_homicide_by_sex@store'));
+//post to update
+Route::post('persons/update', array('as' => 'updatepersons', 'uses' => 'Forms\Governance\persons_reported_to_have_committed_homicide_by_sex@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_persons_reported_to_have_committed_robbery_and_theft/', 'Forms\Governance\persons_reported_to_have_committed_robbery_and_theft@index')->name('governance_persons_reported_to_have_committed_robbery_and_theft');
+//show a specific id
+Route::get('persons/action/{id}', array('as' => 'fetchpersons', 'uses' => 'Forms\Governance\persons_reported_to_have_committed_robbery_and_theft@show'));
+//post to save
+Route::post('persons/store', array('as' => 'storepersons', 'uses' => 'Forms\Governance\persons_reported_to_have_committed_robbery_and_theft@store'));
+//post to update
+Route::post('persons/update', array('as' => 'updatepersons', 'uses' => 'Forms\Governance\persons_reported_to_have_committed_robbery_and_theft@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_prison_population_by_sentence_duration_and_sex/', 'Forms\Governance\prison_population_by_sentence_duration_and_sex@index')->name('governance_prison_population_by_sentence_duration_and_sex');
+//show a specific id
+Route::get('prisons/action/{id}', array('as' => 'fetchprisons', 'uses' => 'Forms\Governance\prison_population_by_sentence_duration_and_sex@show'));
+//post to save
+Route::post('prisons/store', array('as' => 'storeprisons', 'uses' => 'Forms\Governance\prison_population_by_sentence_duration_and_sex@store'));
+//post to update
+Route::post('prisons/update', array('as' => 'updateprisons', 'uses' => 'Forms\Governance\prison_population_by_sentence_duration_and_sex@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_experienceof_domestic_violence_by_age/', 'Forms\Governance\experienceof_domestic_violence_by_age@index')->name('governance_experienceof_domestic_violence_by_age');
+//show a specific id
+Route::get('domestic/action/{id}', array('as' => 'fetchdomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_age@show'));
+//post to save
+Route::post('domestic/store', array('as' => 'storedomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_age@store'));
+//post to update
+Route::post('domestic/update', array('as' => 'updatedomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_age@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_experienceof_domestic_violence_by_marital_success/', 'Forms\Governance\experienceof_domestic_violence_by_marital_success@index')->name('governance_experienceof_domestic_violence_by_marital_success');
+//show a specific id
+Route::get('domestic/action/{id}', array('as' => 'fetchdomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_marital_success@show'));
+//post to save
+Route::post('domestic/store', array('as' => 'storedomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_marital_success@store'));
+//post to update
+Route::post('domestic/update', array('as' => 'updatedomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_marital_success@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_experienceof_domestic_violence_by_residence/', 'Forms\Governance\experienceof_domestic_violence_by_residence@index')->name('governance_experienceof_domestic_violence_by_residence');
+//show a specific id
+Route::get('domestic/action/{id}', array('as' => 'fetchdomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_residence@show'));
+//post to save
+Route::post('domestic/store', array('as' => 'storedomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_residence@store'));
+//post to update
+Route::post('domestic/update', array('as' => 'updatedomestic', 'uses' => 'Forms\Governance\experienceof_domestic_violence_by_residence@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_members_of_nationalassembly_and_senators/', 'Forms\Governance\members_of_nationalassembly_and_senators@index')->name('governance_members_of_nationalassembly_and_senators');
+//show a specific id
+Route::get('members/action/{id}', array('as' => 'fetchmembers', 'uses' => 'Forms\Governance\members_of_nationalassembly_and_senators@show'));
+//post to save
+Route::post('members/store', array('as' => 'storemembers', 'uses' => 'Forms\Governance\members_of_nationalassembly_and_senators@store'));
+//post to update
+Route::post('members/update', array('as' => 'updatemembers', 'uses' => 'Forms\Governance\members_of_nationalassembly_and_senators@update'));
+
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_persons_reported_tohave_committed_defilement/', 'Forms\Governance\persons_reported_tohave_committed_defilement@index')->name('governance_persons_reported_tohave_committed_defilement');
+//show a specific id
+Route::get('persons/action/{id}', array('as' => 'fetchpersons', 'uses' => 'Forms\Governance\persons_reported_tohave_committed_defilement@show'));
+//post to save
+Route::post('persons/store', array('as' => 'storepersons', 'uses' => 'Forms\Governance\persons_reported_tohave_committed_defilement@store'));
+//post to update
+Route::post('persons/update', array('as' => 'updatepersons', 'uses' => 'Forms\Governance\persons_reported_tohave_committed_defilement@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_persons_reported_tohave_committed_rape/', 'Forms\Governance\persons_reported_tohave_committed_rape@index')->name('governance_persons_reported_tohave_committed_rape');
+//show a specific id
+Route::get('persons/action/{id}', array('as' => 'fetchpersons', 'uses' => 'Forms\Governance\persons_reported_tohave_committed_rape@show'));
+//post to save
+Route::post('persons/store', array('as' => 'storepersons', 'uses' => 'Forms\Governance\persons_reported_tohave_committed_rape@store'));
+//post to update
+Route::post('persons/update', array('as' => 'updatepersons', 'uses' => 'Forms\Governance\persons_reported_tohave_committed_rape@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_total_prisoners_committed_for_debt_bysex/', 'Forms\Governance\total_prisoners_committed_for_debt_bysex@index')->name('governance_total_prisoners_committed_for_debt_bysex');
+//show a specific id
+Route::get('persons/action/{id}', array('as' => 'fetchpersons', 'uses' => 'Forms\Governance\total_prisoners_committed_for_debt_bysex@show'));
+//post to save
+Route::post('persons/store', array('as' => 'storepersons', 'uses' => 'Forms\Governance\total_prisoners_committed_for_debt_bysex@store'));
+//post to update
+Route::post('persons/update', array('as' => 'updatepersons', 'uses' => 'Forms\Governance\total_prisoners_committed_for_debt_bysex@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_prevalence_female_circumcision_and_type/', 'Forms\Governance\prevalence_female_circumcision_and_type@index')->name('governance_prevalence_female_circumcision_and_type');
+//show a specific id
+Route::get('female/action/{id}', array('as' => 'fetchfemale', 'uses' => 'Forms\Governance\prevalence_female_circumcision_and_type@show'));
+//post to save
+Route::post('female/store', array('as' => 'storefemale', 'uses' => 'Forms\Governance\prevalence_female_circumcision_and_type@store'));
+//post to update
+Route::post('female/update', array('as' => 'updatefemale', 'uses' => 'Forms\Governance\prevalence_female_circumcision_and_type@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_public_assets_traced_recovered_and_loss_averted/', 'Forms\Governance\public_assets_traced_recovered_and_loss_averted@index')->name('governance_public_assets_traced_recovered_and_loss_averted');
+//show a specific id
+Route::get('public/action/{id}', array('as' => 'fetchpublic', 'uses' => 'Forms\Governance\public_assets_traced_recovered_and_loss_averted@show'));
+//post to save
+Route::post('public/store', array('as' => 'storepublic', 'uses' => 'Forms\Governance\public_assets_traced_recovered_and_loss_averted@store'));
+//post to update
+Route::post('public/update', array('as' => 'updatepublic', 'uses' => 'Forms\Governance\public_assets_traced_recovered_and_loss_averted@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_crimes_reported_to_police_by_command_stations/', 'Forms\Governance\crimes_reported_to_police_by_command_stations@index')->name('governance_crimes_reported_to_police_by_command_stations');
+//show a specific id
+Route::get('public/action/{id}', array('as' => 'fetchpublic', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@show'));
+//post to save
+Route::post('public/store', array('as' => 'storepublic', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@store'));
+//post to update
+Route::post('public/update', array('as' => 'updatepublic', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@update'));
+
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('governance_crimes_reported_to_police_by_command_stations/', 'Forms\Governance\crimes_reported_to_police_by_command_stations@index')->name('governance_crimes_reported_to_police_by_command_stations');
+//show a specific id
+Route::get('public/action/{id}', array('as' => 'fetchpublic', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@show'));
+//post to save
+Route::post('public/store', array('as' => 'storepublic', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@store'));
+//post to update
+Route::post('public/update', array('as' => 'updatepublic', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('finance_economic_classification_revenue');
+//show a specific id
+Route::get('revenue/action/{id}', array('as' => 'fetchRevenue', 'uses' => 'Forms\Finance\ClassifficationOfRevenue@show'));
+//post to save
+Route::post('revenue/store', array('as' => 'storeRevenue', 'uses' => 'Forms\Finance\ClassifficationOfRevenue@store'));
+//post to update
+Route::post('revenue/update', array('as' => 'updateRevenue', 'uses' => 'Forms\Finance\ClassifficationOfRevenue@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('finance_excise_revenue_commodity/', 'Forms\Finance\finance_excise_revenue_commodity@index')->name('finance_excise_revenue_commodity');
+//show a specific id
+Route::get('commodity/action/{id}', array('as' => 'fetchCommodity', 'uses' => 'Forms\Finance\finance_excise_revenue_commodity@show'));
+//post to save
+Route::post('commodity/store', array('as' => 'storeCommodity', 'uses' => 'Forms\Finance\finance_excise_revenue_commodity@store'));
+//post to update
+Route::post('commodity/update', array('as' => 'updateCommodity', 'uses' => 'Forms\Finance\finance_excise_revenue_commodity@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('finance_national_government_expenditure/', 'Forms\Finance\finance_national_government_expenditure@index')->name('finance_national_government_expenditure');
+//show a specific id
+Route::get('expenditure/action/{id}', array('as' => 'fetchExpenditure', 'uses' => 'Forms\Finance\finance_national_government_expenditure@show'));
+//post to save
+Route::post('expenditure/store', array('as' => 'storeExpenditure', 'uses' => 'Forms\Finance\finance_national_government_expenditure@store'));
+//post to update
+Route::post('expenditure/update', array('as' => 'updateExpenditure', 'uses' => 'Forms\Finance\finance_national_government_expenditure@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('finance_statement_of_national_government_operations/', 'Forms\Finance\finance_statement_of_national_government_operations@index')->name('finance_statement_of_national_government_operations');
+//show a specific id
+Route::get('operations/action/{id}', array('as' => 'fetchOperations', 'uses' => 'Forms\Finance\finance_statement_of_national_government_operations@show'));
+//post to save
+Route::post('operations/store', array('as' => 'storeOperations', 'uses' => 'Forms\Finance\finance_statement_of_national_government_operations@store'));
+//post to update
+Route::post('operations/update', array('as' => 'updateOperations', 'uses' => 'Forms\Finance\finance_statement_of_national_government_operations@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('finance_national_government_expenditure_purpose/', 'Forms\Finance\finance_national_government_expenditure_purpose@index')->name('finance_national_government_expenditure_purpose');
+//show a specific id
+Route::get('purpose/action/{id}', array('as' => 'fetchPurpose', 'uses' => 'Forms\Finance\finance_national_government_expenditure_purpose@show'));
+//post to save
+Route::post('purpose/store', array('as' => 'storePurpose', 'uses' => 'Forms\Finance\finance_national_government_expenditure_purpose@store'));
+//post to update
+Route::post('purpose/update', array('as' => 'updatePurpose', 'uses' => 'Forms\Finance\finance_national_government_expenditure_purpose@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('finance_outstanding_debt_international_organization/', 'Forms\Finance\finance_outstanding_debt_international_organization@index')->name('finance_outstanding_debt_international_organization');
+//show a specific id
+Route::get('debt/action/{id}', array('as' => 'fetchDebt', 'uses' => 'Forms\Finance\finance_outstanding_debt_international_organization@show'));
+//post to save
+Route::post('debt/store', array('as' => 'storeDebt', 'uses' => 'Forms\Finance\finance_outstanding_debt_international_organization@store'));
+//post to update
+Route::post('debt/update', array('as' => 'updateDebt', 'uses' => 'Forms\Finance\finance_outstanding_debt_international_organization@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('finance_outstanding_debt_lending_country/', 'Forms\Finance\finance_outstanding_debt_lending_country@index')->name('finance_outstanding_debt_lending_country');
+//show a specific id
+Route::get('country/action/{id}', array('as' => 'fetchCountry', 'uses' => 'Forms\Finance\finance_outstanding_debt_lending_country@show'));
+//post to save
+Route::post('country/store', array('as' => 'storeCountry', 'uses' => 'Forms\Finance\finance_outstanding_debt_lending_country@store'));
+//post to update
+Route::post('country/update', array('as' => 'updateCountry', 'uses' => 'Forms\Finance\finance_outstanding_debt_lending_country@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('agriculture_chemical_med_feed_input/', 'Forms\Agriculture\agriculture_chemical_med_feed_input@index')->name('agriculture_chemical_med_feed_input');
+//show a specific id
+Route::get('chemical/action/{id}', array('as' => 'fetchChemical', 'uses' => 'Forms\Agriculture\agriculture_chemical_med_feed_input@show'));
+//post to save
+Route::post('chemical/store', array('as' => 'storeChemical', 'uses' => 'Forms\Agriculture\agriculture_chemical_med_feed_input@store'));
+//post to update
+Route::post('chemical/update', array('as' => 'updateChemical', 'uses' => 'Forms\Agriculture\agriculture_chemical_med_feed_input@update'));
+
+//@George Muchiri
+
+//fetch
+Route::get('
+agriculture_cooperatives/', 'Forms\Agriculture\agriculture_cooperatives@index')->name('agriculture_cooperatives');
+//show a specific id
+Route::get('cooperatives/action/{id}', array('as' => 'fetchCooperatives', 'uses' => 'Forms\Agriculture\agriculture_cooperatives@show'));
+//post to save
+Route::post('cooperatives/store', array('as' => 'storeCooperatives', 'uses' => 'Forms\Agriculture\agriculture_cooperatives@store'));
+//post to update
+Route::post('cooperatives/update', array('as' => 'updateCooperatives', 'uses' => 'Forms\Agriculture\agriculture_cooperatives@update'));

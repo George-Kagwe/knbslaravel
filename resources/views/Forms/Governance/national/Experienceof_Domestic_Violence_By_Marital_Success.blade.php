@@ -1,4 +1,4 @@
-fet<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -204,21 +204,22 @@ fet<!DOCTYPE html>
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Approved degree  and diploma Programs</center></h5>
+                              <h5><center>Experience of Domestic Domestic Violence by Marital Status</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
                               <br />
-                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
+                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                       <thead>
                                         <tr>
                                          
                                            <th>ID</th>                                          
-                                           <th>Approved degree programmes</th>
-                                           <th>Approved private university degree programmes</th>
-                                           <th>Validated diploma programmes</th>
-                                           
-                                           <th>Year</th>
+                                           <th>Marital Status</th>
+                                           <th>Percentage experienced physical Violence</th>
+                                           <th>Percentage experienced sexual Violence</th>
+                                           <th>Percentage of experienced physical and sexual violence</th>
+                                           <th>Gender</th>
+                               
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -226,14 +227,16 @@ fet<!DOCTYPE html>
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->approved_id}}</td>
-                                                <td>{{$post->approved_degree_programmes}}</td>
-                                                <td>{{$post->approved_private_university_degreeprogrammes}}</td>
-                                                <td>{{$post->validated_diploma_programmes}}</td>
-                                                <td>{{$post->year}}</td>                                      
+                                                <td>{{$post->woman_id}}</td>
+                                                <td>{{$post->marital_status}}</td>
+                                                <td>{{$post->percentage_experienced_physical_violence}}</td>
+                                                <td>{{$post->percentage_experienced_sexual_violence}}</td>
+                                                <td>{{$post->percentage_experienced_physical_and_sexual_violence}}</td>
+                                                <td>{{$post->gender}}</td>
+                                                                                 
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->approved_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->woman_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,12 +248,14 @@ fet<!DOCTYPE html>
 
                                       <tfoot>
                                         <tr>
-                                           <th>ID</th>                                          
-                                           <th>Approved degree programmes</th>
-                                           <th>Approved private university degree programmes</th>
-                                           <th>Validated diploma programmes</th>
+                                          <th>ID</th>                                          
+                                           <th>Marital Success</th>
+                                           <th>Percentage experienced physical Violence</th>
+                                           <th>Percentage experienced sexual Violence</th>
+                                           <th>Percentage of experienced physical and sexual violence</th>
+                                           <th>Gender</th>
                                            
-                                           <th>Year</th>
+                                        
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -286,7 +291,17 @@ fet<!DOCTYPE html>
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          approved_degree_programmes: {
+                                          marital_status: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter enter a text '
+                                                  },
+                                                   alpha_dash: {                                                    
+                                                    message: 'Must be a text'
+                                                }
+                                              }
+                                          },
+                                          percentage_experienced_physical_violence: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -296,7 +311,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          approved_private_university_degreeprogrammes: {
+                                          percentage_experienced_sexual_violence: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -306,17 +321,27 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          validated_diploma_programmes: {
+                                          percentage_experienced_physical_and_sexual_violence: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          gender: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter text '
+                                                  },
+                                                   alpha: {                                                    
+                                                    message: 'Must be a text'
                                                 }
                                               }
                                           }
-                                          
+                                    
                                            
                                       }
                                   });
@@ -336,7 +361,7 @@ fet<!DOCTYPE html>
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchDiploma", ":id") }}';
+                        var url = '{{ route("fetchdomestic", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -349,11 +374,13 @@ fet<!DOCTYPE html>
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.approved_id);
-                              $('[name="approved_degree_programmes"]').val(data.approved_degree_programmes);
-                              $('[name="approved_private_university_degreeprogrammes"]').val(data.approved_private_university_degreeprogrammes);
-                              $('[name="validated_diploma_programmes"]').val(data.validated_diploma_programmes);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="id"]').val(data.woman_id);
+                              $('[name="marital_status"]').val(data.marital_status);
+                              $('[name="percentage_experienced_physical_violence"]').val(data.percentage_experienced_physical_violence);
+                              $('[name="percentage_experienced_sexual_violence"]').val(data.percentage_experienced_sexual_violence);
+                              $('[name="percentage_experienced_physical_and_sexual_violence"]').val(data.percentage_experienced_physical_and_sexual_violence);
+                              $('[name="gender"]').val(data.gender);
+                                                               
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -364,16 +391,14 @@ fet<!DOCTYPE html>
                           }
                       });
                       }
-
-
-
+                      
                       function save()
                       {
                         var url;
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeDiploma') }}";
+                            url = "{{ route('storedomestic') }}";
 
                         }
                         else
@@ -381,7 +406,7 @@ fet<!DOCTYPE html>
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateDiploma') }}";
+                          url = "{{ route('updatedomestic') }}";
                         }
                           
                       
@@ -431,6 +456,7 @@ fet<!DOCTYPE html>
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
+
             </script>
 
               <!-- Bootstrap modal -->
@@ -448,59 +474,47 @@ fet<!DOCTYPE html>
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Approved Degree Programs</label>
+                                <label class="control-label col-md-3">Marital Status</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="approved_degree_programmes" class="form-control" type="text">
-                                  @if ($errors->has('approved_degree_programmes'))
+                                 <input name="marital_status" class="form-control" type="text">
+                                  @if ($errors->has('marital_status'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('approved_degree_programmes') }}</strong>
+                                        <strong>{{ $errors->first('marital_status') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">approved private university degreeprogrammes</label>
+                                <label class="control-label col-md-3">Percentage Experienced Physical Violence</label>
                                 <div class="col-md-9">
-                                  <input name="approved_private_university_degreeprogrammes"  class="form-control" type="text">
+                                  <input name="percentage_experienced_physical_violence"  class="form-control" type="text">
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Validated diploma programmes</label>
+                                <label class="control-label col-md-3">Percentage Experienced Sexual Violence</label>
                                 <div class="col-md-9">
-                                  <input name="validated_diploma_programmes"  class="form-control" type="text">
+                                  <input name="percentage_experienced_sexual_violence"  class="form-control" type="text">
                                 </div>
                               </div>
-                              
-                              
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Year</label>
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Percentage Experienced Physical and Sexual Violence</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
-                                    <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                  </select>
+                                  <input name="percentage_experienced_physical_and_sexual_violence"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Gender</label>
+                                <div class="col-md-9">
+                                  <input name="gender"  class="form-control" type="text">
                                 </div>
                               </div>
 
                               
-                              </div>
+                      
+                              
+ 
 
                             
                       </form>

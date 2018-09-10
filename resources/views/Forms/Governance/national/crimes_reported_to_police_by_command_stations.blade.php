@@ -1,4 +1,4 @@
-fet<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -204,7 +204,7 @@ fet<!DOCTYPE html>
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Approved degree  and diploma Programs</center></h5>
+                              <h5><center>Cases Forwaded and Action Taken</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -214,10 +214,8 @@ fet<!DOCTYPE html>
                                         <tr>
                                          
                                            <th>ID</th>                                          
-                                           <th>Approved degree programmes</th>
-                                           <th>Approved private university degree programmes</th>
-                                           <th>Validated diploma programmes</th>
-                                           
+                                           <th>County</th>
+                                           <th>Crimes</th>                             
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -226,14 +224,14 @@ fet<!DOCTYPE html>
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->approved_id}}</td>
-                                                <td>{{$post->approved_degree_programmes}}</td>
-                                                <td>{{$post->approved_private_university_degreeprogrammes}}</td>
-                                                <td>{{$post->validated_diploma_programmes}}</td>
+                                                <td>{{$post->crime_id}}</td>
+                                                <td>{{$post->county_id}}</td>
+                                                <td>{{$post->crimes}}</td>
                                                 <td>{{$post->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->approved_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo 
+                                                    $post->crime_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,10 +243,10 @@ fet<!DOCTYPE html>
 
                                       <tfoot>
                                         <tr>
-                                           <th>ID</th>                                          
-                                           <th>Approved degree programmes</th>
-                                           <th>Approved private university degree programmes</th>
-                                           <th>Validated diploma programmes</th>
+                                             <th>ID</th>                                          
+                                           <th>Action Taken</th>
+                                           <th>No of Recommendations</th>                             
+                                           <th>Year</th>
                                            
                                            <th>Year</th>
                                            <th style="width:85px;">Action
@@ -286,27 +284,17 @@ fet<!DOCTYPE html>
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          approved_degree_programmes: {
+                                          county_id: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter number '
                                                   },
                                                    numeric: {                                                    
-                                                    message: 'Must be a number'
+                                                    message: 'Please Enter number'
                                                 }
                                               }
                                           },
-                                          approved_private_university_degreeprogrammes: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          validated_diploma_programmes: {
+                                          crimes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -316,6 +304,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           }
+                                       
                                           
                                            
                                       }
@@ -336,7 +325,7 @@ fet<!DOCTYPE html>
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchDiploma", ":id") }}';
+                        var url = '{{ route("fetchcase", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -349,10 +338,10 @@ fet<!DOCTYPE html>
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.approved_id);
-                              $('[name="approved_degree_programmes"]').val(data.approved_degree_programmes);
-                              $('[name="approved_private_university_degreeprogrammes"]').val(data.approved_private_university_degreeprogrammes);
-                              $('[name="validated_diploma_programmes"]').val(data.validated_diploma_programmes);
+                              $('[name="id"]').val(data.crime_id);
+                              $('[name="action_taken"]').val(data.action_taken);
+                              $('[name="no_of_recommendations"]').val(data.no_of_recommendations);
+        
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -373,7 +362,7 @@ fet<!DOCTYPE html>
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeDiploma') }}";
+                            url = "{{ route('storecase') }}";
 
                         }
                         else
@@ -381,7 +370,7 @@ fet<!DOCTYPE html>
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateDiploma') }}";
+                          url = "{{ route('updatecase') }}";
                         }
                           
                       
@@ -447,29 +436,25 @@ fet<!DOCTYPE html>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               
+                          
                               <div class="form-group">
-                                <label class="control-label col-md-3">Approved Degree Programs</label>
+                                <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                 
-                                 <input name="approved_degree_programmes" class="form-control" type="text">
-                                  @if ($errors->has('approved_degree_programmes'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('approved_degree_programmes') }}</strong>
-                                    </span>
-                                @endif
+                                  <select class="form-control" id="county_id" name="county_id">
+                                    <option value="">Please Select County</option>
+                                   <?php foreach($post as $post){?>
+                                     <option value="1">{{$post->crimes}}</option>
+                                   <?php }?>
+                                  </select>
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">approved private university degreeprogrammes</label>
+                                <label class="control-label col-md-3">Crimes</label>
                                 <div class="col-md-9">
-                                  <input name="approved_private_university_degreeprogrammes"  class="form-control" type="text">
+                                  <input name="crimes"  class="form-control" type="text">
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Validated diploma programmes</label>
-                                <div class="col-md-9">
-                                  <input name="validated_diploma_programmes"  class="form-control" type="text">
-                                </div>
+                            
                               </div>
                               
                               
@@ -486,7 +471,7 @@ fet<!DOCTYPE html>
                                     <option value="2012">2012</option>
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
-                                    <option value="2015">2015</option
+                                    <option value="2015">2015</option>
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
                                     <option value="2018">2018</option>
@@ -500,7 +485,6 @@ fet<!DOCTYPE html>
                               </div>
 
                               
-                              </div>
 
                             
                       </form>
