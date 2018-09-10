@@ -77,6 +77,10 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 
    Route::get('finance_cdf_allocation_by_constituency/', 'Forms\Finance\CDFAllocation@index')->name('finance_cdf_allocation_by_constituency');
    Route::get('cdf/fetch/{id}', array('as' => 'fetchCDF', 'uses' => 'Forms\Finance\CDFAllocation@show'));
+    Route::get('cdf/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Finance\CDFAllocation@get_subcounties'));
+Route::post('cdf/store', array('as' => 'storeCDF', 'uses' => 'Forms\Finance\CDFAllocation@store'));
+Route::post('cdf/update', array('as' => 'updateCDF', 'uses' => 'Forms\Finance\CDFAllocation@update'));
+
 
       
 
