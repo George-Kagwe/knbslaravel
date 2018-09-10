@@ -73,8 +73,15 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
-    
+
 Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
+
+    Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
+
+   Route::get('finance_cdf_allocation_by_constituency/', 'Forms\Finance\CDFAllocation@index')->name('finance_cdf_allocation_by_constituency');
+   Route::get('cdf/fetch/{id}', array('as' => 'fetchCDF', 'uses' => 'Forms\Finance\CDFAllocation@show'));
+
+
       
 
 
