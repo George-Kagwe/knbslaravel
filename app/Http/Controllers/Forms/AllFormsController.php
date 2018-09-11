@@ -15,7 +15,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  '=', 'Public Finance')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -27,7 +27,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  '=', 'Education')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -39,7 +39,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'public Health')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -51,7 +51,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'Population and Vital Statistics')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -63,7 +63,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'Governance')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -75,7 +75,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'Agriculture')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -87,7 +87,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'ict')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -100,7 +100,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'Environment and Natural Resources')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -111,7 +111,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'energy')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -123,7 +123,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'labor')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -135,7 +135,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'cpi')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -147,7 +147,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', 'Manufacturing')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -159,7 +159,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', '%Political%')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -171,7 +171,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', '%trade%')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -183,7 +183,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', '%tourism%')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -195,7 +195,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', '%building%')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -208,7 +208,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', '%money%')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -220,7 +220,7 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', '%transport%')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
@@ -232,10 +232,22 @@ class AllFormsController  extends Controller
             	->where('sector_name',  'like', '%poverty%')
                 ->get();
 
-        return view('forms.datasets',
+        return view('Forms.datasets',
         	        ['datasets' =>$data_national]
 
         	      );    	
+    }
+
+    public function housing(){
+        $data_national = DB::table('health_sectors')
+               ->orderBy('coverage',  '=', 'ASC')
+                ->where('sector_name',  'like', '%housing%')
+                ->get();
+
+        return view('Forms.datasets',
+                    ['datasets' =>$data_national]
+
+                  );        
     }
       
 }
