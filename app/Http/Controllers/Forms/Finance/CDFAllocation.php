@@ -17,13 +17,23 @@ class CDFAllocation extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+
      */
+
+     protected $rules = [ 'county_id'=>'required',
+                          'subcounty_id'=>'required',
+                          'cdf_amount'=>'required|numeric',
+                          'year'=>'required',
+
+                         ];
     public function index()
     {
         $data = DB::table('finance_cdf_allocation_by_constituency')
                ->join('health_counties', 'finance_cdf_allocation_by_constituency.county_id', '=', 'health_counties.county_id')
-                ->join('health_subcounty', 'finance_cdf_allocation_by_constituency.county_id', '=', 'health_subcounty.county_id')
+                ->join('health_subcounty', 'finance_cdf_allocation_by_constituency.subcounty_id', '=', 'health_subcounty.subcounty_id')
+                ->orderBy('cdf_allocation_id', 'ASC')
                 ->get();
+ 
 
                 $counties = DB::table('health_counties')->get();
 
@@ -45,7 +55,9 @@ class CDFAllocation extends Controller
      */
     public function create()
     {
-        //
+       
+       
+
     }
 
     /**
@@ -56,7 +68,29 @@ class CDFAllocation extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validator = \Validator::make($request->all(), [
+                          'county_name'=>'required',
+                          'subcounty_name'=>'required',
+                          'cdf_amount'=>'required|numeric',
+                          'year'=>'required',
+        ]);
+        
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
+        else{
+            $cdf = new CDFAllocation_Model();
+            $cdf->county_id =$request->county_name;
+            $cdf->subcounty_id=$request->subcounty_name;
+            $cdf->cdf_amount=$request->cdf_amount;         
+            $cdf->year=$request->year;
+            $cdf->save();
+             return response()->json($cdf);
+           echo json_encode(array("status" => TRUE));
+
+        }
     }
 
     /**
@@ -67,14 +101,8 @@ class CDFAllocation extends Controller
      */
     public function show($id)
     {
-         // $data = DB::table('finance_cdf_allocation_by_constituency')
-         //              ->where('finance_cdf_allocation_by_constituency.cdf_allocation_id','=',$id)
-         //        ->get();
-
-
+      
           $cdf = CDFAllocation_Model::findOrfail($id);
-
-  
      
       
          echo json_encode($cdf);
@@ -109,8 +137,12 @@ class CDFAllocation extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function get_subcounties($id)
     {
-        //
+         $subcounties = DB::table('health_subcounty')
+               ->where('county_id',  '=', $id)               
+                ->get();
+
+        return  json_encode($subcounties);
     }
 }

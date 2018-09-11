@@ -276,6 +276,26 @@
             <!-- Sian starts here -->
             <script type="text/javascript">
                       $(document).ready( function () {
+                           $(function() {
+                    $('select[name=county_name]').change(function() {
+                     
+
+                        var urls = '{{ route("fetchCounties", ":id") }}'; 
+                        var id =$(this).val();
+                        var  url =urls.replace(':id', id);
+
+                        $.get(url, function(data) {
+                            var select = $('form select[name=subcounty_name]');
+                            
+                            select.empty();
+
+                            $.each(JSON.parse(data),function(key,value) {
+                              
+                                 select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
+                            });
+                        });
+                    });
+                        });
 
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
@@ -366,8 +386,8 @@
                           {
 
                               $('[name="id"]').val(data.cdf_allocation_id);
-                              $('[name="county_name"]').val(data.county_name);
-                              $('[name="subcounty_name"]').val(data.subcounty_name);
+                              $('[name="county_name"]').val(data.county_id);
+                              $('[name="subcounty_name"]').val(data.subcounty_id);
                               $('[name="cdf_amount"]').val(data.cdf_amount);
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
@@ -389,7 +409,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeSugar') }}";
+                            url = "{{ route('storeCDF') }}";
 
                         }
                         else
@@ -397,7 +417,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateSugar') }}";
+                          url = "{{ route('updateCDF') }}";
                         }
                           
                       
@@ -447,6 +467,8 @@
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
+                     
+
             </script>
 
               <!-- Bootstrap modal -->
@@ -491,7 +513,7 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group">
+                                  <div class="form-group"  id="subcountydiv">
                                 <label class="control-label col-md-3">Sub County</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="subcounty_name" name="subcounty_name">

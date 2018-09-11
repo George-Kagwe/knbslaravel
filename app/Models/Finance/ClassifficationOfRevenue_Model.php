@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClassifficationOfRevenue_Model extends Model
 {
-    protected $primaryKey = 'eonomicrevenue_id';
+    protected $primaryKey = 'economicrevenue_id';
     protected $table ='finance_economic_classification_revenue';
     protected $fillable =['taxes_income_profits_capitalgains',
                           'taxes_property',
