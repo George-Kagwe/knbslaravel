@@ -338,7 +338,7 @@
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          }
+                                          },
                                           
                                               herbicides: {
                                               validators: {

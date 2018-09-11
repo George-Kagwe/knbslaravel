@@ -1666,3 +1666,46 @@ Route::get('cooperatives/action/{id}', array('as' => 'fetchCooperatives', 'uses'
 Route::post('cooperatives/store', array('as' => 'storeCooperatives', 'uses' => 'Forms\Agriculture\agriculture_cooperatives@store'));
 //post to update
 Route::post('cooperatives/update', array('as' => 'updateCooperatives', 'uses' => 'Forms\Agriculture\agriculture_cooperatives@update'));
+
+
+//@George Muchiri
+
+//fetch
+Route::get('
+agriculture_valueofagriculturalinputs/', 'Forms\Agriculture\agriculture_valueofagriculturalinputs@index')->name('agriculture_valueofagriculturalinputs');
+//show a specific id
+Route::get('inputs/action/{id}', array('as' => 'fetchInputs', 'uses' => 'Forms\Agriculture\agriculture_valueofagriculturalinputs@show'));
+//post to save
+Route::post('inputs/store', array('as' => 'storeInputs', 'uses' => 'Forms\Agriculture\agriculture_valueofagriculturalinputs@store'));
+//post to update
+Route::post('inputs/update', array('as' => 'updateInputs', 'uses' => 'Forms\Agriculture\agriculture_valueofagriculturalinputs@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('
+agriculture_gross_market_production/', 'Forms\Agriculture\agriculture_gross_market_production@index')->name('agriculture_gross_market_production');
+//show a specific id
+Route::get('gross/action/{id}', array('as' => 'fetchGross', 'uses' => 'Forms\Agriculture\agriculture_gross_market_production@show'));
+//post to save
+Route::post('gross/store', array('as' => 'storeGross', 'uses' => 'Forms\Agriculture\agriculture_gross_market_production@store'));
+//post to update
+Route::post('gross/update', array('as' => 'updateGross', 'uses' => 'Forms\Agriculture\agriculture_gross_market_production@update'));
+
+
+
+//@George Muchiri
+
+//fetch
+Route::get('
+agriculture_irrigation_schemes/', 'Forms\Agriculture\agriculture_irrigation_schemes@index')->name('agriculture_irrigation_schemes');
+//show a specific id
+Route::get('irrigation/action/{id}', array('as' => 'fetchIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@show'));
+//post to save
+Route::post('irrigation/store', array('as' => 'storeIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@store'));
+//post to update
+Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@update'));
+
+

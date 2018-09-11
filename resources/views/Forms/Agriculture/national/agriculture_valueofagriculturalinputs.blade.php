@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+fet<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,6 +20,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 
          <style>
 
@@ -188,6 +189,8 @@
         <!-- /top navigation -->
 
  <!-- page content -->
+       
+ <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
               
@@ -201,62 +204,77 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Classification of Revenue</center></h5>
+                                 <h5><center>Value of Agricultural Inputs</center></h5>
                               <br />
-                              <button class="btn btn-danger" onclick="add_conservancy()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
+                              <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
                               <br />
-                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
+                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="150%">
                                       <thead>
                                         <tr>
-                                            <th>ID</th>
-                                          <th>Income Taxes/profits/capital gains</th>
-                                           <th>Property Taxes</th>
-                                           <th>VAT</th>
-                                           <th>Other goods and srvices</th>
-                                            <th>Taxes internationaltrade transactions</th>
-                                             <th>Other taxes not else  where
-                                             classified</th>
-                                              <th>Total tax revenue</th>
-                                               <th>Social  security contributions</th>
-                                                <th>Property income</th>
-                                               <th>Sale goods and services</th>
-                                                <th>Fines penalties and forfeitures</th>
-                                                <th>Repayments domestic lending</th>
-                                               
-                                                <th>Other receipts not else where classified</th>
-                                               <th>Total Non Tax revenue</th>
-                                              <th> Total</th>
+                                         
+                                           <th>ID</th>                                          
+                                           <th>Accounting ,Secretarial and Auditing Services</th>
+                                           <th>Aerial Spraying</th>
+                                           <th>Artificial Insemination</th>
+                                            <th>Bags</th>
+                                           <th>Farm planning and Survey Services</th>
+                                           <th>Fertilizers</th>
+                                           <th>Fuel </th>
+                                           <th>Government Seed Inspection Services</th>
+                                           <th>Government Veterinary Inoculation Services</th>
+                                           <th>Livestock Drugs and Medicines</th>
+                                           <th>Manufactured Feeds
+                                           </th>
+                                           <th>Marketing Research and Publicity</th>
+                                            <th>Office Expenses</th>
+                                            <th>Other</th>
+                                            <th>Other Material Inputs</th>
+                                            <th>Other Agricultural Chemicals</th>
+                                            <th>Power</th>
+                                            <th>Private Vetinary Services</th>
+                                            <th>Seeds</th>
+                                            <th>Small Implements</th>
+                                            <th>Spares and Maintenance of Machinery</th>
+
+                                           <th>Tractor Services</th>
+                                           <th>Transportation</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                         <?php foreach($post as $post){?>
+                                      <?php foreach($post as $post){?>
                                              <tr>
-                                              
-                                               <td>{{$post->economicrevenue_id}}</td>
+                                                <td>{{$post->value_of_agricultural_inputs_id}}</td>
+                                                <td>{{$post->accounting_secretarial_and_auditing_services}}</td>
+                                                <td>{{$post->aerial_spraying}}</td>
+                                                <td>{{$post->artificial_insemination}}</td>
+                                                <td>{{$post->bags}}</td>
+                                                <td>{{$post->farm_planning_and_survey_services}}</td>
+                                                <td>{{$post->fertilizers}}</td>
+                                               <td>{{$post->fuel}}</td>
+                                                <td>{{$post->government_seed_inspection_services}}</td>
+                                                <td>{{$post->government_veterinary_inoculation_services}}</td>
+                                               <td>{{$post->livestock_drugs_and_medicines}}</td>
+                                                <td>{{$post->manufactured_feeds}}</td>
+                                               <td>{{$post->marketing_research_and_publicity}}</td>
+                                                <td>{{$post->office_expenses}}</td>
+                                                <td>{{$post->other}}</td>
+                                                <td>{{$post->other_material_inputs}}</td>
+                                                <td>{{$post->other_agricultural_chemicals}}</td>  
+                                                <td>{{$post->power}}</td>
+                                                <td>{{$post->private_veterinary_services}}</td>
+                                                <td>{{$post->seeds}}</td>
+                                                <td>{{$post->small_implements}}</td>
+                                                <td>{{$post->spares_and_maintenance_of_machinery}}</td>
+                                                <td>{{$post->tractor_services}}</td>
+                                                <td>{{$post->transportation}}</td>       
+                                                <td>{{$post->year}}</td>                                  
 
-                                                <td>{{$post->taxes_income_profits_capitalgains}}</td>
-                                                <td>{{$post->taxes_property}}</td>
-                                                <td>{{$post->taxes_vat}}</td>
-                                                <td>{{$post->taxes_othergoodsandservices}}</td>
-                                                <td>{{$post->taxes_internationaltrade_transactions}}</td>
-                                                <td>{{$post->other_taxes_notelsewhereclasified}}</td>
-                                                <td>{{$post->totaltax_revenue}}</td>
-                                                <td>{{$post->socialsecuritycontributions}}</td>
-                                                <td>{{$post->property_income}}</td>                                      
-                                                <td>{{$post->sale_goodsandservices}}</td>
-                                                <td>{{$post->fines_penaltiesandforfeitures}}</td>
-                                                <td>{{$post->repayments_domesticlending}}</td>
-                                                <td>{{$post->other_receiptsnotelsewhereclassified}}</td>
-                                                <td>{{$post->total_nontax_revenue}}</td>
-                                                <td>{{$post->total}}</td>
-                                                <td>{{$post->year}}</td>
-                                               
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit_conservancy(<?php echo $post->economicrevenue_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->value_of_agricultural_inputs_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -268,25 +286,32 @@
 
                                       <tfoot>
                                         <tr>
-                                                                                      <th>ID</th>
+                                           <th>ID</th>                                          
+                                           <th>Accounting ,Secretarial and Auditing Services</th>
+                                           <th>Aerial Spraying</th>
+                                           <th>Artificial Insemination</th>
+                                            <th>Bags</th>
+                                           <th>Farm planning and Survey Services</th>
+                                           <th>Fertilizers</th>
+                                           <th>Fuel </th>
+                                           <th>Government Seed Inspection Services</th>
+                                           <th>Government Veterinary Inoculation Services</th>
+                                           <th>Livestock Drugs and Medicines</th>
+                                           <th>Manufactured Feeds
+                                           </th>
+                                           <th>Marketing Research and Publicity</th>
+                                            <th>Office Expenses</th>
+                                            <th>Other</th>
+                                            <th>Other Material Inputs</th>
+                                            <th>Other Agricultural Chemicals</th>
+                                            <th>Power</th>
+                                            <th>Private Vetinary Services</th>
+                                            <th>Seeds</th>
+                                            <th>Small Implements</th>
+                                            <th>Spares and Maintenance of Machinery</th>
 
-                                          <th>Income Taxes/profits/capital gains</th>
-                                           <th>Property Taxes</th>
-                                           <th>VAT</th>
-                                           <th>Other goods and srvices</th>
-                                            <th>Taxes internationaltrade transactions</th>
-                                             <th>Other taxes not else  where
-                                             classified</th>
-                                              <th>Total tax revenue</th>
-                                               <th>Social  security contributions</th>
-                                                <th>Property income</th>
-                                               <th>Sale goods and services</th>
-                                                <th>Fines penalties and forfeitures</th>
-                                                <th>Repayments domestic lending</th>
-                                               
-                                                <th>Other receipts not else where classified</th>
-                                               <th>Total Non Tax revenue</th>
-                                              <th> Total</th>
+                                           <th>Tractor Services</th>
+                                           <th>Transportation</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -313,7 +338,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 
             <!-- Sian starts here -->
-            <script type="text/javascript">
+          <script type="text/javascript">
                       $(document).ready( function () {
 
                         $('#form').bootstrapValidator({
@@ -323,7 +348,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          taxes_income_profits_capitalgains: {
+                                          accounting_secretarial_and_auditing_services: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -333,7 +358,7 @@
                                                 }
                                               }
                                           },
-                                          taxes_property: {
+                                          aerial_spraying: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -343,7 +368,7 @@
                                                 }
                                               }
                                           },
-                                          taxes_vat: {
+                                          artificial_insemination: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -353,7 +378,7 @@
                                                 }
                                               }
                                           },
-                                          taxes_othergoodsandservices: {
+                                             bags: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -363,7 +388,127 @@
                                                 }
                                               }
                                           },
-                                           taxes_internationaltrade_transactions: {
+                                          farm_planning_and_survey_services: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          fertilizers: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                              fuel: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          government_seed_inspection_services: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          government_veterinary_inoculation_services: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                             insurance: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          livestock_drugs_and_medicines: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                            manufactured_feeds: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          marketing_research_and_publicity: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          office_expenses: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                             other: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          other_material_inputs: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                         other_agricultural_chemicals: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -374,17 +519,8 @@
                                               }
                                           },
 
-                                         other_taxes_notelsewhereclassified: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                             totaltax_revenue: {
+
+                                            power: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -395,7 +531,7 @@
                                               }
                                           },
 
-                                             socialsecuritycontributions: {
+                                            private_veterinary_services: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -406,7 +542,7 @@
                                               }
                                           },
 
-                                             property_income: {
+                                            seeds: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -417,7 +553,7 @@
                                               }
                                           },
 
-                                             sale_goodsandservices: {
+                                            small_implements: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -428,7 +564,7 @@
                                               }
                                           },
 
-                                             fines_penaltiesandforfeitures: {
+                                            spares_and_maintenance_of_machinery: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -439,7 +575,7 @@
                                               }
                                           },
 
-                                             repayments_domesticlending: {
+                                            tractor_services: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -449,29 +585,7 @@
                                                 }
                                               }
                                           },
-
-                                             other_receiptsnotelsehereclassified: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             total_nontax_revenue: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           total: {
+                                           transportation: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -481,6 +595,11 @@
                                                 }
                                               }
                                           }
+
+                                          
+                                          
+                                          
+                                           
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -489,7 +608,8 @@
                       var table;
 
 
-                      function add_conservancy()
+              
+                      function add()
                       {
                         save_method = 'add';
                         $('#form')[0].reset(); // reset form on modals
@@ -497,9 +617,9 @@
                       //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
                       }
 
-                      function edit_conservancy(id)
+                      function edit(id)
                       {
-                        var url = '{{ route("fetchRevenue", ":id") }}';
+                        var url = '{{ route("fetchInputs", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -512,23 +632,46 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.economicrevenue_id);
-                              $('[name="taxes_income_profits_capitalgains"]').val(data.taxes_income_profits_capitalgains);
-                              $('[name="taxes_property"]').val(data.taxes_property);
-                              $('[name="taxes_vat"]').val(data.taxes_vat);
-                                 $('[name="taxes_othergoodsandservices"]').val(data.taxes_othergoodsandservices);
-                              $('[name="taxes_internationaltrade_transactions"]').val(data.taxes_internationaltrade_transactions);
-                              $('[name="other_taxes_notelsewhereclassified"]').val(data.other_taxes_notelsewhereclassified);
-                              $('[name="totaltax_revenue"]').val(data.totaltax_revenue);
-                              $('[name="socialsecuritycontributions"]').val(data.socialsecuritycontributions);
-                              $('[name="property_income"]').val(data.property_income);
-                              $('[name="sale_goodsandservices"]').val(data.sale_goodsandservices);
-                              $('[name="fines_penaltiesandforfeitures"]').val(data.fines_penaltiesandforfeitures);
-                              $('[name="repayments_domesticlending"]').val(data.repayments_domesticlending);
-                           
-                              $('[name="other_receiptsnotelsehereclassified"]').val(data.other_receiptsnotelsehereclassified);
-                              $('[name="total_nontax_revenue"]').val(data.total_nontax_revenue);
-                              $('[name="total"]').val(data.total);
+                              $('[name="id"]').val(data.value_of_agricultural_inputs_id);
+                              $('[name="accounting_secretarial_and_auditing_services"]').val(data.accounting_secretarial_and_auditing_services);
+                              $('[name="aerial_spraying"]').val(data.aerial_spraying);
+                              $('[name="artificial_insemination"]').val(data.artificial_insemination);
+                              $('[name="bags"]').val(data.bags);
+                              $('[name="farm_planning_and_survey_services"]').val(data.farm_planning_and_survey_services);
+                              $('[name="fertilizers"]').val(data.fertilizers);
+                              $('[name="fuel"]').val(data.fuel);
+                              $('[name="government_seed_inspection_services"]').val(data.government_seed_inspection_services);
+                              $('[name="government_veterinary_inoculation_services"]').val(data.government_veterinary_inoculation_services);
+                              
+                              
+                              $('[name="government_veterinary_inoculation_services"]').val(data.government_veterinary_inoculation_services);
+                              $('[name="insurance"]').val(data.insurance);
+
+                             $('[name="livestock_drugs_and_medicines"]').val(data.livestock_drugs_and_medicines);
+                              $('[name="manufactured_feeds"]').val(data.manufactured_feeds);
+
+                               $('[name="marketing_research_and_publicity"]').val(data.marketing_research_and_publicity);
+                              $('[name="office_expenses"]').val(data.office_expenses);
+                              $('[name="other"]').val(data.other);
+                              $('[name="other_material_inputs"]').val(data.other_material_inputs);
+
+                              $('[name="other_agricultural_chemicals"]').val(data.other_agricultural_chemicals);
+
+                              $('[name="power"]').val(data.power);
+
+                              $('[name="private_veterinary_services"]').val(data.private_veterinary_services);
+
+                              $('[name="seeds"]').val(data.seeds);
+
+                              $('[name="small_implements"]').val(data.small_implements );
+
+                              $('[name="spares_and_maintenance_of_machinery"]').val(data.spares_and_maintenance_of_machinery);
+
+                              $('[name="tractor_services"]').val(data.tractor_services);
+
+                              $('[name="transportation"]').val(data.transportation);
+
+
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -549,14 +692,14 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeRevenue') }}";
+                            url = "{{ route('storeInputs') }}";
 
                         }
                         else
                         {
                            
-                       
-                          url = "{{ route('updateRevenue') }}";
+                  
+                          url = "{{ route('updateInputs') }}";
                         }
                           
                       
@@ -569,7 +712,7 @@
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                   },
                               url : url,
-                              type: "Revenue",
+                              type: "POST",
                               data: data,
                               dataType: "JSON",
                               success: function(result)
@@ -598,28 +741,7 @@
                           
                           }});}
 
-                      function delete_conservancy(id)
-                      {
-                        if(confirm('Are you sure delete this data?'))
-                        {
-                          // ajax delete data from database
-                            $.ajax({
-                              url : "{{asset('/Agriculture/show/')}}",
-                              type: "finance",
-                              dataType: "JSON",
-                              success: function(data)
-                              {
-                                 
-                                 location.reload();
-                              },
-                              error: function (jqXHR, textStatus, errorThrown)
-                              {
-                                  alert('Error deleting data');
-                              }
-                          });
-
-                        }
-                      }
+                     
 
                       function myFunction() {
                               var x = document.getElementById("snackbar");
@@ -629,7 +751,9 @@
 
             </script>
 
+
               <!-- Bootstrap modal -->
+                  <!-- Bootstrap modal -->
               <div class="modal fade" id="modal_form" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -644,116 +768,184 @@
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes Income,Profits and Capital Gains </label>
+                                <label class="control-label col-md-3">Accounting Secretarial and Auditing Services</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="taxes_income_profits_capitalgains" class="form-control" type="text">
-                                  @if ($errors->has('taxes_income_profits_capitalgains'))
+                                 <input name="accounting_secretarial_and_auditing_services" class="form-control" type="text">
+                                  @if ($errors->has('accounting_secretarial_and_auditing_services'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('taxes_income_profits_capitalgains') }}</strong>
+                                        <strong>{{ $errors->first('accounting_secretarial_and_auditing_services') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes Property</label>
+                                <label class="control-label col-md-3">Aerial Spraying</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_property"  class="form-control" type="text">
+                                  <input name="aerial_spraying"  class="form-control" type="text">
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes VAT</label>
+                                <label class="control-label col-md-3">Artificial Insemination</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_vat"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes of Other Goods and Services </label>
-                                <div class="col-md-9">
-                                  <input name="taxes_othergoodsandservices"  class="form-control" type="text">
+                                  <input name="artificial_insemination"  class="form-control" type="text">
                                 </div>
                               </div>
                               
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Taxes of International Trade Transactions</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Bags</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_internationaltrade_transactions"  class="form-control" type="text">
+                                  <input name="bags"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Farm Planning and Survey Services</label>
+                                <div class="col-md-9">
+                                  <input name="farm_planning_and_survey_services"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Other Taxes not elsewhere Classified</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Fertilizers</label>
                                 <div class="col-md-9">
-                                  <input name="other_taxes_notelsewhereclassified"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total Tax Revenue</label>
-                                <div class="col-md-9">
-                                  <input name="totaltax_revenue"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Social Security Contributions</label>
-                                <div class="col-md-9">
-                                  <input name="socialsecuritycontributions"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Property Income</label>
-                                <div class="col-md-9">
-                                  <input name="property_income"  class="form-control" type="text">
+                                  <input name="fertilizers"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Sales of Goods and Services </label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Fuel  </label>
                                 <div class="col-md-9">
-                                  <input name="sale_goodsandservices"  class="form-control" type="text">
+                                  <input name="fuel"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Fines,Penalties and Forfeitures</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Government Seed Inspection Services</label>
                                 <div class="col-md-9">
-                                  <input name="fines_penaltiesandforfeitures"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Repayments of Domestic Lending</label>
-                                <div class="col-md-9">
-                                  <input name="repayments_domesticlending"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Other Receipts not elsewhere Classified</label>
-                                <div class="col-md-9">
-                                  <input name="other_receiptsnotelsehereclassified"  class="form-control" type="text">
+                                  <input name="government_seed_inspection_services"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total Non Tax Revenue</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Government Veterinary Inoculation Services</label>
                                 <div class="col-md-9">
-                                  <input name="total_nontax_revenue"  class="form-control" type="text">
+                                  <input name="government_veterinary_inoculation_services"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Insuarance</label>
+                                <div class="col-md-9">
+                                  <input name="insurance"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+                                
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Livestock Drugs and Medicines</label>
+                                <div class="col-md-9">
+                                  <input name="livestock_drugs_and_medicines"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Manufactured Feeds</label>
                                 <div class="col-md-9">
-                                  <input name="total"  class="form-control" type="text">
+                                  <input name="manufactured_feeds"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Marketing Research and Publicity</label>
+                                <div class="col-md-9">
+                                  <input name="marketing_research_and_publicity"  class="form-control" type="text">
                                 </div>
                               </div>
 
+
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Office Expenses</label>
+                                <div class="col-md-9">
+                                  <input name="office_expenses"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+
+                         
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Other</label>
+                                <div class="col-md-9">
+                                  <input name="other"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Other Material Inputs</label>
+                                <div class="col-md-9">
+                                  <input name="other_material_inputs"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Other Agricultural Chemicals</label>
+                                <div class="col-md-9">
+                                  <input name="other_agricultural_chemicals"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+                                        <div class="form-group">
+                                <label class="control-label col-md-3">Power</label>
+                                <div class="col-md-9">
+                                  <input name="power"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Private Vetinary Services</label>
+                                <div class="col-md-9">
+                                  <input name="private_veterinary_services"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                        <div class="form-group">
+                                <label class="control-label col-md-3">Seeds</label>
+                                <div class="col-md-9">
+                                  <input name="seeds"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Small Implements</label>
+                                <div class="col-md-9">
+                                  <input name="small_implements"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Spares and Maintenance of Machinery</label>
+                                <div class="col-md-9">
+                                  <input name="spares_and_maintenance_of_machinery"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Tractor Services</label>
+                                <div class="col-md-9">
+                                  <input name="tractor_services"  class="form-control" type="text">
+                                </div>
+                              </div>
+                        <div class="form-group">
+                                <label class="control-label col-md-3">Transportation</label>
+                                <div class="col-md-9">
+                                  <input name="transportation"  class="form-control" type="text">
+                                </div>
+                              </div>
 
                               <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
@@ -799,9 +991,8 @@
         
    </div>
   <!-- page content -->
+  <!-- page content -->
    
-
-
  <!-- footer content -->
         <footer>
          <!--  <div class="pull-right">
@@ -814,7 +1005,7 @@
     </div>
 
     <!-- jQuery -->
-    <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> -->
+   <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> --> -->
     <!-- Bootstrap -->
     <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->

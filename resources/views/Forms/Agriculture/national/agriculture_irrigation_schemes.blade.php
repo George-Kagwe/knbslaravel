@@ -204,7 +204,7 @@ fet<!DOCTYPE html>
                      <div class="col-lg-12">
                        
      
-                        <h5><center>Agricultural Cooperatives</center></h5>
+                                 <h5><center>Irrigation Schemes</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -213,23 +213,39 @@ fet<!DOCTYPE html>
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>Coffee</th>
-                                           <th>Cotton</th>
-                                           <th>Pyrethrum</th>
-                                            <th>Sugar</th>
-                                           <th>Dairy</th>
-                                           <th>Multi Purpose</th>
-                                           <th>Farm Purchase</th>
-                                           <th>Fisheries</th>
-                                           <th>Other Agricultural</th>
-                                           <th>Saccos</th>
-                                           <th>Consumer</th>
-                                           <th>Housing</th>
-                                            <th>Craftsmen</th>
-                                            <th>Transport</th>
-                                            <th>Other non Agricultural</th>
-                                            <th>Unions</th>
+                                              <th>ID</th>                                          
+                                           <th>Ahero Gross Value of Crops in Millions</th>
+                                           <th>Ahero Hectares Cropped</th>
+                                           <th>ahero_number_of_plots_holders</th>
+                                            <th>Ahero Paddy Yields Tonnes</th>
+                                           <th>Ahero Payments to Plot holders in Milions</th>
+                                           <th>All Schemes GrossValue of Crop in Million</th>
+                                           <th>All Schemes Hectares Cropped </th>
+                                           <th>All Schemes no of Plot Holders</th>
+                                           <th>All Schmes Paddy Yields Tones</th>
+                                           <th>All Schemes Payments to Plot Holders in Millions</th>
+                                           <th>Bunyala Gross Value of Crops in Millions
+                                           </th>
+                                           <th>Bunyala Hectares Cropped</th>
+                                            <th>Bunyala Number of Plot Holders</th>
+                                            <th>Bunyala Paddy Yields Tonnes</th>
+                                            <th>Bunyala Payment of Plot Holders in Milllions</th>
+                                            <th>Mwea Gross Value of Crops in  Millions</th>
+                                            <th>Mwea Hectares CRopped</th>
+                                            <th>Mwea No of Plot Holders</th>
+                                            <th>Mwea Paddy Yields TonnesMwea No of Plot Holders</th>
+                                            <th>Mwea Payments to Plot Holders in Millions</th>
+                                            <th>Perkerra Gross Value in Millions</th>
+
+                                           <th>Perkerra Hectares Cropped</th>
+                                           <th>Perkerra no of Plot Holders</th>
+                                           <th>Perkerra Payment to Plot Holders in Millions</th>
+                                           <th>Perkerra Seed Maize in Tonnes</th>
+                                           <th>West Kano Gross Value of Crops in Millions</th>
+                                           <th>West Kano Hectares Cropped</th>
+                                            <th>West Kano no of Plot HOlders</th>
+                                            <th>West Kano Padddy Yields Tonnes</th>
+                                            <th>West Kanno Payments to Plot HOlders in Millions</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -238,27 +254,43 @@ fet<!DOCTYPE html>
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->cooperatives_id}}</td>
-                                                <td>{{$post->coffee}}</td>
-                                                <td>{{$post->cotton}}</td>
-                                                <td>{{$post->pyrethrum}}</td>
-                                                <td>{{$post->sugar}}</td>
-                                                <td>{{$post->dairy}}</td>
-                                                <td>{{$post->multi_purpose}}</td>
-                                               <td>{{$post->farm_purchase}}</td>
-                                                <td>{{$post->fisheries}}</td>
-                                                <td>{{$post->other_agricultural}}</td>
-                                               <td>{{$post->saccos}}</td>
-                                                <td>{{$post->consumer}}</td>
-                                               <td>{{$post->housing}}</td>
-                                                <td>{{$post->craftsmen}}</td>
-                                                <td>{{$post->transport}}</td>
-                                                <td>{{$post->other_non_agricultur}}</td>
-                                                <td>{{$post->unions}}</td>  
-                                                <td>{{$post->year}}</td>                                      
+                                                <td>{{$post->gross_market_production_at_constant_id}}</td>
+                                                <td>{{$post->ahero_gross_value_of_crop_millions}}</td>
+                                                <td>{{$post->ahero_hectares_cropped}}</td>
+                                                <td>{{$post->ahero_number_of_plots_holders}}</td>
+                                                <td>{{$post->ahero_paddy_yields_tonnes}}</td>
+                                                <td>{{$post->ahero_payments_to_plot_holders_millions}}</td>
+                                                <td>{{$post->all_schemes_gross_value_of_crop_millions}}</td>
+                                               <td>{{$post->all_schemes_hectares_cropped}}</td>
+                                                <td>{{$post->all_schemes_number_of_plots_holders}}</td>
+                                                <td>{{$post->all_schemes_paddy_yields_tonnes}}</td>
+                                               <td>{{$post->all_schemes_payments_to_plot_holders_millions}}</td>
+                                                <td>{{$post->bunyala_gross_value_of_crop_millions}}</td>
+                                               <td>{{$post->bunyala_hectares_cropped}}</td>
+                                                <td>{{$post->bunyala_number_of_plots_holders}}</td>
+                                                <td>{{$post->bunyala_paddy_yields_tonnes}}</td>
+                                                <td>{{$post->bunyala_payments_to_plot_holders_millions}}</td>
+                                                <td>{{$post->mwea_gross_value_of_crop_millions}}</td>  
+                                                <td>{{$post->mwea_hectares_cropped}}</td>
+                                                <td>{{$post->mwea_number_of_plots_holders}}</td>
+                                                <td>{{$post->mwea_paddy_yields_tonnes}}</td>
+                                                <td>{{$post->mwea_payments_to_plot_holders_million}}</td>
+                                                <td>{{$post->perkerra_gross_value_of_crop_millions}}</td>
+                                                <td>{{$post->perkerra_hectares_cropped}}</td>
+                                                <td>{{$post->perkerra_number_of_plots_holders}}</td>
+                                                  <td>{{$post->perkerra_payments_to_plot_holders_millions}}</td> 
+                                                  <td>{{$post->perkerra_seed_maize_tonnes}}</td> 
+                                                   <td>{{$post->perkerra_number_of_plots_holders}}</td> 
+
+
+                                                      <td>{{$post->west_kano_gross_value_of_crop_millions}}</td>
+                                                  <td>{{$post->west_kano_hectares_cropped}}</td> 
+                                                  <td>{{$post->west_kano_paddy_yields_tonnes}}</td> 
+                                                   <td>{{$post->west_kano_payments_to_plot_holders_millions}}</td> 
+                                                <td>{{$post->year}}</td>                                  
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->cooperatives_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->gross_market_production_at_constant_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -270,23 +302,39 @@ fet<!DOCTYPE html>
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
-                                           <th>Coffee</th>
-                                           <th>Cotton</th>
-                                           <th>Pyrethrum</th>
-                                            <th>Sugar</th>
-                                           <th>Dairy</th>
-                                           <th>Multi Purpose</th>
-                                           <th>Farm Purchase</th>
-                                           <th>Fisheris</th>
-                                           <th>Other Agricultural</th>
-                                           <th>Saccos</th>
-                                           <th>Consumer</th>
-                                           <th>Housing</th>
-                                            <th>Craftsmen</th>
-                                            <th>Transport</th>
-                                            <th>Other non Agricultural</th>
-                                            <th>Unions</th>
+                                               <th>ID</th>                                          
+                                           <th>Ahero Gross Value of Crops in Millions</th>
+                                           <th>Ahero Hectares Cropped</th>
+                                           <th>ahero_number_of_plots_holders</th>
+                                            <th>Ahero Paddy Yields Tonnes</th>
+                                           <th>Ahero Payments to Plot holders in Milions</th>
+                                           <th>All Schemes GrossValue of Crop in Million</th>
+                                           <th>All Schemes Hectares Cropped </th>
+                                           <th>All Schemes no of Plot Holders</th>
+                                           <th>All Schmes Paddy Yields Tones</th>
+                                           <th>All Schemes Payments to Plot Holders in Millions</th>
+                                           <th>Bunyala Gross Value of Crops in Millions
+                                           </th>
+                                           <th>Bunyala Hectares Cropped</th>
+                                            <th>Bunyala Number of Plot Holders</th>
+                                            <th>Bunyala Paddy Yields Tonnes</th>
+                                            <th>Bunyala Payment of Plot Holders in Milllions</th>
+                                            <th>Mwea Gross Value of Crops in  Millions</th>
+                                            <th>Mwea Hectares CRopped</th>
+                                            <th>Mwea No of Plot Holders</th>
+                                            <th>Mwea Paddy Yields TonnesMwea No of Plot Holders</th>
+                                            <th>Mwea Payments to Plot Holders in Millions</th>
+                                            <th>Perkerra Gross Value in Millions</th>
+
+                                           <th>Perkerra Hectares Cropped</th>
+                                           <th>Perkerra no of Plot Holders</th>
+                                           <th>Perkerra Payment to Plot Holders in Millions</th>
+                                           <th>Perkerra Seed Maize in Tonnes</th>
+                                           <th>West Kano Gross Value of Crops in Millions</th>
+                                           <th>West Kano Hectares Cropped</th>
+                                            <th>West Kano no of Plot HOlders</th>
+                                            <th>West Kano Padddy Yields Tonnes</th>
+                                            <th>West Kanno Payments to Plot HOlders in Millions</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -303,7 +351,6 @@ fet<!DOCTYPE html>
                         
             </div>
 
-
           
               <script type="text/javascript" src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
               <script type="text/javascript" src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -314,7 +361,7 @@ fet<!DOCTYPE html>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 
             <!-- Sian starts here -->
-            <script type="text/javascript">
+          <script type="text/javascript">
                       $(document).ready( function () {
 
                         $('#form').bootstrapValidator({
@@ -324,7 +371,7 @@ fet<!DOCTYPE html>
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          coffee: {
+                                          ahero_gross_value_of_crop_millions: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -334,7 +381,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          cotton: {
+                                          ahero_hectares_cropped: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -344,7 +391,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          pyrethrum: {
+                                          ahero_number_of_plots_holders: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -354,7 +401,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                             sugar: {
+                                             ahero_paddy_yields_tonnes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -364,7 +411,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          dairy: {
+                                          ahero_payments_to_plot_holders_millions: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -374,7 +421,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          multi_purpose: {
+                                          all_schemes_gross_value_of_crop_millions: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -384,7 +431,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                              farm_purchase: {
+                                              all_schemes_hectares_cropped: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -394,7 +441,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          fisheries: {
+                                          all_schemes_number_of_plots_holders: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -404,7 +451,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          other_agricultural: {
+                                          all_schemes_paddy_yields_tonnes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -414,7 +461,8 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                             saccos: {
+                                          
+                                          all_schemes_payments_to_plot_holders_millions: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -424,7 +472,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          consumer: {
+                                            bunyala_gross_value_of_crop_millions: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -434,7 +482,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                                     housing: {
+                                          bunyala_hectares_cropped: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -444,7 +492,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          craftsmen: {
+                                          bunyala_number_of_plots_holders: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -454,7 +502,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          transport: {
+                                             bunyala_paddy_yields_tonnes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -464,7 +512,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                             other_non_agricultur: {
+                                          bunyala_payments_to_plot_holders_millions: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -474,7 +522,159 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-                                          unions: {
+                                         mwea_gross_value_of_crop_millions: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+
+                                            mwea_hectares_cropped: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                            mwea_number_of_plots_holders: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                            mwea_paddy_yields_tonnes: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                            mwea_payments_to_plot_holders_million: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                            perkerra_gross_value_of_crop_millions: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                            perkerra_hectares_cropped: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           perkerra_number_of_plots_holders: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                            perkerra_payments_to_plot_holders_millions: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                            perkerra_seed_maize_tonnes: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           west_kano_gross_value_of_crop_millions: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                                west_kano_hectares_cropped: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                        west_kano_number_of_plots_holders: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                       west_kano_paddy_yields_tonnes: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                               west_kano_payments_to_plot_holders_millions: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -484,6 +684,9 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           }
+
+
+
                                           
                                           
                                           
@@ -507,7 +710,7 @@ fet<!DOCTYPE html>
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchCooperatives", ":id") }}';
+                        var url = '{{ route("fetchIrrigation", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -520,28 +723,54 @@ fet<!DOCTYPE html>
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.cooperatives_id);
-                              $('[name="coffee"]').val(data.coffee);
-                              $('[name="cotton"]').val(data.cotton);
-                              $('[name="pyrethrum"]').val(data.pyrethrum);
-                                 $('[name="sugar"]').val(data.sugar);
-                              $('[name="dairy"]').val(data.dairy);
-                              $('[name="multi_purpose"]').val(data.multi_purpose);
-                                 $('[name="farm_purchase"]').val(data.farm_purchase);
-                              $('[name="fisheries"]').val(data.fisheries);
-                              $('[name="other_agricultural"]').val(data.other_agricultural);
+                              $('[name="id"]').val(data.gross_market_production_at_constant_id);
+                              $('[name="ahero_gross_value_of_crop_millions"]').val(data.ahero_gross_value_of_crop_millions);
+                              $('[name="ahero_hectares_cropped"]').val(data.ahero_hectares_cropped);
+                              $('[name="ahero_number_of_plots_holders"]').val(data.ahero_number_of_plots_holders);
+                              $('[name="ahero_paddy_yields_tonnes"]').val(data.ahero_paddy_yields_tonnes);
+                              $('[name="ahero_payments_to_plot_holders_millions"]').val(data.ahero_payments_to_plot_holders_millions);
+                              $('[name="all_schemes_gross_value_of_crop_millions"]').val(data.all_schemes_gross_value_of_crop_millions);
+                              $('[name="all_schemes_hectares_cropped"]').val(data.all_schemes_hectares_cropped);
+                              $('[name="all_schemes_number_of_plots_holders"]').val(data.all_schemes_number_of_plots_holders);
+                              $('[name="all_schemes_paddy_yields_tonnes"]').val(data.all_schemes_paddy_yields_tonnes);
                               
                               
-                              $('[name="saccos"]').val(data.saccos);
-                              $('[name="consumer"]').val(data.consumer);
+                            
+                  
 
-                             $('[name="housing"]').val(data.housing);
-                              $('[name="craftsmen"]').val(data.craftsmen);
+                             $('[name="all_schemes_payments_to_plot_holders_millions"]').val(data.all_schemes_payments_to_plot_holders_millions);
+                              $('[name="bunyala_gross_value_of_crop_millions"]').val(data.bunyala_gross_value_of_crop_millions);
 
-                               $('[name="transport"]').val(data.transport);
-                              $('[name="other_non_agricultur"]').val(data.other_non_agricultur);
-                              $('[name="unions"]').val(data.unions);
+                               $('[name="bunyala_hectares_cropped"]').val(data.bunyala_hectares_cropped);
+                              $('[name="bunyala_number_of_plots_holders"]').val(data.bunyala_number_of_plots_holders);
+                              $('[name="bunyala_paddy_yields_tonnes"]').val(data.bunyala_paddy_yields_tonnes);
+                              $('[name="bunyala_payments_to_plot_holders_millions"]').val(data.bunyala_payments_to_plot_holders_millions);
 
+                              $('[name="mwea_gross_value_of_crop_millions"]').val(data.mwea_gross_value_of_crop_millions);
+
+                              $('[name="mwea_hectares_cropped"]').val(data.mwea_hectares_cropped);
+
+                              $('[name="mwea_number_of_plots_holders"]').val(data.mwea_number_of_plots_holders);
+
+                              $('[name="mwea_paddy_yields_tonnes"]').val(data.mwea_paddy_yields_tonnes);
+
+                              $('[name="mwea_payments_to_plot_holders_million"]').val(data.mwea_payments_to_plot_holders_million );
+
+                              $('[name="perkerra_gross_value_of_crop_millions"]').val(data.perkerra_gross_value_of_crop_millions);
+
+                              $('[name="perkerra_hectares_cropped"]').val(data.perkerra_hectares_cropped);
+
+                              $('[name="perkerra_number_of_plots_holders"]').val(data.perkerra_number_of_plots_holders);
+                              $('[name="perkerra_payments_to_plot_holders_millions"]').val(data.perkerra_payments_to_plot_holders_millions);
+
+                              $('[name="perkerra_seed_maize_tonnes"]').val(data.perkerra_seed_maize_tonnes);
+
+                              $('[name="west_kano_gross_value_of_crop_millions"]').val(data.west_kano_gross_value_of_crop_millions);
+                             $('[name="west_kano_hectares_cropped"]').val(data.west_kano_hectares_cropped);
+                             $('[name="west_kano_number_of_plots_holders"]').val(data.west_kano_number_of_plots_holders);
+                             $('[name="west_kano_paddy_yields_tonnes"]').val(data.west_kano_paddy_yields_tonnes);
+                           $('[name="west_kano_payments_to_plot_holders_millions"]').val(data.west_kano_payments_to_plot_holders_millions);
+                             
 
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
@@ -563,15 +792,14 @@ fet<!DOCTYPE html>
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeCooperatives') }}";
+                            url = "{{ route('storeIrrigation') }}";
 
                         }
                         else
                         {
                            
-                          //  url = '{{ route("updateSugar", ":id") }}';
-                          // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateCooperatives') }}";
+                  
+                          url = "{{ route('updateIrrigation') }}";
                         }
                           
                       
@@ -623,6 +851,7 @@ fet<!DOCTYPE html>
 
             </script>
 
+
               <!-- Bootstrap modal -->
                   <!-- Bootstrap modal -->
               <div class="modal fade" id="modal_form" role="dialog">
@@ -639,134 +868,235 @@ fet<!DOCTYPE html>
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Coffee</label>
+                                <label class="control-label col-md-3">Ahero Gross Value of Crops in Millions</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="coffee" class="form-control" type="text">
-                                  @if ($errors->has('coffee'))
+                                 <input name="ahero_gross_value_of_crop_millions" class="form-control" type="text">
+                                  @if ($errors->has('ahero_gross_value_of_crop_millions'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('coffee') }}</strong>
+                                        <strong>{{ $errors->first('ahero_gross_value_of_crop_millions') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Cotton</label>
+                                <label class="control-label col-md-3">Ahero Hectares Cropped</label>
                                 <div class="col-md-9">
-                                  <input name="cotton"  class="form-control" type="text">
+                                  <input name="ahero_hectares_cropped"  class="form-control" type="text">
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Pyrethrum</label>
+                                <label class="control-label col-md-3">Ahero No. Of Plot Holders</label>
                                 <div class="col-md-9">
-                                  <input name="pyrethrum"  class="form-control" type="text">
+                                  <input name="ahero_number_of_plots_holders"  class="form-control" type="text">
                                 </div>
                               </div>
                               
                                     <div class="form-group">
-                                <label class="control-label col-md-3">Sugar</label>
+                                <label class="control-label col-md-3">Ahero Paddy Yields</label>
                                 <div class="col-md-9">
-                                  <input name="sugar"  class="form-control" type="text">
+                                  <input name="ahero_paddy_yields_tonnes"  class="form-control" type="text">
                                 </div>
                               </div>
                                     <div class="form-group">
-                                <label class="control-label col-md-3">Dairy</label>
+                                <label class="control-label col-md-3">Ahero Payments to Plot Holders Millions</label>
                                 <div class="col-md-9">
-                                  <input name="dairy"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                    <div class="form-group">
-                                <label class="control-label col-md-3">Multi Purpose</label>
-                                <div class="col-md-9">
-                                  <input name="multi_purpose"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-
-                                    <div class="form-group">
-                                <label class="control-label col-md-3">Farm Purchase</label>
-                                <div class="col-md-9">
-                                  <input name="farm_purchase"  class="form-control" type="text">
+                                  <input name="ahero_payments_to_plot_holders_millions"  class="form-control" type="text">
                                 </div>
                               </div>
 
                                     <div class="form-group">
-                                <label class="control-label col-md-3">Fisheris</label>
+                                <label class="control-label col-md-3">All Schemes GrossValue of Crop in Millions</label>
                                 <div class="col-md-9">
-                                  <input name="fisheries"  class="form-control" type="text">
+                                  <input name="all_schemes_gross_value_of_crop_millions"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
                                     <div class="form-group">
-                                <label class="control-label col-md-3">Other Agricultural</label>
+                                <label class="control-label col-md-3">All Schemes Hectares Cropped </label>
                                 <div class="col-md-9">
-                                  <input name="other_agricultural"  class="form-control" type="text">
+                                  <input name="all_schemes_hectares_cropped"  class="form-control" type="text">
                                 </div>
                               </div>
 
                                     <div class="form-group">
-                                <label class="control-label col-md-3">Sacco</label>
+                                <label class="control-label col-md-3">All Schemes no of Plot Holders</label>
                                 <div class="col-md-9">
-                                  <input name="saccos"  class="form-control" type="text">
+                                  <input name="all_schemes_number_of_plots_holders"  class="form-control" type="text">
                                 </div>
                               </div>
-                              
+
 
                                     <div class="form-group">
-                                <label class="control-label col-md-3">Consumer</label>
+                                <label class="control-label col-md-3">All Schemes Paddy Yields Tonnes</label>
                                 <div class="col-md-9">
-                                  <input name="consumer"  class="form-control" type="text">
+                                  <input name="all_schemes_paddy_yields_tonnes"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                            
+                                
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">All Schemes Payments to Plot Holders in Millions</label>
+                                <div class="col-md-9">
+                                  <input name="all_schemes_payments_to_plot_holders_millions"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Bunyala Gross Value of Crop in Millions</label>
+                                <div class="col-md-9">
+                                  <input name="bunyala_gross_value_of_crop_millions"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Bunyala Hectares Cropped</label>
+                                <div class="col-md-9">
+                                  <input name="bunyala_hectares_cropped"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Bunyala No of Plot Holders</label>
+                                <div class="col-md-9">
+                                  <input name="bunyala_number_of_plots_holders"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+
+                         
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Bunyala Paddy Yields Tonnes</label>
+                                <div class="col-md-9">
+                                  <input name="bunyala_paddy_yields_tonnes"  class="form-control" type="text">
                                 </div>
                               </div>
 
                                 <div class="form-group">
-                                <label class="control-label col-md-3">Housing</label>
+                                <label class="control-label col-md-3">Bunyala Payments to Plot Holders in Millions</label>
                                 <div class="col-md-9">
-                                  <input name="housing"  class="form-control" type="text">
+                                  <input name="bunyala_payments_to_plot_holders_millions"  class="form-control" type="text">
                                 </div>
                               </div>
-
 
 
                                     <div class="form-group">
-                                <label class="control-label col-md-3">Craftsmen</label>
+                                <label class="control-label col-md-3">Mwea Gross Value of Crops in illions</label>
                                 <div class="col-md-9">
-                                  <input name="craftsmen"  class="form-control" type="text">
+                                  <input name="mwea_gross_value_of_crop_millions"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
+                                        <div class="form-group">
+                                <label class="control-label col-md-3">Mwea Hectares Cropped</label>
+                                <div class="col-md-9">
+                                  <input name="mwea_hectares_cropped"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Mwea No of Plot Holders</label>
+                                <div class="col-md-9">
+                                  <input name="mwea_number_of_plots_holders"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                        <div class="form-group">
+                                <label class="control-label col-md-3">Mwea Paddy Yields Tonnes</label>
+                                <div class="col-md-9">
+                                  <input name="mwea_paddy_yields_tonnes"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Mwea Payments to Plot Holders in Millions</label>
+                                <div class="col-md-9">
+                                  <input name="mwea_payments_to_plot_holders_million"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Perkerra Gross Value of Crop in Millions</label>
+                                <div class="col-md-9">
+                                  <input name="perkerra_gross_value_of_crop_millions"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Perkerra Hectares Cropped</label>
+                                <div class="col-md-9">
+                                  <input name="perkerra_hectares_cropped"  class="form-control" type="text">
+                                </div>
+                              </div>
+                             <div class="form-group">
+                                <label class="control-label col-md-3">Perkerra No of Plot Holders</label>
+                                <div class="col-md-9">
+                                  <input name="perkerra_number_of_plots_holders"  class="form-control" type="text">
+                                </div>
+                              </div>
 
                                    <div class="form-group">
-                                <label class="control-label col-md-3">Consumer</label>
+                                <label class="control-label col-md-3">Perkerra Payments to Plot Holders in Millions</label>
                                 <div class="col-md-9">
-                                  <input name="consumer"  class="form-control" type="text">
+                                  <input name="perkerra_payments_to_plot_holders_millions"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Perkerra Seed Maize Tonnes</label>
+                                <div class="col-md-9">
+                                  <input name="perkerra_seed_maize_tonnes"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">West Kano Gross Value of Crop Millions</label>
+                                <div class="col-md-9">
+                                  <input name="west_kano_gross_value_of_crop_millions"  class="form-control" type="text">
                                 </div>
                               </div>
 
                                 <div class="form-group">
-                                <label class="control-label col-md-3">Transport</label>
+                                <label class="control-label col-md-3">West Kano Gross Value of Crop Millions</label>
                                 <div class="col-md-9">
-                                  <input name="transport"  class="form-control" type="text">
+                                  <input name="west_kano_hectares_cropped"  class="form-control" type="text">
                                 </div>
                               </div>
+
+
+
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">West Kano No of Plot Holders</label>
+                                <div class="col-md-9">
+                                  <input name="west_kano_number_of_plots_holders"  class="form-control" type="text">
+                                </div>
+                              </div>
+
 
                                 <div class="form-group">
-                                <label class="control-label col-md-3">Other Non Agricultural</label>
+                                <label class="control-label col-md-3">West Kano Paddy Yields Tonnes</label>
                                 <div class="col-md-9">
-                                  <input name="other_non_agricultur"  class="form-control" type="text">
+                                  <input name="west_kano_paddy_yields_tonnes"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                    <div class="form-group">
-                                <label class="control-label col-md-3">Unions</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">West Kano Payments to Plot HOlders in Millions</label>
                                 <div class="col-md-9">
-                                  <input name="unions"  class="form-control" type="text">
+                                  <input name="west_kano_payments_to_plot_holders_millions"  class="form-control" type="text">
                                 </div>
                               </div>
+
+
                               <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">

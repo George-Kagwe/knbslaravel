@@ -20,6 +20,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 
          <style>
 
@@ -188,6 +189,8 @@
         <!-- /top navigation -->
 
  <!-- page content -->
+       
+ <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
               
@@ -201,62 +204,61 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Classification of Revenue</center></h5>
+                              <h5><center>Agricultural Cooperatives</center></h5>
                               <br />
-                              <button class="btn btn-danger" onclick="add_conservancy()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
+                              <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
                               <br />
-                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
+                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="150%">
                                       <thead>
                                         <tr>
-                                            <th>ID</th>
-                                          <th>Income Taxes/profits/capital gains</th>
-                                           <th>Property Taxes</th>
-                                           <th>VAT</th>
-                                           <th>Other goods and srvices</th>
-                                            <th>Taxes internationaltrade transactions</th>
-                                             <th>Other taxes not else  where
-                                             classified</th>
-                                              <th>Total tax revenue</th>
-                                               <th>Social  security contributions</th>
-                                                <th>Property income</th>
-                                               <th>Sale goods and services</th>
-                                                <th>Fines penalties and forfeitures</th>
-                                                <th>Repayments domestic lending</th>
-                                               
-                                                <th>Other receipts not else where classified</th>
-                                               <th>Total Non Tax revenue</th>
-                                              <th> Total</th>
+                                         
+                                           <th>ID</th>                                          
+                                           <th>Coffee</th>
+                                           <th>Cotton</th>
+                                           <th>Pyrethrum</th>
+                                            <th>Sugar</th>
+                                           <th>Dairy</th>
+                                           <th>Multi Purpose</th>
+                                           <th>Farm Purchase</th>
+                                           <th>Fisheries</th>
+                                           <th>Other Agricultural</th>
+                                           <th>Saccos</th>
+                                           <th>Consumer</th>
+                                           <th>Housing</th>
+                                            <th>Craftsmen</th>
+                                            <th>Transport</th>
+                                            <th>Other non Agricultural</th>
+                                            <th>Unions</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                         <?php foreach($post as $post){?>
+                                      <?php foreach($post as $post){?>
                                              <tr>
-                                              
-                                               <td>{{$post->economicrevenue_id}}</td>
+                                                <td>{{$post->cooperatives_id}}</td>
+                                                <td>{{$post->coffee}}</td>
+                                                <td>{{$post->cotton}}</td>
+                                                <td>{{$post->pyrethrum}}</td>
+                                                <td>{{$post->sugar}}</td>
+                                                <td>{{$post->dairy}}</td>
+                                                <td>{{$post->multi_purpose}}</td>
+                                               <td>{{$post->farm_purchase}}</td>
+                                                <td>{{$post->fisheries}}</td>
+                                                <td>{{$post->other_agricultural}}</td>
+                                               <td>{{$post->saccos}}</td>
+                                                <td>{{$post->consumer}}</td>
+                                               <td>{{$post->housing}}</td>
+                                                <td>{{$post->craftsmen}}</td>
+                                                <td>{{$post->transport}}</td>
+                                                <td>{{$post->other_non_agricultur}}</td>
+                                                <td>{{$post->unions}}</td>  
+                                                <td>{{$post->year}}</td>                                      
 
-                                                <td>{{$post->taxes_income_profits_capitalgains}}</td>
-                                                <td>{{$post->taxes_property}}</td>
-                                                <td>{{$post->taxes_vat}}</td>
-                                                <td>{{$post->taxes_othergoodsandservices}}</td>
-                                                <td>{{$post->taxes_internationaltrade_transactions}}</td>
-                                                <td>{{$post->other_taxes_notelsewhereclasified}}</td>
-                                                <td>{{$post->totaltax_revenue}}</td>
-                                                <td>{{$post->socialsecuritycontributions}}</td>
-                                                <td>{{$post->property_income}}</td>                                      
-                                                <td>{{$post->sale_goodsandservices}}</td>
-                                                <td>{{$post->fines_penaltiesandforfeitures}}</td>
-                                                <td>{{$post->repayments_domesticlending}}</td>
-                                                <td>{{$post->other_receiptsnotelsewhereclassified}}</td>
-                                                <td>{{$post->total_nontax_revenue}}</td>
-                                                <td>{{$post->total}}</td>
-                                                <td>{{$post->year}}</td>
-                                               
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit_conservancy(<?php echo $post->economicrevenue_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->cooperatives_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -268,25 +270,23 @@
 
                                       <tfoot>
                                         <tr>
-                                                                                      <th>ID</th>
-
-                                          <th>Income Taxes/profits/capital gains</th>
-                                           <th>Property Taxes</th>
-                                           <th>VAT</th>
-                                           <th>Other goods and srvices</th>
-                                            <th>Taxes internationaltrade transactions</th>
-                                             <th>Other taxes not else  where
-                                             classified</th>
-                                              <th>Total tax revenue</th>
-                                               <th>Social  security contributions</th>
-                                                <th>Property income</th>
-                                               <th>Sale goods and services</th>
-                                                <th>Fines penalties and forfeitures</th>
-                                                <th>Repayments domestic lending</th>
-                                               
-                                                <th>Other receipts not else where classified</th>
-                                               <th>Total Non Tax revenue</th>
-                                              <th> Total</th>
+                                          <th>ID</th>                                          
+                                           <th>Coffee</th>
+                                           <th>Cotton</th>
+                                           <th>Pyrethrum</th>
+                                            <th>Sugar</th>
+                                           <th>Dairy</th>
+                                           <th>Multi Purpose</th>
+                                           <th>Farm Purchase</th>
+                                           <th>Fisheris</th>
+                                           <th>Other Agricultural</th>
+                                           <th>Saccos</th>
+                                           <th>Consumer</th>
+                                           <th>Housing</th>
+                                            <th>Craftsmen</th>
+                                            <th>Transport</th>
+                                            <th>Other non Agricultural</th>
+                                            <th>Unions</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -323,7 +323,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          taxes_income_profits_capitalgains: {
+                                          coffee: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -333,7 +333,7 @@
                                                 }
                                               }
                                           },
-                                          taxes_property: {
+                                          cotton: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -343,135 +343,7 @@
                                                 }
                                               }
                                           },
-                                          taxes_vat: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          taxes_othergoodsandservices: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           taxes_internationaltrade_transactions: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                         other_taxes_notelsewhereclassified: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                             totaltax_revenue: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             socialsecuritycontributions: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             property_income: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             sale_goodsandservices: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             fines_penaltiesandforfeitures: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             repayments_domesticlending: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             other_receiptsnotelsehereclassified: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                             total_nontax_revenue: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           total: {
+                                          pyrethrum: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -481,6 +353,161 @@
                                                 }
                                               }
                                           }
+                                          
+                                              sugar: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+
+                                               dairy: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+                                               multi_purpose: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+
+                                               farm_purchase: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+
+                                               fisheries : {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+
+                                               other_agricultural: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+
+                                          
+                                               saccos: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }  ,
+
+
+                                          
+                                               consumer: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                               housing: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                               craftsmen: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                               transport: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+
+                                               other_non_agricultur: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+
+                                               unions: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          }
+
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -489,7 +516,7 @@
                       var table;
 
 
-                      function add_conservancy()
+                      function add()
                       {
                         save_method = 'add';
                         $('#form')[0].reset(); // reset form on modals
@@ -497,9 +524,9 @@
                       //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
                       }
 
-                      function edit_conservancy(id)
+                      function edit(id)
                       {
-                        var url = '{{ route("fetchRevenue", ":id") }}';
+                        var url = '{{ route("fetchCooperatives", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -512,23 +539,29 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.economicrevenue_id);
-                              $('[name="taxes_income_profits_capitalgains"]').val(data.taxes_income_profits_capitalgains);
-                              $('[name="taxes_property"]').val(data.taxes_property);
-                              $('[name="taxes_vat"]').val(data.taxes_vat);
-                                 $('[name="taxes_othergoodsandservices"]').val(data.taxes_othergoodsandservices);
-                              $('[name="taxes_internationaltrade_transactions"]').val(data.taxes_internationaltrade_transactions);
-                              $('[name="other_taxes_notelsewhereclassified"]').val(data.other_taxes_notelsewhereclassified);
-                              $('[name="totaltax_revenue"]').val(data.totaltax_revenue);
-                              $('[name="socialsecuritycontributions"]').val(data.socialsecuritycontributions);
-                              $('[name="property_income"]').val(data.property_income);
-                              $('[name="sale_goodsandservices"]').val(data.sale_goodsandservices);
-                              $('[name="fines_penaltiesandforfeitures"]').val(data.fines_penaltiesandforfeitures);
-                              $('[name="repayments_domesticlending"]').val(data.repayments_domesticlending);
-                           
-                              $('[name="other_receiptsnotelsehereclassified"]').val(data.other_receiptsnotelsehereclassified);
-                              $('[name="total_nontax_revenue"]').val(data.total_nontax_revenue);
-                              $('[name="total"]').val(data.total);
+                              $('[name="id"]').val(data.cooperatives_id);
+                              $('[name="coffee"]').val(data.coffee);
+                              $('[name="cotton"]').val(data.cotton);
+                              $('[name="pyrethrum"]').val(data.pyrethrum);
+                                 $('[name="sugar"]').val(data.sugar);
+                              $('[name="dairy"]').val(data.dairy);
+                              $('[name="multi_purpose"]').val(data.multi_purpose);
+                                 $('[name="farm_purchase"]').val(data.farm_purchase);
+                              $('[name="fisheries"]').val(data.fisheries);
+                              $('[name="other_agricultural"]').val(data.other_agricultural);
+                              
+                              
+                              $('[name="saccos"]').val(data.saccos);
+                              $('[name="consumer"]').val(data.consumer);
+
+                             $('[name="housing"]').val(data.housing);
+                              $('[name="craftsmen"]').val(data.craftsmen);
+
+                               $('[name="transport"]').val(data.transport);
+                              $('[name="other_non_agricultur"]').val(data.other_non_agricultur);
+                              $('[name="unions"]').val(data.unions);
+
+
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -549,14 +582,15 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeRevenue') }}";
+                            url = "{{ route('storeCooperatives') }}";
 
                         }
                         else
                         {
                            
-                       
-                          url = "{{ route('updateRevenue') }}";
+                          //  url = '{{ route("updateSugar", ":id") }}';
+                          // url=url.replace(':id', $('[name="id"]').val(data.area_id));
+                          url = "{{ route('updateCooperatives') }}";
                         }
                           
                       
@@ -569,7 +603,7 @@
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                   },
                               url : url,
-                              type: "Revenue",
+                              type: "POST",
                               data: data,
                               dataType: "JSON",
                               success: function(result)
@@ -598,28 +632,7 @@
                           
                           }});}
 
-                      function delete_conservancy(id)
-                      {
-                        if(confirm('Are you sure delete this data?'))
-                        {
-                          // ajax delete data from database
-                            $.ajax({
-                              url : "{{asset('/Agriculture/show/')}}",
-                              type: "finance",
-                              dataType: "JSON",
-                              success: function(data)
-                              {
-                                 
-                                 location.reload();
-                              },
-                              error: function (jqXHR, textStatus, errorThrown)
-                              {
-                                  alert('Error deleting data');
-                              }
-                          });
-
-                        }
-                      }
+                     
 
                       function myFunction() {
                               var x = document.getElementById("snackbar");
@@ -644,117 +657,127 @@
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes Income,Profits and Capital Gains </label>
+                                <label class="control-label col-md-3">Coffee</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="taxes_income_profits_capitalgains" class="form-control" type="text">
-                                  @if ($errors->has('taxes_income_profits_capitalgains'))
+                                 <input name="coffee" class="form-control" type="text">
+                                  @if ($errors->has('coffee'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('taxes_income_profits_capitalgains') }}</strong>
+                                        <strong>{{ $errors->first('coffee') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes Property</label>
+                                <label class="control-label col-md-3">Cotton</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_property"  class="form-control" type="text">
+                                  <input name="cotton"  class="form-control" type="text">
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes VAT</label>
+                                <label class="control-label col-md-3">Pyrethrum</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_vat"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Taxes of Other Goods and Services </label>
-                                <div class="col-md-9">
-                                  <input name="taxes_othergoodsandservices"  class="form-control" type="text">
+                                  <input name="pyrethrum"  class="form-control" type="text">
                                 </div>
                               </div>
                               
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Taxes of International Trade Transactions</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Sugar</label>
                                 <div class="col-md-9">
-                                  <input name="taxes_internationaltrade_transactions"  class="form-control" type="text">
+                                  <input name="sugar"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Dairy</label>
+                                <div class="col-md-9">
+                                  <input name="dairy"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Other Taxes not elsewhere Classified</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Multi Purpose</label>
                                 <div class="col-md-9">
-                                  <input name="other_taxes_notelsewhereclassified"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total Tax Revenue</label>
-                                <div class="col-md-9">
-                                  <input name="totaltax_revenue"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Social Security Contributions</label>
-                                <div class="col-md-9">
-                                  <input name="socialsecuritycontributions"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Property Income</label>
-                                <div class="col-md-9">
-                                  <input name="property_income"  class="form-control" type="text">
+                                  <input name="multi_purpose"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Sales of Goods and Services </label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Farm Purchase</label>
                                 <div class="col-md-9">
-                                  <input name="sale_goodsandservices"  class="form-control" type="text">
+                                  <input name="farm_purchase"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Fines,Penalties and Forfeitures</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Fisheris</label>
                                 <div class="col-md-9">
-                                  <input name="fines_penaltiesandforfeitures"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Repayments of Domestic Lending</label>
-                                <div class="col-md-9">
-                                  <input name="repayments_domesticlending"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Other Receipts not elsewhere Classified</label>
-                                <div class="col-md-9">
-                                  <input name="other_receiptsnotelsehereclassified"  class="form-control" type="text">
+                                  <input name="fisheries"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total Non Tax Revenue</label>
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Other Agricultural</label>
                                 <div class="col-md-9">
-                                  <input name="total_nontax_revenue"  class="form-control" type="text">
+                                  <input name="other_agricultural"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Sacco</label>
+                                <div class="col-md-9">
+                                  <input name="saccos"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Consumer</label>
+                                <div class="col-md-9">
+                                  <input name="consumer"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Housing</label>
+                                <div class="col-md-9">
+                                  <input name="housing"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Total</label>
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Craftsmen</label>
                                 <div class="col-md-9">
-                                  <input name="total"  class="form-control" type="text">
+                                  <input name="craftsmen"  class="form-control" type="text">
                                 </div>
                               </div>
 
 
+
+                                   <div class="form-group">
+                                <label class="control-label col-md-3">Consumer</label>
+                                <div class="col-md-9">
+                                  <input name="consumer"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Transport</label>
+                                <div class="col-md-9">
+                                  <input name="other_non_agricultur"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">Unions</label>
+                                <div class="col-md-9">
+                                  <input name="unions"  class="form-control" type="text">
+                                </div>
+                              </div>
                               <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
@@ -767,7 +790,7 @@
                                     <option value="2012">2012</option>
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
+                                    <option value="2015">2015</option
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
                                     <option value="2018">2018</option>
@@ -799,6 +822,7 @@
         
    </div>
   <!-- page content -->
+  <!-- page content -->
    
 
 
@@ -814,7 +838,7 @@
     </div>
 
     <!-- jQuery -->
-    <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> -->
+   <!-- <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script> --> -->
     <!-- Bootstrap -->
     <script src="{{asset('vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->

@@ -42,7 +42,7 @@ class agriculture_chemical_med_feed_input extends Controller
         
         $agriculture_chemical_med_feed_input =agriculture_chemical_med_feed_input_model::all();
         
-        return view('forms.agriculture.national.agriculture_chemical_med_feeds',['post' =>$agriculture_chemical_med_feed_input]);
+        return view('forms.agriculture.national.agriculture_chemical_med_feeds_input',['post' =>$agriculture_chemical_med_feed_input]);
     }
 
     /**
