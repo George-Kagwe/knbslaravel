@@ -12,7 +12,7 @@ use App\Models\Tourism\tourism_earnings_model;
 use View;
  
 //@Charles Ndirangu
-//Tourism Conference
+//Tourism Earnings
 class tourism_earnings extends Controller
 {
     /**
