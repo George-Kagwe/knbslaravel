@@ -37,7 +37,7 @@ class ClassifficationOfRevenue extends Controller
 
         $ClassifficationOfRevenue =ClassifficationOfRevenue_Model::all();
         
-        return view('forms.finance.ClassifficationOfRevenue',['post' =>$ClassifficationOfRevenue]);
+        return view('Forms.Finance.ClassifficationOfRevenue',['post' =>$ClassifficationOfRevenue]);
 
     }
 
