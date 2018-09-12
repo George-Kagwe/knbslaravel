@@ -42,10 +42,7 @@ class CDFAllocation extends Controller
                           ->get();
 
       
-        return view('forms.finance.CDFAllocation',
-                 
-                   ['post' =>$data,'counties' =>$counties,
-                   'subcounty' =>$subcounty]);
+        return view('Forms.Finance.CDFAllocation', ['post' =>$data,'counties' =>$counties,         'subcounty' =>$subcounty]);
     }
 
     /**
