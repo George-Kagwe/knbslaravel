@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Sugar cane Yield</center></h5>
+                              <h5><center>health registered active nhif members by county</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -216,8 +216,8 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
+                                           <th>formal</th>
+                                              <th>informal</th>                                     
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -226,14 +226,14 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->cdf_allocation_id}}</td>
+                                                <td>{{$post->member_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->cdf_amount}}</td>                                             
+                                                <td>{{$post->formal}}</td>
+                                                 <td>{{$post->informal}}</td>                                             
                                                 <td>{{$post->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->cdf_allocation_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->member_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,10 +245,10 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
+                                        <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
+                                           <th>formal</th>
+                                              <th>informal</th>                                     
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -305,7 +305,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          county_id: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -315,7 +315,7 @@
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          formal: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -325,7 +325,7 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          informal: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -335,26 +335,7 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           average_yield_tonnes_per_ha: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          }
+                                         
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -373,7 +354,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchCDF", ":id") }}';
+                        var url = '{{ route("fetchmemberN", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,11 +367,12 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.cdf_allocation_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="cdf_amount"]').val(data.cdf_amount);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="id"]').val(data.member_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="formal"]').val(data.formal);
+                              
+                              $('[name="informal"]').val(data.informal);   
+                               $('[name="year"]').val(data.year);                                         
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -410,7 +392,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeCDF') }}";
+                            url = "{{ route('storememberN') }}";
 
                         }
                         else
@@ -418,7 +400,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateCDF') }}";
+                          url = "{{ route('updatememberN') }}";
                         }
                           
                       
@@ -486,20 +468,14 @@
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               
-                             
-                              <div class="form-group">
-                                <label class="control-label col-md-3">CDF Amount</label>
-                                <div class="col-md-9">
-                                  <input name="cdf_amount"  class="form-control" type="text">
-                                </div>
-                              </div>
+                          
                            
                               
                               
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_id">
                                     <option value="">please select</option>
                                     
 
@@ -514,21 +490,17 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Sub County</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
-                                    <option value="">please select</option>
                                     
-
-                                       <?php foreach($subcounty as $subcounty){?>
-                                            
-                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">formal</label>
+                                <div class="col-md-9">
+                                  <input name="formal"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">informal</label>
+                                <div class="col-md-9">
+                                  <input name="informal"  class="form-control" type="text">
                                 </div>
                               </div>
 

@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Sugar cane Yield</center></h5>
+                              <h5><center>health nutritional status of women</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -214,11 +214,13 @@
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
-                                           <th>Year</th>
+                                           <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>Undernutrition</th>
+                                           <th>Normal</th>
+                                           <th>Overweight</th>
+                                                <th>Obese</th>                                 
+                                           
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -226,14 +228,16 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->cdf_allocation_id}}</td>
+                                                <td>{{$post->nutrition_adult_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->cdf_amount}}</td>                                             
-                                                <td>{{$post->year}}</td>                                      
+                                                <td>{{$post->undernutrition}}</td>
+                                                          <td>{{$post->normal}}</td>                                      
+                                                <td>{{$post->overweight}}</td>
+                                                  <td>{{$post->obese}}</td>
+                                                                                         
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->cdf_allocation_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->nutrition_adult_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,11 +249,12 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
-                                           <th>Year</th>
+                                                    <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>Undernutrition</th>
+                                           <th>Normal</th>
+                                           <th>Overweight</th>
+                                                <th>Obese</th> 
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -305,7 +310,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          county_id: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -315,7 +320,7 @@
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          undernutrition: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -325,7 +330,7 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          normal: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -335,7 +340,7 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                         overweight: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -345,7 +350,8 @@
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
+
+                                           obese: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -354,7 +360,7 @@
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          }
+                                          },
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -373,7 +379,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchCDF", ":id") }}';
+                        var url = '{{ route("fetchadult", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,11 +392,12 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.cdf_allocation_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="cdf_amount"]').val(data.cdf_amount);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="id"]').val(data.nutrition_adult_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="undernutrition"]').val(data.undernutrition);
+                              
+                              $('[name="normal"]').val(data.normal);
+                                  $('[name="overweight"]').val(data.overweight);                        $('[name="obese"]').val(data.obese);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -410,7 +417,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeCDF') }}";
+                            url = "{{ route('storeadult') }}";
 
                         }
                         else
@@ -418,7 +425,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateCDF') }}";
+                          url = "{{ route('updateadult') }}";
                         }
                           
                       
@@ -486,20 +493,14 @@
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               
-                             
-                              <div class="form-group">
-                                <label class="control-label col-md-3">CDF Amount</label>
-                                <div class="col-md-9">
-                                  <input name="cdf_amount"  class="form-control" type="text">
-                                </div>
-                              </div>
+                          
                            
                               
                               
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_id">
                                     <option value="">please select</option>
                                     
 
@@ -514,49 +515,32 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Sub County</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
-                                    <option value="">please select</option>
                                     
-
-                                       <?php foreach($subcounty as $subcounty){?>
-                                            
-                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
-                                </div>
-                              </div>
-
-                                 <div class="form-group">
-                                <label class="control-label col-md-3">Year</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">undernutrition</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
-                                    <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                  </select>
+                                  <input name="undernutrition"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">normal</label>
+                                <div class="col-md-9">
+                                  <input name="normal"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">overweight</label>
+                                <div class="col-md-9">
+                                  <input name="overweight"  class="form-control" type="text">
                                 </div>
                               </div>
 
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">obese</label>
+                                <div class="col-md-9">
+                                  <input name="obese"  class="form-control" type="text">
+                                </div>
+                              </div>
 
 
                              

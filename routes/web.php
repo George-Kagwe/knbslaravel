@@ -75,6 +75,90 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
 
+Route::get('health_registered_active_nhif_members_by_county/', 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@index')->name('health_registered_active_nhif_members_by_county');
+   Route::get('memberN/fetch/{id}', array('as' => 'fetchmemberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@show'));
+    Route::get('memberN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@get_subcounties'));
+Route::post('memberN/store', array('as' => 'storememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@store'));
+Route::post('memberN/update', array('as' => 'updatememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@update'));
+
+Route::get('health_insurance_coverage_by_counties_and_types/', 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@index')->name('health_insurance_coverage_by_counties_and_types');
+   Route::get('insuranceN/fetch/{id}', array('as' => 'fetchinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@show'));
+    Route::get('insuranceN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@get_subcounties'));
+Route::post('insuranceN/store', array('as' => 'storeinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@store'));
+Route::post('insuranceN/update', array('as' => 'updateinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@update'));
+
+Route::get('health_registered_medical_laboratories_by_counties/', 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@index')->name('health_registered_medical_laboratories_by_counties');
+   Route::get('med/fetch/{id}', array('as' => 'fetchmed', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@show'));
+    Route::get('med/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@get_subcounties'));
+Route::post('med/store', array('as' => 'storemed', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@store'));
+Route::post('med/update', array('as' => 'updatemed', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@update'));
+
+
+Route::get('health_distributionofoutpatientvisitsbytypeofhealthcareprovider/', 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@index')->name('health_distributionofoutpatientvisitsbytypeofhealthcareprovider');
+   Route::get('privateN/fetch/{id}', array('as' => 'fetchprivateN', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@show'));
+    Route::get('privateN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@get_subcounties'));
+Route::post('privateN/store', array('as' => 'storeprivateN', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@store'));
+Route::post('privateN/update', array('as' => 'updateprivateN', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@update'));
+
+
+Route::get('health_current_use_of_contraception_by_county/', 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@index')->name('health_current_use_of_contraception_by_county');
+   Route::get('contraception/fetch/{id}', array('as' => 'fetchcontraception', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@show'));
+    Route::get('contraception/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@get_subcounties'));
+Route::post('contraception/store', array('as' => 'storecontraception', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@store'));
+Route::post('contraception/update', array('as' => 'updatecontraception', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@update'));
+
+
+Route::get('health_nutritional_status_of_women/', 'Forms\Health\HealthNutritionalStatusOfWomen@index')->name('health_nutritional_status_of_women');
+   Route::get('adult/fetch/{id}', array('as' => 'fetchadult', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@show'));
+    Route::get('adult/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@get_subcounties'));
+Route::post('adult/store', array('as' => 'storeadult', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@store'));
+Route::post('adult/update', array('as' => 'updateadult', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@update'));
+
+
+Route::get('health_nutritional_status_of_children/', 'Forms\Health\HealthNutritionalStatusOfChildren@index')->name('health_nutritional_status_of_children');
+   Route::get('child/fetch/{id}', array('as' => 'fetchchild', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@show'));
+    Route::get('child/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@get_subcounties'));
+Route::post('child/store', array('as' => 'storechild', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@store'));
+Route::post('child/update', array('as' => 'updatechild', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@update'));
+
+
+
+Route::get('health_use_of_mosquito_nets_by_children/', 'Forms\Health\HealthUseOfMosquitoNetsByChildren@index')->name('health_use_of_mosquito_nets_by_children');
+   Route::get('mosquito/fetch/{id}', array('as' => 'fetchmosquito', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@show'));
+    Route::get('mosquito/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@get_subcounties'));
+Route::post('mosquito/store', array('as' => 'storemosquito', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@store'));
+Route::post('mosquito/update', array('as' => 'updatemosquito', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@update'));
+
+
+Route::get('health_hiv_aids_awareness_and_testing/', 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@index')->name('health_hiv_aids_awareness_and_testing');
+   Route::get('awareness/fetch/{id}', array('as' => 'fetchawareness', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@show'));
+    Route::get('awareness/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@get_subcounties'));
+Route::post('awareness/store', array('as' => 'storeawareness', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@store'));
+Route::post('awareness/update', array('as' => 'updateawareness', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@update'));
+
+
+Route::get('health_maternal_care/', 'Forms\Health\HealthMaternalCare@index')->name('health_maternal_care');
+   Route::get('maternal/fetch/{id}', array('as' => 'fetchmaternal', 'uses' => 'Forms\Health\HealthMaternalCare@show'));
+    Route::get('maternal/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthMaternalCare@get_subcounties'));
+Route::post('maternal/store', array('as' => 'storematernal', 'uses' => 'Forms\Health\HealthMaternalCare@store'));
+Route::post('maternal/update', array('as' => 'updatematernal', 'uses' => 'Forms\Health\HealthMaternalCare@update'));
+
+
+   Route::get('health_immunization_rate/', 'Forms\Health\HealthImmunizationRate@index')->name('health_immunization_rate');
+   Route::get('immunization/fetch/{id}', array('as' => 'fetchimmunization', 'uses' => 'Forms\Health\HealthImmunizationRate@show'));
+    Route::get('immunization/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthImmunizationRate@get_subcounties'));
+Route::post('immunization/store', array('as' => 'storeimmunization', 'uses' => 'Forms\Health\HealthImmunizationRate@store'));
+Route::post('immunization/update', array('as' => 'updateimmunization', 'uses' => 'Forms\Health\HealthImmunizationRate@update'));
+
+
+   Route::get('health_registeredmedicalpersonnel/', 'Forms\Health\HealthRegisteredMedicalPersonnel@index')->name('health_registeredmedicalpersonnel');
+   Route::get('medical/fetch/{id}', array('as' => 'fetchmedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@show'));
+    Route::get('medical/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@get_subcounties'));
+Route::post('medical/store', array('as' => 'storemedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@store'));
+Route::post('medical/update', array('as' => 'updatemedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@update'));
+
+
+
 Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
 
     Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');

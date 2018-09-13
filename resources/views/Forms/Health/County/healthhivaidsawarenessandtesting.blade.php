@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Sugar cane Yield</center></h5>
+                              <h5><center>health hiv aids awareness and testing</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -216,9 +216,10 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
-                                           <th>Year</th>
+                                           <th>male</th>
+                                           <th>female</th>
+                                           <th>hiv awareness</th>                                      
+                                           
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -226,14 +227,14 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->cdf_allocation_id}}</td>
+                                                <td>{{$post->awareness_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->cdf_amount}}</td>                                             
-                                                <td>{{$post->year}}</td>                                      
+                                                <td>{{$post->male}}</td>
+                                                          <td>{{$post->female}}</td>                                      
+                                                <td>{{$post->hiv_awareness}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->cdf_allocation_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->awareness_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,11 +246,11 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
+                                              <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
-                                           <th>Year</th>
+                                           <th>male</th>
+                                           <th>female</th>
+                                           <th>hiv awareness</th> 
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -305,7 +306,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          county_id: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -315,7 +316,7 @@
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          male: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -325,7 +326,7 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          female: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -335,26 +336,16 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                         hiv_awereness: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter a letter '
                                                   },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
+                                                   alpha: {                                                    
+                                                    message: 'Must be a letter'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          }
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -373,7 +364,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchCDF", ":id") }}';
+                        var url = '{{ route("fetchawareness", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,11 +377,12 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.cdf_allocation_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="cdf_amount"]').val(data.cdf_amount);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="id"]').val(data.awareness_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="male"]').val(data.male);
+                              
+                              $('[name="female"]').val(data.female);
+                                  $('[name="hiv_awareness"]').val(data.hiv_awareness);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -410,7 +402,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeCDF') }}";
+                            url = "{{ route('storeawareness') }}";
 
                         }
                         else
@@ -418,7 +410,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateCDF') }}";
+                          url = "{{ route('updateawareness') }}";
                         }
                           
                       
@@ -486,20 +478,14 @@
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               
-                             
-                              <div class="form-group">
-                                <label class="control-label col-md-3">CDF Amount</label>
-                                <div class="col-md-9">
-                                  <input name="cdf_amount"  class="form-control" type="text">
-                                </div>
-                              </div>
+                          
                            
                               
                               
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_id">
                                     <option value="">please select</option>
                                     
 
@@ -514,49 +500,27 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Sub County</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
-                                    <option value="">please select</option>
                                     
-
-                                       <?php foreach($subcounty as $subcounty){?>
-                                            
-                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
-                                </div>
-                              </div>
-
-                                 <div class="form-group">
-                                <label class="control-label col-md-3">Year</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">male</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
-                                    <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                  </select>
+                                  <input name="male"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">female</label>
+                                <div class="col-md-9">
+                                  <input name="female"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">hiv awareness</label>
+                                <div class="col-md-9">
+                                  <input name="hiv_awareness"  class="form-control" type="text">
                                 </div>
                               </div>
 
+                                
 
 
                              

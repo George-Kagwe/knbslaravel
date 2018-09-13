@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Sugar cane Yield</center></h5>
+                              <h5><center>Health Registered Medical Personnel</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -216,8 +216,9 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
+                                           <th>Medical Personnel</th>
+                                           <th>No Of Personnel</th>       
+                                           <th>Gender</th>                                    
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -226,14 +227,14 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->cdf_allocation_id}}</td>
+                                                <td>{{$post->registered_medical_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->cdf_amount}}</td>                                             
+                                                <td>{{$post->medical_personnel}}</td>
+                                                <td>{{$post->no_of_personnel}}</td>  <td>{{$post->gender}}</td>                                            
                                                 <td>{{$post->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->cdf_allocation_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->registered_medical_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,10 +246,11 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
+                                         <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>CDF Amount</th>                                        
+                                           <th>Medical Personnel</th>
+                                           <th>No Of Personnel</th>       
+                                           <th>Gender</th>                                    
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -286,26 +288,26 @@
                         var  url =urls.replace(':id', id);
 
                         $.get(url, function(data) {
-                            var select = $('form select[name=subcounty_name]');
+                            var select = $('form select[name=medical_personnel]');
                             
                             select.empty();
 
                             $.each(JSON.parse(data),function(key,value) {
                               
-                                 select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
+                                 select.append('<option value=' + value.medical_personnel_id + '>' +value.medicalpersonnel+ '</option>');
                             });
                         });
                     });
                         });
 
-                        $('#form').bootstrapValidator({
+                       $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
                                           invalid: 'glyphicon glyphicon-remove',
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          county_id: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -315,7 +317,7 @@
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          medical_personnel_id: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -325,7 +327,7 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          no_of_personnel: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -335,26 +337,17 @@
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          gender: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter a letter '
                                                   },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
+                                                   alpha: {                                                    
+                                                    message: 'Must be a letter'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          }
+                                          
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -373,7 +366,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchCDF", ":id") }}';
+                        var url = '{{ route("fetchmedical", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,10 +379,11 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.cdf_allocation_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="cdf_amount"]').val(data.cdf_amount);
+                              $('[name="id"]').val(data.registered_medical_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="medical_personnel_id"]').val(data.medical_personnel_id);
+                              $('[name="no_of_personnel"]').val(data.no_of_personnel);
+                               $('[name="gender"]').val(data.gender);
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -410,7 +404,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeCDF') }}";
+                            url = "{{ route('storemedical') }}";
 
                         }
                         else
@@ -418,7 +412,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateCDF') }}";
+                          url = "{{ route('updatemedical') }}";
                         }
                           
                       
@@ -487,19 +481,13 @@
                             <div class="form-body">
                               
                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">CDF Amount</label>
-                                <div class="col-md-9">
-                                  <input name="cdf_amount"  class="form-control" type="text">
-                                </div>
-                              </div>
                            
                               
                               
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_id">
                                     <option value="">please select</option>
                                     
 
@@ -514,16 +502,16 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Sub County</label>
+                                  <div class="form-group"  id="medicalpersonneldiv">
+                                <label class="control-label col-md-3">Medical Personnel</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
+                                  <select class="form-control" id="medical_personnel_id" name="medical_personnel_id">
                                     <option value="">please select</option>
                                     
 
-                                       <?php foreach($subcounty as $subcounty){?>
+                                       <?php foreach($medicalpersonnel as $medicalpersonnel){?>
                                             
-                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
+                                                 <option value="{{$medicalpersonnel->medical_personnel_id}}">{{$medicalpersonnel->medical_personnel}}</option>
                                                
                                                
                                             
@@ -531,6 +519,22 @@
                                   </select>
                                 </div>
                               </div>
+
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">No Of Personnel</label>
+                                <div class="col-md-9">
+                                  <input name="no_of_personnel"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">Gender</label>
+                                <div class="col-md-9">
+                                  <input name="gender"  class="form-control" type="text">
+                                </div>
+                              </div>
+                           
+                            
+                           
 
                                  <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
