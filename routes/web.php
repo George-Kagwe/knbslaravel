@@ -959,6 +959,61 @@ Route::post('population_populationbysexhouseholdsdensityandcensusyears/update', 
 //show a specific id
 Route::get('population_populationbysexhouseholdsdensityandcensusyears/approved/{id}', array('as' => 'fetchPopulationByPopDensityCensus', 'uses' => 'Forms\Population\population_populationbysexhouseholdsdensityandcensusyears@show'));
 
+//@Charles 
+//Energy County Datasets 
+ 
+//@Charles
+//fetch
+Route::get('energy_averagemonthlypumppricesforfuelbycategory/', 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@index')->name('energy_averagemonthlypumppricesforfuelbycategory');
+
+//@Charles
+//post to save
+Route::post('energy_averagemonthlypumppricesforfuelbycategory/store', array('as' => 'storeFuelPrices', 'uses' => 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@store'));
+
+//@Charles 
+//post to update
+Route::post('energy_averagemonthlypumppricesforfuelbycategory/update', array('as' => 'updateFuelPrices', 'uses' => 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@update'));
+
+//@Charles
+//show a specific id
+Route::get('energy_averagemonthlypumppricesforfuelbycategory/approved/{id}', array('as' => 'fetchFuelPrices', 'uses' => 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@show'));
+
+//@Charles 
+//Political and Administration Datasets 
+ 
+//@Charles
+//fetch
+Route::get('political_and_administrative_units_administrative_unit/', 'Forms\Administration\administrative_unit@index')->name('administrative_unit');
+
+//@Charles
+//post to save
+Route::post('political_and_administrative_units_administrative_unit/store', array('as' => 'storeNoOfAdministrativeUnits', 'uses' => 'Forms\Administration\administrative_unit@store'));
+
+//@Charles 
+//post to update
+Route::post('political_and_administrative_units_administrative_unit/update', array('as' => 'updateNoOfAdministrativeUnits', 'uses' => 'Forms\Administration\administrative_unit@update'));
+
+//@Charles
+//show a specific id
+Route::get('political_and_administrative_units_administrative_unit/approved/{id}', array('as' => 'fetchNoOfAdministrativeUnits', 'uses' => 'Forms\Administration\administrative_unit@show'));
+
+ 
+//@Charles
+//fetch
+Route::get('political_and_administrative_units_political_units/', 'Forms\Administration\political_units@index')->name('political_units');
+
+//@Charles
+//post to save
+Route::post('political_and_administrative_units_political_units/store', array('as' => 'storeNoOfPoliticalUnitsPerWard', 'uses' => 'Forms\Administration\political_units@store'));
+
+//@Charles 
+//post to update
+Route::post('political_and_administrative_units_political_units/update', array('as' => 'updateNoOfPoliticalUnitsPerWard', 'uses' => 'Forms\Administration\political_units@update'));
+
+//@Charles
+//show a specific id
+Route::get('political_and_administrative_units_political_units/approved/{id}', array('as' => 'fetchNoOfPoliticalUnitsPerWard', 'uses' => 'Forms\Administration\political_units@show'));
+
 
 // Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
 // Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
