@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Forms\ICT;
- 
+namespace App\Http\Controllers\Forms\Trade;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\Models\ICT\ict_kihibs_households_owned_ict_equipment_services_model;
+use App\Models\Trade\trade_and_commerce_trading_centres_model;
 use View;
 use Illuminate\Support\Facades\DB;
 
 //@Charles Ndirangu
 //households owned ict equipments
 
-class ict_kihibs_households_owned_ict_equipment_services extends Controller
+
+class trade_and_commerce_trading_centres extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,20 +24,19 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
      */
      protected $rules = [ 
         'county_id'=>'required',
-        'computer'=>'required|numeric',
-        'television'=>'required|numeric',
-        'households'=>'required|numeric',
+        'trading_centre_id'=>'required|numeric',
+        'number'=>'required|numeric',
+        'year'=>'required|numeric',
 
     ];
     public function index()
     {
-        $ict_equipments = DB::table('ict_kihibs_households_owned_ict_equipment_services')
-               ->join('health_counties', 'ict_kihibs_households_owned_ict_equipment_services.county_id', '=', 'health_counties.county_id')->orderBy('household_id', 'ASC')->get();
+        $trading_centers = DB::table('trade_and_commerce_trading_centres')
+               ->join('health_counties', 'trade_and_commerce_trading_centres.county_id', '=', 'health_counties.county_id')->orderBy('tradeandcommerce_centre_id', 'ASC')->get();
 
         $counties = DB::table('health_counties')->get();
-
-        return view('Forms.ICT.ict_kihibs_households_owned_ict_equipment_services', ['ict_items' =>$ict_equipments,'counties' =>$counties]);
- 
+        
+        return view('Forms.Trade.trade_and_commerce_trading_centres', ['trading_centers' =>$trading_centers,'counties' =>$counties]);
     }
 
     /**
@@ -58,10 +58,10 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                          'county_id'=>'required',
-                          'computer'=>'required|numeric',
-                          'television'=>'required|numeric',
-                          'households'=>'required|numeric',
+                            'county_id'=>'required',
+                            'trading_centre_id'=>'required|numeric',
+                            'number'=>'required|numeric',
+                            'year'=>'required|numeric',
         ]);
         
         if ($validator->fails())
@@ -69,13 +69,13 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $ict_items = new ict_kihibs_households_owned_ict_equipment_services_model();
-            $ict_items->county_id =$request->county_name;
-            $ict_items->computer=$request->computer;
-            $ict_items->television=$request->television;         
-            $ict_items->households=$request->households;
-            $ict_items->save();
-             return response()->json($ict_items);
+            $trading_centers = new trade_and_commerce_trading_centres_model();
+            $trading_centers->county_id =$request->county_name;
+            $trading_centers->trading_centers=$request->trading_centre_id;
+            $trading_centers->number=$request->number;         
+            $trading_centers->year=$request->year;
+            $trading_centers->save();
+             return response()->json($trading_centers);
            echo json_encode(array("status" => TRUE));
 
         }
@@ -87,13 +87,13 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($household_id)
+    public function show($tradeandcommerce_centre_id)
     {
         
-          $ict_item = ict_kihibs_households_owned_ict_equipment_services_model::findOrfail($household_id);
+          $trading_center = trade_and_commerce_trading_centres_model::findOrfail($tradeandcommerce_centre_id);
      
       
-         echo json_encode($ict_item);
+         echo json_encode($trading_center);
     }
 
     /**
@@ -116,11 +116,11 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
      */
     public function update(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
+         $validator = \Validator::make($request->all(), [
                           'county_id'=>'required',
-                          'computer'=>'required|numeric',
-                          'television'=>'required|numeric',
-                          'households'=>'required|numeric',
+                          'trading_centre_id'=>'required|numeric',
+                          'number'=>'required|numeric',
+                          'year'=>'required|numeric',
         ]);
         
         if ($validator->fails())
@@ -128,13 +128,13 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $ict_item =ict_kihibs_households_owned_ict_equipment_services_model::find($request->id);
-            $ict_item->county_id =$request->county_name;
-            $ict_item->computer=$request->computer;
-            $ict_item->television=$request->television;         
-            $ict_item->households=$request->households;
-            $ict_item->save();
-             return response()->json($ict_item);
+            $trading_ctr =trade_and_commerce_trading_centres_model::find($request->id);
+            $trading_ctr->county_id =$request->county_name;
+            $trading_ctr->trading_centers=$request->trading_centre_id;
+            $trading_ctr->number=$request->number;         
+            $trading_ctr->year=$request->year;
+            $trading_ctr->save();
+             return response()->json($trading_ctr);
            echo json_encode(array("status" => TRUE));
         }
     }

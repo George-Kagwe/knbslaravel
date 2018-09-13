@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Households that own ICT Equipment Services</center></h5>
+                              <h5><center>Trading Centers</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,25 +215,24 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                           <th>Trading Center Name</th>
+                                           <th>Number of Trading Centers</th>                                        
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($ict_items as $ict_item){?>
+                                      <?php foreach($trading_centers as $center){?>
                                              <tr>
-                                                <td>{{$ict_item->household_id}}</td>
-                                                <td>{{$ict_item->county_name}}</td>
-                                                <td>{{$ict_item->computer}}</td>
-                                                <td>{{$ict_item->television}}</td>
-                                                <td>{{$ict_item->households}}</td>                                             
-                                                <td>{{$ict_item->year}}</td>                                      
+                                                <td>{{$center->tradeandcommerce_centre_id}}</td>
+                                                <td>{{$center->county_name}}</td>
+                                                <td>{{$center->trading_centre}}</td>
+                                                <td>{{$center->number}}</td>                                             
+                                                <td>{{$center->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $ict_item->household_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $center->tradeandcommerce_centre_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,11 +244,11 @@
 
                                       <tfoot>
                                         <tr>
-                                           <th>ID</th>                                          
+                                          <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                           <th>Trading Center Name</th>
+                                           <th>Number of Trading Centers</th>                                        
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -276,28 +275,28 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-                      //$(document).ready( function () {
-                     //      $(function() {
-                    //$('select[name=counties]').change(function() {
+                      $(document).ready( function () {
+                           $(function() {
+                    $('select[name=county_name]').change(function() {
                      
 
-                     //   var urls = '{{ route("fetchCounties", ":id") }}'; 
-                       // var id =$(this).val();
-                        //var  url =urls.replace(':id', id);
+                        var urls = '{{ route("fetchCounties", ":id") }}'; 
+                        var id =$(this).val();
+                        var  url =urls.replace(':id', id);
 
-//                        $.get(url, function(data) {
-  //                          var select = $('form select[name=television]');
+                        $.get(url, function(data) {
+                            var select = $('form select[name=trading_centre]');
                             
-    //                        select.empty();
+                            select.empty();
 
-      //                      $.each(JSON.parse(data),function(key,value) {
+                            $.each(JSON.parse(data),function(key,value) {
                               
-        //                         select.append('<option value=' + value.subcounty_id + '>' +value.television+ '</option>');
-          //                  });
-            //            });
-              //      });
-                //        });
-$(document).ready( function () {
+                                 select.append('<option value=' + value.subcounty_id + '>' +value.trading_centre+ '</option>');
+                            });
+                        });
+                    });
+                        });
+
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -373,7 +372,7 @@ $(document).ready( function () {
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchHouseholdICTItems", ":id") }}';
+                        var url = '{{ route("fetchCDF", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,11 +385,10 @@ $(document).ready( function () {
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.household_id);
+                              $('[name="id"]').val(data.tradeandcommerce_centre_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="computer"]').val(data.computer);
-                              $('[name="television"]').val(data.television);  
-                              $('[name="households"]').val(data.households);
+                              $('[name="trading_centre"]').val(data.subcounty_id);
+                              $('[name="number"]').val(data.number);
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -411,7 +409,7 @@ $(document).ready( function () {
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeHouseholdICTItems') }}";
+                            url = "{{ route('storeCDF') }}";
 
                         }
                         else
@@ -419,7 +417,7 @@ $(document).ready( function () {
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateHouseholdICTItems') }}";
+                          url = "{{ route('updateCDF') }}";
                         }
                           
                       
@@ -486,44 +484,82 @@ $(document).ready( function () {
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-
+                              
+                             
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Number of Trading Centers</label>
+                                <div class="col-md-9">
+                                  <input name="number"  class="form-control" type="text">
+                                </div>
+                              </div>
+                           
+                              
+                              
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="computer" name="computer">
+                                  <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
                                     
 
                                        <?php foreach($counties as $counties){?>
                                             
                                                  <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-   
-                                       <?php }?>
+                                               
+                                               
+                                            
+                                             <?php }?>
                                   </select>
                                 </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Number of Computers</label>
+                                  <div class="form-group"  id="subcountydiv">
+                                <label class="control-label col-md-3">Trading Center</label>
                                 <div class="col-md-9">
-                                  <input name="computer"  class="form-control" type="text">
+                                  <select class="form-control" id="trading_centre" name="trading_centre">
+                                    <option value="">please select</option>
+                                    
+
+                                       <?php foreach($trading_ctr as $trading_ctr){?>
+                                            
+                                                 <option value="{{$trading_ctr->trading_centre_id}}">{{$trading_ctr->trading_centre}}</option>
+                                               
+                                               
+                                            
+                                             <?php }?>
+                                  </select>
                                 </div>
                               </div>
-                           
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Number of Televisions</label>
+
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
-                                  <input name="television"  class="form-control" type="text">
+                                  <select class="form-control" id="year" name="year">
+                                    <option value="">please select</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                  </select>
                                 </div>
                               </div>
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Number of Households with ICT Items</label>
-                                <div class="col-md-9">
-                                  <input name="households"  class="form-control" type="text">
-                                </div>
-                              </div>
-                           
+
+
+
+                             
+
                               
                               </div>
 

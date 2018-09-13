@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -202,9 +202,7 @@
 
                   <div class="row">
                      <div class="col-lg-12">
-                       
-     
-                              <h5><center>Households that own ICT Equipment Services</center></h5>
+                              <h5><center>Administrative Units</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,41 +213,44 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                           <th>Sub County Name</th>
+                                           <th>No of Divisions</th> 
+                                           <th>No of Locations</th> 
+                                           <th>No of Sub-Locations</th>                                        
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($ict_items as $ict_item){?>
+                                      <?php foreach($units as $units){?>
                                              <tr>
-                                                <td>{{$ict_item->household_id}}</td>
-                                                <td>{{$ict_item->county_name}}</td>
-                                                <td>{{$ict_item->computer}}</td>
-                                                <td>{{$ict_item->television}}</td>
-                                                <td>{{$ict_item->households}}</td>                                             
-                                                <td>{{$ict_item->year}}</td>                                      
+                                                <td>{{$units->political_unit_id}}</td>
+                                                <td>{{$units->county_name}}</td>
+                                                <td>{{$units->subcounty_name}}</td>
+                                                <td>{{$units->divisions}}</td>
+                                                <td>{{$units->locations}}</td>
+                                                <td>{{$units->sub_locations}}</td>                                             
+                                                <td>{{$units->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $ict_item->household_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $units->political_unit_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
 
-
-
                                       </tbody>
 
                                       <tfoot>
                                         <tr>
-                                           <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                          <th>ID</th>                                          
+                                            <th>County Name</th>
+                                           <th>Sub County Name</th>
+                                           <th>No of Divisions</th>
+                                           <th>No of Locations</th> 
+                                           <th>No of Sub-Locations</th>                                            
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -276,28 +277,28 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-                      //$(document).ready( function () {
-                     //      $(function() {
-                    //$('select[name=counties]').change(function() {
+                      $(document).ready( function () {
+                           $(function() {
+                    $('select[name=county_name]').change(function() {
                      
 
-                     //   var urls = '{{ route("fetchCounties", ":id") }}'; 
-                       // var id =$(this).val();
-                        //var  url =urls.replace(':id', id);
+                        var urls = '{{ route("fetchCounties", ":id") }}'; 
+                        var id =$(this).val();
+                        var  url =urls.replace(':id', id);
 
-//                        $.get(url, function(data) {
-  //                          var select = $('form select[name=television]');
+                        $.get(url, function(data) {
+                            var select = $('form select[name=subcounty_name]');
                             
-    //                        select.empty();
+                            select.empty();
 
-      //                      $.each(JSON.parse(data),function(key,value) {
+                            $.each(JSON.parse(data),function(key,value) {
                               
-        //                         select.append('<option value=' + value.subcounty_id + '>' +value.television+ '</option>');
-          //                  });
-            //            });
-              //      });
-                //        });
-$(document).ready( function () {
+                                 select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
+                            });
+                        });
+                    });
+                        });
+
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -305,56 +306,57 @@ $(document).ready( function () {
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          county_name: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please Select a county '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be an option from the counties'
+                                                }
+                                              }
+                                          },
+                                          subcounty_name: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please sub County '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a Sub County within a county'
+                                                }
+                                              }
+                                          },
+                                          divisions: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please Enter a Number of Divisions per Sub-County '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          locations: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please Enter a Number of Locations per Sub-County '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          sub_locations: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please Enter a Number of sub-Locations per Location '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           average_yield_tonnes_per_ha: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          }
+                                         
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -373,7 +375,7 @@ $(document).ready( function () {
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchHouseholdICTItems", ":id") }}';
+                        var url = '{{ route("fetchNoOfAdministrativeUnits", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,12 +388,12 @@ $(document).ready( function () {
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.household_id);
+                              $('[name="id"]').val(data.political_unit_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="computer"]').val(data.computer);
-                              $('[name="television"]').val(data.television);  
-                              $('[name="households"]').val(data.households);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="subcounty_name"]').val(data.subcounty_id);
+                              $('[name="divisions"]').val(data.divisions);
+                              $('[name="locations"]').val(data.locations);
+                              $('[name="sub_locations"]').val(data.sub_locations);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -411,7 +413,7 @@ $(document).ready( function () {
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeHouseholdICTItems') }}";
+                            url = "{{ route('storeNoOfAdministrativeUnits') }}";
 
                         }
                         else
@@ -419,7 +421,7 @@ $(document).ready( function () {
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateHouseholdICTItems') }}";
+                          url = "{{ route('updateNoOfAdministrativeUnits') }}";
                         }
                           
                       
@@ -486,48 +488,50 @@ $(document).ready( function () {
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="computer" name="computer">
+                                  <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    
-
-                                       <?php foreach($counties as $counties){?>
-                                            
-                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-   
-                                       <?php }?>
+                                    <?php foreach($counties as $counties){?>
+                                            <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                    <?php }?>
                                   </select>
                                 </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Number of Computers</label>
+                              <div class="form-group"  id="subcountydiv">
+                               <label class="control-label col-md-3">Sub County</label>
                                 <div class="col-md-9">
-                                  <input name="computer"  class="form-control" type="text">
+                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
+                                    <option value="">please select</option>
+                                          <?php foreach($subcounty as $subcounty){?>
+                                            <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
+                                          <?php }?>
+                                  </select>
                                 </div>
-                              </div>
-                           
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Number of Televisions</label>
-                                <div class="col-md-9">
-                                  <input name="television"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Number of Households with ICT Items</label>
-                                <div class="col-md-9">
-                                  <input name="households"  class="form-control" type="text">
-                                </div>
-                              </div>
-                           
-                              
                               </div>
 
-                            
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">number of Divisions</label>
+                                <div class="col-md-9">
+                                  <input name="divisions"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">number of Locations</label>
+                                <div class="col-md-9">
+                                  <input name="locations"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">number of Sub Locations</label>
+                                <div class="col-md-9">
+                                  <input name="sub_locations"  class="form-control" type="text">
+                                </div>
+                              </div>                           
+                     
                       </form>
                   </div>
                       <div class="modal-footer">

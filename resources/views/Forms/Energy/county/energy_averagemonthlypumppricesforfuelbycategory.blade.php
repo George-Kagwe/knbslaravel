@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Households that own ICT Equipment Services</center></h5>
+                              <h5><center>Average Monthly Pump Prices For Fuel By Category</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,25 +215,28 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                           <th>Month</th>
+                                           <th>Super Petrol</th>
+                                           <th>Diesel</th>
+                                           <th>Kerosene</th>
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($ict_items as $ict_item){?>
+                                      <?php foreach($fuel_prices as $prices){?>
                                              <tr>
-                                                <td>{{$ict_item->household_id}}</td>
-                                                <td>{{$ict_item->county_name}}</td>
-                                                <td>{{$ict_item->computer}}</td>
-                                                <td>{{$ict_item->television}}</td>
-                                                <td>{{$ict_item->households}}</td>                                             
-                                                <td>{{$ict_item->year}}</td>                                      
+                                                <td>{{$prices->count_id}}</td>
+                                                <td>{{$prices->county_name}}</td>
+                                                <td>{{$prices->month_id}}</td>
+                                                <td>{{$prices->super_petrol}}</td>
+                                                <td>{{$prices->diesel}}</td>
+                                                <td>{{$prices->kerosene}}</td>                                            
+                                                <td>{{$prices->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $ict_item->household_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $prices->count_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -247,9 +250,11 @@
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                           <th>Month in numeric(1 to 12)</th>
+                                           <th>Super Petrol</th>
+                                           <th>Diesel</th>
+                                           <th>Kerosene</th>
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -276,28 +281,9 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-                      //$(document).ready( function () {
-                     //      $(function() {
-                    //$('select[name=counties]').change(function() {
-                     
+                      $(document).ready( function () {
+                         
 
-                     //   var urls = '{{ route("fetchCounties", ":id") }}'; 
-                       // var id =$(this).val();
-                        //var  url =urls.replace(':id', id);
-
-//                        $.get(url, function(data) {
-  //                          var select = $('form select[name=television]');
-                            
-    //                        select.empty();
-
-      //                      $.each(JSON.parse(data),function(key,value) {
-                              
-        //                         select.append('<option value=' + value.subcounty_id + '>' +value.television+ '</option>');
-          //                  });
-            //            });
-              //      });
-                //        });
-$(document).ready( function () {
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -305,7 +291,7 @@ $(document).ready( function () {
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          month_id: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -315,46 +301,36 @@ $(document).ready( function () {
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          super_petrol: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please Super Petrol Price '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          diesel: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter Diesel Price '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          kerosene: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter kerosene Price '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          }
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -373,7 +349,7 @@ $(document).ready( function () {
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchHouseholdICTItems", ":id") }}';
+                        var url = '{{ route("fetchFuelPrices", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,11 +362,12 @@ $(document).ready( function () {
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.household_id);
+                              $('[name="id"]').val(data.count_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="computer"]').val(data.computer);
-                              $('[name="television"]').val(data.television);  
-                              $('[name="households"]').val(data.households);
+                              $('[name="month_id"]').val(data.month_id);
+                              $('[name="super_petrol"]').val(data.super_petrol);
+                              $('[name="diesel"]').val(data.diesel);
+                              $('[name="kerosene"]').val(data.kerosene);
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -401,17 +378,14 @@ $(document).ready( function () {
                               alert('Error get data from ajax');
                           }
                       });
-                      }
-
-
-
+                      } 
                       function save()
                       {
                         var url;
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeHouseholdICTItems') }}";
+                            url = "{{ route('storeFuelPrices') }}";
 
                         }
                         else
@@ -419,7 +393,7 @@ $(document).ready( function () {
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateHouseholdICTItems') }}";
+                          url = "{{ route('updateFuelPrices') }}";
                         }
                           
                       
@@ -486,48 +460,66 @@ $(document).ready( function () {
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-
                               <div class="form-group">
-                                <label class="control-label col-md-3">County</label>
+                               <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="computer" name="computer">
+                                  <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    
-
-                                       <?php foreach($counties as $counties){?>
-                                            
-                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-   
-                                       <?php }?>
+                                     <?php foreach($counties as $counties){?>   
+                                          <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                      <?php }?>
                                   </select>
                                 </div>
                               </div>
-
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Computers</label>
+                                <label class="control-label col-md-3">Enter Month in numeric i.e between 1 and 12</label>
                                 <div class="col-md-9">
-                                  <input name="computer"  class="form-control" type="text">
+                                  <input name="month_id"  class="form-control" type="text">
                                 </div>
                               </div>
-                           
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Televisions</label>
+                                <label class="control-label col-md-3">Super Petrol Price</label>
                                 <div class="col-md-9">
-                                  <input name="television"  class="form-control" type="text">
+                                  <input name="super_petrol"  class="form-control" type="text">
                                 </div>
                               </div>
-                              
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Households with ICT Items</label>
+                                <label class="control-label col-md-3">Diesel Price</label>
                                 <div class="col-md-9">
-                                  <input name="households"  class="form-control" type="text">
+                                  <input name="diesel"  class="form-control" type="text">
                                 </div>
                               </div>
-                           
-                              
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Kerosene Price</label>
+                                <div class="col-md-9">
+                                  <input name="kerosene"  class="form-control" type="text">
+                                </div>
                               </div>
-
-                            
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Year</label>
+                                <div class="col-md-9">
+                                  <select class="form-control" id="year" name="year">
+                                    <option value="">please select</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                  </select>
+                                </div>
+                              </div>
+                              </div>
                       </form>
                   </div>
                       <div class="modal-footer">
