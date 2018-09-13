@@ -141,8 +141,8 @@ class administrative_unit extends Controller
             $administrative_unit->county_id =$request->county_name;
             $administrative_unit->subcounty_id=$request->subcounty_name;
             $administrative_unit->divisions=$request->divisions;
-            $administrative_units->locations=$request->locations;
-            $administrative_units->sub_locations=$request->sub_locations;           
+            $administrative_unit->locations=$request->locations;
+            $administrative_unit->sub_locations=$request->sub_locations;           
             $administrative_unit->save();
              return response()->json($administrative_unit);
            echo json_encode(array("status" => TRUE));

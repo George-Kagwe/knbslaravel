@@ -91,7 +91,7 @@
             </div>
             <!-- /menu profile quick info -->
 
-            <br />
+           
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -193,20 +193,13 @@
  <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
-              
-
-                                
-                                
                 <div class="container" style="background:#ffffff">
                   <div id="snackbar">Success</div>
-
                   <div class="row">
                      <div class="col-lg-12">
-                              <h5><center>Administrative Units</center></h5>
-                              <br />
+                            <h5><center>Political Units</center></h5>
+                              
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
-                              <br />
-                              <br />
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
@@ -217,26 +210,22 @@
                                            <th>No of Divisions</th> 
                                            <th>No of Locations</th> 
                                            <th>No of Sub-Locations</th>                                        
-                                           <th>Year</th>
-                                           <th style="width:85px;">Action
+                                          <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                       <?php foreach($units as $units){?>
                                              <tr>
-                                                <td>{{$units->political_unit_id}}</td>
+                                                <td>{{$units->administrative_unit_id}}</td>
                                                 <td>{{$units->county_name}}</td>
                                                 <td>{{$units->subcounty_name}}</td>
                                                 <td>{{$units->divisions}}</td>
                                                 <td>{{$units->locations}}</td>
-                                                <td>{{$units->sub_locations}}</td>                                             
-                                                <td>{{$units->year}}</td>                                      
-
-                                                <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $units->political_unit_id;?>)">Update Record</button>
-                                               
-                                                </td>
+                                                <td>{{$units->sub_locations}}</td>
+                                                /<td>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $units->administrative_unit_id;?>)">Update Record</button>
+                                               </td>
                                               </tr>
                                              <?php }?>
 
@@ -250,8 +239,7 @@
                                            <th>No of Divisions</th>
                                            <th>No of Locations</th> 
                                            <th>No of Sub-Locations</th>                                            
-                                           <th>Year</th>
-                                           <th style="width:85px;">Action
+                                          <th style="width:85px;">Action
                                           </th>
                                          
                                         </tr>
@@ -388,7 +376,7 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.political_unit_id);
+                              $('[name="id"]').val(data.administrative_unit_id);
                               $('[name="county_name"]').val(data.county_id);
                               $('[name="subcounty_name"]').val(data.subcounty_id);
                               $('[name="divisions"]').val(data.divisions);

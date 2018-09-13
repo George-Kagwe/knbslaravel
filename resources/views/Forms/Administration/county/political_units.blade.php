@@ -193,22 +193,13 @@
  <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
-              
-
-                                
-                                
                 <div class="container" style="background:#ffffff">
                   <div id="snackbar">Success</div>
-
                   <div class="row">
                      <div class="col-lg-12">
-                       
-     
-                              <h5><center>Political Units</center></h5>
+                            <h5><center>Political Units</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
-                              <br />
-                              <br />
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
@@ -216,8 +207,7 @@
                                            <th>ID</th>                                          
                                            <th>County Name</th>
                                            <th>Sub County Name</th>
-                                           <th>No of Units per County Ward</th>                                        
-                                           <th>Year</th>
+                                           <th>No of Units per County Ward</th>   
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -228,17 +218,13 @@
                                                 <td>{{$units->political_unit_id}}</td>
                                                 <td>{{$units->county_name}}</td>
                                                 <td>{{$units->subcounty_name}}</td>
-                                                <td>{{$units->county_ward}}</td>                                             
-                                                <td>{{$units->year}}</td>                                      
-
+                                                <td>{{$units->county_ward}}</td>
                                                 <td>
                                                   <button class="btn btn-success" onclick="edit(<?php echo $units->political_unit_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
-
-
 
                                       </tbody>
 
@@ -247,8 +233,7 @@
                                           <th>ID</th>                                          
                                             <th>County Name</th>
                                            <th>Sub County Name</th>
-                                           <th>No of Units per County Ward</th>                                       
-                                           <th>Year</th>
+                                           <th>No of Units per County Ward</th>                                    
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -370,7 +355,6 @@
                               $('[name="county_name"]').val(data.county_id);
                               $('[name="subcounty_name"]').val(data.subcounty_id);
                               $('[name="county_ward"]').val(data.county_ward);
-                              $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -495,33 +479,7 @@
                                 <div class="col-md-9">
                                   <input name="county_ward"  class="form-control" type="text">
                                 </div>
-                              </div>
-                           
-
-                              <div class="form-group">
-                               <label class="control-label col-md-3">Year</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
-                                    <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                  </select>
-                                </div>
-                              </div>
+                             </div>
                               </div>                            
                       </form>
                   </div>
