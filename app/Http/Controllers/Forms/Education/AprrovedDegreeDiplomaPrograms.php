@@ -25,6 +25,7 @@ class AprrovedDegreeDiplomaPrograms extends Controller
       'approved_private_university_degreeprogrammes'=>'required|numeric',
       'approved_degree_programmes'=>'required|numeric',
       'year'=>'required|numeric'
+          
                               
                         
     ];
