@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Households that own ICT Equipment Services</center></h5>
+                              <h5><center>Population of mobile money subscribers over 18 years</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,29 +215,29 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                           <th>Mobile Money</th>
+                                           <th>Mobile Banking</th>                                        
+                                           <th>Population</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($ict_items as $ict_item){?>
+                                      <?php foreach($mobile_subscriber as $subscriber){?>
                                              <tr>
-                                                <td>{{$ict_item->household_id}}</td>
-                                                <td>{{$ict_item->county_name}}</td>
-                                                <td>{{$ict_item->computer}}</td>
-                                                <td>{{$ict_item->television}}</td>
-                                                <td>{{$ict_item->households}}</td>
+                                                <td>{{$subscriber->proportion_id}}</td>
+                                                <td>{{$subscriber->county_name}}</td>
+                                                <td>{{$subscriber->mobile_money}}</td>
+                                                <td>{{$subscriber->mobile_banking}}</td>
+                                                <td>{{$subscriber->population}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $ict_item->household_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $subscriber->proportion_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
 
-
+ 
 
                                       </tbody>
 
@@ -245,9 +245,9 @@
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
-                                           <th>Households</th>
+                                           <th>Mobile Money</th>
+                                           <th>Mobile Banking</th>                                        
+                                           <th>Population</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -284,13 +284,13 @@
                         //var  url =urls.replace(':id', id);
 
 //                        $.get(url, function(data) {
-  //                          var select = $('form select[name=television]');
+  //                          var select = $('form select[name=mobile_banking]');
                             
     //                        select.empty();
 
       //                      $.each(JSON.parse(data),function(key,value) {
                               
-        //                         select.append('<option value=' + value.subcounty_id + '>' +value.television+ '</option>');
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.mobile_banking+ '</option>');
           //                  });
             //            });
               //      });
@@ -303,7 +303,7 @@ $(document).ready( function () {
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          mobile_money: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -313,7 +313,7 @@ $(document).ready( function () {
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          mobile_banking: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -323,7 +323,7 @@ $(document).ready( function () {
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          population: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -332,31 +332,11 @@ $(document).ready( function () {
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          },
-                                          production_tonnes: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           average_yield_tonnes_per_ha: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          }
-                                      }
-                                  });
+                                      },
+                                       }   
+                                        });
                           $('#table_id').DataTable();
-                      } );
+                      });
                       var save_method; //for save method string
                       var table;
 
@@ -371,7 +351,7 @@ $(document).ready( function () {
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchHouseholdICTItems", ":id") }}';
+                        var url = '{{ route("fetchPopMobileMoney", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -384,11 +364,11 @@ $(document).ready( function () {
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.household_id);
+                              $('[name="id"]').val(data.proportion_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="computer"]').val(data.computer);
-                              $('[name="television"]').val(data.television);  
-                              $('[name="households"]').val(data.households);
+                              $('[name="mobile_money"]').val(data.mobile_money);
+                              $('[name="mobile_banking"]').val(data.mobile_banking);  
+                              $('[name="population"]').val(data.population);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -408,7 +388,7 @@ $(document).ready( function () {
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeHouseholdICTItems') }}";
+                            url = "{{ route('storePopMobileMoney') }}";
 
                         }
                         else
@@ -416,7 +396,7 @@ $(document).ready( function () {
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateHouseholdICTItems') }}";
+                          url = "{{ route('updatePopMobileMoney') }}";
                         }
                           
                       
@@ -501,23 +481,23 @@ $(document).ready( function () {
                               </div>
 
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Computers</label>
+                                <label class="control-label col-md-3">mobile money</label>
                                 <div class="col-md-9">
-                                  <input name="computer"  class="form-control" type="text">
+                                  <input name="mobile_money"  class="form-control" type="text">
                                 </div>
                               </div>
                            
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Televisions</label>
+                                <label class="control-label col-md-3">mobile banking</label>
                                 <div class="col-md-9">
-                                  <input name="television"  class="form-control" type="text">
+                                  <input name="mobile_banking"  class="form-control" type="text">
                                 </div>
                               </div>
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Households with ICT Items</label>
+                                <label class="control-label col-md-3">Total population of the subscribers</label>
                                 <div class="col-md-9">
-                                  <input name="households"  class="form-control" type="text">
+                                  <input name="population"  class="form-control" type="text">
                                 </div>
                               </div>
                            

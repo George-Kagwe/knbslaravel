@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Households that own ICT Equipment Services</center></h5>
+                              <h5><center>Household With TVs</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,29 +215,33 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
+                                           <th>Digital TV</th>
+                                           <th>Pay Tv</th>                                        
+                                           <th>Free to Air</th>
+                                           <th>IP Tv</th>
+                                           <th>None</th>
                                            <th>Households</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($ict_items as $ict_item){?>
+                                      <?php foreach($tvs as $tv){?>
                                              <tr>
-                                                <td>{{$ict_item->household_id}}</td>
-                                                <td>{{$ict_item->county_name}}</td>
-                                                <td>{{$ict_item->computer}}</td>
-                                                <td>{{$ict_item->television}}</td>
-                                                <td>{{$ict_item->households}}</td>
+                                                <td>{{$tv->household_id}}</td>
+                                                <td>{{$tv->county_name}}</td>
+                                                <td>{{$tv->digital_tv}}</td>
+                                                <td>{{$tv->pay_tv}}</td>
+                                                <td>{{$tv->free_to_air}}</td>
+                                                <td>{{$tv->ip_tv}}</td>
+                                                <td>{{$tv->none}}</td>
+                                                <td>{{$tv->households}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $ict_item->household_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $tv->household_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
-
-
 
                                       </tbody>
 
@@ -245,8 +249,11 @@
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
+                                           <th>Digital TV</th>
+                                           <th>Pay Tv</th>                                        
+                                           <th>Free to Air</th>
+                                           <th>IP Tv</th>
+                                           <th>None</th>
                                            <th>Households</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -284,13 +291,13 @@
                         //var  url =urls.replace(':id', id);
 
 //                        $.get(url, function(data) {
-  //                          var select = $('form select[name=television]');
+  //                          var select = $('form select[name=pay_tv]');
                             
     //                        select.empty();
 
       //                      $.each(JSON.parse(data),function(key,value) {
                               
-        //                         select.append('<option value=' + value.subcounty_id + '>' +value.television+ '</option>');
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.pay_tv+ '</option>');
           //                  });
             //            });
               //      });
@@ -303,50 +310,60 @@ $(document).ready( function () {
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          digital_tv: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of Digital Tv '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          pay_tv: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of Pay Tvs'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          free_to_air: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of free to air tvs'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          ip_tv: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please count of ip tvs '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
+                                           none: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of those that dont have '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           households: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of households '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
@@ -371,7 +388,7 @@ $(document).ready( function () {
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchHouseholdICTItems", ":id") }}';
+                        var url = '{{ route("fetchHouseholdTVs", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -386,8 +403,11 @@ $(document).ready( function () {
 
                               $('[name="id"]').val(data.household_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="computer"]').val(data.computer);
-                              $('[name="television"]').val(data.television);  
+                              $('[name="digital_tv"]').val(data.digital_tv);
+                              $('[name="pay_tv"]').val(data.pay_tv);  
+                              $('[name="free_to_air"]').val(data.free_to_air);
+                              $('[name="ip_tv"]').val(data.ip_tv);
+                              $('[name="none"]').val(data.none);
                               $('[name="households"]').val(data.households);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -408,7 +428,7 @@ $(document).ready( function () {
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeHouseholdICTItems') }}";
+                            url = "{{ route('storeHouseholdTVs') }}";
 
                         }
                         else
@@ -416,7 +436,7 @@ $(document).ready( function () {
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateHouseholdICTItems') }}";
+                          url = "{{ route('updateHouseholdTVs') }}";
                         }
                           
                       
@@ -489,39 +509,51 @@ $(document).ready( function () {
                                 <div class="col-md-9">
                                   <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    
-
-                                       <?php foreach($counties as $counties){?>
-                                            
-                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-   
-                                       <?php }?>
+                                        <?php foreach($counties as $counties){?>
+                                            <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                        <?php }?>
                                   </select>
                                 </div>
                               </div>
 
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Computers</label>
+                                <label class="control-label col-md-3">Digital Tv</label>
                                 <div class="col-md-9">
-                                  <input name="computer"  class="form-control" type="text">
+                                  <input name="digital_tv"  class="form-control" type="text">
                                 </div>
                               </div>
                            
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Televisions</label>
+                                <label class="control-label col-md-3">Pay Tv</label>
                                 <div class="col-md-9">
-                                  <input name="television"  class="form-control" type="text">
+                                  <input name="pay_tv"  class="form-control" type="text">
                                 </div>
                               </div>
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Households with ICT Items</label>
+                                <label class="control-label col-md-3">Free to Air</label>
+                                <div class="col-md-9">
+                                  <input name="free_to_air"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">IP Tv</label>
+                                <div class="col-md-9">
+                                  <input name="ip_tv"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">None</label>
+                                <div class="col-md-9">
+                                  <input name="none"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Households</label>
                                 <div class="col-md-9">
                                   <input name="households"  class="form-control" type="text">
                                 </div>
                               </div>
-                           
-                              
                               </div>
 
                             
