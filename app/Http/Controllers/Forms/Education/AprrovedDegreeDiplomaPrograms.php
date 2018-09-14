@@ -18,7 +18,7 @@ class AprrovedDegreeDiplomaPrograms extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
      protected $rules =
     [
       'validated_diploma_programmes'=>'required|numeric',
@@ -34,7 +34,7 @@ class AprrovedDegreeDiplomaPrograms extends Controller
         
         $AprrovedDegreeDiplomaPrograms =AprrovedDegreeDiplomaPrograms_Model::all();
         
-        return view('forms.education.national.approveddegreediplomaprograms',['post' =>$AprrovedDegreeDiplomaPrograms]);
+        return view('Forms.Education.national.approveddegreediplomaprograms',['post' =>$AprrovedDegreeDiplomaPrograms]);
     }
 
     /**
