@@ -74,8 +74,7 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
-<<<<<<< HEAD
-=======
+
 
 Route::get('health_registered_active_nhif_members_by_county/', 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@index')->name('health_registered_active_nhif_members_by_county');
    Route::get('memberN/fetch/{id}', array('as' => 'fetchmemberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@show'));
@@ -160,7 +159,6 @@ Route::post('medical/store', array('as' => 'storemedical', 'uses' => 'Forms\Heal
 Route::post('medical/update', array('as' => 'updatemedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@update'));
 
 
->>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 
 Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
 
@@ -174,12 +172,6 @@ Route::post('cdf/update', array('as' => 'updateCDF', 'uses' => 'Forms\Finance\CD
 
 
 
-<<<<<<< HEAD
-
-      
-
-=======
->>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 
 Route::get('agriculture_area_under_sugarcane_harvested_production_avg_yield/', 'Forms\Agriculture\Agriculture_Sugar@index')->name('agriculture_area_under_sugarcane_harvested_production_avg_yield');
 Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@show'));
@@ -1137,6 +1129,39 @@ Route::post('ict_kihibs_population_by_ictequipment_and_servicesused/update', arr
 //@Charles
 //show a specific id
 Route::get('ict_kihibs_population_by_ictequipment_and_servicesused/approved/{id}', array('as' => 'fetchPopICTEquip', 'uses' => 'Forms\ICT\ict_kihibs_population_by_ictequipment_and_servicesused@show'));
+
+//@Charles
+//fetch
+Route::get('ict_kihibs_population_that_didntuseinternet_by_reason/', 'Forms\ICT\ict_kihibs_population_that_didntuseinternet_by_reason@index')->name('ict_kihibs_population_that_didntuseinternet_by_reason');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_population_that_didntuseinternet_by_reason/store', array('as' => 'storePopNoNetReason', 'uses' => 'Forms\ICT\ict_kihibs_population_that_didntuseinternet_by_reason@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_population_that_didntuseinternet_by_reason/update', array('as' => 'updatePopNoNetReason', 'uses' => 'Forms\ICT\ict_kihibs_population_that_didntuseinternet_by_reason@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_population_that_didntuseinternet_by_reason/approved/{id}', array('as' => 'fetchPopNoNetReason', 'uses' => 'Forms\ICT\ict_kihibs_population_that_didntuseinternet_by_reason@show'));
+
+
+//@Charles
+//fetch
+Route::get('ict_kihibs_population_who_used_internet_by_place/', 'Forms\ICT\ict_kihibs_population_who_used_internet_by_place@index')->name('ict_kihibs_population_who_used_internet_by_place');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_population_who_used_internet_by_place/store', array('as' => 'storePopNoNetPlace', 'uses' => 'Forms\ICT\ict_kihibs_population_who_used_internet_by_place@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_population_who_used_internet_by_place/update', array('as' => 'updatePopNoNetPlace', 'uses' => 'Forms\ICT\ict_kihibs_population_who_used_internet_by_place@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_population_who_used_internet_by_place/approved/{id}', array('as' => 'fetchPopNoNetPlace', 'uses' => 'Forms\ICT\ict_kihibs_population_who_used_internet_by_place@show'));
  
 // Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
 // Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
@@ -1529,8 +1554,7 @@ Route::get('Health/health_kihibs_health_insurance_cover_by_type', 'Endpoints\Hea
 //Health
 //health_kihibs_incidence_of_sickness_injury @fredrick muiruri
 Route::get('Health/health_kihibs_incidence_of_sickness_injury', 'Endpoints\Health@health_kihibs_incidence_of_sickness_injury')->name('health_kihibs_incidence_of_sickness_injury');
-<<<<<<< HEAD
-=======
+
 
 // @George Muchiri
 // governance_cases_forwarded_and_action_taken route
@@ -2587,7 +2611,6 @@ Route::post('female/store', array('as' => 'storefemale', 'uses' => 'Forms\Govern
 //post to update
 Route::post('female/update', array('as' => 'updatefemale', 'uses' => 'Forms\Governance\prevalence_female_circumcision_and_type@update'));
 
->>>>>>> 912a15197e0d9dde47ce26fcf9d404f5bd2731de
 
 //@George Muchiri
 
@@ -2638,7 +2661,7 @@ Route::post('revenue/store', array('as' => 'storeRevenue', 'uses' => 'Forms\Fina
 //post to update
 Route::post('revenue/update', array('as' => 'updateRevenue', 'uses' => 'Forms\Finance\ClassifficationOfRevenue@update'));
 
-<<<<<<< HEAD
+
 // @George Muchiri
 // @governance_murder_cases_and_convictions_obtained_by_high_court
 Route::get('governance/all_governance_murder_cases_and_convictions_obtained_by_high_court', 'Endpoints\Governance@get_governance_murder_cases_and_convictions_obtained_by_high_court')->name('governance_murder_cases_and_convictions_obtained_by_high_court');
@@ -2773,7 +2796,7 @@ Route::get('population/all_population_populationbysexhouseholdsdensityandcensusy
 'Endpoints\Population@get_population_populationbysexhouseholdsdensityandcensusyears')->name('population_populationbysexhouseholdsdensityandcensusyears');
 // @George Muchiri
 // @get_population_populationprojectionsbyselectedagegroup
-=======
+
 
 //@George Muchiri
 
@@ -2788,7 +2811,7 @@ Route::post('commodity/update', array('as' => 'updateCommodity', 'uses' => 'Form
 
 
 //@George Muchiri
->>>>>>> 912a15197e0d9dde47ce26fcf9d404f5bd2731de
+
 
 //fetch
 Route::get('finance_national_government_expenditure/', 'Forms\Finance\finance_national_government_expenditure@index')->name('finance_national_government_expenditure');
@@ -2910,7 +2933,7 @@ Route::post('irrigation/store', array('as' => 'storeIrrigation', 'uses' => 'Form
 //post to update
 Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@update'));
 
-<<<<<<< HEAD
+
 
 
 
@@ -2924,7 +2947,7 @@ Route::post('climate/update', array('as' => 'updateClimate', 'uses' => 'Forms\En
 
 
 
-<<<<<<< HEAD
+
 //Tourism
 // @Charles Ndirangu
 // Building  tourism_arrivals route
@@ -3040,7 +3063,7 @@ Route::get('health/all_health_sectors', 'Endpoints\Health@health_sectors')->name
 Route::get('health/all_health_subcounty', 'Endpoints\Health@health_subcounty')->name('health_subcounty');
 //Health
 //health_use_of_mosquito_nets_by_children @fredrick muiruri
-=======
+
 //@George Muchiri
  Route::get('land_and_climate_surface_area_by_category/', 'Forms\Environment\land_and_climate_surface_area_by_category@index')->name('land_and_climate_surface_area_by_category');
    Route::get('category/fetch/{id}', array('as' => 'fetchCategory', 'uses' => 'Forms\Environment\land_and_climate_surface_area_by_category@show'));
@@ -3115,11 +3138,7 @@ Route::get('floor/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>
  'Forms\Housing\housing_conditions_kihibs_main_floor_material@get_subcounties'));
 Route::post('floor/store', array('as' => 'storeFloor', 'uses' => 'Forms\Housing\housing_conditions_kihibs_main_floor_material@store'));
 Route::post('floor/update', array('as' => 'updateFloor', 'uses' => 'Forms\Housing\housing_conditions_kihibs_main_floor_material@update'));
->>>>>>> 912a15197e0d9dde47ce26fcf9d404f5bd2731de
 
-
-
-<<<<<<< HEAD
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 
 
@@ -3227,7 +3246,7 @@ Route::get('Housing/housing_conditions_kihibs_primary_type_of_cooking_appliance'
 //Housing
 //housing_conditions_kihibs_place_for_washing_hands_near_toilet @fredrick muiruri
 Route::get('Housing/housing_conditions_kihibs_place_for_washing_hands_near_toilet', 'Endpoints\Housing@housing_conditions_kihibs_place_for_washing_hands_near_toilet')->name('housing_conditions_kihibs_place_for_washing_hands_near_toilet');
-=======
+
 //@George Muchiri
  Route::get('housing_conditions_kihibs_main_roofing_material/', 'Forms\Housing\housing_conditions_kihibs_main_roofing_material@index')->name('housing_conditions_kihibs_main_roofing_material');
    Route::get('roof/fetch/{id}', array('as' => 'fetchRoof', 'uses' => 'Forms\Housing\housing_conditions_kihibs_main_roofing_material@show'));
@@ -3290,7 +3309,7 @@ Route::get('safe/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>
  'Forms\Housing\housing_conditions_kihibs_methods_used_to_make_water_safer@get_subcounties'));
 Route::post('safe/store', array('as' => 'storeSafe', 'uses' => 'Forms\Housing\housing_conditions_kihibs_methods_used_to_make_water_safer@store'));
 Route::post('safe/update', array('as' => 'updateSafe', 'uses' => 'Forms\Housing\housing_conditions_kihibs_methods_used_to_make_water_safer@update'));
->>>>>>> 912a15197e0d9dde47ce26fcf9d404f5bd2731de
+
 
 //@George Muchiri
  Route::get('housing_conditions_kihibs_owner_occupier_dwellings/', 'Forms\Housing\housing_conditions_kihibs_owner_occupier_dwellings@index')->name('housing_conditions_kihibs_owner_occupier_dwellings');
@@ -3333,9 +3352,9 @@ Route::post('toilet/update', array('as' => 'updateToilet', 'uses' =>
   'Forms\Housing\housing_conditions_kihibs_sharing_of_toilet_facility@update'));
 
 
-<<<<<<< HEAD
+
 Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
-=======
+
 
 //@George Muchiri
 Route::get('housing_conditions_kihibs_time_taken_to_fetch_drinking_water/', 
@@ -3351,7 +3370,7 @@ Route::post('time/store', array('as' => 'storeTime', 'uses' =>
 Route::post('time/update', array('as' => 'updateTime', 'uses' => 
   'Forms\Housing\housing_conditions_kihibs_time_taken_to_fetch_drinking_water@update'));
 
->>>>>>> 912a15197e0d9dde47ce26fcf9d404f5bd2731de
+
 
 
 //@George Muchiri
@@ -3479,7 +3498,7 @@ Route::post('supply/update', array('as' => 'updateSupply', 'uses' => 'Forms\Ener
 
 //@George Muchiri
 
-<<<<<<< HEAD
+
 // @George Muchiri
 // housing_conditions_kihibs_main_wall_material
 Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
@@ -3720,7 +3739,7 @@ Route::post('resources/update', array('as' => 'updateresources', 'uses' => 'Form
 
 //show a specific id
 Route::get('resources/action/{id}', array('as' => 'fetchresources', 'uses' => 'Forms\Environment\land_and_climate_trends_in_environment_and_natural_resources@show'));
-=======
+
 //fetch
 Route::get('energy_value_and_quantity_of_imports_exports/', 
   'Forms\Energy\energy_value_and_quantity_of_imports_exports@index')->name('energy_value_and_quantity_of_imports_exports');
@@ -3785,8 +3804,5 @@ Route::post('select/store', array('as' => 'storeSelect', 'uses' =>
   'Forms\Population\population_populationprojectionsbyselectedagegroup@store'));
 Route::post('select/update', array('as' => 'updateSelect', 'uses' => 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@update'));
-=======
-	
->>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
->>>>>>> 912a15197e0d9dde47ce26fcf9d404f5bd2731de
+
 
