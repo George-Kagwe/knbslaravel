@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Forms\Education;
+namespace App\Http\Controllers\Forms\Environment;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\Models\Education\AprrovedDegreeDiplomaPrograms_Model;
+use App\Models\Environment\environment_and_natural_resources_record_sale_goverment_products_Model;
 use View;
 
-
-
-class AprrovedDegreeDiplomaPrograms extends Controller
+class environment_and_natural_resources_record_sale_goverment_products extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,25 +18,26 @@ class AprrovedDegreeDiplomaPrograms extends Controller
      */
      protected $rules =
     [
-      'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+      'soft_wood'=>'required|numeric',
+      'fuelwood_charcoa'=>'required|numeric', 
+      'power_and_telegraph'=>'required|numeric', 
       'year'=>'required|numeric'
-          
                               
                         
     ];
     public function index()
     {
         
-        $AprrovedDegreeDiplomaPrograms =AprrovedDegreeDiplomaPrograms_Model::all();
+        $environment_and_natural_resources_record_sale_goverment_products =environment_and_natural_resources_record_sale_goverment_products_Model::all();
         
-        return view('forms.education.national.approveddegreediplomaprograms',['post' =>$AprrovedDegreeDiplomaPrograms]);
+        return view('forms.environment.national.naturalresourcesrecordsalegovermentproducts',['post' =>$environment_and_natural_resources_record_sale_goverment_products]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     
+
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -57,9 +55,9 @@ class AprrovedDegreeDiplomaPrograms extends Controller
     {
         
         $validator = \Validator::make($request->all(), [
-        'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+      'soft_wood'=>'required|numeric',
+      'fuelwood_charcoal'=>'required|numeric', 
+      'power_and_telegraph'=>'required|numeric',     
       'year'=>'required|numeric'
         ]);
         
@@ -68,13 +66,14 @@ class AprrovedDegreeDiplomaPrograms extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $diploma = new AprrovedDegreeDiplomaPrograms_Model();
-            $diploma->validated_diploma_programmes =$request->validated_diploma_programmes;
-            $diploma->approved_private_university_degreeprogrammes=$request->approved_private_university_degreeprogrammes;
-            $diploma->approved_degree_programmes=$request->approved_degree_programmes;
-            $diploma->year=$request->year;
-            $diploma->save();
-             return response()->json($diploma);
+            $products = new  environment_and_natural_resources_record_sale_goverment_products_Model();
+            $products->soft_wood =$request->soft_wood;
+            $products->fuelwood_charcoal=$request->fuelwood_charcoal;
+            $products->power_and_telegraph=$request->power_and_telegraph;
+            
+            $products->year=$request->year;
+            $products->save();
+             return response()->json($products);
            echo json_encode(array("status" => TRUE));
 
         }
@@ -86,14 +85,14 @@ class AprrovedDegreeDiplomaPrograms extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($approved_id)
+    public function show($record_id)
     {
        
          
-         $diploma = AprrovedDegreeDiplomaPrograms_Model::findOrfail($approved_id);
+         $products = environment_and_natural_resources_record_sale_goverment_products_Model::findOrfail($record_id);
 
   
-          echo json_encode($diploma);     
+          echo json_encode($products);     
     }
 
     /**
@@ -119,9 +118,9 @@ class AprrovedDegreeDiplomaPrograms extends Controller
         
                 
           $validator = \Validator::make($request->all(), [
-        'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+        'soft_wood'=>'required|numeric',
+      'fuelwood_charcoal'=>'required|numeric',  
+      'power_and_telegraph'=>'required|numeric',     
       'year'=>'required|numeric'
         ]);
         
@@ -131,13 +130,14 @@ class AprrovedDegreeDiplomaPrograms extends Controller
         }
         else{
          
-            $diploma =AprrovedDegreeDiplomaPrograms_Model::find($request->id);
-            $diploma->validated_diploma_programmes =$request->validated_diploma_programmes;
-            $diploma->approved_private_university_degreeprogrammes=$request->approved_private_university_degreeprogrammes;
-            $diploma->approved_degree_programmes=$request->approved_degree_programmes;
-            $diploma->year=$request->year;
-            $diploma->save();
-             return response()->json($diploma);
+            $products=environment_and_natural_resources_record_sale_goverment_products_Model::find($request->id);
+            $products->soft_wood=$request->soft_wood;
+            $products->fuelwood_charcoal=$request->fuelwood_charcoal;
+             $products->power_and_telegraph=$request->power_and_telegraph;
+           
+            $products->year=$request->year;
+            $products->save();
+             return response()->json($products);
            echo json_encode(array("status" => TRUE));
 
         }  

@@ -1,45 +1,43 @@
 <?php
 
-namespace App\Http\Controllers\Forms\Education;
+namespace App\Http\Controllers\Forms\Environment;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\Models\Education\AprrovedDegreeDiplomaPrograms_Model;
+use App\Models\Environment\environment_and_natural_resources_average_export_prices_ash_Model;
 use View;
 
-
-
-class AprrovedDegreeDiplomaPrograms extends Controller
+class environment_and_natural_resources_average_export_prices_ash extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
      protected $rules =
     [
-      'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+      'soda_ash'=>'required|numeric',
+      'fluorspar'=>'required|numeric', 
       'year'=>'required|numeric'
-          
                               
                         
     ];
     public function index()
     {
         
-        $AprrovedDegreeDiplomaPrograms =AprrovedDegreeDiplomaPrograms_Model::all();
+        $environment_and_natural_resources_average_export_prices_ash =environment_and_natural_resources_average_export_prices_ash_Model::all();
         
-        return view('forms.education.national.approveddegreediplomaprograms',['post' =>$AprrovedDegreeDiplomaPrograms]);
+        return view('forms.environment.national.naturalresourcesaverageexportpricesash',['post' =>$environment_and_natural_resources_average_export_prices_ash]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     
+
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -57,9 +55,8 @@ class AprrovedDegreeDiplomaPrograms extends Controller
     {
         
         $validator = \Validator::make($request->all(), [
-        'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+        'soda_ash'=>'required|numeric',
+      'fluorspar'=>'required|numeric',     
       'year'=>'required|numeric'
         ]);
         
@@ -68,13 +65,13 @@ class AprrovedDegreeDiplomaPrograms extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $diploma = new AprrovedDegreeDiplomaPrograms_Model();
-            $diploma->validated_diploma_programmes =$request->validated_diploma_programmes;
-            $diploma->approved_private_university_degreeprogrammes=$request->approved_private_university_degreeprogrammes;
-            $diploma->approved_degree_programmes=$request->approved_degree_programmes;
-            $diploma->year=$request->year;
-            $diploma->save();
-             return response()->json($diploma);
+            $environment = new  environment_and_natural_resources_average_export_prices_ash_Model();
+            $environment->soda_ash =$request->soda_ash;
+            $environment->fluorspar=$request->fluorspar;
+            
+            $environment->year=$request->year;
+            $environment->save();
+             return response()->json($environment);
            echo json_encode(array("status" => TRUE));
 
         }
@@ -86,14 +83,14 @@ class AprrovedDegreeDiplomaPrograms extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($approved_id)
+    public function show($average_id)
     {
        
          
-         $diploma = AprrovedDegreeDiplomaPrograms_Model::findOrfail($approved_id);
+         $environment = environment_and_natural_resources_average_export_prices_ash_Model::findOrfail($average_id);
 
   
-          echo json_encode($diploma);     
+          echo json_encode($environment);     
     }
 
     /**
@@ -119,9 +116,8 @@ class AprrovedDegreeDiplomaPrograms extends Controller
         
                 
           $validator = \Validator::make($request->all(), [
-        'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+        'soda_ash'=>'required|numeric',
+      'fluorspar'=>'required|numeric',     
       'year'=>'required|numeric'
         ]);
         
@@ -131,13 +127,13 @@ class AprrovedDegreeDiplomaPrograms extends Controller
         }
         else{
          
-            $diploma =AprrovedDegreeDiplomaPrograms_Model::find($request->id);
-            $diploma->validated_diploma_programmes =$request->validated_diploma_programmes;
-            $diploma->approved_private_university_degreeprogrammes=$request->approved_private_university_degreeprogrammes;
-            $diploma->approved_degree_programmes=$request->approved_degree_programmes;
-            $diploma->year=$request->year;
-            $diploma->save();
-             return response()->json($diploma);
+            $environment=environment_and_natural_resources_average_export_prices_ash_Model::find($request->id);
+            $environment->soda_ash=$request->soda_ash;
+            $environment->fluorspar=$request->fluorspar;
+           
+            $environment->year=$request->year;
+            $environment->save();
+             return response()->json($environment);
            echo json_encode(array("status" => TRUE));
 
         }  

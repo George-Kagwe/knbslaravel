@@ -1,45 +1,42 @@
 <?php
 
-namespace App\Http\Controllers\Forms\Education;
+namespace App\Http\Controllers\Forms\Environment;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\Models\Education\AprrovedDegreeDiplomaPrograms_Model;
+use App\Models\Environment\governance_environmental_crimes_reported_to_nema_Model;
 use View;
 
-
-
-class AprrovedDegreeDiplomaPrograms extends Controller
+class governance_environmental_crimes_reported_to_nema extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
      protected $rules =
     [
-      'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+      'type_of_case'=>'required|alpha_dash',
+      'no_of_cases'=>'required|numeric', 
       'year'=>'required|numeric'
-          
                               
                         
     ];
     public function index()
     {
         
-        $AprrovedDegreeDiplomaPrograms =AprrovedDegreeDiplomaPrograms_Model::all();
+        $governance_environmental_crimes_reported_to_nema =governance_environmental_crimes_reported_to_nema_Model::all();
         
-        return view('forms.education.national.approveddegreediplomaprograms',['post' =>$AprrovedDegreeDiplomaPrograms]);
+        return view('forms.environment.national.governanceenvironmentalcrimesreportedtonema',['post' =>$governance_environmental_crimes_reported_to_nema]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     
+
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -57,9 +54,8 @@ class AprrovedDegreeDiplomaPrograms extends Controller
     {
         
         $validator = \Validator::make($request->all(), [
-        'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+        'type_of_case'=>'required|alpha_dash',
+      'no_of_cases'=>'required|numeric',     
       'year'=>'required|numeric'
         ]);
         
@@ -68,13 +64,13 @@ class AprrovedDegreeDiplomaPrograms extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $diploma = new AprrovedDegreeDiplomaPrograms_Model();
-            $diploma->validated_diploma_programmes =$request->validated_diploma_programmes;
-            $diploma->approved_private_university_degreeprogrammes=$request->approved_private_university_degreeprogrammes;
-            $diploma->approved_degree_programmes=$request->approved_degree_programmes;
-            $diploma->year=$request->year;
-            $diploma->save();
-             return response()->json($diploma);
+            $nema = new governance_environmental_crimes_reported_to_nema_Model();
+            $nema->type_of_case =$request->type_of_case;
+            $nema->no_of_cases=$request->no_of_cases;
+            
+            $nema->year=$request->year;
+            $nema->save();
+             return response()->json($nema);
            echo json_encode(array("status" => TRUE));
 
         }
@@ -86,14 +82,14 @@ class AprrovedDegreeDiplomaPrograms extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($approved_id)
+    public function show($crime_id)
     {
        
          
-         $diploma = AprrovedDegreeDiplomaPrograms_Model::findOrfail($approved_id);
+         $nema =  governance_environmental_crimes_reported_to_nema_Model::findOrfail($crime_id);
 
   
-          echo json_encode($diploma);     
+          echo json_encode($nema);     
     }
 
     /**
@@ -119,9 +115,8 @@ class AprrovedDegreeDiplomaPrograms extends Controller
         
                 
           $validator = \Validator::make($request->all(), [
-        'validated_diploma_programmes'=>'required|numeric',
-      'approved_private_university_degreeprogrammes'=>'required|numeric',
-      'approved_degree_programmes'=>'required|numeric',
+        'type_of_case'=>'required|alpha_dash',
+      'no_of_cases'=>'required|numeric',     
       'year'=>'required|numeric'
         ]);
         
@@ -131,13 +126,13 @@ class AprrovedDegreeDiplomaPrograms extends Controller
         }
         else{
          
-            $diploma =AprrovedDegreeDiplomaPrograms_Model::find($request->id);
-            $diploma->validated_diploma_programmes =$request->validated_diploma_programmes;
-            $diploma->approved_private_university_degreeprogrammes=$request->approved_private_university_degreeprogrammes;
-            $diploma->approved_degree_programmes=$request->approved_degree_programmes;
-            $diploma->year=$request->year;
-            $diploma->save();
-             return response()->json($diploma);
+           $nema=governance_environmental_crimes_reported_to_nema_Model::find($request->id);
+           $nema->type_of_case =$request->type_of_case;
+            $nema->no_of_cases=$request->no_of_cases;
+            
+            $nema->year=$request->year;
+            $nema->save();
+             return response()->json($nema);
            echo json_encode(array("status" => TRUE));
 
         }  

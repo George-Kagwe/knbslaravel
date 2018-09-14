@@ -321,17 +321,7 @@ Route::get('manufacturing/all_quantum_indices_of_manufacturing_production',
   'Endpoints\Labour@get_labour_wage_employment_by_industry_in_public_sector')->
     name('labour_wage_employment_by_industry_in_public_sector');
 
-<<<<<<< HEAD
 
-
-
-
-
-
-
->>>>>>> 14b336a324ac27adf8072ea4ff64707667a55dc4
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Education
 //education_approved_degree_diploma_programs @fredrick muiruri
 Route::get('education/all_diploma_degree', 'Endpoints\Education@education_approved_degree_diploma_programs')->name('education_approved_degree_diploma_programs');
@@ -674,13 +664,7 @@ Route::get('population/all_population_households_type_floor_material_main_dwelli
 // @get_population_percentage_households_ownership_household_assets
 Route::get('population/all_population_percentage_households_ownership_household_assets', 
 'Endpoints\Population@get_population_percentage_households_ownership_household_assets')->name('population_percentage_households_ownership_household_assets');
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 // @George Muchiri
 // @get_population_populationbysexhouseholdsdensityandcensusyears
 Route::get('population/all_population_populationbysexhouseholdsdensityandcensusyears', 
@@ -879,11 +863,7 @@ Route::get('building/all_quarterly_overal_construction_cost', 'Endpoints\Buildin
 // Building  building_and_construction_quarterly_residential_bulding_cost route
 Route::get('building/all_quarterly_residential_bulding_cost', 'Endpoints\Building@get_building_and_construction_quarterly_residential_bulding_cost')->name('building_and_construction_quarterly_residential_bulding_cost');
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Tourism
 // @Charles Ndirangu
 // Building  tourism_arrivals route
@@ -912,11 +892,7 @@ Route::get('tourism/all_tourism_visitor_to_parks', 'Endpoints\Tourism@get_touris
 // @Charles Ndirangu
 // Building  tourism_visitors_to_museums route
 Route::get('tourism/all_tourism_visitors_to_museums', 'Endpoints\Tourism@get_tourism_visitors_to_museums')->name('tourism_visitors_to_museums');
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Health
 //health_kihibs_received_free_medical_services @fredrick muiruri
 Route::get('health/all_health_kihibs_received_free_medical_services', 'Endpoints\Health@health_kihibs_received_free_medical_services')->name('health_kihibs_received_free_medical_services');
@@ -1008,14 +984,11 @@ Route::get('health/all_health_subcounty', 'Endpoints\Health@health_subcounty')->
 Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
-<<<<<<< HEAD
-=======
-
 
 
 Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
+
 
 //Ict  ict_kihibs_households_owned_ict_equipment_services @david
 Route::get('Ict/ict_kihibs_households_owned_ict_equipment_services', 
@@ -1057,23 +1030,13 @@ Route::get('Ict/ict_kihibs_population_that_used_internet_by_purpose',
 Route::get('Ict/ict_kihibs_population_who_used_internet_by_place', 
   'Endpoints\Ict@get_ict_kihibs_population_who_used_internet_by_place')->
     name('ict_kihibs_population_who_used_internet_by_place');
-<<<<<<< HEAD
-    
 
-=======
- 
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
      //Ict     ict_kihibs_population_withmobilephone_andaveragesims @david
 Route::get('Ict/ict_kihibs_population_withmobilephone_andaveragesims', 
   'Endpoints\Ict@get_ict_kihibs_population_withmobilephone_andaveragesims')->
     name(' ict_kihibs_population_withmobilephone_andaveragesims');
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
      //Poverty    poverty_consumption_expenditure_and_quintile_distribution @david
 Route::get('poverty/all_poverty_consumption_expenditure_and_quintile_distribution', 
   'Endpoints\poverty@get_poverty_consumption_expenditure_and_quintile_distribution')->
@@ -1103,12 +1066,6 @@ Route::get('poverty/all_poverty_overall_estimates_by_residence_and_county',
   'Endpoints\poverty@get_poverty_overall_estimates_by_residence_and_county')->
     name('poverty_overall_estimates_by_residence_and_county');
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
 //Nutrition
 //health_nutritional_status_of_children @fredrick muiruri
 Route::get('nutrition/all_health_nutritional_status_of_children', 'Endpoints\Nutrition@health_nutritional_status_of_children')->name('health_nutritional_status_of_children');
@@ -1148,11 +1105,6 @@ Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_saf
 
 
 Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
-<<<<<<< HEAD
-
-=======
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
-
 
 
 Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
@@ -1251,11 +1203,241 @@ Route::get('Housing/housing_conditions_kihibs_main_toilet_facility',
 // @George Muchiri
 // housing_conditions_kihibs_main_wall_material
 Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
-<<<<<<< HEAD
+
 	'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
 	'housing_conditions_kihibs_main_wall_material');
 
-=======
-  'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
-  'housing_conditions_kihibs_main_wall_material');
->>>>>>> d35adcd6e584f201093a969f063b24d2fb93b419
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_average_export_prices_ash/', 'Forms\Environment\environment_and_natural_resources_average_export_prices_ash@index')->name('environment_and_natural_resources_average_export_prices_ash
+');
+//post to save
+Route::post('environment/store', array('as' => 'storeenvironment', 'uses' => 'Forms\Environment\environment_and_natural_resources_average_export_prices_ash@store'));
+//post to update
+Route::post('environment/update', array('as' => 'updateenvironment', 'uses' => 'Forms\Environment\environment_and_natural_resources_average_export_prices_ash@update'));
+
+
+//show a specific id
+Route::get('environment/action/{id}', array('as' => 'fetchenvironment', 'uses' => 'Forms\Environment\environment_and_natural_resources_average_export_prices_ash@show'));
+
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_development_expenditure_water/', 'Forms\Environment\environment_and_natural_resources_development_expenditure_water@index')->name('environment_and_natural_resources_development_expenditure_water');
+//post to save
+Route::post('water/store', array('as' => 'storewater', 'uses' => 'Forms\Environment\environment_and_natural_resources_development_expenditure_water@store'));
+//post to update
+Route::post('water/update', array('as' => 'updatewater', 'uses' => 'Forms\Environment\environment_and_natural_resources_development_expenditure_water@update'));
+
+
+//show a specific id
+Route::get('water/action/{id}', array('as' => 'fetchwater', 'uses' => 'Forms\Environment\environment_and_natural_resources_development_expenditure_water@show'));
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_expenditure_cleaning_refuse/', 'Forms\Environment\environment_and_natural_resources_expenditure_cleaning_refuse@index')->name('environment_and_natural_resources_expenditure_cleaning_refuse');
+//post to save
+Route::post('refuse/store', array('as' => 'storerefuse', 'uses' => 'Forms\Environment\environment_and_natural_resources_expenditure_cleaning_refuse@store'));
+//post to update
+Route::post('refuse/update', array('as' => 'updaterefuse', 'uses' => 'Forms\Environment\environment_and_natural_resources_expenditure_cleaning_refuse@update'));
+
+
+//show a specific id
+Route::get('refuse/action/{id}', array('as' => 'fetchrefuse', 'uses' => 'Forms\Environment\environment_and_natural_resources_expenditure_cleaning_refuse@show'));
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_government_forest/', 'Forms\Environment\environment_and_natural_resources_government_forest@index')->name('environment_and_natural_resources_government_forest');
+//post to save
+Route::post('forest/store', array('as' => 'storeforest', 'uses' => 'Forms\Environment\environment_and_natural_resources_government_forest@store'));
+//post to update
+Route::post('forest/update', array('as' => 'updateforest', 'uses' => 'Forms\Environment\environment_and_natural_resources_government_forest@update'));
+
+
+//show a specific id
+Route::get('forest/action/{id}', array('as' => 'fetchforest', 'uses' => 'Forms\Environment\environment_and_natural_resources_government_forest@show'));
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_num_high_risk_environ_impact/', 'Forms\Environment\environment_and_natural_resources_num_high_risk_environ_impact@index')->name('environment_and_natural_resources_num_high_risk_environ_impact');
+//post to save
+Route::post('impact/store', array('as' => 'storeimpact', 'uses' => 'Forms\Environment\environment_and_natural_resources_num_high_risk_environ_impact@store'));
+//post to update
+Route::post('impact/update', array('as' => 'updateimpact', 'uses' => 'Forms\Environment\environment_and_natural_resources_num_high_risk_environ_impact@update'));
+
+
+//show a specific id
+Route::get('impact/action/{id}', array('as' => 'fetchimpact', 'uses' => 'Forms\Environment\environment_and_natural_resources_num_high_risk_environ_impact@show'));
+
+
+
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_population_wildlife/', 'Forms\Environment\environment_and_natural_resources_population_wildlife@index')->name('environment_and_natural_resources_population_wildlife');
+//post to save
+Route::post('wildlife/store', array('as' => 'storewildlife', 'uses' => 'Forms\Environment\environment_and_natural_resources_population_wildlife@store'));
+//post to update
+Route::post('wildlife/update', array('as' => 'updatewildlife', 'uses' => 'Forms\Environment\environment_and_natural_resources_population_wildlife@update'));
+
+
+//show a specific id
+Route::get('wildlife/action/{id}', array('as' => 'fetchwildlife', 'uses' => 'Forms\Environment\environment_and_natural_resources_population_wildlife@show'));
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_quantity_of_total_mineral/', 'Forms\Environment\environment_and_natural_resources_quantity_of_total_mineral@index')->name('environment_and_natural_resources_quantity_of_total_mineral');
+//post to save
+Route::post('mineral/store', array('as' => 'storemineral', 'uses' => 'Forms\Environment\environment_and_natural_resources_quantity_of_total_mineral@store'));
+//post to update
+Route::post('mineral/update', array('as' => 'updatemineral', 'uses' => 'Forms\Environment\environment_and_natural_resources_quantity_of_total_mineral@update'));
+
+
+//show a specific id
+Route::get('mineral/action/{id}', array('as' => 'fetchmineral', 'uses' => 'Forms\Environment\environment_and_natural_resources_quantity_of_total_mineral@show'));
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_quantity_value_fish_landed/', 'Forms\Environment\environment_and_natural_resources_quantity_value_fish_landed@index')->name('environment_and_natural_resources_quantity_value_fish_landed');
+//post to save
+Route::post('landed/store', array('as' => 'storelanded', 'uses' => 'Forms\Environment\environment_and_natural_resources_quantity_value_fish_landed@store'));
+//post to update
+Route::post('landed/update', array('as' => 'updatelanded', 'uses' => 'Forms\Environment\environment_and_natural_resources_quantity_value_fish_landed@update'));
+
+
+//show a specific id
+Route::get('landed/action/{id}', array('as' => 'fetchlanded', 'uses' => 'Forms\Environment\environment_and_natural_resources_quantity_value_fish_landed@show'));
+
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_record_sale_goverment_products/', 'Forms\Environment\environment_and_natural_resources_record_sale_goverment_products@index')->name('environment_and_natural_resources_record_sale_goverment_products');
+//post to save
+Route::post('products/store', array('as' => 'storeproducts', 'uses' => 'Forms\Environment\environment_and_natural_resources_record_sale_goverment_products@store'));
+//post to update
+Route::post('products/update', array('as' => 'updateproducts', 'uses' => 'Forms\Environment\environment_and_natural_resources_record_sale_goverment_products@update'));
+
+
+//show a specific id
+Route::get('products/action/{id}', array('as' => 'fetchproducts', 'uses' => 'Forms\Environment\environment_and_natural_resources_record_sale_goverment_products@show'));
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_trends_envi_natural_resources/', 'Forms\Environment\environment_and_natural_resources_trends_envi_natural_resources@index')->name('environment_and_natural_resources_trends_envi_natural_resources');
+//post to save
+Route::post('resources/store', array('as' => 'storeresources', 'uses' => 'Forms\Environment\environment_and_natural_resources_trends_envi_natural_resources@store'));
+//post to update
+Route::post('resources/update', array('as' => 'updateresources', 'uses' => 'Forms\Environment\environment_and_natural_resources_trends_envi_natural_resources@update'));
+
+
+//show a specific id
+Route::get('resources/action/{id}', array('as' => 'fetchresources', 'uses' => 'Forms\Environment\environment_and_natural_resources_trends_envi_natural_resources@show'));
+
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_value_of_total_mineral/', 'Forms\Environment\environment_and_natural_resources_value_of_total_mineral@index')->name(' environment_and_natural_resources_value_of_total_mineral');
+//post to save
+Route::post('totalmineral/store', array('as' => 'storetotalmineral', 'uses' => 'Forms\Environment\environment_and_natural_resources_value_of_total_mineral@store'));
+//post to update
+Route::post('totalmineral/update', array('as' => 'updatetotalmineral', 'uses' => 'Forms\Environment\environment_and_natural_resources_value_of_total_mineral@update'));
+
+
+//show a specific id
+Route::get('totalmineral/action/{id}', array('as' => 'fetchtotalmineral', 'uses' => 'Forms\Environment\environment_and_natural_resources_value_of_total_mineral@show'));
+
+
+
+
+
+//@david
+
+//feetch
+Route::get('environment_and_natural_resources_water_purification_points/', 'Forms\Environment\environment_and_natural_resources_water_purification_points@index')->name('environment_and_natural_resources_water_purification_points');
+//post to save
+Route::post('points/store', array('as' => 'storepoints', 'uses' => 'Forms\Environment\environment_and_natural_resources_water_purification_points@store'));
+//post to update
+Route::post('points/update', array('as' => 'updatepoints', 'uses' => 'Forms\Environment\environment_and_natural_resources_water_purification_points@update'));
+
+
+//show a specific id
+Route::get('points/action/{id}', array('as' => 'fetchpoints', 'uses' => 'Forms\Environment\environment_and_natural_resources_water_purification_points@show'));
+
+
+
+//@david
+
+//feetch
+Route::get('governance_environmental_crimes_reported_to_nema/', 'Forms\Environment\governance_environmental_crimes_reported_to_nema@index')->name('governance_environmental_crimes_reported_to_nema');
+//post to save
+Route::post('nema/store', array('as' => 'storenema', 'uses' => 'Forms\Environment\governance_environmental_crimes_reported_to_nema@store'));
+//post to update
+Route::post('nema/update', array('as' => 'updatenema', 'uses' => 'Forms\Environment\governance_environmental_crimes_reported_to_nema@update'));
+
+
+//show a specific id
+Route::get('nema/action/{id}', array('as' => 'fetchnema', 'uses' => 'Forms\Environment\governance_environmental_crimes_reported_to_nema@show'));
+
+
+
+
+
+//@david
+
+//feetch
+Route::get('land_and_climate_environment_impact_assessments_by_sector/', 'Forms\Environment\land_and_climate_environment_impact_assessments_by_sector@index')->name('land_and_climate_environment_impact_assessments_by_sector');
+//post to save
+Route::post('sector/store', array('as' => 'storesector', 'uses' => 'Forms\Environment\land_and_climate_environment_impact_assessments_by_sector@store'));
+//post to update
+Route::post('sector/update', array('as' => 'updatesector', 'uses' => 'Forms\Environment\land_and_climate_environment_impact_assessments_by_sector@update'));
+
+
+//show a specific id
+Route::get('sector/action/{id}', array('as' => 'fetchsector', 'uses' => 'Forms\Environment\land_and_climate_environment_impact_assessments_by_sector@show'));
+
+
+
+//@david
+
+//feetch
+Route::get('land_and_climate_trends_in_environment_and_natural_resources/', 'Forms\Environment\land_and_climate_trends_in_environment_and_natural_resources@index')->name('land_and_climate_trends_in_environment_and_natural_resources');
+//post to save
+Route::post('resources/store', array('as' => 'storeresources', 'uses' => 'Forms\Environment\land_and_climate_trends_in_environment_and_natural_resources@store'));
+//post to update
+Route::post('resources/update', array('as' => 'updateresources', 'uses' => 'Forms\Environment\land_and_climate_trends_in_environment_and_natural_resources@update'));
+
+
+//show a specific id
+Route::get('resources/action/{id}', array('as' => 'fetchresources', 'uses' => 'Forms\Environment\land_and_climate_trends_in_environment_and_natural_resources@show'));
+
