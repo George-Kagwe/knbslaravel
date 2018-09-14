@@ -42,10 +42,7 @@ class CDFAllocation extends Controller
                           ->get();
 
       
-        return view('forms.finance.CDFAllocation',
-                 
-                   ['post' =>$data,'counties' =>$counties,
-                   'subcounty' =>$subcounty]);
+        return view('Forms.Finance.CDFAllocation', ['post' =>$data,'counties' =>$counties,         'subcounty' =>$subcounty]);
     }
 
     /**
@@ -70,8 +67,8 @@ class CDFAllocation extends Controller
     {
         
         $validator = \Validator::make($request->all(), [
-                          'county_id'=>'required',
-                          'subcounty_id'=>'required',
+                          'county_name'=>'required',
+                          'subcounty_name'=>'required',
                           'cdf_amount'=>'required|numeric',
                           'year'=>'required',
         ]);
@@ -126,9 +123,31 @@ class CDFAllocation extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+                           'county_name'=>'required',
+                          'subcounty_name'=>'required',
+                          'cdf_amount'=>'required|numeric',
+                          'year'=>'required'
+        ]);
+        
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
+        else{
+         
+            $cdf =CDFAllocation_Model::find($request->id);
+             $cdf->county_id =$request->county_name;
+            $cdf->subcounty_id=$request->subcounty_name;
+            $cdf->cdf_amount=$request->cdf_amount;         
+            $cdf->year=$request->year;
+            $cdf->save();          
+             return response()->json($cdf);
+           echo json_encode(array("status" => TRUE));
+
+        }  
     }
 
     /**

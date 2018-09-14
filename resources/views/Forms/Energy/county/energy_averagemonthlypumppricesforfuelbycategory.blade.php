@@ -204,27 +204,44 @@
                      <div class="col-lg-12">
                        
      
+<<<<<<< HEAD
                               <h5><center>Average Monthly Pump Prices for Fuel by Category</center></h5>
+=======
+                              <h5><center>Average Monthly Pump Prices For Fuel By Category</center></h5>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
                               <br />
+<<<<<<< HEAD
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+=======
+                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                       <thead>
                                         <tr>
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
+<<<<<<< HEAD
                                            <th>Month </th>
                                            <th>Super Petrol</th>   
                                            <th>Diesel</th>
                                            <th>Kerosene</th>                                     
                                          <th>Year</th> 
+=======
+                                           <th>Month</th>
+                                           <th>Super Petrol</th>
+                                           <th>Diesel</th>
+                                           <th>Kerosene</th>
+                                           <th>Year</th>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
+<<<<<<< HEAD
                                       <?php foreach($post as $post){?>
                                              <tr>
                                                 <td>{{$post->count_id}}</td>
@@ -240,6 +257,20 @@
 
                                                 <td>
                                                   <button class="btn btn-success" onclick="edit(<?php echo $post->count_id;?>)">Update Record</button>
+=======
+                                      <?php foreach($fuel_prices as $prices){?>
+                                             <tr>
+                                                <td>{{$prices->count_id}}</td>
+                                                <td>{{$prices->county_name}}</td>
+                                                <td>{{$prices->month_id}}</td>
+                                                <td>{{$prices->super_petrol}}</td>
+                                                <td>{{$prices->diesel}}</td>
+                                                <td>{{$prices->kerosene}}</td>                                            
+                                                <td>{{$prices->year}}</td>                                      
+
+                                                <td>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $prices->count_id;?>)">Update Record</button>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                                
                                                 </td>
                                               </tr>
@@ -251,6 +282,7 @@
 
                                       <tfoot>
                                         <tr>
+<<<<<<< HEAD
                                                 <th>ID</th>                                          
                                            <th>County Name</th>
                                            <th>Month </th>
@@ -259,6 +291,15 @@
                                            <th>Kerosene</th> 
                                                 <th>Year</th>                                      
                                      
+=======
+                                           <th>ID</th>                                          
+                                           <th>County Name</th>
+                                           <th>Month in numeric(1 to 12)</th>
+                                           <th>Super Petrol</th>
+                                           <th>Diesel</th>
+                                           <th>Kerosene</th>
+                                           <th>Year</th>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -286,6 +327,7 @@
             <!-- Sian starts here -->
             <script type="text/javascript">
                       $(document).ready( function () {
+<<<<<<< HEAD
                            $(function() {
                     $('select[name=county_name]').change(function() {
                      
@@ -306,6 +348,9 @@
                         });
                     });
                         });
+=======
+                         
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
@@ -314,6 +359,7 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
+<<<<<<< HEAD
                                           county_name: {
                                               validators: {
                                                   notEmpty: {
@@ -351,13 +397,53 @@
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
+=======
+                                          month_id: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
+                                          },
+                                          super_petrol: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please Super Petrol Price '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          diesel: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter Diesel Price '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          kerosene: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter kerosene Price '
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+<<<<<<< HEAD
                                           }
                                    
+=======
+                                          },
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -376,7 +462,11 @@
 
                       function edit(id)
                       {
+<<<<<<< HEAD
                         var url = '{{ route("fetchPump", ":id") }}';
+=======
+                        var url = '{{ route("fetchFuelPrices", ":id") }}';
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -390,13 +480,21 @@
                           {
 
                               $('[name="id"]').val(data.count_id);
+<<<<<<< HEAD
                               $('[name="county_id"]').val(data.county_id);
+=======
+                              $('[name="county_name"]').val(data.county_id);
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                               $('[name="month_id"]').val(data.month_id);
                               $('[name="super_petrol"]').val(data.super_petrol);
                               $('[name="diesel"]').val(data.diesel);
                               $('[name="kerosene"]').val(data.kerosene);
+<<<<<<< HEAD
                               $('[name="year"]').val(data.year);
                                                        
+=======
+                              $('[name="year"]').val(data.year);                                          
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -406,17 +504,25 @@
                               alert('Error get data from ajax');
                           }
                       });
+<<<<<<< HEAD
                       }
 
 
 
+=======
+                      } 
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                       function save()
                       {
                         var url;
 
                         if(save_method == 'add')
                         {
+<<<<<<< HEAD
                             url = "{{ route('storePump') }}";
+=======
+                            url = "{{ route('storeFuelPrices') }}";
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 
                         }
                         else
@@ -424,7 +530,11 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
+<<<<<<< HEAD
                           url = "{{ route('updatePump') }}";
+=======
+                          url = "{{ route('updateFuelPrices') }}";
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                         }
                           
                       
@@ -491,6 +601,7 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
+<<<<<<< HEAD
                               
                              
                            
@@ -537,33 +648,71 @@
 
                                 <div class="form-group">
                                 <label class="control-label col-md-3">Super Petrol</label>
+=======
+                              <div class="form-group">
+                               <label class="control-label col-md-3">County</label>
+                                <div class="col-md-9">
+                                  <select class="form-control" id="county_name" name="county_name">
+                                    <option value="">please select</option>
+                                     <?php foreach($counties as $counties){?>   
+                                          <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                      <?php }?>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Enter Month in numeric i.e between 1 and 12</label>
+                                <div class="col-md-9">
+                                  <input name="month_id"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Super Petrol Price</label>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                 <div class="col-md-9">
                                   <input name="super_petrol"  class="form-control" type="text">
                                 </div>
                               </div>
+<<<<<<< HEAD
 
 
                               <div class="form-group">
                                 <label class="control-label col-md-3">Diesel</label>
+=======
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Diesel Price</label>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                 <div class="col-md-9">
                                   <input name="diesel"  class="form-control" type="text">
                                 </div>
                               </div>
+<<<<<<< HEAD
 
                              <div class="form-group">
                                 <label class="control-label col-md-3">Kerosene</label>
+=======
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Kerosene Price</label>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                 <div class="col-md-9">
                                   <input name="kerosene"  class="form-control" type="text">
                                 </div>
                               </div>
+<<<<<<< HEAD
                            
 
+=======
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="year" name="year">
                                     <option value="">please select</option>
+<<<<<<< HEAD
                                     <option value="January">January</option>
+=======
+                                    <option value="2008">2008</option>
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                                     <option value="2009">2009</option>
                                     <option value="2010">2010</option>
                                     <option value="2011">2011</option>
@@ -583,8 +732,11 @@
                                 </div>
                               </div>
                               </div>
+<<<<<<< HEAD
 
                             
+=======
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
                       </form>
                   </div>
                       <div class="modal-footer">

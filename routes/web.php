@@ -31,6 +31,7 @@ Route::get('Building/home', 'Forms\AllFormsController@building')->name('Building
 Route::get('Money/home', 'Forms\AllFormsController@money')->name('Money/home');
 Route::get('Transport/home', 'Forms\AllFormsController@transport')->name('Transport/home');
 Route::get('Manufacturing/home', 'Forms\AllFormsController@manufacturing')->name('Manufacturing/home');
+Route::get('Housing/home', 'Forms\AllFormsController@housing')->name('Housing/home');
 
 //Begining of crud functions
 //Route::get('Agriculture/sugar_yield/{id}', array('as' => 'search_id', 'uses' =>'Forms\Agriculture@show'));
@@ -73,6 +74,93 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
+<<<<<<< HEAD
+=======
+
+Route::get('health_registered_active_nhif_members_by_county/', 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@index')->name('health_registered_active_nhif_members_by_county');
+   Route::get('memberN/fetch/{id}', array('as' => 'fetchmemberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@show'));
+    Route::get('memberN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@get_subcounties'));
+Route::post('memberN/store', array('as' => 'storememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@store'));
+Route::post('memberN/update', array('as' => 'updatememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@update'));
+
+Route::get('health_insurance_coverage_by_counties_and_types/', 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@index')->name('health_insurance_coverage_by_counties_and_types');
+   Route::get('insuranceN/fetch/{id}', array('as' => 'fetchinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@show'));
+    Route::get('insuranceN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@get_subcounties'));
+Route::post('insuranceN/store', array('as' => 'storeinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@store'));
+Route::post('insuranceN/update', array('as' => 'updateinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@update'));
+
+Route::get('health_registered_medical_laboratories_by_counties/', 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@index')->name('health_registered_medical_laboratories_by_counties');
+   Route::get('med/fetch/{id}', array('as' => 'fetchmed', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@show'));
+    Route::get('med/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@get_subcounties'));
+Route::post('med/store', array('as' => 'storemed', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@store'));
+Route::post('med/update', array('as' => 'updatemed', 'uses' => 'Forms\Health\HealthRegisteredMedicalLaboratoriesByCounties@update'));
+
+
+Route::get('health_distributionofoutpatientvisitsbytypeofhealthcareprovider/', 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@index')->name('health_distributionofoutpatientvisitsbytypeofhealthcareprovider');
+   Route::get('privateN/fetch/{id}', array('as' => 'fetchprivateN', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@show'));
+    Route::get('privateN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@get_subcounties'));
+Route::post('privateN/store', array('as' => 'storeprivateN', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@store'));
+Route::post('privateN/update', array('as' => 'updateprivateN', 'uses' => 'Forms\Health\HealthDistributionOfOutPatientVisitsByTypeOfHealthCareProvider@update'));
+
+
+Route::get('health_current_use_of_contraception_by_county/', 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@index')->name('health_current_use_of_contraception_by_county');
+   Route::get('contraception/fetch/{id}', array('as' => 'fetchcontraception', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@show'));
+    Route::get('contraception/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@get_subcounties'));
+Route::post('contraception/store', array('as' => 'storecontraception', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@store'));
+Route::post('contraception/update', array('as' => 'updatecontraception', 'uses' => 'Forms\Health\HealthCurrentUseOfContraceptionByCounty@update'));
+
+
+Route::get('health_nutritional_status_of_women/', 'Forms\Health\HealthNutritionalStatusOfWomen@index')->name('health_nutritional_status_of_women');
+   Route::get('adult/fetch/{id}', array('as' => 'fetchadult', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@show'));
+    Route::get('adult/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@get_subcounties'));
+Route::post('adult/store', array('as' => 'storeadult', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@store'));
+Route::post('adult/update', array('as' => 'updateadult', 'uses' => 'Forms\Health\HealthNutritionalStatusOfWomen@update'));
+
+
+Route::get('health_nutritional_status_of_children/', 'Forms\Health\HealthNutritionalStatusOfChildren@index')->name('health_nutritional_status_of_children');
+   Route::get('child/fetch/{id}', array('as' => 'fetchchild', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@show'));
+    Route::get('child/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@get_subcounties'));
+Route::post('child/store', array('as' => 'storechild', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@store'));
+Route::post('child/update', array('as' => 'updatechild', 'uses' => 'Forms\Health\HealthNutritionalStatusOfChildren@update'));
+
+
+
+Route::get('health_use_of_mosquito_nets_by_children/', 'Forms\Health\HealthUseOfMosquitoNetsByChildren@index')->name('health_use_of_mosquito_nets_by_children');
+   Route::get('mosquito/fetch/{id}', array('as' => 'fetchmosquito', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@show'));
+    Route::get('mosquito/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@get_subcounties'));
+Route::post('mosquito/store', array('as' => 'storemosquito', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@store'));
+Route::post('mosquito/update', array('as' => 'updatemosquito', 'uses' => 'Forms\Health\HealthUseOfMosquitoNetsByChildren@update'));
+
+
+Route::get('health_hiv_aids_awareness_and_testing/', 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@index')->name('health_hiv_aids_awareness_and_testing');
+   Route::get('awareness/fetch/{id}', array('as' => 'fetchawareness', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@show'));
+    Route::get('awareness/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@get_subcounties'));
+Route::post('awareness/store', array('as' => 'storeawareness', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@store'));
+Route::post('awareness/update', array('as' => 'updateawareness', 'uses' => 'Forms\Health\HealthHIVAIDSAwarenessAndTesting@update'));
+
+
+Route::get('health_maternal_care/', 'Forms\Health\HealthMaternalCare@index')->name('health_maternal_care');
+   Route::get('maternal/fetch/{id}', array('as' => 'fetchmaternal', 'uses' => 'Forms\Health\HealthMaternalCare@show'));
+    Route::get('maternal/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthMaternalCare@get_subcounties'));
+Route::post('maternal/store', array('as' => 'storematernal', 'uses' => 'Forms\Health\HealthMaternalCare@store'));
+Route::post('maternal/update', array('as' => 'updatematernal', 'uses' => 'Forms\Health\HealthMaternalCare@update'));
+
+
+   Route::get('health_immunization_rate/', 'Forms\Health\HealthImmunizationRate@index')->name('health_immunization_rate');
+   Route::get('immunization/fetch/{id}', array('as' => 'fetchimmunization', 'uses' => 'Forms\Health\HealthImmunizationRate@show'));
+    Route::get('immunization/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthImmunizationRate@get_subcounties'));
+Route::post('immunization/store', array('as' => 'storeimmunization', 'uses' => 'Forms\Health\HealthImmunizationRate@store'));
+Route::post('immunization/update', array('as' => 'updateimmunization', 'uses' => 'Forms\Health\HealthImmunizationRate@update'));
+
+
+   Route::get('health_registeredmedicalpersonnel/', 'Forms\Health\HealthRegisteredMedicalPersonnel@index')->name('health_registeredmedicalpersonnel');
+   Route::get('medical/fetch/{id}', array('as' => 'fetchmedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@show'));
+    Route::get('medical/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@get_subcounties'));
+Route::post('medical/store', array('as' => 'storemedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@store'));
+Route::post('medical/update', array('as' => 'updatemedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@update'));
+
+
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 
 Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
 
@@ -86,9 +174,12 @@ Route::post('cdf/update', array('as' => 'updateCDF', 'uses' => 'Forms\Finance\CD
 
 
 
+<<<<<<< HEAD
 
       
 
+=======
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 
 Route::get('agriculture_area_under_sugarcane_harvested_production_avg_yield/', 'Forms\Agriculture\Agriculture_Sugar@index')->name('agriculture_area_under_sugarcane_harvested_production_avg_yield');
 Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@show'));
@@ -119,6 +210,432 @@ Route::post('diploma/update', array('as' => 'updateDiploma', 'uses' => 'Forms\Ed
 //@Charles
 //show a specific id
 Route::get('diploma/approved/{id}', array('as' => 'fetchDiploma', 'uses' => 'Forms\Education\AprrovedDegreeDiplomaPrograms@show'));
+
+//@fred
+
+//fetch
+Route::get('agriculture_pricetoproducersformeatmilk/', 'Forms\Agriculture\AgriculturePriceToProducersForMeatMilk@index')->name('agriculture_pricetoproducersformeatmilk');
+//post to save
+Route::post('pig/store', array('as' => 'storepig', 'uses' => 'Forms\Agriculture\AgriculturePriceToProducersForMeatMilk@store'));
+//post to update
+Route::post('pig/update', array('as' => 'updatepig', 'uses' => 'Forms\Agriculture\AgriculturePriceToProducersForMeatMilk@update'));
+
+//show a specific id
+Route::get('pig/resource/{id}', array('as' => 'fetchpig', 'uses' => 'Forms\Agriculture\AgriculturePriceToProducersForMeatMilk@show'));
+
+
+//@fred
+
+//fetch
+Route::get('agriculture_totalsharecapital/', 'Forms\Agriculture\AgricultureTotalShareCapital@index')->name('agriculture_totalsharecapital');
+//post to save
+Route::post('share/store', array('as' => 'storeshare', 'uses' => 'Forms\Agriculture\AgricultureTotalShareCapital@store'));
+//post to update
+Route::post('share/update', array('as' => 'updateshare', 'uses' => 'Forms\Agriculture\AgricultureTotalShareCapital@update'));
+
+//show a specific id
+Route::get('share/resource/{id}', array('as' => 'fetchshare', 'uses' => 'Forms\Agriculture\AgricultureTotalShareCapital@show'));
+
+
+//@fred
+
+//fetch
+Route::get('agriculture_production_area_average_yield_tea_type_grower/', 'Forms\Agriculture\AgricultureProductionAreaAverageYieldTeaTypeGrower@index')->name('agriculture_production_area_average_yield_tea_type_grower');
+//post to save
+Route::post('unitZ/store', array('as' => 'storeunitZ', 'uses' => 'Forms\Agriculture\AgricultureProductionAreaAverageYieldTeaTypeGrower@store'));
+//post to update
+Route::post('unitZ/update', array('as' => 'updateunitZ', 'uses' => 'Forms\Agriculture\AgricultureProductionAreaAverageYieldTeaTypeGrower@update'));
+
+//show a specific id
+Route::get('unitZ/resource/{id}', array('as' => 'fetchunitZ', 'uses' => 'Forms\Agriculture\AgricultureProductionAreaAverageYieldTeaTypeGrower@show'));
+
+
+//@fred
+
+//fetch
+Route::get('agriculture_production_area_average_yield_coffee_type_of_grower/', 'Forms\Agriculture\AgricultureProductionAreaAverageYieldCoffeeTypeOfGrower@index')->name('agriculture_production_area_average_yield_coffee_type_of_grower');
+//post to save
+Route::post('cooperative/store', array('as' => 'storecooperative', 'uses' => 'Forms\Agriculture\AgricultureProductionAreaAverageYieldCoffeeTypeOfGrower@store'));
+//post to update
+Route::post('cooperative/update', array('as' => 'updatecooperative', 'uses' => 'Forms\Agriculture\AgricultureProductionAreaAverageYieldCoffeeTypeOfGrower@update'));
+
+//show a specific id
+Route::get('cooperative/resource/{id}', array('as' => 'fetchcooperative', 'uses' => 'Forms\Agriculture\AgricultureProductionAreaAverageYieldCoffeeTypeOfGrower@show'));
+
+
+//@fred
+
+//fetch
+Route::get('building_and_construction_quarterly_civil_engineering_cost_index/', 'Forms\Building\BuildingAndConstructionQuarterlyCivilEngineeringCostIndex@index')->name('building_and_construction_quarterly_civil_engineering_cost_index');
+//post to save
+Route::post('indexY/store', array('as' => 'storeindexY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyCivilEngineeringCostIndex@store'));
+//post to update
+Route::post('indexY/update', array('as' => 'updateindexY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyCivilEngineeringCostIndex@update'));
+
+//show a specific id
+Route::get('indexY/resource/{id}', array('as' => 'fetchindexY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyCivilEngineeringCostIndex@show'));
+
+
+//@fred
+
+//fetch
+Route::get('building_and_construction_quarterly_residential_bulding_cost/', 'Forms\Building\BuildingAndConstructionQuarterlyResidentialBuildingCost@index')->name('building_and_construction_quarterly_residential_bulding_cost');
+//post to save
+Route::post('building/store', array('as' => 'storebuilding', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyResidentialBuildingCost@store'));
+//post to update
+Route::post('building/update', array('as' => 'updatebuilding', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyResidentialBuildingCost@update'));
+
+//show a specific id
+Route::get('building/resource/{id}', array('as' => 'fetchbuilding', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyResidentialBuildingCost@show'));
+
+
+
+//@fred
+
+//fetch
+Route::get('building_and_construction_quarterly_overal_construction_cost/', 'Forms\Building\BuildingAndConstructionQuarterlyOveralConstructionCost@index')->name('building_and_construction_quarterly_overal_construction_cost');
+//post to save
+Route::post('categoryY/store', array('as' => 'storecategoryY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyOveralConstructionCost@store'));
+//post to update
+Route::post('categoryY/update', array('as' => 'updatecategoryY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyOveralConstructionCost@update'));
+
+//show a specific id
+Route::get('categoryY/resource/{id}', array('as' => 'fetchcategoryY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyOveralConstructionCost@show'));
+
+
+//@fred
+
+//fetch
+Route::get('building_and_construction_quarterly_non_residential_build_cost/', 'Forms\Building\BuildingAndConstructionQuarterlyNonResidentialBuildCost@index')->name('building_and_construction_quarterly_non_residential_build_cost');
+//post to save
+Route::post('costY/store', array('as' => 'storecostY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyNonResidentialBuildCost@store'));
+//post to update
+Route::post('costY/update', array('as' => 'updatecostY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyNonResidentialBuildCost@update'));
+
+//show a specific id
+Route::get('costY/resource/{id}', array('as' => 'fetchcostY', 'uses' => 'Forms\Building\BuildingAndConstructionQuarterlyNonResidentialBuildCost@show'));
+
+
+//@fred
+
+//fetch
+Route::get('cpi_group_weights_for_kenya_cpi_october_base_1997/', 'Forms\CPI\CPIGroupWeightsForKenyaCPIOctoberBase1997@index')->name('cpi_group_weights_for_kenya_cpi_october_base_1997');
+//post to save
+Route::post('items/store', array('as' => 'storeitems', 'uses' => 'Forms\CPI\CPIGroupWeightsForKenyaCPIOctoberBase1997@store'));
+//post to update
+Route::post('items/update', array('as' => 'updateitems', 'uses' => 'Forms\CPI\CPIGroupWeightsForKenyaCPIOctoberBase1997@update'));
+
+//show a specific id
+Route::get('items/resource/{id}', array('as' => 'fetchitems', 'uses' => 'Forms\CPI\CPIGroupWeightsForKenyaCPIOctoberBase1997@show'));
+
+
+//@fred
+
+//fetch
+Route::get('cpi_group_weights_for_kenya_cpi_febuary_base_2009/', 'Forms\CPI\CPIGroupWeightsForKenyaCPIFebruaryBase2009@index')->name('cpi_group_weights_for_kenya_cpi_febuary_base_2009');
+//post to save
+Route::post('group/store', array('as' => 'storegroup', 'uses' => 'Forms\CPI\CPIGroupWeightsForKenyaCPIFebruaryBase2009@store'));
+//post to update
+Route::post('group/update', array('as' => 'updategroup', 'uses' => 'Forms\CPI\CPIGroupWeightsForKenyaCPIFebruaryBase2009@update'));
+
+//show a specific id
+Route::get('group/resource/{id}', array('as' => 'fetchgroup', 'uses' => 'Forms\CPI\CPIGroupWeightsForKenyaCPIFebruaryBase2009@show'));
+
+
+//@fred
+
+//fetch
+Route::get('cpi_elementary_aggregates_weights_in_the_cpi_baskets/', 'Forms\CPI\CPIElementaryAggregatesWeightsInTheCPIBaskets@index')->name('cpi_elementary_aggregates_weights_in_the_cpi_baskets');
+//post to save
+Route::post('aggregate/store', array('as' => 'storeaggregate', 'uses' => 'Forms\CPI\CPIElementaryAggregatesWeightsInTheCPIBaskets@store'));
+//post to update
+Route::post('aggregate/update', array('as' => 'updateaggregate', 'uses' => 'Forms\CPI\CPIElementaryAggregatesWeightsInTheCPIBaskets@update'));
+
+//show a specific id
+Route::get('aggregate/resource/{id}', array('as' => 'fetchaggregate', 'uses' => 'Forms\CPI\CPIElementaryAggregatesWeightsInTheCPIBaskets@show'));
+
+
+
+//@fred
+
+//fetch
+Route::get('cpi_consumer_price_index/', 'Forms\CPI\CPIConsumerPriceIndex@index')->name('cpi_consumer_price_index');
+//post to save
+Route::post('cpi/store', array('as' => 'storecpi', 'uses' => 'Forms\CPI\CPIConsumerPriceIndex@store'));
+//post to update
+Route::post('cpi/update', array('as' => 'updatecpi', 'uses' => 'Forms\CPI\CPIConsumerPriceIndex@update'));
+
+//show a specific id
+Route::get('cpi/resource/{id}', array('as' => 'fetchcpi', 'uses' => 'Forms\CPI\CPIConsumerPriceIndex@show'));
+
+
+//@fred
+
+//fetch
+Route::get('cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya/', 'Forms\CPI\CPIAnnualAVGRetailPriceOfCertainConsumerGoodsInKenya@index')->name('cpi_annual_avg_retail_prices_of_certain_consumer_goods_in_kenya');
+//post to save
+Route::post('retail/store', array('as' => 'storeretail', 'uses' => 'Forms\CPI\CPIAnnualAVGRetailPriceOfCertainConsumerGoodsInKenya@store'));
+//post to update
+Route::post('retail/update', array('as' => 'updateretail', 'uses' => 'Forms\CPI\CPIAnnualAVGRetailPriceOfCertainConsumerGoodsInKenya@update'));
+
+//show a specific id
+Route::get('retail/resource/{id}', array('as' => 'fetchretail', 'uses' => 'Forms\CPI\CPIAnnualAVGRetailPriceOfCertainConsumerGoodsInKenya@show'));
+
+
+
+//@fred
+
+//fetch
+Route::get('manufacturing_quantum_indices_of_manufacturing_production/', 'Forms\Manufacturing\MaufacturingQuantumIndicesOfManufacturingProduction@index')->name('manufacturing_quantum_indices_of_manufacturing_production');
+//post to save
+Route::post('quantum/store', array('as' => 'storequantum', 'uses' => 'Forms\Manufacturing\MaufacturingQuantumIndicesOfManufacturingProduction@store'));
+//post to update
+Route::post('quantum/update', array('as' => 'updatequantum', 'uses' => 'Forms\Manufacturing\MaufacturingQuantumIndicesOfManufacturingProduction@update'));
+
+//show a specific id
+Route::get('quantum/resource/{id}', array('as' => 'fetchquantum', 'uses' => 'Forms\Manufacturing\MaufacturingQuantumIndicesOfManufacturingProduction@show'));
+
+
+//@fred
+
+//fetch
+Route::get('manufacturing_per_change_in_quantum_indices_of_man_production/', 'Forms\Manufacturing\MaufacturingPerChangeInQuantumIndicesOfManProduction@index')->name('manufacturing_per_change_in_quantum_indices_of_man_production');
+//post to save
+Route::post('percentageN/store', array('as' => 'storepercentageN', 'uses' => 'Forms\Manufacturing\MaufacturingPerChangeInQuantumIndicesOfManProduction@store'));
+//post to update
+Route::post('percentageN/update', array('as' => 'updatepercentageN', 'uses' => 'Forms\Manufacturing\MaufacturingPerChangeInQuantumIndicesOfManProduction@update'));
+
+//show a specific id
+Route::get('percentageN/resource/{id}', array('as' => 'fetchpercentageN', 'uses' => 'Forms\Manufacturing\MaufacturingPerChangeInQuantumIndicesOfManProduction@show'));
+
+
+//@fred
+
+//fetch
+Route::get('labour_wage_employment_by_industry_in_public_sector/', 'Forms\Labour\LabourWageEmploymentByIndustryInPublicSector@index')->name('labour_wage_employment_by_industry_in_public_sector');
+//post to save
+Route::post('public/store', array('as' => 'storepublic', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryInPublicSector@store'));
+//post to update
+Route::post('public/update', array('as' => 'updatepublic', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryInPublicSector@update'));
+
+//show a specific id
+Route::get('public/resource/{id}', array('as' => 'fetchpublic', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryInPublicSector@show'));
+
+
+//@fred
+
+//fetch
+Route::get('labour_wage_employment_by_industry_in_private_sector/', 'Forms\Labour\LabourWageEmploymentByIndustryInPrivateSector@index')->name('labour_wage_employment_by_industry_in_private_sector');
+//post to save
+Route::post('private/store', array('as' => 'storeprivate', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryInPrivateSector@store'));
+//post to update
+Route::post('private/update', array('as' => 'updateprivate', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryInPrivateSector@update'));
+
+
+//show a specific id
+Route::get('private/resource/{id}', array('as' => 'fetchprivate', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryInPrivateSector@show'));
+
+//@fred
+
+//fetch
+Route::get('labour_wage_employment_by_industry_and_sex/', 'Forms\Labour\LabourWageEmploymentByIndustryAndSex@index')->name('labour_wage_employment_by_industry_and_sex');
+//post to save
+Route::post('wagenew/store', array('as' => 'storewagenew', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryAndSex@store'));
+//post to update
+Route::post('wagenew/update', array('as' => 'updatewagenew', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryAndSex@update'));
+
+
+//show a specific id
+Route::get('wagenew/resource/{id}', array('as' => 'fetchwagenew', 'uses' => 'Forms\Labour\LabourWageEmploymentByIndustryAndSex@show'));
+
+//@fred
+
+//fetch
+Route::get('labour_total_recorded_employment/', 'Forms\Labour\LabourMemorandumItemsInPublicSector@index')->name('labour_total_recorded_employment');
+//post to save
+Route::post('employment/store', array('as' => 'storeemployment', 'uses' => 'Forms\Labour\LabourMemorandumItemsInPublicSector@store'));
+//post to update
+Route::post('employment/update', array('as' => 'updatemployment', 'uses' => 'Forms\Labour\LabourMemorandumItemsInPublicSector@update'));
+
+
+//show a specific id
+Route::get('employment/resource/{id}', array('as' => 'fetchemployment', 'uses' => 'Forms\Labour\LabourMemorandumItemsInPublicSector@show'));
+
+
+//@fred
+
+//fetch
+Route::get('labour_memorandum_items_in_public_sector/', 'Forms\Labour\LabourMemorandumItemsInPublicSector@index')->name('labour_memorandum_items_in_public_sector');
+//post to save
+Route::post('memorandum/store', array('as' => 'storememorandum', 'uses' => 'Forms\Labour\LabourMemorandumItemsInPublicSector@store'));
+//post to update
+Route::post('memorandum/update', array('as' => 'updatememorandum', 'uses' => 'Forms\Labour\LabourMemorandumItemsInPublicSector@update'));
+
+
+//show a specific id
+Route::get('memorandum/resource/{id}', array('as' => 'fetchmemorandum', 'uses' => 'Forms\Labour\LabourMemorandumItemsInPublicSector@show'));
+
+
+//@fred
+
+//fetch
+Route::get('labour_average_wage_earnings_per_employee_public_sector/', 'Forms\Labour\LabourAverageWageEarningsPerEmployeePublicSector@index')->name('labour_average_wage_earnings_per_employee_public_sector');
+//post to save
+Route::post('wageN/store', array('as' => 'storewageN', 'uses' => 'Forms\Labour\LabourAverageWageEarningsPerEmployeePublicSector@store'));
+//post to update
+Route::post('wageN/update', array('as' => 'updatewageN', 'uses' => 'Forms\Labour\LabourAverageWageEarningsPerEmployeePublicSector@update'));
+
+
+//show a specific id
+Route::get('wageN/resource/{id}', array('as' => 'fetchwageN', 'uses' => 'Forms\Labour\LabourAverageWageEarningsPerEmployeePublicSector@show'));
+
+//@fred
+
+//fetch
+Route::get('labour_average_wage_earnings_per_employee_private_sector/', 'Forms\Labour\LabourAverageWageEarningsPerEmployeePrivateSector@index')->name('labour_average_wage_earnings_per_employee_private_sector');
+//post to save
+Route::post('wage/store', array('as' => 'storewage', 'uses' => 'Forms\Labour\LabourAverageWageEarningsPerEmployeePrivateSector@store'));
+//post to update
+Route::post('wage/update', array('as' => 'updatewage', 'uses' => 'Forms\Labour\LabourAverageWageEarningsPerEmployeePrivateSector@update'));
+
+
+//show a specific id
+Route::get('wage/resource/{id}', array('as' => 'fetchwage', 'uses' => 'Forms\Labour\LabourAverageWageEarningsPerEmployeePrivateSector@show'));
+
+
+//@fred
+
+//fetch
+Route::get('health_nhif_resources/', 'Forms\Health\HealthNhifResources@index')->name('health_nhif_resources');
+//post to save
+Route::post('nhifResource/store', array('as' => 'storenhifResource', 'uses' => 'Forms\Health\HealthNhifResources@store'));
+//post to update
+Route::post('nhifResource/update', array('as' => 'updatenhifResource', 'uses' => 'Forms\Health\HealthNhifResources@update'));
+
+
+//show a specific id
+Route::get('nhifResource/resource/{id}', array('as' => 'fetchnhifResource', 'uses' => 'Forms\Health\HealthNhifResources@show'));
+
+
+
+
+//@fred
+
+//fetch
+Route::get('health_nhif_members/', 'Forms\Health\HealthNhifMembers@index')->name('health_nhif_members');
+//post to save
+Route::post('nhifMember/store', array('as' => 'storenhifMember', 'uses' => 'Forms\Health\HealthNhifMembers@store'));
+//post to update
+Route::post('nhifMember/update', array('as' => 'updatenhifMember', 'uses' => 'Forms\Health\HealthNhifMembers@update'));
+
+
+//show a specific id
+Route::get('nhifMember/resource/{id}', array('as' => 'fetchnhifMember', 'uses' => 'Forms\Health\HealthNhifMembers@show'));
+
+//@fred
+
+//fetch
+Route::get('health_fertility_by_education_status/', 'Forms\Health\HealthFertilityByEducationStatus@index')->name('health_fertility_by_education_status');
+//post to save
+Route::post('fertilityN/store', array('as' => 'storefertilityN', 'uses' => 'Forms\Health\HealthFertilityByEducationStatus@store'));
+//post to update
+Route::post('fertilityN/update', array('as' => 'updatefertilityN', 'uses' => 'Forms\Health\HealthFertilityByEducationStatus@update'));
+
+
+//show a specific id
+Route::get('fertilityN/resource/{id}', array('as' => 'fetchfertilityN', 'uses' => 'Forms\Health\HealthFertilityByEducationStatus@show'));
+
+//@fred
+
+//fetch
+Route::get('health_fertility_rate_by_age_and_residence/', 'Forms\Health\HealthFertilityRateByAgeAndResidence@index')->name('health_fertility_rate_by_age_and_residence');
+//post to save
+Route::post('fertility/store', array('as' => 'storefertility', 'uses' => 'Forms\Health\HealthFertilityRateByAgeAndResidence@store'));
+//post to update
+Route::post('fertility/update', array('as' => 'updatefertility', 'uses' => 'Forms\Health\HealthFertilityRateByAgeAndResidence@update'));
+
+
+//show a specific id
+Route::get('fertility/resource/{id}', array('as' => 'fetchfertility', 'uses' => 'Forms\Health\HealthFertilityRateByAgeAndResidence@show'));
+
+//@fred
+
+//fetch
+Route::get('health_early_childhood_mortality_rates_by_sex/', 'Forms\Health\HealthEarlyChildhoodMortalityRatesBySex@index')->name('health_early_childhood_mortality_rates_by_sex');
+//post to save
+Route::post('rate/store', array('as' => 'storerate', 'uses' => 'Forms\Health\HealthEarlyChildhoodMortalityRatesBySex@store'));
+//post to update
+Route::post('rate/update', array('as' => 'updaterate', 'uses' => 'Forms\Health\HealthEarlyChildhoodMortalityRatesBySex@update'));
+
+
+//show a specific id
+Route::get('rate/resource/{id}', array('as' => 'fetchrate', 'uses' => 'Forms\Health\HealthEarlyChildhoodMortalityRatesBySex@show'));
+
+//@fred
+
+//fetch
+Route::get('health_place_of_delivery/', 'Forms\Health\HealthPlaceOfDelivery@index')->name('health_place_of_delivery');
+//post to save
+Route::post('placeN/store', array('as' => 'storeplaceN', 'uses' => 'Forms\Health\HealthPlaceOfDelivery@store'));
+//post to update
+Route::post('placeN/update', array('as' => 'updateplaceN', 'uses' => 'Forms\Health\HealthPlaceOfDelivery@update'));
+
+
+//show a specific id
+Route::get('placeN/resource/{id}', array('as' => 'fetchplaceN', 'uses' => 'Forms\Health\HealthPlaceOfDelivery@show'));
+
+//@fred
+
+//fetch
+Route::get('health_percentage_incidence_of_diseases_in_kenya/', 'Forms\Health\HealthPercentageIncidenceOfDiseasesInKenya@index')->name('health_percentage_incidence_of_diseases_in_kenya');
+//post to save
+Route::post('incidenceN/store', array('as' => 'storeincidenceN', 'uses' => 'Forms\Health\HealthPercentageIncidenceOfDiseasesInKenya@store'));
+//post to update
+Route::post('incidenceN/update', array('as' => 'updateincidenceN', 'uses' => 'Forms\Health\HealthPercentageIncidenceOfDiseasesInKenya@update'));
+
+
+//show a specific id
+Route::get('incidenceN/resource/{id}', array('as' => 'fetchincidenceN', 'uses' => 'Forms\Health\HealthPercentageIncidenceOfDiseasesInKenya@show'));
+
+//@fred
+
+//fetch
+Route::get('health_percentage_who_drink_alcohol_by_age/', 'Forms\Health\HealthPercentageWhoDrinkAlcoholByAge@index')->name('health_percentage_who_drink_alcohol_by_age');
+//post to save
+Route::post('percentage/store', array('as' => 'storepercentage', 'uses' => 'Forms\Health\HealthPercentageWhoDrinkAlcoholByAge@store'));
+//post to update
+Route::post('percentage/update', array('as' => 'updatepercentage', 'uses' => 'Forms\Health\HealthPercentageWhoDrinkAlcoholByAge@update'));
+
+
+//show a specific id
+Route::get('percentage/resource/{id}', array('as' => 'fetchpercentage', 'uses' => 'Forms\Health\HealthPercentageWhoDrinkAlcoholByAge@show'));
+
+//@fred
+
+//fetch
+Route::get('health_prevalence_of_overweight_and_obesity/', 'Forms\Health\HealthPrevalenceOfOverweightAndObesity@index')->name('health_prevalence_of_overweight_and_obesity');
+//post to save
+Route::post('prevalence/store', array('as' => 'storeprevalence', 'uses' => 'Forms\Health\HealthPrevalenceOfOverweightAndObesity@store'));
+//post to update
+Route::post('prevalence/update', array('as' => 'updateprevalence', 'uses' => 'Forms\Health\HealthPrevalenceOfOverweightAndObesity@update'));
+
+
+//show a specific id
+Route::get('prevalence/resource/{id}', array('as' => 'fetchprevalence', 'uses' => 'Forms\Health\HealthPrevalenceOfOverweightAndObesity@show'));
+
+//@fred
+
+//fetch
+Route::get('health_percentage_adults_who_are_current_users/', 'Forms\Health\HealthPercentageAdultsWhoAreCurrentUsers@index')->name('health_percentage_adults_who_are_current_users');
+//post to save
+Route::post('user/store', array('as' => 'storeuser', 'uses' => 'Forms\Health\HealthPercentageAdultsWhoAreCurrentUsers@store'));
+//post to update
+Route::post('user/update', array('as' => 'updateuser', 'uses' => 'Forms\Health\HealthPercentageAdultsWhoAreCurrentUsers@update'));
+
+
+//show a specific id
+Route::get('user/resource/{id}', array('as' => 'fetchuser', 'uses' => 'Forms\Health\HealthPercentageAdultsWhoAreCurrentUsers@show'));
+
 
 
 
@@ -450,6 +967,61 @@ Route::post('population_populationbysexhouseholdsdensityandcensusyears/update', 
 //@Charles
 //show a specific id
 Route::get('population_populationbysexhouseholdsdensityandcensusyears/approved/{id}', array('as' => 'fetchPopulationByPopDensityCensus', 'uses' => 'Forms\Population\population_populationbysexhouseholdsdensityandcensusyears@show'));
+
+//@Charles 
+//Energy County Datasets 
+ 
+//@Charles
+//fetch
+Route::get('energy_averagemonthlypumppricesforfuelbycategory/', 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@index')->name('energy_averagemonthlypumppricesforfuelbycategory');
+
+//@Charles
+//post to save
+Route::post('energy_averagemonthlypumppricesforfuelbycategory/store', array('as' => 'storeFuelPrices', 'uses' => 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@store'));
+
+//@Charles 
+//post to update
+Route::post('energy_averagemonthlypumppricesforfuelbycategory/update', array('as' => 'updateFuelPrices', 'uses' => 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@update'));
+
+//@Charles
+//show a specific id
+Route::get('energy_averagemonthlypumppricesforfuelbycategory/approved/{id}', array('as' => 'fetchFuelPrices', 'uses' => 'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@show'));
+
+//@Charles 
+//Political and Administration Datasets 
+ 
+//@Charles
+//fetch
+Route::get('political_and_administrative_units_administrative_unit/', 'Forms\Administration\administrative_unit@index')->name('administrative_unit');
+
+//@Charles
+//post to save
+Route::post('political_and_administrative_units_administrative_unit/store', array('as' => 'storeNoOfAdministrativeUnits', 'uses' => 'Forms\Administration\administrative_unit@store'));
+
+//@Charles 
+//post to update
+Route::post('political_and_administrative_units_administrative_unit/update', array('as' => 'updateNoOfAdministrativeUnits', 'uses' => 'Forms\Administration\administrative_unit@update'));
+
+//@Charles
+//show a specific id
+Route::get('political_and_administrative_units_administrative_unit/approved/{id}', array('as' => 'fetchNoOfAdministrativeUnits', 'uses' => 'Forms\Administration\administrative_unit@show'));
+
+ 
+//@Charles
+//fetch
+Route::get('political_and_administrative_units_political_units/', 'Forms\Administration\political_units@index')->name('political_units');
+
+//@Charles
+//post to save
+Route::post('political_and_administrative_units_political_units/store', array('as' => 'storeNoOfPoliticalUnitsPerWard', 'uses' => 'Forms\Administration\political_units@store'));
+
+//@Charles 
+//post to update
+Route::post('political_and_administrative_units_political_units/update', array('as' => 'updateNoOfPoliticalUnitsPerWard', 'uses' => 'Forms\Administration\political_units@update'));
+
+//@Charles
+//show a specific id
+Route::get('political_and_administrative_units_political_units/approved/{id}', array('as' => 'fetchNoOfPoliticalUnitsPerWard', 'uses' => 'Forms\Administration\political_units@show'));
 
 
 // Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
@@ -2084,6 +2656,7 @@ Route::post('irrigation/store', array('as' => 'storeIrrigation', 'uses' => 'Form
 //post to update
 Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@update'));
 
+<<<<<<< HEAD
 
 
 
@@ -2484,4 +3057,7 @@ Route::post('select/store', array('as' => 'storeSelect', 'uses' =>
   'Forms\Population\population_populationprojectionsbyselectedagegroup@store'));
 Route::post('select/update', array('as' => 'updateSelect', 'uses' => 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@update'));
+=======
+	
+>>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 

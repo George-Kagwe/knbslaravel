@@ -84,7 +84,7 @@ class AllFormsController  extends Controller
     public function ict(){
     	$data_national = DB::table('health_sectors')
                ->orderBy('coverage',  '=', 'ASC')
-            	->where('sector_name',  'like', 'ict')
+            	->where('sector_name',  'like', '%ict')
                 ->get();
 
         return view('Forms.datasets',
@@ -236,6 +236,18 @@ class AllFormsController  extends Controller
         	        ['datasets' =>$data_national]
 
         	      );    	
+    }
+
+    public function housing(){
+        $data_national = DB::table('health_sectors')
+               ->orderBy('coverage',  '=', 'ASC')
+                ->where('sector_name',  'like', '%housing%')
+                ->get();
+
+        return view('Forms.datasets',
+                    ['datasets' =>$data_national]
+
+                  );        
     }
       
 

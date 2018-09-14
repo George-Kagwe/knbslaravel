@@ -11,7 +11,7 @@ use App\Models\Tourism\tourism_hotel_occupancy_by_residence_model;
 use View;
  
 //@Charles Ndirangu
-//Tourism Conference
+//Tourism Occupancy by Residence
 
 class tourism_hotel_occupancy_by_residence extends Controller
 {
