@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Households that own ICT Equipment Services</center></h5>
+                              <h5><center>Household Without Internet and their reason</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,38 +215,57 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
+                                           <th>Do not need one</th>
+                                           <th>Lack Skills</th>                                        
+                                           <th>No Network</th>
+                                           <th>Have access elsewhere</th>
+                                           <th>Does not meet needs</th>
+                                           <th>Service Cost is high</th>
+                                           <th>Equipment cost is high</th>
+                                           <th>Cultural Reasons</th>
+                                           <th>Other Reasons</th>
                                            <th>Households</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($ict_items as $ict_item){?>
+                                      <?php foreach($no_nets as $no_nets){?>
                                              <tr>
-                                                <td>{{$ict_item->household_id}}</td>
-                                                <td>{{$ict_item->county_name}}</td>
-                                                <td>{{$ict_item->computer}}</td>
-                                                <td>{{$ict_item->television}}</td>
-                                                <td>{{$ict_item->households}}</td>
+                                                <td>{{$no_nets->distribution_id}}</td>
+                                                <td>{{$no_nets->county_name}}</td>
+                                                <td>{{$no_nets->dont_need}}</td>
+                                                <td>{{$no_nets->lack_skills}}</td>
+                                                <td>{{$no_nets->no_network}}</td>
+                                                <td>{{$no_nets->access_elsewhere}}</td>
+                                                <td>{{$no_nets->doesnt_meet_needs}}</td>
+                                                <td>{{$no_nets->service_cost_high}}</td>
+                                                <td>{{$no_nets->equipment_cost_high}}</td>
+                                                <td>{{$no_nets->cultural_reasons}}</td>
+                                                <td>{{$no_nets->other_reasons}}</td>
+                                                <td>{{$no_nets->households}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $ict_item->household_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $no_nets->distribution_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
-
-
-
+ 
                                       </tbody>
 
                                       <tfoot>
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Computer</th>
-                                           <th>Television</th>                                        
+                                           <th>Do not need one</th>
+                                           <th>Lack Skills</th>                                        
+                                           <th>No Network</th>
+                                           <th>Have access elsewhere</th>
+                                           <th>Does nit meet needs</th>
+                                           <th>Service Cost is high</th>
+                                           <th>Equipment cost is high</th>
+                                           <th>Cultural Reasons</th>
+                                           <th>Other Reasons</th>
                                            <th>Households</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -284,13 +303,13 @@
                         //var  url =urls.replace(':id', id);
 
 //                        $.get(url, function(data) {
-  //                          var select = $('form select[name=television]');
+  //                          var select = $('form select[name=lack_skills]');
                             
     //                        select.empty();
 
       //                      $.each(JSON.parse(data),function(key,value) {
                               
-        //                         select.append('<option value=' + value.subcounty_id + '>' +value.television+ '</option>');
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.lack_skills+ '</option>');
           //                  });
             //            });
               //      });
@@ -303,50 +322,100 @@ $(document).ready( function () {
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          dont_need: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of those that dont need '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          lack_skills: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of that lack skills of how to operate them'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          no_network: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of those that do not have any network'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          access_elsewhere: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please count of those that have access elsewhere '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
+                                           doesnt_meet_needs: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of those that cannot meet their needs neither '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          service_cost_high: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those that say service cost is high '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          equipment_cost_high: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those that say Equipment cost is high '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          cultural_reasons: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those that cite cultural reasons '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          other_reasons: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those that cite other reasons '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           households: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of households '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
@@ -371,7 +440,7 @@ $(document).ready( function () {
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchHouseholdICTItems", ":id") }}';
+                        var url = '{{ route("fetchHouseholdWithoutNetReasons", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -384,10 +453,17 @@ $(document).ready( function () {
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.household_id);
+                              $('[name="id"]').val(data.distribution_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="computer"]').val(data.computer);
-                              $('[name="television"]').val(data.television);  
+                              $('[name="dont_need"]').val(data.dont_need);
+                              $('[name="lack_skills"]').val(data.lack_skills);  
+                              $('[name="no_network"]').val(data.no_network);
+                              $('[name="access_elsewhere"]').val(data.access_elsewhere);
+                              $('[name="doesnt_meet_needs"]').val(data.doesnt_meet_needs);
+                              $('[name="service_cost_high"]').val(data.service_cost_high);
+                              $('[name="equipment_cost_high"]').val(data.equipment_cost_high);
+                              $('[name="cultural_reasons"]').val(data.cultural_reasons);
+                              $('[name="other_reasons"]').val(data.other_reasons);
                               $('[name="households"]').val(data.households);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -408,7 +484,7 @@ $(document).ready( function () {
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeHouseholdICTItems') }}";
+                            url = "{{ route('storeHouseholdWithoutNetReasons') }}";
 
                         }
                         else
@@ -416,7 +492,7 @@ $(document).ready( function () {
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateHouseholdICTItems') }}";
+                          url = "{{ route('updateHouseholdWithoutNetReasons') }}";
                         }
                           
                       
@@ -466,8 +542,6 @@ $(document).ready( function () {
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
-                     
-
             </script>
 
               <!-- Bootstrap modal -->
@@ -480,7 +554,7 @@ $(document).ready( function () {
                   </div>
                   <div class="modal-body form">
                       <form action="#" id="form" class="form-horizontal">
-                        <div class="alert alert-danger" style="display:none"></div>
+                        <div class="alert alert-danger" style="display:none;"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
 
@@ -489,39 +563,75 @@ $(document).ready( function () {
                                 <div class="col-md-9">
                                   <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    
-
-                                       <?php foreach($counties as $counties){?>
-                                            
-                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-   
-                                       <?php }?>
+                                        <?php foreach($counties as $counties){?>
+                                            <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                        <?php }?>
                                   </select>
                                 </div>
                               </div>
 
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Computers</label>
+                                <label class="control-label col-md-3">Do not need</label>
                                 <div class="col-md-9">
-                                  <input name="computer"  class="form-control" type="text">
+                                  <input name="dont_need"  class="form-control" type="text">
                                 </div>
                               </div>
                            
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Televisions</label>
+                                <label class="control-label col-md-3">lack skills on how to operate</label>
                                 <div class="col-md-9">
-                                  <input name="television"  class="form-control" type="text">
+                                  <input name="lack_skills"  class="form-control" type="text">
                                 </div>
                               </div>
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Households with ICT Items</label>
+                                <label class="control-label col-md-3">No network</label>
+                                <div class="col-md-9">
+                                  <input name="no_network"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Have access elsewhere</label>
+                                <div class="col-md-9">
+                                  <input name="access_elsewhere"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Does not meet needs</label>
+                                <div class="col-md-9">
+                                  <input name="doesnt_meet_needs"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Service Cost high</label>
+                                <div class="col-md-9">
+                                  <input name="service_cost_high"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Equipment cost high</label>
+                                <div class="col-md-9">
+                                  <input name="equipment_cost_high"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Cultural reasons</label>
+                                <div class="col-md-9">
+                                  <input name="cultural_reasons"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Other Reasons</label>
+                                <div class="col-md-9">
+                                  <input name="other_reasons"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Households</label>
                                 <div class="col-md-9">
                                   <input name="households"  class="form-control" type="text">
                                 </div>
                               </div>
-                           
-                              
                               </div>
 
                             

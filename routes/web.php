@@ -1017,6 +1017,120 @@ Route::post('political_and_administrative_units_political_units/update', array('
 Route::get('political_and_administrative_units_political_units/approved/{id}', array('as' => 'fetchNoOfPoliticalUnitsPerWard', 'uses' => 'Forms\Administration\political_units@show'));
 
 
+//@Charles 
+//ICT County Datasets 
+ 
+//@Charles
+//fetch
+Route::get('ict_kihibs_households_owned_ict_equipment_services/', 'Forms\ICT\ict_kihibs_households_owned_ict_equipment_services@index')->name('administrative_unit');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_households_owned_ict_equipment_services/store', array('as' => 'storeHouseholdICTItems', 'uses' => 'Forms\ICT\ict_kihibs_households_owned_ict_equipment_services@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_households_owned_ict_equipment_services/update', array('as' => 'updateHouseholdICTItems', 'uses' => 'Forms\ICT\ict_kihibs_households_owned_ict_equipment_services@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_households_owned_ict_equipment_services/approved/{id}', array('as' => 'fetchHouseholdICTItems', 'uses' => 'Forms\ICT\ict_kihibs_households_owned_ict_equipment_services@show'));
+
+//@Charles
+//fetch
+Route::get('ict_kihibs_households_with_internet_by_type/', 'Forms\ICT\ict_kihibs_households_with_internet_by_type@index')->name('ict_kihibs_households_with_internet_by_type');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_households_with_internet_by_type/store', array('as' => 'storeHouseholdNetType', 'uses' => 'Forms\ICT\ict_kihibs_households_with_internet_by_type@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_households_with_internet_by_type/update', array('as' => 'updateHouseholdNetType', 'uses' => 'Forms\ICT\ict_kihibs_households_with_internet_by_type@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_households_with_internet_by_type/approved/{id}', array('as' => 'fetchHouseholdNetType', 'uses' => 'Forms\ICT\ict_kihibs_households_with_internet_by_type@show'));
+
+//@Charles
+//fetch
+Route::get('ict_kihibs_households_with_tv/', 'Forms\ICT\ict_kihibs_households_with_tv@index')->name('ict_kihibs_households_with_tv');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_households_with_tv/store', array('as' => 'storeHouseholdTVs', 'uses' => 'Forms\ICT\ict_kihibs_households_with_tv@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_households_with_tv/update', array('as' => 'updateHouseholdTVs', 'uses' => 'Forms\ICT\ict_kihibs_households_with_tv@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_households_with_tv/approved/{id}', array('as' => 'fetchHouseholdTVs', 'uses' => 'Forms\ICT\ict_kihibs_households_with_tv@show'));
+
+//@Charles
+//fetch
+Route::get('ict_kihibs_households_without_internet_by_reason/', 'Forms\ICT\ict_kihibs_households_without_internet_by_reason@index')->name('ict_kihibs_households_without_internet_by_reason');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_households_without_internet_by_reason/store', array('as' => 'storeHouseholdWithoutNetReasons', 'uses' => 'Forms\ICT\ict_kihibs_households_without_internet_by_reason@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_households_without_internet_by_reason/update', array('as' => 'updateHouseholdWithoutNetReasons', 'uses' => 'Forms\ICT\ict_kihibs_households_without_internet_by_reason@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_households_without_internet_by_reason/approved/{id}', array('as' => 'fetchHouseholdWithoutNetReasons', 'uses' => 'Forms\ICT\ict_kihibs_households_without_internet_by_reason@show'));
+//@Charles
+//fetch
+Route::get('ict_kihibs_population_above18by_reasonnothaving_phone/', 'Forms\ICT\ict_kihibs_population_above18by_reasonnothaving_phone@index')->name('ict_kihibs_population_above18by_reasonnothaving_phone');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_population_above18by_reasonnothaving_phone/store', array('as' => 'storeHouseholdWithoutPhoneReasons', 'uses' => 'Forms\ICT\ict_kihibs_population_above18by_reasonnothaving_phone@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_population_above18by_reasonnothaving_phone/update', array('as' => 'updateHouseholdWithoutPhoneReasons', 'uses' => 'Forms\ICT\ict_kihibs_population_above18by_reasonnothaving_phone@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_population_above18by_reasonnothaving_phone/approved/{id}', array('as' => 'fetchHouseholdWithoutPhoneReasons', 'uses' => 'Forms\ICT\ict_kihibs_population_above18by_reasonnothaving_phone@show'));
+
+//@Charles
+//fetch
+Route::get('ict_kihibs_population_above18subscribed_mobilemoney/', 'Forms\ICT\ict_kihibs_population_above18subscribed_mobilemoney@index')->name('ict_kihibs_population_above18subscribed_mobilemoney');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_population_above18subscribed_mobilemoney/store', array('as' => 'storePopMobileMoney', 'uses' => 'Forms\ICT\ict_kihibs_population_above18subscribed_mobilemoney@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_population_above18subscribed_mobilemoney/update', array('as' => 'updatePopMobileMoney', 'uses' => 'Forms\ICT\ict_kihibs_population_above18subscribed_mobilemoney@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_population_above18subscribed_mobilemoney/approved/{id}', array('as' => 'fetchPopMobileMoney', 'uses' => 'Forms\ICT\ict_kihibs_population_above18subscribed_mobilemoney@show'));
+
+//@Charles
+//fetch
+Route::get('ict_kihibs_population_by_ictequipment_and_servicesused/', 'Forms\ICT\ict_kihibs_population_by_ictequipment_and_servicesused@index')->name('ict_kihibs_population_by_ictequipment_and_servicesused');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_population_by_ictequipment_and_servicesused/store', array('as' => 'storePopICTEquip', 'uses' => 'Forms\ICT\ict_kihibs_population_by_ictequipment_and_servicesused@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_population_by_ictequipment_and_servicesused/update', array('as' => 'updatePopICTEquip', 'uses' => 'Forms\ICT\ict_kihibs_population_by_ictequipment_and_servicesused@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_population_by_ictequipment_and_servicesused/approved/{id}', array('as' => 'fetchPopICTEquip', 'uses' => 'Forms\ICT\ict_kihibs_population_by_ictequipment_and_servicesused@show'));
+ 
 // Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
 // Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
 

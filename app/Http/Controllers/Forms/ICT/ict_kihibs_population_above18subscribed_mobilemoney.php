@@ -7,14 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\Models\ICT\ict_kihibs_households_owned_ict_equipment_services_model;
+use App\Models\ICT\ict_kihibs_population_above18subscribed_mobilemoney_model;
 use View;
 use Illuminate\Support\Facades\DB;
 
 //@Charles Ndirangu
-//households owned ict equipments
+//population mobile money subscribers
 
-class ict_kihibs_households_owned_ict_equipment_services extends Controller
+class ict_kihibs_population_above18subscribed_mobilemoney extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,19 +23,19 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
      */
      protected $rules = [ 
         'county_id'=>'required',
-        'computer'=>'required|numeric',
-        'television'=>'required|numeric',
-        'households'=>'required|numeric',
+        'mobile_money'=>'required|numeric',
+        'mobile_banking'=>'required|numeric',
+        'population'=>'required|numeric',
 
     ];
     public function index()
     {
-        $ict_equipments = DB::table('ict_kihibs_households_owned_ict_equipment_services')
-               ->join('health_counties', 'ict_kihibs_households_owned_ict_equipment_services.county_id', '=', 'health_counties.county_id')->orderBy('household_id', 'ASC')->get();
+        $subscribers_mb = DB::table('ict_kihibs_population_above18subscribed_mobilemoney')
+               ->join('health_counties', 'ict_kihibs_population_above18subscribed_mobilemoney.county_id', '=', 'health_counties.county_id')->orderBy('proportion_id', 'ASC')->get();
 
         $counties = DB::table('health_counties')->get();
 
-        return view('Forms.ICT.county.ict_kihibs_households_owned_ict_equipment_services', ['ict_items' =>$ict_equipments,'counties' =>$counties]);
+        return view('Forms.ICT.county.ict_kihibs_population_above18subscribed_mobilemoney', ['mobile_subscriber' =>$subscribers_mb,'counties' =>$counties]);
  
     }
 
@@ -59,9 +59,9 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
     {
         $validator = \Validator::make($request->all(), [
                           'county_name'=>'required',
-                          'computer'=>'required|numeric',
-                          'television'=>'required|numeric',
-                          'households'=>'required|numeric',
+                          'mobile_money'=>'required|numeric',
+                          'mobile_banking'=>'required|numeric',
+                          'population'=>'required|numeric',
         ]);
         
         if ($validator->fails())
@@ -69,13 +69,13 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $ict_items = new ict_kihibs_households_owned_ict_equipment_services_model();
-            $ict_items->county_id =$request->county_name;
-            $ict_items->computer=$request->computer;
-            $ict_items->television=$request->television;         
-            $ict_items->households=$request->households;
-            $ict_items->save();
-             return response()->json($ict_items);
+            $mobile_subscriber = new ict_kihibs_population_above18subscribed_mobilemoney_model();
+            $mobile_subscriber->county_id =$request->county_name;
+            $mobile_subscriber->mobile_money=$request->mobile_money;
+            $mobile_subscriber->mobile_banking=$request->mobile_banking;         
+            $mobile_subscriber->population=$request->population;
+            $mobile_subscriber->save();
+             return response()->json($mobile_subscriber);
            echo json_encode(array("status" => TRUE));
 
         }
@@ -87,13 +87,13 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($household_id)
+    public function show($proportion_id)
     {
         
-          $ict_item = ict_kihibs_households_owned_ict_equipment_services_model::findOrfail($household_id);
+          $subscriber = ict_kihibs_population_above18subscribed_mobilemoney_model::findOrfail($proportion_id);
      
       
-         echo json_encode($ict_item);
+         echo json_encode($subscriber);
     }
 
     /**
@@ -118,9 +118,9 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
     {
         $validator = \Validator::make($request->all(), [
                           'county_name'=>'required',
-                          'computer'=>'required|numeric',
-                          'television'=>'required|numeric',
-                          'households'=>'required|numeric',
+                          'mobile_money'=>'required|numeric',
+                          'mobile_banking'=>'required|numeric',
+                          'population'=>'required|numeric',
         ]);
         
         if ($validator->fails())
@@ -128,13 +128,13 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $ict_item =ict_kihibs_households_owned_ict_equipment_services_model::find($request->id);
-            $ict_item->county_id =$request->county_name;
-            $ict_item->computer=$request->computer;
-            $ict_item->television=$request->television;         
-            $ict_item->households=$request->households;
-            $ict_item->save();
-             return response()->json($ict_item);
+            $subscriber =ict_kihibs_population_above18subscribed_mobilemoney_model::find($request->id);
+            $subscriber->county_id =$request->county_name;
+            $subscriber->mobile_money=$request->mobile_money;
+            $subscriber->mobile_banking=$request->mobile_banking;         
+            $subscriber->population=$request->population;
+            $subscriber->save();
+             return response()->json($subscriber);
            echo json_encode(array("status" => TRUE));
         }
     }
