@@ -204,7 +204,7 @@ fet<!DOCTYPE html>
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Primary School Teachers by Sex</center></h5>
+                              <h5><center>Public Secondary School Teachers by Sex</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -216,9 +216,7 @@ fet<!DOCTYPE html>
                                            <th>ID</th>                                          
                                            <th>number</th>
                                            <th>proportion</th>
-                                         <th>gender</th>
-                                    
-
+                                          <th>gender</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -230,7 +228,7 @@ fet<!DOCTYPE html>
                                                 <td>{{$post->candidate_id}}</td>
                                                 <td>{{$post->number}}</td>
                                                 <td>{{$post->proportion}}</td>
-                                                 <td>{{$post->gender}}</td>
+                                                <td>{{$post->gender}}</td>
                                                 <td>{{$post->year}}</td>                                      
 
                                                 <td>
@@ -246,12 +244,10 @@ fet<!DOCTYPE html>
 
                                       <tfoot>
                                         <tr>
-                                             <th>ID</th>                                          
+                                          <th>ID</th>                                          
                                            <th>number</th>
                                            <th>proportion</th>
-                                         <th>gender</th>
-                                    
-
+                                          <th>gender</th>
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -287,8 +283,8 @@ fet<!DOCTYPE html>
                                           invalid: 'glyphicon glyphicon-remove',
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
-                                      number: {
-                                          kcpe_result: {
+                                      fields: {
+                                          number: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -298,23 +294,20 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-
-                                            proportion: {
-                                          kcpe_result: {
+                                          proportion: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter a number'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-
-                                            gender: {
+                                          gender: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a text '
+                                                      message: 'Please enter a text'
                                                   },
                                                    alpha_dash: {                                                    
                                                     message: 'Must be a text'
@@ -341,7 +334,7 @@ fet<!DOCTYPE html>
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchteachers", ":id") }}';
+                        var url = '{{ route("fetchsecondary", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -358,6 +351,7 @@ fet<!DOCTYPE html>
                               $('[name="number"]').val(data.number);
                               $('[name="proportion"]').val(data.proportion);
                               $('[name="gender"]').val(data.gender);
+                             
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -378,7 +372,7 @@ fet<!DOCTYPE html>
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeteachers') }}";
+                            url = "{{ route('storesecondary') }}";
 
                         }
                         else
@@ -386,7 +380,7 @@ fet<!DOCTYPE html>
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateteachers') }}";
+                          url = "{{ route('updatesecondary') }}";
                         }
                           
                       
@@ -453,7 +447,7 @@ fet<!DOCTYPE html>
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">  number</label>
+                                <label class="control-label col-md-3">number</label>
                                 <div class="col-md-9">
                                  
                                  <input name="number" class="form-control" type="text">
@@ -470,14 +464,13 @@ fet<!DOCTYPE html>
                                   <input name="proportion"  class="form-control" type="text">
                                 </div>
                               </div>
-
-                               <div class="form-group">
+                               </div>
+                              <div class="form-group">
                                 <label class="control-label col-md-3">gender</label>
                                 <div class="col-md-9">
                                   <input name="gender"  class="form-control" type="text">
                                 </div>
                               </div>
-                              
                               
                               
                               
@@ -493,7 +486,7 @@ fet<!DOCTYPE html>
                                     <option value="2012">2012</option>
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
-                                    <option value="2015">2015</option
+                                    <option value="2015">2015</option>
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
                                     <option value="2018">2018</option>

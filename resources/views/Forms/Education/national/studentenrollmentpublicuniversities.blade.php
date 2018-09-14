@@ -204,7 +204,7 @@ fet<!DOCTYPE html>
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Primary School Teachers by Sex</center></h5>
+                              <h5><center>Student Enrolment in Public Universities</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -213,13 +213,14 @@ fet<!DOCTYPE html>
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>number</th>
-                                           <th>proportion</th>
-                                         <th>gender</th>
-                                    
-
-                                           <th>Year</th>
+                                           <th>ID</th> 
+                                                    
+                                           <th>undergraduates</th>
+                                           <th>postgraduates</th>
+                                           <th> other</th>
+                                               <th>Year</th>
+                                           
+                                           
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -227,14 +228,15 @@ fet<!DOCTYPE html>
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->candidate_id}}</td>
-                                                <td>{{$post->number}}</td>
-                                                <td>{{$post->proportion}}</td>
-                                                 <td>{{$post->gender}}</td>
-                                                <td>{{$post->year}}</td>                                      
+                                                <td>{{$post->student_enrollment_id}}</td>
+                                                
+                                                <td>{{$post->undergraduates}}</td>
+                                                <td>{{$post->postgraduates}}</td>
+                                                <td>{{$post->other}}</td> 
+                                                <td>{{$post->year}}</td>                                     
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->candidate_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->student_enrollment_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -245,14 +247,12 @@ fet<!DOCTYPE html>
                                       </tbody>
 
                                       <tfoot>
-                                        <tr>
-                                             <th>ID</th>                                          
-                                           <th>number</th>
-                                           <th>proportion</th>
-                                         <th>gender</th>
-                                    
-
-                                           <th>Year</th>
+                                        <t<th>ID</th> 
+                                                       
+                                           <th> undergraduates</th>
+                                           <th>postgraduates</th>
+                                           <th> other</th>
+                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -287,8 +287,8 @@ fet<!DOCTYPE html>
                                           invalid: 'glyphicon glyphicon-remove',
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
-                                      number: {
-                                          kcpe_result: {
+                                      fields: {
+                                            undergraduates: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -298,9 +298,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-
-                                            proportion: {
-                                          kcpe_result: {
+                                          postgraduates: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -310,18 +308,17 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-
-                                            gender: {
+                                          other: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a text '
+                                                      message: 'Please enter a number '
                                                   },
-                                                   alpha_dash: {                                                    
-                                                    message: 'Must be a text'
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
                                                 }
                                               }
-                                          },
-                                      
+                                          }
+                                          
                                            
                                       }
                                   });
@@ -341,7 +338,7 @@ fet<!DOCTYPE html>
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchteachers", ":id") }}';
+                        var url = '{{ route("fetchuniversities", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -354,11 +351,13 @@ fet<!DOCTYPE html>
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.candidate_id);
-                              $('[name="number"]').val(data.number);
-                              $('[name="proportion"]').val(data.proportion);
-                              $('[name="gender"]').val(data.gender);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="id"]').val(data.student_enrollment_id);
+                            
+                              $('[name="undergraduates"]').val(data.undergraduates);
+                              $('[name="postgraduates"]').val(data.postgraduates);
+                              $('[name="other"]').val(data.other);
+                                $('[name="year"]').val(data.year);
+                                                                        
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -378,7 +377,7 @@ fet<!DOCTYPE html>
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeteachers') }}";
+                            url = "{{ route('storeuniversities') }}";
 
                         }
                         else
@@ -386,7 +385,7 @@ fet<!DOCTYPE html>
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateteachers') }}";
+                          url = "{{ route('updateuniversities') }}";
                         }
                           
                       
@@ -453,31 +452,29 @@ fet<!DOCTYPE html>
                             <div class="form-body">
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">  number</label>
+                                <label class="control-label col-md-3">Student Enrolment in Public Universities</label>
                                 <div class="col-md-9">
                                  
-                                 <input name="number" class="form-control" type="text">
-                                  @if ($errors->has('number'))
+                                 <input name="undergraduates" class="form-control" type="text">
+                                  @if ($errors->has('undergraduates'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('number') }}</strong>
+                                        <strong>{{ $errors->first(' undergraduates') }}</strong>
                                     </span>
                                 @endif
                                 </div>
                               </div>
                               <div class="form-group">
-                                <label class="control-label col-md-3">proportion</label>
+                                <label class="control-label col-md-3">postgraduates</label>
                                 <div class="col-md-9">
-                                  <input name="proportion"  class="form-control" type="text">
+                                  <input name="postgraduates"  class="form-control" type="text">
                                 </div>
                               </div>
-
-                               <div class="form-group">
-                                <label class="control-label col-md-3">gender</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">other</label>
                                 <div class="col-md-9">
-                                  <input name="gender"  class="form-control" type="text">
+                                  <input name="other"  class="form-control" type="text">
                                 </div>
                               </div>
-                              
                               
                               
                               
