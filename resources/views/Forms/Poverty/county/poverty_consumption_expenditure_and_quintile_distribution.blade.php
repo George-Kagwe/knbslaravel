@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Trading Centers</center></h5>
+                              <h5><center>Poverty Consumption Expenditure</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,40 +215,49 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
-                                           <th>Year</th>
+                                           <th>mean</th>
+                                           <th>median</th>                                        
+                                           <th>quarter 1</th>
+                                           <th>quarter 2</th>
+                                           <th>quarter 3</th>
+                                           <th>quarter 4</th>
+                                           <th>quarter 5</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($trading_centers as $center){?>
+                                      <?php foreach($consumptions as $consumption){?>
                                              <tr>
-                                                <td>{{$center->tradeandcommerce_centre_id}}</td>
-                                                <td>{{$center->county_name}}</td>
-                                                <td>{{$center->trading_centre}}</td>
-                                                <td>{{$center->number}}</td>                                             
-                                                <td>{{$center->year}}</td>                                      
-
+                                                <td>{{$consumption->poverty_id}}</td>
+                                                <td>{{$consumption->county_name}}</td>
+                                                <td>{{$consumption->mean}}</td>
+                                                <td>{{$consumption->median}}</td>
+                                                <td>{{$consumption->quarter1}}</td>
+                                                <td>{{$consumption->quarter2}}</td>
+                                                <td>{{$consumption->quarter3}}</td>
+                                                <td>{{$consumption->quarter4}}</td>
+                                                <td>{{$consumption->quarter5}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $center->tradeandcommerce_centre_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $consumption->poverty_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
 
-
-
                                       </tbody>
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
+                                           <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
-                                           <th>Year</th>
+                                           <th>mean</th>
+                                           <th>median</th>                                        
+                                           <th>quarter 1</th>
+                                           <th>quarter 2</th>
+                                           <th>quarter 3</th>
+                                           <th>quarter 4</th>
+                                           <th>quarter 5</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -275,8 +284,28 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-                      $(document).ready( function () {
-                    
+                      //$(document).ready( function () {
+                     //      $(function() {
+                    //$('select[name=counties]').change(function() {
+                     
+
+                     //   var urls = '{{ route("fetchCounties", ":id") }}'; 
+                       // var id =$(this).val();
+                        //var  url =urls.replace(':id', id);
+
+//                        $.get(url, function(data) {
+  //                          var select = $('form select[name=pay_tv]');
+                            
+    //                        select.empty();
+
+      //                      $.each(JSON.parse(data),function(key,value) {
+                              
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.pay_tv+ '</option>');
+          //                  });
+            //            });
+              //      });
+                //        });
+$(document).ready( function () {
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -284,56 +313,76 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          mean: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter  mean '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          median: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter  median'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          quarter1: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of quarter 1'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          quarter2: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please count of quarter 2'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
+                                           quarter3: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of quarter 3 '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          }
+                                          },
+                                           quarter4: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of quarter 4'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          quarter5: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of quarter 5'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -352,7 +401,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchTradeCentres", ":id") }}';
+                        var url = '{{ route("fetchPovertyConsumptionExp", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -365,11 +414,15 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.tradeandcommerce_centre_id);
+                              $('[name="id"]').val(data.poverty_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="trading_centre"]').val(data.subcounty_id);
-                              $('[name="number"]').val(data.number);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="mean"]').val(data.mean);
+                              $('[name="median"]').val(data.median);  
+                              $('[name="quarter1"]').val(data.quarter1);
+                              $('[name="quarter2"]').val(data.quarter2);
+                              $('[name="quarter3"]').val(data.quarter3);
+                              $('[name="quarter4"]').val(data.quarter4);
+                              $('[name="quarter5"]').val(data.quarter5);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -389,7 +442,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeTradeCentres') }}";
+                            url = "{{ route('storePovertyConsumptionExp') }}";
 
                         }
                         else
@@ -397,7 +450,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateTradeCentres') }}";
+                          url = "{{ route('updatePovertyConsumptionExp') }}";
                         }
                           
                       
@@ -464,79 +517,63 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                                           
+
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    
-
-                                       <?php foreach($counties as $counties){?>
-                                            
-                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
+                                        <?php foreach($counties as $counties){?>
+                                            <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                        <?php }?>
                                   </select>
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Trading Center</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">mean</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="trading_centre" name="trading_centre">
-                                    <option value="">please select</option>
-                                    
-
-                                       <?php foreach($trading_ctr as $trading_ctr){?>
-                                            
-                                                 <option value="{{$trading_ctr->trading_centre_id}}">{{$trading_ctr->trading_centre}}</option>
-                                               
-                                                
-                                            
-                                             <?php }?>
-                                  </select>
+                                  <input name="mean"  class="form-control" type="text">
+                                </div>
+                              </div>
+                           
+                              <div class="form-group">
+                                <label class="control-label col-md-3">median</label>
+                                <div class="col-md-9">
+                                  <input name="median"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="control-label col-md-3">quarter 1</label>
+                                <div class="col-md-9">
+                                  <input name="quarter1"  class="form-control" type="text">
                                 </div>
                               </div>
                                <div class="form-group">
-                                <label class="control-label col-md-3">Number of Trading Centers</label>
+                                <label class="control-label col-md-3">quarter 2</label>
                                 <div class="col-md-9">
-                                  <input name="number"  class="form-control" type="text">
+                                  <input name="quarter2"  class="form-control" type="text">
                                 </div>
                               </div>
-
-                                 <div class="form-group">
-                                <label class="control-label col-md-3">Year</label>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">quarter 3</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
-                                    <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                  </select>
+                                  <input name="quarter3"  class="form-control" type="text">
                                 </div>
                               </div>
-
-
-
-                             
-
-                              
+                               <div class="form-group">
+                                <label class="control-label col-md-3">quarter 4</label>
+                                <div class="col-md-9">
+                                  <input name="quarter4"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">quarter 5</label>
+                                <div class="col-md-9">
+                                  <input name="quarter5"  class="form-control" type="text">
+                                </div>
+                              </div>
                               </div>
 
                             

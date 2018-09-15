@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Trading Centers</center></h5>
+                              <h5><center>Poverty Hardcore Estimates by residence and county</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,40 +215,46 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
-                                           <th>Year</th>
+                                           <th>headcount rate</th>
+                                           <th>distribution of the poor</th>                                        
+                                           <th>severity of poverty</th>
+                                           <th>poverty gap</th>
+                                           <th>population</th>
+                                           <th>number of the poor</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($trading_centers as $center){?>
+                                      <?php foreach($estimate as $est){?>
                                              <tr>
-                                                <td>{{$center->tradeandcommerce_centre_id}}</td>
-                                                <td>{{$center->county_name}}</td>
-                                                <td>{{$center->trading_centre}}</td>
-                                                <td>{{$center->number}}</td>                                             
-                                                <td>{{$center->year}}</td>                                      
-
-                                                <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $center->tradeandcommerce_centre_id;?>)">Update Record</button>
+                                                <td>{{$est->poverty_id}}</td>
+                                                <td>{{$est->county_name}}</td>
+                                                <td>{{$est->headcount_rate}}</td>
+                                                <td>{{$est->distribution_of_the_poor}}</td>
+                                                <td>{{$est->severity_of_poverty}}</td>
+                                                <td>{{$est->poverty_gap}}</td>
+                                                <td>{{$est->population}}</td>
+                                                <td>{{$est->number_of_poor}}</td>
+                                               <td>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $est->poverty_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
 
-
-
                                       </tbody>
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
+                                           <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
-                                           <th>Year</th>
+                                           <th>headcount rate</th>
+                                           <th>distribution of the poor</th>                                        
+                                           <th>severity of poverty</th>
+                                           <th>poverty gap</th>
+                                           <th>population</th>
+                                           <th>number of the poor</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -275,8 +281,28 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-                      $(document).ready( function () {
-                    
+                      //$(document).ready( function () {
+                     //      $(function() {
+                    //$('select[name=counties]').change(function() {
+                     
+
+                     //   var urls = '{{ route("fetchCounties", ":id") }}'; 
+                       // var id =$(this).val();
+                        //var  url =urls.replace(':id', id);
+
+//                        $.get(url, function(data) {
+  //                          var select = $('form select[name=pay_tv]');
+                            
+    //                        select.empty();
+
+      //                      $.each(JSON.parse(data),function(key,value) {
+                              
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.pay_tv+ '</option>');
+          //                  });
+            //            });
+              //      });
+                //        });
+$(document).ready( function () {
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -284,56 +310,67 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          headcount_rate: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter  no of headcount rate '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          distribution_of_the_poor: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter  no of distribution of the poor'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          severity_of_poverty: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of severity of poverty'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          poverty_gap: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please count of poverty gap'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
+                                           population: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of population '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          }
+                                          },
+                                           number_of_poor: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of number of poor'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -352,7 +389,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchTradeCentres", ":id") }}';
+                        var url = '{{ route("fetchPovertyHardcoreEstimatebyResAndCounty", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -365,11 +402,14 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.tradeandcommerce_centre_id);
+                              $('[name="id"]').val(data.poverty_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="trading_centre"]').val(data.subcounty_id);
-                              $('[name="number"]').val(data.number);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="headcount_rate"]').val(data.headcount_rate);
+                              $('[name="distribution_of_the_poor"]').val(data.distribution_of_the_poor);  
+                              $('[name="severity_of_poverty"]').val(data.severity_of_poverty);
+                              $('[name="poverty_gap"]').val(data.poverty_gap);
+                              $('[name="population"]').val(data.population);
+                              $('[name="number_of_poor"]').val(data.number_of_poor);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -389,7 +429,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeTradeCentres') }}";
+                            url = "{{ route('storePovertyHardcoreEstimatebyResAndCounty') }}";
 
                         }
                         else
@@ -397,7 +437,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateTradeCentres') }}";
+                          url = "{{ route('updatePovertyHardcoreEstimatebyResAndCounty') }}";
                         }
                           
                       
@@ -464,84 +504,60 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                                           
+
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    
-
-                                       <?php foreach($counties as $counties){?>
-                                            
-                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
+                                        <?php foreach($counties as $counties){?>
+                                            <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                        <?php }?>
                                   </select>
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Trading Center</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">headcount rate</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="trading_centre" name="trading_centre">
-                                    <option value="">please select</option>
-                                    
-
-                                       <?php foreach($trading_ctr as $trading_ctr){?>
-                                            
-                                                 <option value="{{$trading_ctr->trading_centre_id}}">{{$trading_ctr->trading_centre}}</option>
-                                               
-                                                
-                                            
-                                             <?php }?>
-                                  </select>
+                                  <input name="headcount_rate"  class="form-control" type="text">
+                                </div>
+                              </div>
+                           
+                              <div class="form-group">
+                                <label class="control-label col-md-3">distribution of the poor</label>
+                                <div class="col-md-9">
+                                  <input name="distribution_of_the_poor"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="control-label col-md-3">severity of poverty</label>
+                                <div class="col-md-9">
+                                  <input name="severity_of_poverty"  class="form-control" type="text">
                                 </div>
                               </div>
                                <div class="form-group">
-                                <label class="control-label col-md-3">Number of Trading Centers</label>
+                                <label class="control-label col-md-3">poverty gap</label>
                                 <div class="col-md-9">
-                                  <input name="number"  class="form-control" type="text">
+                                  <input name="poverty_gap"  class="form-control" type="text">
                                 </div>
                               </div>
-
-                                 <div class="form-group">
-                                <label class="control-label col-md-3">Year</label>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">population</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
-                                    <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                  </select>
+                                  <input name="population"  class="form-control" type="text">
                                 </div>
                               </div>
-
-
-
-                             
-
-                              
+                               <div class="form-group">
+                                <label class="control-label col-md-3">number of the poor</label>
+                                <div class="col-md-9">
+                                  <input name="number_of_poor"  class="form-control" type="text">
+                                </div>
                               </div>
-
-                            
-                      </form>
-                  </div>
+                              </div>
+                          </form>
+                         </div>
                       <div class="modal-footer">
                         <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>

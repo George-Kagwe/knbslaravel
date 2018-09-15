@@ -17,3 +17,4 @@ class ict_kihibs_households_owned_ict_equipment_services_model extends Model
     		'households'
     ]; 
 }
+ 

@@ -845,6 +845,39 @@ Route::post('trade_and_commerce_values_of_principal_imports/update', array('as' 
 Route::get('trade_and_commerce_values_of_principal_imports/approved/{id}', array('as' => 'fetchTradeAndCommercePImports', 'uses' => 'Forms\Trade\trade_and_commerce_values_of_principal_imports@show'));
 
 
+//@Charles
+//fetch
+Route::get('trade_and_commerce_revenue_collection_by_amount/', 'Forms\Trade\trade_and_commerce_revenue_collection_by_amount@index')->name('trade_and_commerce_revenue_collection_by_amount');
+
+//@Charles
+//post to save
+Route::post('trade_and_commerce_revenue_collection_by_amount/store', array('as' => 'storeRevenueCollection', 'uses' => 'Forms\Trade\trade_and_commerce_revenue_collection_by_amount@store'));
+
+//@Charles
+//post to update
+Route::post('trade_and_commerce_revenue_collection_by_amount/update', array('as' => 'updateRevenueCollection', 'uses' => 'Forms\Trade\trade_and_commerce_revenue_collection_by_amount@update'));
+
+//@Charles
+//show a specific id
+Route::get('trade_and_commerce_revenue_collection_by_amount/approved/{id}', array('as' => 'fetchRevenueCollection', 'uses' => 'Forms\Trade\trade_and_commerce_revenue_collection_by_amount@show'));
+
+//@Charles
+//fetch
+Route::get('trade_and_commerce_trading_centres/', 'Forms\Trade\trade_and_commerce_trading_centres@index')->name('trade_and_commerce_trading_centres');
+
+//@Charles
+//post to save
+Route::post('trade_and_commerce_trading_centres/store', array('as' => 'storeTradeCentres', 'uses' => 'Forms\Trade\trade_and_commerce_trading_centres@store'));
+
+//@Charles
+//post to update
+Route::post('trade_and_commerce_trading_centres/update', array('as' => 'updateTradeCentres', 'uses' => 'Forms\Trade\trade_and_commerce_trading_centres@update'));
+
+//@Charles
+//show a specific id
+Route::get('trade_and_commerce_trading_centres/approved/{id}', array('as' => 'fetchTradeCentres', 'uses' => 'Forms\Trade\trade_and_commerce_trading_centres@show'));
+
+
 
 //@Charles Ndirangu
 //Population
@@ -1163,6 +1196,151 @@ Route::post('ict_kihibs_population_who_used_internet_by_place/update', array('as
 //show a specific id
 Route::get('ict_kihibs_population_who_used_internet_by_place/approved/{id}', array('as' => 'fetchPopNoNetPlace', 'uses' => 'Forms\ICT\ict_kihibs_population_who_used_internet_by_place@show'));
  
+ //@Charles
+//fetch
+Route::get('ict_kihibs_population_withmobilephone_andaveragesims/', 'Forms\ICT\ict_kihibs_population_withmobilephone_andaveragesims@index')->name('ict_kihibs_population_withmobilephone_andaveragesims');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_population_withmobilephone_andaveragesims/store', array('as' => 'storePopAVGPhoneSims', 'uses' => 'Forms\ICT\ict_kihibs_population_withmobilephone_andaveragesims@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_population_withmobilephone_andaveragesims/update', array('as' => 'updatePopAVGPhoneSims', 'uses' => 'Forms\ICT\ict_kihibs_population_withmobilephone_andaveragesims@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_population_withmobilephone_andaveragesims/approved/{id}', array('as' => 'fetchPopAVGPhoneSims', 'uses' => 'Forms\ICT\ict_kihibs_population_withmobilephone_andaveragesims@show'));
+
+
+
+
+
+//Poverty County Data Sets Forms
+//@Charles
+//fetch
+
+Route::get('poverty_consumption_expenditure_and_quintile_distribution/', 'Forms\Poverty\poverty_consumption_expenditure_and_quintile_distribution@index')->name('poverty_consumption_expenditure_and_quintile_distribution');
+
+//@Charles
+//post to save
+Route::post('poverty_consumption_expenditure_and_quintile_distribution/store', array('as' => 'storePovertyConsumptionExp', 'uses' => 'Forms\Poverty\poverty_consumption_expenditure_and_quintile_distribution@store'));
+
+//@Charles 
+//post to update
+Route::post('poverty_consumption_expenditure_and_quintile_distribution/update', array('as' => 'updatePovertyConsumptionExp', 'uses' => 'Forms\Poverty\poverty_consumption_expenditure_and_quintile_distribution@update'));
+
+//@Charles
+//show a specific id
+Route::get('poverty_consumption_expenditure_and_quintile_distribution/approved/{id}', array('as' => 'fetchPovertyConsumptionExp', 'uses' => 'Forms\Poverty\poverty_consumption_expenditure_and_quintile_distribution@show'));
+
+//@charles
+//fetch
+Route::get('poverty_distribution_of_household_food_consumption/', 'Forms\Poverty\poverty_distribution_of_household_food_consumption@index')->name('poverty_distribution_of_household_food_consumption');
+
+//@Charles
+//post to save
+Route::post('poverty_distribution_of_household_food_consumption/store', array('as' => 'storePovertyDistFoodConsumption', 'uses' => 'Forms\Poverty\poverty_distribution_of_household_food_consumption@store'));
+
+//@Charles 
+//post to update
+Route::post('poverty_distribution_of_household_food_consumption/update', array('as' => 'updatePovertyDistFoodConsumption', 'uses' => 'Forms\Poverty\poverty_distribution_of_household_food_consumption@update'));
+
+//@Charles
+//show a specific id
+Route::get('poverty_distribution_of_household_food_consumption/approved/{id}', array('as' => 'fetchPovertyDistFoodConsumption', 'uses' => 'Forms\Poverty\poverty_distribution_of_household_food_consumption@show'));
+
+//@charles
+//fetch
+Route::get('poverty_distribution_of_households_by_pointofpurchasedfooditems/', 'Forms\Poverty\poverty_distribution_of_households_by_pointofpurchasedfooditems@index')->name('poverty_distribution_of_households_by_pointofpurchasedfooditems');
+
+//@Charles
+//post to save
+Route::post('poverty_distribution_of_households_by_pointofpurchasedfooditems/store', array('as' => 'storePovertyHsePopFood', 'uses' => 'Forms\Poverty\poverty_distribution_of_households_by_pointofpurchasedfooditems@store'));
+
+//@Charles 
+//post to update
+Route::post('poverty_distribution_of_households_by_pointofpurchasedfooditems/update', array('as' => 'updatePovertyHsePopFood', 'uses' => 'Forms\Poverty\poverty_distribution_of_households_by_pointofpurchasedfooditems@update'));
+
+//@Charles
+//show a specific id
+Route::get('poverty_distribution_of_households_by_pointofpurchasedfooditems/approved/{id}', array('as' => 'fetchPovertyHsePopFood', 'uses' => 'Forms\Poverty\poverty_distribution_of_households_by_pointofpurchasedfooditems@show'));
+
+
+
+//@charles
+//fetch
+Route::get('poverty_food_and_non_food_expenditure_per_adult_equivalent/', 'Forms\Poverty\poverty_food_and_non_food_expenditure_per_adult_equivalent@index')->name('poverty_food_and_non_food_expenditure_per_adult_equivalent');
+ 
+ //@Charles
+//post to save
+Route::post('poverty_food_and_non_food_expenditure_per_adult_equivalent/store', array('as' => 'storePovertyAdultFoodExpenditure', 'uses' => 'Forms\Poverty\poverty_food_and_non_food_expenditure_per_adult_equivalent@store'));
+
+//@Charles 
+//post to update
+Route::post('poverty_food_and_non_food_expenditure_per_adult_equivalent/update', array('as' => 'updatePovertyAdultFoodExpenditure', 'uses' => 'Forms\Poverty\poverty_food_and_non_food_expenditure_per_adult_equivalent@update'));
+
+//@Charles
+//show a specific id
+Route::get('poverty_food_and_non_food_expenditure_per_adult_equivalent/approved/{id}', array('as' => 'fetchPovertyAdultFoodExpenditure', 'uses' => 'Forms\Poverty\poverty_food_and_non_food_expenditure_per_adult_equivalent@show'));
+ 
+
+//@charles
+//fetch
+Route::get('poverty_food_estimates_by_residence_and_county/', 'Forms\Poverty\poverty_food_estimates_by_residence_and_county@index')->name('poverty_food_estimates_by_residence_and_county');
+ 
+ //@Charles
+//post to save
+Route::post('poverty_food_estimates_by_residence_and_county/store', array('as' => 'storePovertyFoodEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_food_estimates_by_residence_and_county@store'));
+
+//@Charles 
+//post to update
+Route::post('poverty_food_estimates_by_residence_and_county/update', array('as' => 'updatePovertyFoodEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_food_estimates_by_residence_and_county@update'));
+
+//@Charles
+//show a specific id
+Route::get('poverty_food_estimates_by_residence_and_county/approved/{id}', array('as' => 'fetchPovertyFoodEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_food_estimates_by_residence_and_county@show'));
+
+
+//@charles
+//fetch
+Route::get('poverty_hardcore_estimates_by_residence_and_county/', 'Forms\Poverty\poverty_hardcore_estimates_by_residence_and_county@index')->name('poverty_hardcore_estimates_by_residence_and_county');
+ 
+ //@Charles
+//post to save
+Route::post('poverty_hardcore_estimates_by_residence_and_county/store', array('as' => 'storePovertyHardcoreEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_hardcore_estimates_by_residence_and_county@store'));
+
+//@Charles 
+//post to update
+Route::post('poverty_hardcore_estimates_by_residence_and_county/update', array('as' => 'updatePovertyHardcoreEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_hardcore_estimates_by_residence_and_county@update'));
+
+//@Charles
+//show a specific id
+Route::get('poverty_hardcore_estimates_by_residence_and_county/approved/{id}', array('as' => 'fetchPovertyHardcoreEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_hardcore_estimates_by_residence_and_county@show'));
+
+//@charles
+//fetch
+Route::get('poverty_overall_estimates_by_residence_and_count/', 'Forms\Poverty\poverty_overall_estimates_by_residence_and_county@index')->name('poverty_overall_estimates_by_residence_and_county');
+ 
+ //@Charles
+//post to save
+Route::post('poverty_overall_estimates_by_residence_and_count/store', array('as' => 'storePovertyOverallEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_overall_estimates_by_residence_and_county@store'));
+
+//@Charles 
+//post to update
+Route::post('poverty_overall_estimates_by_residence_and_count/update', array('as' => 'updatePovertyOverallEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_overall_estimates_by_residence_and_county@update'));
+
+//@Charles
+//show a specific id
+Route::get('poverty_overall_estimates_by_residence_and_count/approved/{id}', array('as' => 'fetchPovertyOverallEstimatebyResAndCounty', 'uses' => 'Forms\Poverty\poverty_overall_estimates_by_residence_and_county@show'));
+ 
+
+
+
+
+
+
+
 // Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Agriculture@store'));
 // Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture@update'));
 
@@ -2945,7 +3123,7 @@ Route::post('climate/store', array('as' => 'storeClimate', 'uses' => 'Forms\Envi
 Route::post('climate/update', array('as' => 'updateClimate', 'uses' => 'Forms\Environment\land_and_climate_rainfall@update'));
 
 
-
+ 
 
 
 //Tourism

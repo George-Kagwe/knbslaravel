@@ -283,15 +283,14 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-    
-                  $(document).ready( function () {
-                        $('#form').bootstrapValidator({
+                 $(document).ready(function () {
+                $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
                                           invalid: 'glyphicon glyphicon-remove',
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
-                                      fields: {
+                 fields: {
                                           population: {
                                               validators: {
                                                   notEmpty: {
@@ -371,7 +370,7 @@
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          },
+                                          }
                                           
                                       }
                                   });
@@ -404,7 +403,7 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.proportion_id);
+                               $('[name="id"]').val(data.proportion_id);
                               $('[name="county_name"]').val(data.county_id);
                               $('[name="population"]').val(data.population);
                               $('[name="mobility"]').val(data.mobility);  
@@ -414,7 +413,7 @@
                               $('[name="another_home"]').val(data.another_home);
                               $('[name="at_home"]').val(data.at_home);
                               $('[name="other"]').val(data.other);
-                              $('[name="population"]').val(data.population);
+                              $('[name="population"]').val(data.population);         
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -425,6 +424,8 @@
                           }
                       });
                       }
+
+
 
 
  
@@ -440,9 +441,8 @@
                         else
                         {
                            
-                          //  url = '{{ route("updateSugar", ":id") }}';
-                          // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatePopNoNetPlace') }}";
+                         url = "{{ route('updatePopNoNetPlace') }}";
+                        
                         }
                           
                       
@@ -462,23 +462,23 @@
                               {
                        
                               if(result.errors)
-                                              {
-                                    jQuery('.alert-danger').html('');
+                                  {
+                        jQuery('.alert-danger').html('');
 
-                                    jQuery.each(result.errors, function(key, value){
-                                        jQuery('.alert-danger').show();
-                                        jQuery('.alert-danger').append('<li>'+value+'</li>');
-                                    });
-                                }
-                                else
-                                {
-                                    jQuery('.alert-danger').hide();
-                                     $('#open').hide();
-                                     $('#myModal').modal('hide');
-                                     $('#modal_form').modal('hide');
-                                     location.reload();// for reload a page
-                                     myFunction();
-                                }
+                        jQuery.each(result.errors, function(key, value){
+                            jQuery('.alert-danger').show();
+                            jQuery('.alert-danger').append('<li>'+value+'</li>');
+                        });
+                    }
+                    else
+                    {
+                        jQuery('.alert-danger').hide();
+                         $('#open').hide();
+                         $('#myModal').modal('hide');
+                         $('#modal_form').modal('hide');
+                         location.reload();// for reload a page
+                         myFunction();
+                    }
 
 
                           
@@ -491,6 +491,10 @@
                               x.className = "show";
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
+
+             //////////////////////////////////////        
+
+                  
 
 
             </script>

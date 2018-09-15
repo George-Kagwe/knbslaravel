@@ -7,15 +7,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\Models\Trade\trade_and_commerce_trading_centres_model;
+use App\Models\Trade\trade_and_commerce_revenue_collection_by_amount_model;
 use View;
 use Illuminate\Support\Facades\DB;
 
 //@Charles Ndirangu
-//households owned ict equipments
+//trade and commerce revenue collection by amount dataset
 
 
-class trade_and_commerce_trading_centres extends Controller
+class trade_and_commerce_revenue_collection_by_amount extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,20 +24,22 @@ class trade_and_commerce_trading_centres extends Controller
      */
      protected $rules = [ 
         'county_id'=>'required',
-        'trading_centre_id'=>'required|numeric',
-        'number'=>'required|numeric',
+        'revenuecollection_id'=>'required|numeric',
+        'amount'=>'required|numeric',
         'year'=>'required|numeric',
 
     ];
     public function index()
     {
-        $trading_centers = DB::table('trade_and_commerce_trading_centres')
-               ->join('health_counties', 'trade_and_commerce_trading_centres.county_id', '=', 'health_counties.county_id') 
-                ->join('trade_and_commerce_trading_centres_ids', 'trade_and_commerce_trading_centres.trading_centre_id', '=', 'trade_and_commerce_trading_centres_ids.trading_centre_id')->orderBy('tradeandcommerce_centre_id', 'ASC')->get();
+        $revenue = DB::table('trade_and_commerce_revenue_collection_by_amount')
+               ->join('health_counties', 'trade_and_commerce_revenue_collection_by_amount.county_id', '=', 'health_counties.county_id')
+                ->join('trade_and_commerce_revenue_collection_by_id', 'trade_and_commerce_revenue_collection_by_amount.revenuecollection_id', '=', 'trade_and_commerce_revenue_collection_by_id.revenuecollection_id')->get();
 
+        
         $counties = DB::table('health_counties')->get();
-        $trading_ctr = DB::table('trade_and_commerce_trading_centres_ids')->get();
-        return view('Forms.Trade.county.trade_and_commerce_trading_centres', ['trading_centers' =>$trading_centers,'counties' =>$counties,'trading_ctr' =>$trading_ctr]);
+        $rev = DB::table('trade_and_commerce_revenue_collection_by_id')->get();
+        
+        return view('Forms.Trade.county.trade_and_commerce_revenue_collection_by_amount', ['revenue' =>$revenue,'counties' =>$counties, 'rev'=>$rev]);
     }
 
     /**
@@ -60,8 +62,8 @@ class trade_and_commerce_trading_centres extends Controller
     {
         $validator = \Validator::make($request->all(), [
                             'county_name'=>'required',
-                            'trading_centre'=>'required|numeric',
-                            'number'=>'required|numeric',
+                            'revenuecollection_title'=>'required',
+                            'amount'=>'required|numeric',
                             'year'=>'required|numeric',
         ]);
         
@@ -70,13 +72,13 @@ class trade_and_commerce_trading_centres extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $trading_centers = new trade_and_commerce_trading_centres_model();
-            $trading_centers->county_id =$request->county_name;
-            $trading_centers->trading_centre_id=$request->trading_centre;
-            $trading_centers->number=$request->number;         
-            $trading_centers->year=$request->year;
-            $trading_centers->save();
-             return response()->json($trading_centers);
+            $revenue = new trade_and_commerce_revenue_collection_by_amount_model();
+            $revenue->county_id =$request->county_name;
+            $revenue->revenuecollection_id=$request->revenuecollection_title;
+            $revenue->amount=$request->amount;         
+            $revenue->year=$request->year;
+            $revenue->save();
+             return response()->json($revenue);
            echo json_encode(array("status" => TRUE));
 
         }
@@ -91,7 +93,7 @@ class trade_and_commerce_trading_centres extends Controller
     public function show($tradeandcommerce_centre_id)
     {
         
-          $trading_center = trade_and_commerce_trading_centres_model::findOrfail($tradeandcommerce_centre_id);
+          $trading_center = trade_and_commerce_revenue_collection_by_amount_model::findOrfail($tradeandcommerce_centre_id);
      
       
          echo json_encode($trading_center);
@@ -119,8 +121,8 @@ class trade_and_commerce_trading_centres extends Controller
     {
          $validator = \Validator::make($request->all(), [
                           'county_name'=>'required',
-                          'trading_centre'=>'required|numeric',
-                          'number'=>'required|numeric',
+                          'revenuecollection_title'=>'required',
+                          'amount'=>'required|numeric',
                           'year'=>'required|numeric',
         ]);
         
@@ -129,13 +131,13 @@ class trade_and_commerce_trading_centres extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $trading_ctr =trade_and_commerce_trading_centres_model::find($request->id);
-            $trading_ctr->county_id =$request->county_name;
-            $trading_ctr->trading_centre_id=$request->trading_centre;
-            $trading_ctr->number=$request->number;         
-            $trading_ctr->year=$request->year;
-            $trading_ctr->save();
-             return response()->json($trading_ctr);
+            $revenue =trade_and_commerce_revenue_collection_by_amount_model::find($request->id);
+            $revenue->county_id =$request->county_name;
+            $revenue->revenuecollection_id=$request->revenuecollection_title;
+            $revenue->amount=$request->amount;         
+            $revenue->year=$request->year;
+            $revenue->save();
+             return response()->json($revenue);
            echo json_encode(array("status" => TRUE));
         }
     }
@@ -150,4 +152,5 @@ class trade_and_commerce_trading_centres extends Controller
     {
         //
     }
+
 }

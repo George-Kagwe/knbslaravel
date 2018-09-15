@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Trading Centers</center></h5>
+                              <h5><center>Poverty Household distribution by point of purchase for food items</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,40 +215,52 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
-                                           <th>Year</th>
+                                           <th>supermarket</th>
+                                           <th>open market</th>                                        
+                                           <th>kiosk</th>
+                                           <th>specialised shop</th>
+                                           <th>general shop</th>
+                                           <th>Informal sources</th>
+                                           <th>Other formal points</th>
+                                           <th>number of observations</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($trading_centers as $center){?>
+                                      <?php foreach($pop_items as $items){?>
                                              <tr>
-                                                <td>{{$center->tradeandcommerce_centre_id}}</td>
-                                                <td>{{$center->county_name}}</td>
-                                                <td>{{$center->trading_centre}}</td>
-                                                <td>{{$center->number}}</td>                                             
-                                                <td>{{$center->year}}</td>                                      
-
+                                                <td>{{$items->poverty_id}}</td>
+                                                <td>{{$items->county_name}}</td>
+                                                <td>{{$items->supermarket}}</td>
+                                                <td>{{$items->open_market}}</td>
+                                                <td>{{$items->kiosk}}</td>
+                                                <td>{{$items->specialised_shop}}</td>
+                                                <td>{{$items->general_shop}}</td>
+                                                <td>{{$items->informal_sources}}</td>
+                                                <td>{{$items->other_formal_points}}</td>
+                                                <td>{{$items->number_of_observations}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $center->tradeandcommerce_centre_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $items->poverty_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
                                              <?php }?>
 
-
-
                                       </tbody>
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
+                                           <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
-                                           <th>Year</th>
+                                           <th>supermarket</th>
+                                           <th>open market</th>                                        
+                                           <th>kiosk</th>
+                                           <th>specialised shop</th>
+                                           <th>general shop</th>
+                                           <th>Informal sources</th>
+                                           <th>Other formal points</th>
+                                           <th>number of observations</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -275,8 +287,28 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-                      $(document).ready( function () {
-                    
+                      //$(document).ready( function () {
+                     //      $(function() {
+                    //$('select[name=counties]').change(function() {
+                     
+
+                     //   var urls = '{{ route("fetchCounties", ":id") }}'; 
+                       // var id =$(this).val();
+                        //var  url =urls.replace(':id', id);
+
+//                        $.get(url, function(data) {
+  //                          var select = $('form select[name=pay_tv]');
+                            
+    //                        select.empty();
+
+      //                      $.each(JSON.parse(data),function(key,value) {
+                              
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.pay_tv+ '</option>');
+          //                  });
+            //            });
+              //      });
+                //        });
+$(document).ready( function () {
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -284,56 +316,86 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          area_under_cane_ha: {
+                                          supermarket: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter  no of supermarket '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          area_harvested_ha: {
+                                          open_market: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter  no of open market'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          kiosk: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of kiosk'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          production_tonnes: {
+                                          specialised_shop: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please count of specialised shop'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           average_yield_tonnes_per_ha: {
+                                           general_shop: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter count of general shop '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          }
+                                          },
+                                           informal_sources: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of Informal sources'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          other_formal_points: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of Other formal points'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          number_of_observations: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of observations'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -352,7 +414,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchTradeCentres", ":id") }}';
+                        var url = '{{ route("fetchPovertyHsePopFood", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -365,11 +427,16 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.tradeandcommerce_centre_id);
+                              $('[name="id"]').val(data.poverty_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="trading_centre"]').val(data.subcounty_id);
-                              $('[name="number"]').val(data.number);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="supermarket"]').val(data.supermarket);
+                              $('[name="open_market"]').val(data.open_market);  
+                              $('[name="kiosk"]').val(data.kiosk);
+                              $('[name="specialised_shop"]').val(data.specialised_shop);
+                              $('[name="general_shop"]').val(data.general_shop);
+                              $('[name="informal_sources"]').val(data.informal_sources);
+                              $('[name="other_formal_points"]').val(data.other_formal_points);
+                              $('[name="number_of_observations"]').val(data.number_of_observations);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -389,7 +456,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeTradeCentres') }}";
+                            url = "{{ route('storePovertyHsePopFood') }}";
 
                         }
                         else
@@ -397,7 +464,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateTradeCentres') }}";
+                          url = "{{ route('updatePovertyHsePopFood') }}";
                         }
                           
                       
@@ -464,79 +531,69 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                                           
+
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    
-
-                                       <?php foreach($counties as $counties){?>
-                                            
-                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
+                                        <?php foreach($counties as $counties){?>
+                                            <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                        <?php }?>
                                   </select>
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Trading Center</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">supermarket</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="trading_centre" name="trading_centre">
-                                    <option value="">please select</option>
-                                    
-
-                                       <?php foreach($trading_ctr as $trading_ctr){?>
-                                            
-                                                 <option value="{{$trading_ctr->trading_centre_id}}">{{$trading_ctr->trading_centre}}</option>
-                                               
-                                                
-                                            
-                                             <?php }?>
-                                  </select>
+                                  <input name="supermarket"  class="form-control" type="text">
+                                </div>
+                              </div>
+                           
+                              <div class="form-group">
+                                <label class="control-label col-md-3">open market</label>
+                                <div class="col-md-9">
+                                  <input name="open_market"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="control-label col-md-3">kiosk</label>
+                                <div class="col-md-9">
+                                  <input name="kiosk"  class="form-control" type="text">
                                 </div>
                               </div>
                                <div class="form-group">
-                                <label class="control-label col-md-3">Number of Trading Centers</label>
+                                <label class="control-label col-md-3">specialised shop</label>
                                 <div class="col-md-9">
-                                  <input name="number"  class="form-control" type="text">
+                                  <input name="specialised_shop"  class="form-control" type="text">
                                 </div>
                               </div>
-
-                                 <div class="form-group">
-                                <label class="control-label col-md-3">Year</label>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">general shop</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
-                                    <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                  </select>
+                                  <input name="general_shop"  class="form-control" type="text">
                                 </div>
                               </div>
-
-
-
-                             
-
-                              
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Informal sources</label>
+                                <div class="col-md-9">
+                                  <input name="informal_sources"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Other formal points</label>
+                                <div class="col-md-9">
+                                  <input name="other_formal_points"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Number of observations</label>
+                                <div class="col-md-9">
+                                  <input name="number_of_observations"  class="form-control" type="text">
+                                </div>
+                              </div>
                               </div>
 
                             

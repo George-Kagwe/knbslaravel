@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Trading Centers</center></h5>
+                              <h5><center>Revenue Collection by Amount</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -215,24 +215,24 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
+                                           <th>Type of revenue</th>
+                                           <th>Amount</th>                                        
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($trading_centers as $center){?>
+                                      <?php foreach($revenue as $revs){?>
                                              <tr>
-                                                <td>{{$center->tradeandcommerce_centre_id}}</td>
-                                                <td>{{$center->county_name}}</td>
-                                                <td>{{$center->trading_centre}}</td>
-                                                <td>{{$center->number}}</td>                                             
-                                                <td>{{$center->year}}</td>                                      
+                                                <td>{{$revs->tradeandcommerce_id}}</td>
+                                                <td>{{$revs->county_name}}</td>
+                                                <td>{{$revs->revenuecollection_title}}</td>
+                                                <td>{{$revs->amount}}</td>                                             
+                                                <td>{{$revs->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $center->tradeandcommerce_centre_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $revs->tradeandcommerce_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -247,7 +247,7 @@
                                           <th>ID</th>                                          
                                            <th>County Name</th>
                                            <th>Trading Center Name</th>
-                                           <th>Number of Trading Centers</th>                                        
+                                           <th>Type of revenue</th>                                        
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -276,7 +276,8 @@
             <!-- Sian starts here -->
             <script type="text/javascript">
                       $(document).ready( function () {
-                    
+                          
+
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -352,7 +353,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchTradeCentres", ":id") }}';
+                        var url = '{{ route("fetchRevenueCollection", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -365,10 +366,10 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.tradeandcommerce_centre_id);
+                              $('[name="id"]').val(data.tradeandcommerce_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="trading_centre"]').val(data.subcounty_id);
-                              $('[name="number"]').val(data.number);
+                              $('[name="revenuecollection_title"]').val(data.revenuecollection_id);
+                              $('[name="amount"]').val(data.amount);
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -389,7 +390,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeTradeCentres') }}";
+                            url = "{{ route('storeRevenueCollection') }}";
 
                         }
                         else
@@ -397,7 +398,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateTradeCentres') }}";
+                          url = "{{ route('updateRevenueCollection') }}";
                         }
                           
                       
@@ -464,7 +465,7 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                                           
+                            
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
@@ -482,28 +483,28 @@
                                   </select>
                                 </div>
                               </div>
-
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Trading Center</label>
+                              
+                              <div class="form-group"  id="subcountydiv">
+                                <label class="control-label col-md-3">Revenue type</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="trading_centre" name="trading_centre">
+                                  <select class="form-control" id="revenuecollection_title" name="revenuecollection_title">
                                     <option value="">please select</option>
                                     
 
-                                       <?php foreach($trading_ctr as $trading_ctr){?>
+                                       <?php foreach($rev as $rev){?>
                                             
-                                                 <option value="{{$trading_ctr->trading_centre_id}}">{{$trading_ctr->trading_centre}}</option>
+                                                 <option value="{{$rev->revenuecollection_id}}">{{$rev->revenuecollection_title}}</option>
                                                
-                                                
+                                               
                                             
                                              <?php }?>
                                   </select>
                                 </div>
                               </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Number of Trading Centers</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Amount</label>
                                 <div class="col-md-9">
-                                  <input name="number"  class="form-control" type="text">
+                                  <input name="amount"  class="form-control" type="text">
                                 </div>
                               </div>
 
