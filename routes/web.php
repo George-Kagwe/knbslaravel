@@ -160,6 +160,7 @@ Route::post('medical/update', array('as' => 'updatemedical', 'uses' => 'Forms\He
 
 
 
+
 Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
 
     Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
@@ -1393,7 +1394,7 @@ Route::get('agriculture/all_agricultural_input', 'Endpoints\Agriculture@agricult
 Route::get('health/all_sectors', 
      'Endpoints\Health_Sectors@index')->
       name('Health_Sectors');
-// environment `environment_and_natural_resources_average_export_prices_ash` @david
+// environment `environment_and_natural_resources_average_export_prices_ash` @davidI
 Route::get('environment/all_environment_and_natural_resources_average_export_prices_ash', 
      'Endpoints\Environment@get_environment_and_natural_resources_average_export_prices_ash')->
       name('environment_and_natural_resources_average_export_prices_ash');
@@ -3126,6 +3127,7 @@ Route::post('climate/update', array('as' => 'updateClimate', 'uses' => 'Forms\En
  
 
 
+
 //Tourism
 // @Charles Ndirangu
 // Building  tourism_arrivals route
@@ -3316,6 +3318,7 @@ Route::get('floor/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>
  'Forms\Housing\housing_conditions_kihibs_main_floor_material@get_subcounties'));
 Route::post('floor/store', array('as' => 'storeFloor', 'uses' => 'Forms\Housing\housing_conditions_kihibs_main_floor_material@store'));
 Route::post('floor/update', array('as' => 'updateFloor', 'uses' => 'Forms\Housing\housing_conditions_kihibs_main_floor_material@update'));
+
 
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 
@@ -3982,5 +3985,169 @@ Route::post('select/store', array('as' => 'storeSelect', 'uses' =>
   'Forms\Population\population_populationprojectionsbyselectedagegroup@store'));
 Route::post('select/update', array('as' => 'updateSelect', 'uses' => 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@update'));
+
+
+
+
+
+
+
+//@david
+
+//feetch
+Route::get('education_studentenrollmentpublicuniversities
+/', 'Forms\Education\education_studentenrollmentpublicuniversities@index')->name('education_studentenrollmentpublicuniversities');
+//post to save
+Route::post('universities/store', array('as' => 'storeuniversities', 'uses' => 'Forms\Education\education_studentenrollmentpublicuniversities@store'));
+//post to update
+Route::post('universities/update', array('as' => 'updateuniversities', 'uses' => 'Forms\Education\education_studentenrollmentpublicuniversities@update'));
+
+
+//show a specific id
+Route::get('universities/action/{id}', array('as' => 'fetchuniversities', 'uses' => 'Forms\Education\education_studentenrollmentpublicuniversities@show'));
+
+
+//david
+//feetch
+Route::get('education_studentenrollmentbysextechnicalinstitutions/', 'Forms\Education\education_studentenrollmentbysextechnicalinstitutions@index')->name('education_studentenrollmentbysextechnicalinstitutions');
+//post to save
+Route::post('institutions/store', array('as' => 'storeinstitutions', 'uses' => 'Forms\Education\education_studentenrollmentbysextechnicalinstitutions@store'));
+//post to update
+Route::post('institutions/update', array('as' => 'updateinstitutions', 'uses' => 'Forms\Education\education_studentenrollmentbysextechnicalinstitutions@update'));
+
+
+//show a specific id
+Route::get('institutions/action/{id}', array('as' => 'fetchinstitutions', 'uses' => 'Forms\Education\education_studentenrollmentbysextechnicalinstitutions@show'));
+
+
+
+
+//david
+//feetch
+Route::get('education_edstat_kcpe_examination_candidature/', 'Forms\Education\education_edstat_kcpe_examination_candidature@index')->name('education_edstat_kcpe_examination_candidature');
+//post to save
+Route::post('institutions/store', array('as' => 'storecandidature', 'uses' => 'Forms\Education\education_edstat_kcpe_examination_candidature@store'));
+//post to update
+Route::post('institutions/update', array('as' => 'updatecandidature', 'uses' => 'Forms\Education\education_edstat_kcpe_examination_candidature@update'));
+
+
+//show a specific id
+Route::get('institutions/action/{id}', array('as' => 'fetchcandidature', 'uses' => 'Forms\Education\education_edstat_kcpe_examination_candidature@show'));
+
+
+
+
+
+//david
+//feetch
+Route::get('education_edstat_kcpe_examination_results_by_subject/', 'Forms\Education\education_edstat_kcpe_examination_results_by_subject@index')->name('education_edstat_kcpe_examination_results_by_subject');
+//post to save
+Route::post('subject/store', array('as' => 'storesubject', 'uses' => 'Forms\Education\education_edstat_kcpe_examination_results_by_subject@store'));
+//post to update
+Route::post('subject/update', array('as' => 'updatesubject', 'uses' => 'Forms\Education\education_edstat_kcpe_examination_results_by_subject@update'));
+
+
+//show a specific id
+Route::get('subject/action/{id}', array('as' => 'fetchsubject', 'uses' => 'Forms\Education\education_edstat_kcpe_examination_results_by_subject@show'));
+
+
+
+
+//david
+//feetch
+Route::get('education_edstat_kcse_examination_results/', 'Forms\Education\education_edstat_kcse_examination_results@index')->name('education_edstat_kcse_examination_results');
+//post to save
+Route::post('results/store', array('as' => 'storeresults', 'uses' => 'Forms\Education\education_edstat_kcse_examination_results@store'));
+//post to update
+Route::post('results/update', array('as' => 'updateresults', 'uses' => 'Forms\Education\education_edstat_kcse_examination_results@update'));
+
+
+//show a specific id
+Route::get('results/action/{id}', array('as' => 'fetchresults', 'uses' => 'Forms\Education\education_edstat_kcse_examination_results@show'));
+
+
+
+//david
+//feetch
+Route::get('education_number_of_candidates_by_sex_in_kcse/', 'Forms\Education\education_number_of_candidates_by_sex_in_kcse@index')->name('education_number_of_candidates_by_sex_in_kcse');
+//post to save
+Route::post('kcse/store', array('as' => 'storekcse', 'uses' => 'Forms\Education\education_number_of_candidates_by_sex_in_kcse@store'));
+//post to update
+Route::post('kcse/update', array('as' => 'updatekcse', 'uses' => 'Forms\Education\education_number_of_candidates_by_sex_in_kcse@update'));
+
+
+//show a specific id
+Route::get('kcse/action/{id}', array('as' => 'fetchkcse', 'uses' => 'Forms\Education\education_number_of_candidates_by_sex_in_kcse@show'));
+
+
+
+//david
+//feetch
+Route::get('education_primary_school_enrolments_by_sex/', 'Forms\Education\education_primary_school_enrolments_by_sex@index')->name('education_primary_school_enrolments_by_sex');
+//post to save
+Route::post('sex/store', array('as' => 'storesex', 'uses' => 'Forms\Education\education_primary_school_enrolments_by_sex@store'));
+//post to update
+Route::post('sex/update', array('as' => 'updatesex', 'uses' => 'Forms\Education\education_primary_school_enrolments_by_sex@update'));
+
+
+//show a specific id
+Route::get('sex/action/{id}', array('as' => 'fetchsex', 'uses' => 'Forms\Education\education_primary_school_enrolments_by_sex@show'));
+
+
+//david
+//feetch
+Route::get('education_public_primary_school_teachers_by_sex/', 'Forms\Education\education_public_primary_school_teachers_by_sex@index')->name('education_public_primary_school_teachers_by_sex');
+//post to save
+Route::post('teachers/store', array('as' => 'storeteachers', 'uses' => 'Forms\Education\education_public_primary_school_teachers_by_sex@store'));
+//post to update
+Route::post('teachers/update', array('as' => 'updateteachers', 'uses' => 'Forms\Education\education_public_primary_school_teachers_by_sex@update'));
+
+
+//show a specific id
+Route::get('teachers/action/{id}', array('as' => 'fetchteachers', 'uses' => 'Forms\Education\education_public_primary_school_teachers_by_sex@show'));
+
+
+
+
+//david
+//feetch
+Route::get('education_public_primaryteachers_trainingcollege_enrolment/', 'Forms\Education\education_public_primaryteachers_trainingcollege_enrolment@index')->name('education_public_primaryteachers_trainingcollege_enrolment');
+//post to save
+Route::post('enrolment/store', array('as' => 'storeenrolment', 'uses' => 'Forms\Education\education_public_primaryteachers_trainingcollege_enrolment@store'));
+//post to update
+Route::post('enrolment/update', array('as' => 'updateenrolment', 'uses' => 'Forms\Education\education_public_primaryteachers_trainingcollege_enrolment@update'));
+
+
+//show a specific id
+Route::get('enrolment/action/{id}', array('as' => 'fetchenrolment', 'uses' => 'Forms\Education\education_public_primaryteachers_trainingcollege_enrolment@show'));
+
+
+
+//david
+//feetch
+Route::get('education_public_secondary_school_teachers_by_sex/', 'Forms\Education\education_public_secondary_school_teachers_by_sex@index')->name('education_public_secondary_school_teachers_by_sex');
+//post to save
+Route::post('secondary/store', array('as' => 'storesecondary', 'uses' => 'Forms\Education\education_public_secondary_school_teachers_by_sex@store'));
+//post to update
+Route::post('secondary/update', array('as' => 'updatesecondary', 'uses' => 'Forms\Education\education_public_secondary_school_teachers_by_sex@update'));
+
+
+//show a specific id
+Route::get('secondary/action/{id}', array('as' => 'fetchsecondary', 'uses' => 'Forms\Education\education_public_secondary_school_teachers_by_sex@show'));
+
+
+
+
+//david
+//feetch
+Route::get('education_secondary_school_enrolment_by_sex/', 'Forms\Education\education_secondary_school_enrolment_by_sex@index')->name('education_secondary_school_enrolment_by_sex');
+//post to save
+Route::post('sexsecondary/store', array('as' => 'storesexsecondary', 'uses' => 'Forms\Education\education_secondary_school_enrolment_by_sex@store'));
+//post to update
+Route::post('sexsecondary/update', array('as' => 'updatesexsecondary', 'uses' => 'Forms\Education\education_secondary_school_enrolment_by_sex@update'));
+
+
+//show a specific id
+Route::get('sexsecondary/action/{id}', array('as' => 'fetchsexsecondary', 'uses' => 'Forms\Education\education_secondary_school_enrolment_by_sex@show'));
 
 
