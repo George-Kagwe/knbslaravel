@@ -73,10 +73,10 @@ Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Ag
 Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@update'));
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
-<<<<<<< HEAD
-=======
+
+
     //1. finance classification of revenue
->>>>>>> c2dd88c1ac7acef02105b2ab735b73e8d0e86864
+
 
 
 Route::get('education_distribution_abovefifteen_ability_readwrite/', 'Forms\Education\education_distribution_abovefifteen_ability_readwrite@index')->name('education_distribution_abovefifteen_ability_readwrite');
@@ -2032,8 +2032,7 @@ Route::get('population/all_population_populationprojectionsbyspecialagegroups',
 
 
 
-Route::get('population/all_population_populationprojectionsbyspecialagegroups', 
-'Endpoints\Population@get_population_populationprojectionsbyspecialagegroups')->name('population_populationprojectionsbyspecialagegroupsp');
+
 
 // @George Muchiri
 // @get_population_kihibs_by_broad_age_group
@@ -3215,11 +3214,8 @@ Route::post('irrigation/store', array('as' => 'storeIrrigation', 'uses' => 'Form
 //post to update
 Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@update'));
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> c2dd88c1ac7acef02105b2ab735b73e8d0e86864
 
 
 //@George Muchiri
@@ -4094,7 +4090,6 @@ Route::post('select/update', array('as' => 'updateSelect', 'uses' =>
 
 
 
-<<<<<<< HEAD
 //@George Muchiri
 Route::get('education_csa_adulteducationcentresbysubcounty/','Forms\Education\education_csa_adulteducationcentresbysubcounty@index')->name(
   'education_csa_adulteducationcentresbysubcounty');
@@ -4246,7 +4241,7 @@ Route::post('senroll/store', array('as' => 'storeSEnroll', 'uses' =>
   'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@store'));
 Route::post('senroll/update', array('as' => 'updateSEnroll', 'uses' => 
   'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@update'));
-=======
+
 
 
 
@@ -4409,5 +4404,5 @@ Route::post('sexsecondary/update', array('as' => 'updatesexsecondary', 'uses' =>
 //show a specific id
 Route::get('sexsecondary/action/{id}', array('as' => 'fetchsexsecondary', 'uses' => 'Forms\Education\education_secondary_school_enrolment_by_sex@show'));
 
->>>>>>> c2dd88c1ac7acef02105b2ab735b73e8d0e86864
+
 
