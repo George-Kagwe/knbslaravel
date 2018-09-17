@@ -83,6 +83,7 @@ class ict_kihibs_population_who_used_internet_by_place extends Controller
         else{
             $usage = new ict_kihibs_population_who_used_internet_by_place_model();
             $usage->county_id =$request->county_name;
+            $usage->mobility=$request->mobility; 
             $usage->work=$request->work;         
             $usage->cyber=$request->cyber;
             $usage->ed_centre=$request->ed_centre;

@@ -211,7 +211,8 @@
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Mobility</th>                      
+                                           <th>Mobility</th>
+                                           <th>work</th>                      
                                            <th>Cyber</th>
                                            <th>Education Center</th>
                                            <th>Communication Center</th>
@@ -229,6 +230,7 @@
                                                 <td>{{$usage->proportion_id}}</td>
                                                 <td>{{$usage->county_name}}</td>
                                                 <td>{{$usage->mobility}}</td>
+                                                 <td>{{$usage->work}}</td>
                                                 <td>{{$usage->cyber}}</td>
                                                 <td>{{$usage->ed_centre}}</td>
                                                 <td>{{$usage->comm_centre}}</td>
@@ -242,11 +244,12 @@
                                               </tr>
                                              <?php }?>
                                        </tbody>
-                                      <tfoot>
+                                      <tfoot> 
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Mobility</th>                       
+                                           <th>Mobility</th>
+                                           <th>work</th>                       
                                            <th>Cyber</th>
                                            <th>Education Center</th>
                                            <th>Expensive</th>
@@ -305,6 +308,16 @@
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter count of that cite mobility'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           work: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of that cite work'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
@@ -403,10 +416,10 @@
                           success: function(data)
                           {
 
-                               $('[name="id"]').val(data.proportion_id);
+                              $('[name="id"]').val(data.proportion_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="population"]').val(data.population);
                               $('[name="mobility"]').val(data.mobility);  
+                              $('[name="work"]').val(data.work);  
                               $('[name="cyber"]').val(data.cyber);
                               $('[name="ed_centre"]').val(data.ed_centre);
                               $('[name="comm_centre"]').val(data.comm_centre);
@@ -525,20 +538,20 @@
                                 </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Population</label>
-                                <div class="col-md-9">
-                                  <input name="population"  class="form-control" type="text">
-                                </div>
-                              </div>
-                           
+                                                         
                               <div class="form-group">
                                 <label class="control-label col-md-3">Mobility</label>
                                 <div class="col-md-9">
                                   <input name="mobility"  class="form-control" type="text">
                                 </div>
                               </div>
-                              
+
+                               <div class="form-group">
+                                <label class="control-label col-md-3">work</label>
+                                <div class="col-md-9">
+                                  <input name="work"  class="form-control" type="text">
+                                </div>
+                              </div>
                               <div class="form-group">
                                 <label class="control-label col-md-3">Cyber</label>
                                 <div class="col-md-9">
@@ -575,25 +588,7 @@
                                   <input name="other"  class="form-control" type="text">
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Security</label>
-                                <div class="col-md-9">
-                                  <input name="security"  class="form-control" type="text">
-                                </div>
-                              </div>
                               
-                              <div class="form-group">
-                                <label class="control-label col-md-3">others</label>
-                                <div class="col-md-9">
-                                  <input name="others"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Not Stated</label>
-                                <div class="col-md-9">
-                                  <input name="not_stated"  class="form-control" type="text">
-                                </div>
-                              </div>
                               <div class="form-group">
                                 <label class="control-label col-md-3">Population</label>
                                 <div class="col-md-9">
