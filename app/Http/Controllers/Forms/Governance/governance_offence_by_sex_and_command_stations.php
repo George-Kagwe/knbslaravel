@@ -7,12 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\Models\Governance\crimes_reported_to_police_by_command_stations_model;
+use App\Models\Governance\governance_offence_by_sex_and_command_stations_model;
 use View;
 use Illuminate\Support\Facades\DB;
 
-
-class crimes_reported_to_police_by_command_stations extends Controller
+class governance_offence_by_sex_and_command_stations extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,36 +20,30 @@ class crimes_reported_to_police_by_command_stations extends Controller
      */
      protected $rules =
     [
+
       'county_id'=>'required|numeric',
-      'crimes'=>'required|numeric',
+  
+      'male'=>'required|numeric',
+      'female'=>'required|numeric',
+      
       'year'=>'required|numeric'
-                              
-                        
-    ];
+  ];
     public function index()
     {
-         $data = DB::table('governance_crimes_reported_to_police_by_command_stations')
-               ->join('health_counties', 'governance_crimes_reported_to_police_by_command_stations.county_id', '=', 'health_counties.county_id')
+        //
+         $data = DB::table('governance_offence_by_sex_and_command_stations')
+               ->join('health_counties', 'governance_offence_by_sex_and_command_stations.county_id', '=', 'health_counties.county_id')
                
-                ->orderBy('crime_id', 'ASC')
+                ->orderBy('offence_id', 'ASC')
                 ->get();
  
 
                 $counties = DB::table('health_counties')->get();
 
-               
-                          
-                          
-
-      
-        return view('forms.governance.county.governancecrimesreportedtopolicebycommandstations',
+               return view('forms.Governance.county.governanceoffencebysexandcommandstations',
                  
                    ['post' =>$data,'counties' =>$counties
                    ]);
-        
-        // $crimes_reported_to_police_by_command_stations =crimes_reported_to_police_by_command_stations_model::all();
-
-           
     }
 
     /**
@@ -71,11 +64,15 @@ class crimes_reported_to_police_by_command_stations extends Controller
      */
     public function store(Request $request)
     {
-        
-        $validator = \Validator::make($request->all(), [
-        'county_id'=>'required|numeric',
-        'crimes'=>'required|numeric',
-        'year'=>'required|numeric'
+        //
+         $validator = \Validator::make($request->all(), [
+   'county_id'=>'required|numeric',
+  
+      'male'=>'required|numeric',
+      'female'=>'required|numeric',
+      
+      'year'=>'required|numeric'
+                           
         ]);
         
         if ($validator->fails())
@@ -83,15 +80,17 @@ class crimes_reported_to_police_by_command_stations extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $crimeN = new crimes_reported_to_police_by_command_stations_model();
-            $crimeN->county_id =$request->county_id;
-            $crimeN->crimes=$request->crimes;
-            $crimeN->year=$request->year;
-            $crimeN->save();
-             return response()->json($crimeN);
+            $offenceN = new governance_offence_by_sex_and_command_stations_model();
+            $offenceN->county_id =$request->county_id;
+            $offenceN->male=$request->male;
+             $offenceN->female=$request->female;
+              
+               $offenceN->year=$request->year;
+            $offenceN->save();
+             return response()->json($offenceN);
            echo json_encode(array("status" => TRUE));
 
-        }
+        }   
     }
 
     /**
@@ -100,14 +99,13 @@ class crimes_reported_to_police_by_command_stations extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($crime_id)
+    public function show($offence_id)
     {
-       
-         
-         $crimeN = crimes_reported_to_police_by_command_stations_model::findOrfail($crime_id);
+        //
+        $offenceN = governance_offence_by_sex_and_command_stations_model::findOrfail($offence_id);
 
   
-          echo json_encode($crimeN);     
+          echo json_encode($offenceN);  
     }
 
     /**
@@ -130,12 +128,14 @@ class crimes_reported_to_police_by_command_stations extends Controller
      */
     public function update(Request $request)
     {
-        
-                
-          $validator = \Validator::make($request->all(), [
-        'county_id'=>'required|numeric',
-        'crimes'=>'required|numeric',
-        'year'=>'required|numeric'
+        //
+         $validator = \Validator::make($request->all(), [
+     'county_id'=>'required|numeric',
+  
+      'male'=>'required|numeric',
+      'female'=>'required|numeric',
+      
+      'year'=>'required|numeric'
         ]);
         
         if ($validator->fails())
@@ -143,18 +143,18 @@ class crimes_reported_to_police_by_command_stations extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-         
-            $crimeN =crimes_reported_to_police_by_command_stations_model::find($request->id);
-            $crimeN->county_id =$request->county_id;
-            $crimeN->crimes=$request->crimes;
-   
-            $crimeN->year=$request->year;
-            $crimeN->save();
-             return response()->json($crimeN);
+          
+            $offenceN =governance_offence_by_sex_and_command_stations_model::find($request->id);
+    $offenceN->county_id =$request->county_id;
+            $offenceN->male=$request->male;
+             $offenceN->female=$request->female;
+              
+               $offenceN->year=$request->year;
+            $offenceN->save();
+             return response()->json($offenceN);
            echo json_encode(array("status" => TRUE));
 
-        }  
-
+        }
     }
 
     /**
