@@ -202,13 +202,14 @@
 
                   <div class="row">
                      <div class="col-lg-12">
-                       
-     
-                              <h5><center>Average Monthly Pump Prices For Fuel By Category</center></h5>
+                        <h5><center>Average Monthly Pump Prices For Fuel By Category</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
                               <br />
+
+                              <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
@@ -225,11 +226,13 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+
                                       <?php foreach($fuel_prices as $prices){?>
+                                             
                                              <tr>
                                                 <td>{{$prices->count_id}}</td>
                                                 <td>{{$prices->county_name}}</td>
-                                                <td>{{$prices->month_id}}</td>
+                                                <td>{{$prices->month}}</td>
                                                 <td>{{$prices->super_petrol}}</td>
                                                 <td>{{$prices->diesel}}</td>
                                                 <td>{{$prices->kerosene}}</td>                                            
@@ -242,15 +245,14 @@
                                               </tr>
                                              <?php }?>
 
-
-
                                       </tbody>
 
                                       <tfoot>
                                         <tr>
+                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Month in numeric(1 to 12)</th>
+                                           <th>Month</th>
                                            <th>Super Petrol</th>
                                            <th>Diesel</th>
                                            <th>Kerosene</th>
@@ -281,9 +283,7 @@
 
             <!-- Sian starts here -->
             <script type="text/javascript">
-                      $(document).ready( function () {
-                         
-
+              $(document).ready(function () {
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -291,7 +291,40 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          month_id: {
+                                          county_name: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please Select a County '
+                                                  },
+                                                
+                                              }
+                                          },
+                                          month: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                
+                                              }
+                                          },
+                                              super_petrol: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                
+                                              }
+                                          },
+                                              diesel: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                
+                                              }
+                                          },
+
+                                          kerosene: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -330,11 +363,13 @@
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          },
-                                      }
+                                          }
+
+                                          }
+                                      
                                   });
                           $('#table_id').DataTable();
-                      } );
+                      });
                       var save_method; //for save method string
                       var table;
 
@@ -363,12 +398,13 @@
                           {
 
                               $('[name="id"]').val(data.count_id);
+                              $('[name="county_id"]').val(data.county_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="month_id"]').val(data.month_id);
+                              $('[name="month"]').val(data.month);
                               $('[name="super_petrol"]').val(data.super_petrol);
                               $('[name="diesel"]').val(data.diesel);
                               $('[name="kerosene"]').val(data.kerosene);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="year"]').val(data.year);           
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -378,7 +414,12 @@
                               alert('Error get data from ajax');
                           }
                       });
-                      } 
+                      }
+
+
+
+
+ 
                       function save()
                       {
                         var url;
@@ -391,9 +432,8 @@
                         else
                         {
                            
-                          //  url = '{{ route("updateSugar", ":id") }}';
-                          // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateFuelPrices') }}";
+                         url = "{{ route('updateFuelPrices') }}";
+                        
                         }
                           
                       
@@ -461,41 +501,50 @@
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               <div class="form-group">
-                               <label class="control-label col-md-3">County</label>
+                                <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_name">
                                     <option value="">please select</option>
-                                     <?php foreach($counties as $counties){?>   
-                                          <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-                                      <?php }?>
+                                       <?php foreach($counties as $counties){?>
+                                        <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                       <?php }?>
                                   </select>
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Enter Month in numeric i.e between 1 and 12</label>
+
+                              <div class="form-group"  id="categorydiv">
+                                <label class="control-label col-md-3">Month</label>
                                 <div class="col-md-9">
-                                  <input name="month_id"  class="form-control" type="text">
+                                  <select class="form-control" id="month_id" name="month">
+                                    <option value="">please select</option>
+                                       <?php foreach($months as $months){?>
+                                          <option value="{{$months->month_id}}">{{$months->month}}</option>
+                                       <?php }?>
+                                  </select>
                                 </div>
                               </div>
+                                                         
                               <div class="form-group">
                                 <label class="control-label col-md-3">Super Petrol Price</label>
                                 <div class="col-md-9">
                                   <input name="super_petrol"  class="form-control" type="text">
                                 </div>
                               </div>
+
                               <div class="form-group">
                                 <label class="control-label col-md-3">Diesel Price</label>
                                 <div class="col-md-9">
                                   <input name="diesel"  class="form-control" type="text">
                                 </div>
                               </div>
+
                               <div class="form-group">
                                 <label class="control-label col-md-3">Kerosene Price</label>
                                 <div class="col-md-9">
                                   <input name="kerosene"  class="form-control" type="text">
                                 </div>
                               </div>
-                               <div class="form-group">
+                              <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="year" name="year">
@@ -519,7 +568,7 @@
                                   </select>
                                 </div>
                               </div>
-                              </div>
+                             </div>
                       </form>
                   </div>
                       <div class="modal-footer">

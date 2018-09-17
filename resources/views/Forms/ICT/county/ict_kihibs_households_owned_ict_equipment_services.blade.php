@@ -229,9 +229,7 @@
                                                 <td>{{$ict_item->county_name}}</td>
                                                 <td>{{$ict_item->computer}}</td>
                                                 <td>{{$ict_item->television}}</td>
-                                                <td>{{$ict_item->households}}</td>                                             
-                                                <td>{{$ict_item->year}}</td>                                      
-
+                                                <td>{{$ict_item->households}}</td>
                                                 <td>
                                                   <button class="btn btn-success" onclick="edit(<?php echo $ict_item->household_id;?>)">Update Record</button>
                                                
@@ -391,7 +389,6 @@ $(document).ready( function () {
                               $('[name="computer"]').val(data.computer);
                               $('[name="television"]').val(data.television);  
                               $('[name="households"]').val(data.households);
-                              $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -490,7 +487,7 @@ $(document).ready( function () {
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="computer" name="computer">
+                                  <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
                                     
 

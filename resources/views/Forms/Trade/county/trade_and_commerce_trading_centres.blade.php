@@ -276,27 +276,7 @@
             <!-- Sian starts here -->
             <script type="text/javascript">
                       $(document).ready( function () {
-                           $(function() {
-                    $('select[name=county_name]').change(function() {
-                     
-
-                        var urls = '{{ route("fetchCounties", ":id") }}'; 
-                        var id =$(this).val();
-                        var  url =urls.replace(':id', id);
-
-                        $.get(url, function(data) {
-                            var select = $('form select[name=trading_centre]');
-                            
-                            select.empty();
-
-                            $.each(JSON.parse(data),function(key,value) {
-                              
-                                 select.append('<option value=' + value.subcounty_id + '>' +value.trading_centre+ '</option>');
-                            });
-                        });
-                    });
-                        });
-
+                    
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
@@ -372,7 +352,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchCDF", ":id") }}';
+                        var url = '{{ route("fetchTradeCentres", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -409,7 +389,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeCDF') }}";
+                            url = "{{ route('storeTradeCentres') }}";
 
                         }
                         else
@@ -417,7 +397,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateCDF') }}";
+                          url = "{{ route('updateTradeCentres') }}";
                         }
                           
                       
@@ -484,17 +464,7 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                              
-                             
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Number of Trading Centers</label>
-                                <div class="col-md-9">
-                                  <input name="number"  class="form-control" type="text">
-                                </div>
-                              </div>
-                           
-                              
-                              
+                                                           
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
@@ -524,10 +494,16 @@
                                             
                                                  <option value="{{$trading_ctr->trading_centre_id}}">{{$trading_ctr->trading_centre}}</option>
                                                
-                                               
+                                                
                                             
                                              <?php }?>
                                   </select>
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Number of Trading Centers</label>
+                                <div class="col-md-9">
+                                  <input name="number"  class="form-control" type="text">
                                 </div>
                               </div>
 

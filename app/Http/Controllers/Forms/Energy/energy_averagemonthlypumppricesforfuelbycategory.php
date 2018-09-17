@@ -11,15 +11,17 @@ use App\Models\Energy\energy_averagemonthlypumppricesforfuelbycategory_model;
 use View;
 use Illuminate\Support\Facades\DB;
 
+
 //@Charles Ndirangu
 //Average Monthly Pump Prices For Fuel By Category
+
 class energy_averagemonthlypumppricesforfuelbycategory extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+*/
      protected $rules = [ 
         'county_name'=>'required',
         'month_id'=>'required|numeric',
@@ -27,17 +29,22 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
         'diesel'=>'required|numeric',
         'kerosene'=>'required|numeric',
         'year'=>'required|numeric'
-
+ 
     ];
     public function index()
     {
-        $fuel_prices = DB::table('energy_averagemonthlypumppricesforfuelbycategory')
-               ->join('health_counties', 'energy_averagemonthlypumppricesforfuelbycategory.county_id', '=', 'health_counties.county_id')->orderBy('count_id', 'ASC')->get();
+         $fuel_prices = DB::table('energy_averagemonthlypumppricesforfuelbycategory')
+               ->join('health_counties', 'energy_averagemonthlypumppricesforfuelbycategory.county_id', '=', 'health_counties.county_id') 
+                ->join('health_months', 'energy_averagemonthlypumppricesforfuelbycategory.month_id', '=', 'health_months.month_id')->orderBy('count_id', 'ASC')->get();
+
+        
 
         $counties = DB::table('health_counties')->get();
+        $months = DB::table('health_months')->get();
 
-        return view('Forms.Energy.county.energy_averagemonthlypumppricesforfuelbycategory', ['fuel_prices' =>$fuel_prices,'counties' =>$counties]);
+        return view('Forms.Energy.county.energy_averagemonthlypumppricesforfuelbycategory', ['fuel_prices' =>$fuel_prices,'counties' =>$counties,'months' =>$months]);
  
+
     }
 
     /**
@@ -47,7 +54,7 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -58,15 +65,17 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = \Validator::make($request->all(), [
                           'county_name'=>'required',
-                          'month_id'=>'required|numeric',
+                          'month'=>'required',
                           'super_petrol'=>'required|numeric',
                           'diesel'=>'required|numeric',
                           'kerosene'=>'required|numeric',
-                          'year'=>'required|numeric'
+                          'year'=>'required',
         ]);
          
+
         if ($validator->fails())
         {
             return response()->json(['errors'=>$validator->errors()->all()]);
@@ -74,14 +83,14 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
         else{
             $fuel_prices = new energy_averagemonthlypumppricesforfuelbycategory_model();
             $fuel_prices->county_id =$request->county_name;
-            $fuel_prices->month_id=$request->month_id;
+            $fuel_prices->month_id=$request->month;
             $fuel_prices->super_petrol=$request->super_petrol;         
             $fuel_prices->diesel=$request->diesel;
             $fuel_prices->kerosene=$request->kerosene;
             $fuel_prices->year=$request->year;
             $fuel_prices->save();
-             return response()->json($fuel_prices);
-           echo json_encode(array("status" => TRUE));
+            return response()->json($fuel_prices);
+            echo json_encode(array("status" => TRUE));
 
         }
     }
@@ -92,12 +101,13 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+   
     public function show($count_id)
     {
         
           $fuel_price = energy_averagemonthlypumppricesforfuelbycategory_model::findOrfail($count_id);
-     
-      
+           
          echo json_encode($fuel_price);
     }
 
@@ -121,13 +131,16 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
      */
     public function update(Request $request)
     {
+
         $validator = \Validator::make($request->all(), [
                           'county_name'=>'required',
-                          'month_id'=>'required|numeric',
+                          'month'=>'required',
                           'super_petrol'=>'required|numeric',
                           'diesel'=>'required|numeric',
-                          'kerosene'=>'required|numeric',
-                          'year'=>'required|numeric'
+                         'kerosene'=>'required|numeric',
+                          'year'=>'required',
+
+       
         ]);
         
         if ($validator->fails())
@@ -135,9 +148,10 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
+
             $fuel_price =energy_averagemonthlypumppricesforfuelbycategory_model::find($request->id);
             $fuel_price->county_id =$request->county_name;
-            $fuel_price->month_id=$request->month_id;
+            $fuel_price->month_id=$request->month;
             $fuel_price->super_petrol=$request->super_petrol;         
             $fuel_price->diesel=$request->diesel;
             $fuel_price->kerosene=$request->kerosene;
@@ -145,6 +159,7 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
             $fuel_price->save();
              return response()->json($fuel_price);
            echo json_encode(array("status" => TRUE));
+
         }
     }
 
@@ -154,8 +169,18 @@ class energy_averagemonthlypumppricesforfuelbycategory extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // public function get_subcounties($id)
+    // {
+    //      $subcounties = DB::table('health_months')
+    //            ->where('month_id',  '=', $id)               
+    //             ->get();
+
+    //     return  json_encode($subcounties);
+    // }    
     public function destroy($id)
     {
         //
+
     }
 }

@@ -35,7 +35,7 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
 
         $counties = DB::table('health_counties')->get();
 
-        return view('Forms.ICT.ict_kihibs_households_owned_ict_equipment_services', ['ict_items' =>$ict_equipments,'counties' =>$counties]);
+        return view('Forms.ICT.county.ict_kihibs_households_owned_ict_equipment_services', ['ict_items' =>$ict_equipments,'counties' =>$counties]);
  
     }
 
@@ -58,7 +58,7 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                          'county_id'=>'required',
+                          'county_name'=>'required',
                           'computer'=>'required|numeric',
                           'television'=>'required|numeric',
                           'households'=>'required|numeric',
@@ -117,7 +117,7 @@ class ict_kihibs_households_owned_ict_equipment_services extends Controller
     public function update(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                          'county_id'=>'required',
+                          'county_name'=>'required',
                           'computer'=>'required|numeric',
                           'television'=>'required|numeric',
                           'households'=>'required|numeric',
