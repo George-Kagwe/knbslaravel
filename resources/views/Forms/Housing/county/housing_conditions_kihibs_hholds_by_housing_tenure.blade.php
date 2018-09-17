@@ -117,6 +117,7 @@
                     <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
                      <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
                      <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
+                          <li><a href="{{ route('Housing/home') }}"><i class="fa fa-money"></i>Housing</a></li>
                 </ul>
               </div>
               
@@ -204,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>KIHIBs Households by Habitable Rooms</center></h5>
+                              <h5><center>KIHIBs Households by Housing Tenure</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />

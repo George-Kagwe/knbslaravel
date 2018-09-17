@@ -1,4 +1,4 @@
-fet<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -117,6 +117,7 @@ fet<!DOCTYPE html>
                     <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
                      <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
                      <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
+                      <li><a href="{{ route('Housing/home') }}"><i class="fa fa-money"></i>Housing</a></li>
                 </ul>
               </div>
               
@@ -189,7 +190,7 @@ fet<!DOCTYPE html>
         <!-- /top navigation -->
 
  <!-- page content -->
-       
+    
  <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
@@ -204,7 +205,7 @@ fet<!DOCTYPE html>
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Primary School Teachers by Sex</center></h5>
+                              <h5><center>Teachers Training Colleges </center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -214,11 +215,12 @@ fet<!DOCTYPE html>
                                         <tr>
                                          
                                            <th>ID</th>                                          
-                                           <th>number</th>
-                                           <th>proportion</th>
-                                         <th>gender</th>
-                                    
-
+                                           <th>County Name</th>
+                              
+                                           <th>Category</th>    
+                                            <th>Pre Primary</th> 
+                                            <th>Primary Sc</th>
+                                            <th>Secondary</th>  
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -227,14 +229,17 @@ fet<!DOCTYPE html>
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->candidate_id}}</td>
-                                                <td>{{$post->number}}</td>
-                                                <td>{{$post->proportion}}</td>
-                                                 <td>{{$post->gender}}</td>
+                                                <td>{{$post->teacher_colleges_id}}</td>
+                                                <td>{{$post->county_name}}</td>
+                                                <td>{{$post->category}}</td>   
+                                                <td>{{$post->pre_primary}}</td> 
+                                                <td>{{$post->primary_sc}}</td>  
+                                                <td>{{$post->secondary}}</td> 
+                                                                                            
                                                 <td>{{$post->year}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->candidate_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->teacher_colleges_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -246,12 +251,15 @@ fet<!DOCTYPE html>
 
                                       <tfoot>
                                         <tr>
-                                             <th>ID</th>                                          
-                                           <th>number</th>
-                                           <th>proportion</th>
-                                         <th>gender</th>
-                                    
-
+                                         
+                                       
+                                           <th>ID</th>                                          
+                                           <th>County Name</th>
+                              
+                                           <th>Category</th>    
+                                            <th>Pre Primary</th> 
+                                            <th>Primary Sc</th>
+                                            <th>Secondary</th>  
                                            <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
@@ -280,6 +288,26 @@ fet<!DOCTYPE html>
             <!-- Sian starts here -->
             <script type="text/javascript">
                       $(document).ready( function () {
+                           $(function() {
+                    $('select[name=county_name]').change(function() {
+                     
+
+                        var urls = '{{ route("fetchCounties", ":id") }}'; 
+                        var id =$(this).val();
+                        var  url =urls.replace(':id', id);
+
+                        $.get(url, function(data) {
+                            var select = $('form select[name=subcounty_name]');
+                            
+                            select.empty();
+
+                            $.each(JSON.parse(data),function(key,value) {
+                              
+                                 select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
+                            });
+                        });
+                    });
+                        });
 
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
@@ -287,8 +315,44 @@ fet<!DOCTYPE html>
                                           invalid: 'glyphicon glyphicon-remove',
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
-                                      number: {
-                                          kcpe_result: {
+                                      fields: {
+                                          county_name: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                  
+                                              }
+                                          },
+                                          subcounty_name: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                              
+                                              }
+                                          },
+                                          pre_primary: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   alpha: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          category: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   alpha: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                              primary_sc: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -298,9 +362,7 @@ fet<!DOCTYPE html>
                                                 }
                                               }
                                           },
-
-                                            proportion: {
-                                          kcpe_result: {
+                                           secondary: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -309,20 +371,7 @@ fet<!DOCTYPE html>
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          },
-
-                                            gender: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a text '
-                                                  },
-                                                   alpha_dash: {                                                    
-                                                    message: 'Must be a text'
-                                                }
-                                              }
-                                          },
-                                      
-                                           
+                                          }
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -341,7 +390,7 @@ fet<!DOCTYPE html>
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchteachers", ":id") }}';
+                        var url = '{{ route("fetchCollege", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -354,10 +403,13 @@ fet<!DOCTYPE html>
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.candidate_id);
-                              $('[name="number"]').val(data.number);
-                              $('[name="proportion"]').val(data.proportion);
-                              $('[name="gender"]').val(data.gender);
+                              $('[name="id"]').val(data.teacher_colleges_id);
+                              $('[name="county_name"]').val(data.county_id);
+                              $('[name="category"]').val(data.category);
+                              $('[name="pre_primary"]').val(data.pre_primary);
+                              $('[name="primary_sc"]').val(data.primary_sc);
+                              $('[name="secondary"]').val(data.secondary);
+                       
                               $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
@@ -378,7 +430,7 @@ fet<!DOCTYPE html>
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeteachers') }}";
+                            url = "{{ route('storeCollege') }}";
 
                         }
                         else
@@ -386,7 +438,7 @@ fet<!DOCTYPE html>
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateteachers') }}";
+                          url = "{{ route('updateCollege') }}";
                         }
                           
                       
@@ -436,6 +488,8 @@ fet<!DOCTYPE html>
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
+                     
+
             </script>
 
               <!-- Bootstrap modal -->
@@ -452,36 +506,65 @@ fet<!DOCTYPE html>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               
+                             
+                      
+                              
+                              
                               <div class="form-group">
-                                <label class="control-label col-md-3">  number</label>
+                                <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                 
-                                 <input name="number" class="form-control" type="text">
-                                  @if ($errors->has('number'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('number') }}</strong>
-                                    </span>
-                                @endif
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">proportion</label>
-                                <div class="col-md-9">
-                                  <input name="proportion"  class="form-control" type="text">
+                                  <select class="form-control" id="county_name" name="county_name">
+                                    <option value="">please select</option>
+                                    
+
+                                       <?php foreach($counties as $counties){?>
+                                            
+                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                               
+                                               
+                                            
+                                             <?php }?>
+                                  </select>
                                 </div>
                               </div>
 
-                               <div class="form-group">
-                                <label class="control-label col-md-3">gender</label>
+                        
+
+
+                                      <div class="form-group">
+                                <label class="control-label col-md-3">Category</label>
                                 <div class="col-md-9">
-                                  <input name="gender"  class="form-control" type="text">
+                                  <input name="category"  class="form-control" type="text">
                                 </div>
                               </div>
                               
-                              
-                              
-                              
-                              <div class="form-group">
+                                      <div class="form-group">
+                                <label class="control-label col-md-3">Pre Primary</label>
+                                <div class="col-md-9">
+                                  <input name="pre_primary"  class="form-control" type="text">
+                                </div>
+                              </div>
+                           
+
+
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Primary Sc</label>
+                                <div class="col-md-9">
+                                  <input name="primary_sc"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                           
+                                      <div class="form-group">
+                                <label class="control-label col-md-3">Secondary</label>
+                                <div class="col-md-9">
+                                  <input name="secondary"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                             
+
+                                 <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="year" name="year">
@@ -493,7 +576,7 @@ fet<!DOCTYPE html>
                                     <option value="2012">2012</option>
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
-                                    <option value="2015">2015</option
+                                    <option value="2015">2015</option>
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
                                     <option value="2018">2018</option>
@@ -505,6 +588,10 @@ fet<!DOCTYPE html>
                                   </select>
                                 </div>
                               </div>
+
+
+
+                             
 
                               
                               </div>
@@ -524,7 +611,8 @@ fet<!DOCTYPE html>
             <!-- Siana ends here -->
         
    </div>
-  <!-- page content -->
+  <!-- page content -->   
+
   <!-- page content -->
    
 

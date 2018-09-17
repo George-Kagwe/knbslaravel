@@ -84,7 +84,7 @@ class Education extends Controller
     public function education_csa_adulteducationenrolmentbysexandsubcounty(){
     	$data = DB::table('education_csa_adulteducationenrolmentbysexandsubcounty')
     	            ->join('health_counties', 'education_csa_adulteducationenrolmentbysexandsubcounty.county_id', '=', 'health_counties.county_id')
-    	            ->join('health_subcounty', 'education_csa_adulteducationenrolmentbysexandsubcounty.sub_county_id', '=', 'health_subcounty.subcounty_id')->get();
+    	            ->join('health_subcounty', 'education_csa_adulteducationenrolmentbysexandsubcounty.subcounty_id', '=', 'health_subcounty.subcounty_id')->get();
 
 
     	    $year = array();

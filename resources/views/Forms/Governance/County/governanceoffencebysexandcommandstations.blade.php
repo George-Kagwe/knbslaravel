@@ -117,6 +117,7 @@
                     <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
                      <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
                      <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
+                      <li><a href="{{ route('Housing/home') }}"><i class="fa fa-money"></i>Housing</a></li>
                 </ul>
               </div>
               
@@ -189,7 +190,7 @@
         <!-- /top navigation -->
 
  <!-- page content -->
-       
+    
  <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
@@ -204,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Cases Forwaded and Action Taken</center></h5>
+                              <h5><center>governance offence by sex and command stations</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -213,10 +214,14 @@
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>County</th>
-                                           <th>Crimes</th>                             
-                                           <th>Year</th>
+                                           <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>male</th>
+                                           <th>female</th>
+                                           
+                                          
+                                           <th>year</th>
+                                           
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -224,14 +229,16 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->crime_id}}</td>
-                                                <td>{{$post->county_id}}</td>
-                                                <td>{{$post->crimes}}</td>
-                                                <td>{{$post->year}}</td>                                      
+                                                <td>{{$post->offence_id}}</td>
+                                                <td>{{$post->county_name}}</td>
+                                                <td>{{$post->male}}</td>
+                                                 <td>{{$post->female}}</td>
+                                                  
+                                                   <td>{{$post->year}}</td>   
+                                                                                         
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo 
-                                                    $post->crime_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->offence_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -243,12 +250,13 @@
 
                                       <tfoot>
                                         <tr>
-                                             <th>ID</th>                                          
-                                           <th>Action Taken</th>
-                                           <th>No of Recommendations</th>                             
-                                           <th>Year</th>
-                                           
-                                           <th>Year</th>
+                                                     <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>male</th>
+                                           <th>female</th>
+                                           <th>year</th>
+                                          
+                                          
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -276,6 +284,26 @@
             <!-- Sian starts here -->
             <script type="text/javascript">
                       $(document).ready( function () {
+                           $(function() {
+                    $('select[name=county_name]').change(function() {
+                     
+
+                        var urls = '{{ route("fetchCounties", ":id") }}'; 
+                        var id =$(this).val();
+                        var  url =urls.replace(':id', id);
+
+                        $.get(url, function(data) {
+                            var select = $('form select[name=subcounty_name]');
+                            
+                            select.empty();
+
+                            $.each(JSON.parse(data),function(key,value) {
+                              
+                                 select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
+                            });
+                        });
+                    });
+                        });
 
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
@@ -287,14 +315,14 @@
                                           county_id: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter number '
+                                                      message: 'Please enter a number '
                                                   },
                                                    numeric: {                                                    
-                                                    message: 'Please Enter number'
+                                                    message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          crimes: {
+                                          male: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -303,10 +331,19 @@
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          }
-                                       
-                                          
-                                           
+                                          },
+                                          female: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                         
+                                         
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -325,7 +362,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchcase", ":id") }}';
+                        var url = '{{ route("fetchoffenceN", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -338,11 +375,11 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.crime_id);
-                              $('[name="action_taken"]').val(data.action_taken);
-                              $('[name="no_of_recommendations"]').val(data.no_of_recommendations);
-        
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="id"]').val(data.offence_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="male"]').val(data.male);
+                                 $('[name="female"]').val(data.female);
+                             $('[name="year"]').val(data.year);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -362,7 +399,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storecase') }}";
+                            url = "{{ route('storeoffenceN') }}";
 
                         }
                         else
@@ -370,7 +407,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatecase') }}";
+                          url = "{{ route('updateoffenceN') }}";
                         }
                           
                       
@@ -420,6 +457,8 @@
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
+                     
+
             </script>
 
               <!-- Bootstrap modal -->
@@ -437,29 +476,43 @@
                             <div class="form-body">
                               
                           
+                           
+                              
+                              
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="county_id" name="county_id">
-                                    <option value="">Please Select County</option>
-                                   <?php foreach($post as $post){?>
-                                     <option value="1">{{$post->crimes}}</option>
-                                   <?php }?>
+                                    <option value="">please select</option>
+                                    
+
+                                       <?php foreach($counties as $counties){?>
+                                            
+                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                               
+                                               
+                                            
+                                             <?php }?>
                                   </select>
                                 </div>
                               </div>
+
+                                    
                               <div class="form-group">
-                                <label class="control-label col-md-3">Crimes</label>
+                                <label class="control-label col-md-3">male</label>
                                 <div class="col-md-9">
-                                  <input name="crimes"  class="form-control" type="text">
+                                  <input name="male"  class="form-control" type="text">
                                 </div>
                               </div>
-                            
+                                <div class="form-group">
+                                <label class="control-label col-md-3">female</label>
+                                <div class="col-md-9">
+                                  <input name="female"  class="form-control" type="text">
+                                </div>
                               </div>
                               
                               
-                              
-                              <div class="form-group">
+                             <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="year" name="year">
@@ -483,8 +536,13 @@
                                   </select>
                                 </div>
                               </div>
+                                 
+
+
+                             
 
                               
+                              </div>
 
                             
                       </form>
@@ -501,7 +559,8 @@
             <!-- Siana ends here -->
         
    </div>
-  <!-- page content -->
+  <!-- page content -->   
+
   <!-- page content -->
    
 

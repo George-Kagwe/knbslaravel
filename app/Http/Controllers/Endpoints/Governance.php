@@ -1589,7 +1589,7 @@ class Governance extends Controller
     public function get_governance_registered_voters_by_county_and_by_sex(){
     
            $data= DB::table('governance_registered_voters_by_county_and_by_sex')->join('health_counties','governance_registered_voters_by_county_and_by_sex.county_id', '=', 'health_counties.county_id')->join('health_subcounty',
-            'governance_registered_voters_by_county_and_by_sex.sub_counties_id', '=', 'health_subcounty.subcounty_id')->get();
+            'governance_registered_voters_by_county_and_by_sex.subcounty_id', '=', 'health_subcounty.subcounty_id')->get();
 
      
 				 

@@ -29,15 +29,28 @@ class crimes_reported_to_police_by_command_stations extends Controller
     ];
     public function index()
     {
+         $data = DB::table('governance_crimes_reported_to_police_by_command_stations')
+               ->join('health_counties', 'governance_crimes_reported_to_police_by_command_stations.county_id', '=', 'health_counties.county_id')
+               
+                ->orderBy('crime_id', 'ASC')
+                ->get();
+ 
+
+                $counties = DB::table('health_counties')->get();
+
+               
+                          
+                          
+
+      
+        return view('forms.governance.county.governancecrimesreportedtopolicebycommandstations',
+                 
+                   ['post' =>$data,'counties' =>$counties
+                   ]);
         
         // $crimes_reported_to_police_by_command_stations =crimes_reported_to_police_by_command_stations_model::all();
 
-           $data= DB::table('governance_crimes_reported_to_police_by_command_stations')->join('health_counties','governance_crimes_reported_to_police_by_command_stations.county_id', '=', 'health_counties.county_id')->get();
-   
-   
- 
-        
-        return view('forms.governance.national.crimes_reported_to_police_by_command_stations',['post' =>$data]);
+           
     }
 
     /**
@@ -70,12 +83,12 @@ class crimes_reported_to_police_by_command_stations extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
         else{
-            $crimes = new crimes_reported_to_police_by_command_stations_model();
-            $crimes->county_id =$request->county_id;
-            $crimes->crimes=$request->crimes;
-            $crimes->year=$request->year;
-            $crimes->save();
-             return response()->json($crimes);
+            $crimeN = new crimes_reported_to_police_by_command_stations_model();
+            $crimeN->county_id =$request->county_id;
+            $crimeN->crimes=$request->crimes;
+            $crimeN->year=$request->year;
+            $crimeN->save();
+             return response()->json($crimeN);
            echo json_encode(array("status" => TRUE));
 
         }
@@ -91,10 +104,10 @@ class crimes_reported_to_police_by_command_stations extends Controller
     {
        
          
-         $crimes = crimes_reported_to_police_by_command_stations_model::findOrfail($crime_id);
+         $crimeN = crimes_reported_to_police_by_command_stations_model::findOrfail($crime_id);
 
   
-          echo json_encode($crimes);     
+          echo json_encode($crimeN);     
     }
 
     /**
@@ -131,13 +144,13 @@ class crimes_reported_to_police_by_command_stations extends Controller
         }
         else{
          
-            $crimes =crimes_reported_to_police_by_command_stations_model::find($request->id);
-            $crimes->county_id =$request->county_id;
-            $crimes->crimes=$request->crimes;
+            $crimeN =crimes_reported_to_police_by_command_stations_model::find($request->id);
+            $crimeN->county_id =$request->county_id;
+            $crimeN->crimes=$request->crimes;
    
-            $crimes->year=$request->year;
-            $crimes->save();
-             return response()->json($crimes);
+            $crimeN->year=$request->year;
+            $crimeN->save();
+             return response()->json($crimeN);
            echo json_encode(array("status" => TRUE));
 
         }  

@@ -31,7 +31,7 @@ Route::get('Building/home', 'Forms\AllFormsController@building')->name('Building
 Route::get('Money/home', 'Forms\AllFormsController@money')->name('Money/home');
 Route::get('Transport/home', 'Forms\AllFormsController@transport')->name('Transport/home');
 Route::get('Manufacturing/home', 'Forms\AllFormsController@manufacturing')->name('Manufacturing/home');
-Route::get('Housing/home', 'Forms\AllFormsController@housing')->name('Housing/home');
+Route::get('housing/all_home', 'Forms\AllFormsController@housing')->name('housing/all_home');
 
 //Begining of crud functions
 //Route::get('Agriculture/sugar_yield/{id}', array('as' => 'search_id', 'uses' =>'Forms\Agriculture@show'));
@@ -73,14 +73,117 @@ Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Ag
 Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@update'));
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
+
+
     //1. finance classification of revenue
+
+
+
+Route::get('education_distribution_abovefifteen_ability_readwrite/', 'Forms\Education\education_distribution_abovefifteen_ability_readwrite@index')->name('education_distribution_abovefifteen_ability_readwrite');
+   Route::get('stated/fetch/{id}', array('as' => 'fetchstated', 'uses' => 'Forms\Education\education_distribution_abovefifteen_ability_readwrite@show'));
+    Route::get('stated/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_abovefifteen_ability_readwrite@get_subcounties'));
+
+    Route::post('stated/store', array('as' => 'storestated', 'uses' => 
+  'Forms\Education\education_distribution_abovefifteen_ability_readwrite@store'));
+Route::post('stated/update', array('as' => 'updatestated', 'uses' => 
+  'Forms\Education\education_distribution_abovefifteen_ability_readwrite@update'));
+
+
+Route::get('education_distribution_abovethreeyears_highestlevel_reached/', 'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@index')->name('education_distribution_abovethreeyears_highestlevel_reached');
+   Route::get('duksi/fetch/{id}', array('as' => 'fetchduksi', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@show'));
+    Route::get('duksi/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@get_subcounties'));
+
+    Route::post('duksi/store', array('as' => 'storeduksi', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@store'));
+Route::post('duksi/update', array('as' => 'updateduksi', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@update'));
+
+
+Route::get('education_distribution_abovethreeyears_training/', 'Forms\Education\education_distribution_abovethreeyears_training@index')->name('education_distribution_abovethreeyears_training');
+   Route::get('attended/fetch/{id}', array('as' => 'fetchattended', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_training@show'));
+    Route::get('attended/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_training@get_subcounties'));
+
+    Route::post('attended/store', array('as' => 'storeattended', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_training@store'));
+Route::post('attended/update', array('as' => 'updateattended', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_training@update'));
+
+
+Route::get('education_distribution_highest_education_qualification/', 'Forms\Education\education_distribution_highest_education_qualification@index')->name('education_distribution_highest_education_qualification');
+   Route::get('distributionN/fetch/{id}', array('as' => 'fetchdistributionN', 'uses' => 'Forms\Education\education_distribution_highest_education_qualification@show'));
+    Route::get('distributionN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_highest_education_qualification@get_subcounties'));
+
+    Route::post('distributionN/store', array('as' => 'storedistributionN', 'uses' => 
+  'Forms\Education\education_distribution_highest_education_qualification@store'));
+Route::post('distributionN/update', array('as' => 'updatedistributionN', 'uses' => 
+  'Forms\Education\education_distribution_highest_education_qualification@update'));
+
+
+
+Route::get('governance_registered_voters_by_county_and_by_sex/', 'Forms\Governance\governance_registered_voters_by_county_and_by_sex@index')->name('governance_offence_by_sex_and_command_stations');
+   Route::get('votersN/fetch/{id}', array('as' => 'fetchvotersN', 'uses' => 'Forms\Governance\governance_registered_voters_by_county_and_by_sex@show'));
+    Route::get('votersN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\governance_registered_voters_by_county_and_by_sex@get_subcounties'));
+
+    Route::post('votersN/store', array('as' => 'storevotersN', 'uses' => 
+  'Forms\Governance\governance_registered_voters_by_county_and_by_sex@store'));
+Route::post('votersN/update', array('as' => 'updatevotersN', 'uses' => 
+  'Forms\Governance\governance_registered_voters_by_county_and_by_sex@update'));
+
+
+Route::get('governance_offence_by_sex_and_command_stations/', 'Forms\Governance\governance_offence_by_sex_and_command_stations@index')->name('governance_offence_by_sex_and_command_stations');
+   Route::get('offenceN/fetch/{id}', array('as' => 'fetchoffenceN', 'uses' => 'Forms\Governance\governance_offence_by_sex_and_command_stations@show'));
+    Route::get('offenceN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\governance_offence_by_sex_and_command_stations@get_subcounties'));
+
+    Route::post('offenceN/store', array('as' => 'storeoffenceN', 'uses' => 
+  'Forms\Governance\governance_offence_by_sex_and_command_stations@store'));
+Route::post('offenceN/update', array('as' => 'updateoffenceN', 'uses' => 
+  'Forms\Governance\governance_offence_by_sex_and_command_stations@update'));
+
+Route::get('governance_identity_cards_made_processed_and_collected/', 'Forms\Governance\governance_identity_cards_made_processed_and_collected@index')->name('governance_identity_cards_made_processed_and_collected');
+   Route::get('nprs/fetch/{id}', array('as' => 'fetchnprs', 'uses' => 'Forms\Governance\governance_identity_cards_made_processed_and_collected@show'));
+    Route::get('nprs/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\governance_identity_cards_made_processed_and_collected@get_subcounties'));
+
+    Route::post('nprs/store', array('as' => 'storenprs', 'uses' => 
+  'Forms\Governance\governance_identity_cards_made_processed_and_collected@store'));
+Route::post('nprs/update', array('as' => 'updatenprs', 'uses' => 
+  'Forms\Governance\governance_identity_cards_made_processed_and_collected@update'));
+
+
+Route::get('agriculture_categories_of_agricultural_land/', 'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@index')->name('agriculture_categories_of_agricultural_land');
+   Route::get('potential/fetch/{id}', array('as' => 'fetchpotential', 'uses' => 'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@show'));
+    Route::get('potential/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@get_subcounties'));
+
+    Route::post('potential/store', array('as' => 'storepotential', 'uses' => 
+  'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@store'));
+Route::post('potential/update', array('as' => 'updatepotential', 'uses' => 
+  'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@update'));
+
+Route::get('governance_crimes_reported_to_police_by_command_stations/', 'Forms\Governance
+  \crimes_reported_to_police_by_command_stations@index')->name('governance_crimes_reported_to_police_by_command_stations');
+   Route::get('crimeN/fetch/{id}', array('as' => 'fetchcrimeN', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@show'));
+    Route::get('crimeN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@get_subcounties'));
+
+
+Route::post('crimeN/store', array('as' => 'storecrimeN', 'uses' => 
+  'Forms\Governance\crimes_reported_to_police_by_command_stations@store'));
+Route::post('crimeN/update', array('as' => 'updatecrimeN', 'uses' => 
+  'Forms\Governance\crimes_reported_to_police_by_command_stations@update'));
+
+Route::get('agriculture_land_potential/', 'Forms\Agriculture\AgricultureLandPotential@index')->name('agriculture_land_potential');
+   Route::get('landN/fetch/{id}', array('as' => 'fetchlandN', 'uses' => 'Forms\Agriculture\AgricultureLandPotential@show'));
+    Route::get('landN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Agriculture\AgricultureLandPotential@get_subcounties'));
+
+Route::post('landN/store', array('as' => 'storelandN', 'uses' => 
+  'Forms\Agriculture\AgricultureLandPotential@store'));
+Route::post('landN/update', array('as' => 'updatelandN', 'uses' => 
+  'Forms\Agriculture\AgricultureLandPotential@update'));
 
 
 Route::get('health_registered_active_nhif_members_by_county/', 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@index')->name('health_registered_active_nhif_members_by_county');
    Route::get('memberN/fetch/{id}', array('as' => 'fetchmemberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@show'));
     Route::get('memberN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@get_subcounties'));
 Route::post('memberN/store', array('as' => 'storememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@store'));
-Route::post('memberN/update', array('as' => 'updatememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@update'));
+Route::post('memberN/update', array('as' => 'updatememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty @update'));
 
 Route::get('health_insurance_coverage_by_counties_and_types/', 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@index')->name('health_insurance_coverage_by_counties_and_types');
    Route::get('insuranceN/fetch/{id}', array('as' => 'fetchinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@show'));
@@ -1929,8 +2032,11 @@ Route::get('population/all_population_populationprojectionsbyspecialagegroups',
 
 
 
+// @George Muchiri
+// @get_population_populationprojectionsbyselectedagegroup
 Route::get('population/all_population_populationprojectionsbyspecialagegroups', 
 'Endpoints\Population@get_population_populationprojectionsbyspecialagegroups')->name('population_populationprojectionsbyspecialagegroupsp');
+
 
 // @George Muchiri
 // @get_population_kihibs_by_broad_age_group
@@ -2240,48 +2346,48 @@ Route::get('health/all_health_use_of_mosquito_nets_by_children', 'Endpoints\Heal
 Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@health_use_of_mosquito_nets_by_children')->name('health_use_of_mosquito_nets_by_children');
 
 //Ict  ict_kihibs_households_owned_ict_equipment_services @david
-Route::get('Ict/ict_kihibs_households_owned_ict_equipment_services', 
+Route::get('ict/all_kihibs_households_owned_ict_equipment_services', 
   'Endpoints\Ict@get_ict_kihibs_households_owned_ict_equipment_services')->
     name('ict_kihibs_households_owned_ict_equipment_services');
 //Ict   ict_kihibs_households_without_internet_by_reason @david
-Route::get('Ict/ict_kihibs_households_without_internet_by_reason', 
+Route::get('ict/all_kihibs_households_without_internet_by_reason', 
   'Endpoints\Ict@get_ict_kihibs_households_without_internet_by_reason')->
     name('ict_kihibs_households_without_internet_by_reason');
 //Ict   ict_kihibs_households_with_internet_by_type @david
-Route::get('Ict/ict_kihibs_households_with_internet_by_type', 
+Route::get('ict/all_kihibs_households_with_internet_by_type', 
   'Endpoints\Ict@get_ict_kihibs_households_with_internet_by_type')->
     name('ict_kihibs_households_with_internet_by_type');
 //Ict   ict_kihibs_households_with_tv @david
-Route::get('Ict/ict_kihibs_households_with_tv', 
+Route::get('ict/all_kihibs_households_with_tv', 
   'Endpoints\Ict@get_ict_kihibs_households_with_tv')->
     name('ict_kihibs_households_with_tv');
     //Ict  ict_kihibs_population_above18by_reasonnothaving_phone @david
-Route::get('Ict/ict_kihibs_population_above18by_reasonnothaving_phone', 
+Route::get('ict/all_kihibs_population_above18by_reasonnothaving_phone', 
   'Endpoints\Ict@get_ict_kihibs_population_above18by_reasonnothaving_phone')->
     name('ict_kihibs_population_above18by_reasonnothaving_phone');
    //Ict  ict_kihibs_population_above18subscribed_mobilemoney @david
-Route::get('Ict/ict_kihibs_population_above18subscribed_mobilemoney', 
+Route::get('ict/all_kihibs_population_above18subscribed_mobilemoney', 
   'Endpoints\Ict@get_ict_kihibs_population_above18subscribed_mobilemoney')->
     name('ict_kihibs_population_above18subscribed_mobilemoney');
    //Ict   ict_kihibs_population_by_ictequipment_and_servicesused @david
-Route::get('Ict/ict_kihibs_population_by_ictequipment_and_servicesused', 
+Route::get('ict/all_kihibs_population_by_ictequipment_and_servicesused', 
   'Endpoints\Ict@get_ict_kihibs_population_by_ictequipment_and_servicesused')->
     name('ict_kihibs_population_by_ictequipment_and_servicesusedey');
    //Ict    ict_kihibs_population_that_didntuseinternet_by_reason @david
-Route::get('Ict/ict_kihibs_population_that_didntuseinternet_by_reason', 
+Route::get('ict/all_kihibs_population_that_didntuseinternet_by_reason', 
   'Endpoints\Ict@get_ict_kihibs_population_that_didntuseinternet_by_reason')->
     name('ict_kihibs_population_that_didntuseinternet_by_reason');
    //Ict     ict_kihibs_population_that_used_internet_by_purpose @david
-Route::get('Ict/ict_kihibs_population_that_used_internet_by_purpose', 
+Route::get('ict/all_kihibs_population_that_used_internet_by_purpose', 
   'Endpoints\Ict@get_ict_kihibs_population_that_used_internet_by_purpose')->
     name('ict_kihibs_population_that_used_internet_by_purpose');
      //Ict      ict_kihibs_population_who_used_internet_by_place @david
-Route::get('Ict/ict_kihibs_population_who_used_internet_by_place', 
+Route::get('ict/all_kihibs_population_who_used_internet_by_place', 
   'Endpoints\Ict@get_ict_kihibs_population_who_used_internet_by_place')->
     name('ict_kihibs_population_who_used_internet_by_place');
 
      //Ict     ict_kihibs_population_withmobilephone_andaveragesims @david
-Route::get('Ict/ict_kihibs_population_withmobilephone_andaveragesims', 
+Route::get('ict/all_kihibs_population_withmobilephone_andaveragesims', 
   'Endpoints\Ict@get_ict_kihibs_population_withmobilephone_andaveragesims')->
     name(' ict_kihibs_population_withmobilephone_andaveragesims');
 
@@ -2325,145 +2431,145 @@ Route::get('nutrition/all_health_nutritional_status_of_children', 'Endpoints\Nut
 Route::get('nutrition/all_health_nutritional_status_of_women', 'Endpoints\Nutrition@health_nutritional_status_of_women')->name('health_nutritional_status_of_women');
 //Housing
 //housing_conditions_kihibs_waste_disposal_method @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_waste_disposal_method', 'Endpoints\Housing@housing_conditions_kihibs_waste_disposal_method')->name('housing_conditions_kihibs_waste_disposal_method');
+Route::get('housing/all_housing_conditions_kihibs_waste_disposal_method', 'Endpoints\Housing@housing_conditions_kihibs_waste_disposal_method')->name('housing_conditions_kihibs_waste_disposal_method');
 //Housing
 //housing_conditions_kihibs_volume_of_water_used @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_volume_of_water_used', 'Endpoints\Housing@housing_conditions_kihibs_volume_of_water_used')->name('housing_conditions_kihibs_volume_of_water_used');
+Route::get('housing/all_housing_conditions_kihibs_volume_of_water_used', 'Endpoints\Housing@housing_conditions_kihibs_volume_of_water_used')->name('housing_conditions_kihibs_volume_of_water_used');
 //Housing
 //housing_conditions_kihibs_pump_taken_to_fetch_drinking_water @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_time_taken_to_fetch_drinking_water', 'Endpoints\Housing@housing_conditions_kihibs_time_taken_to_fetch_drinking_water')->name('housing_conditions_kihibs_time_taken_to_fetch_drinking_water');
+Route::get('housing/all_housing_conditions_kihibs_time_taken_to_fetch_drinking_water', 'Endpoints\Housing@housing_conditions_kihibs_time_taken_to_fetch_drinking_water')->name('housing_conditions_kihibs_time_taken_to_fetch_drinking_water');
 //Housing
 //housing_conditions_kihibs_sharing_of_toilet_facility @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_sharing_of_toilet_facility', 'Endpoints\Housing@housing_conditions_kihibs_sharing_of_toilet_facility')->name('housing_conditions_kihibs_sharing_of_toilet_facility');
+Route::get('housing/all_housing_conditions_kihibs_sharing_of_toilet_facility', 'Endpoints\Housing@housing_conditions_kihibs_sharing_of_toilet_facility')->name('housing_conditions_kihibs_sharing_of_toilet_facility');
 //Housing
 //housing_conditions_kihibs_primary_type_of_cooking_appliance @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_primary_type_of_cooking_appliance', 'Endpoints\Housing@housing_conditions_kihibs_primary_type_of_cooking_appliance')->name('housing_conditions_kihibs_primary_type_of_cooking_appliance');
+Route::get('housing/all_housing_conditions_kihibs_primary_type_of_cooking_appliance', 'Endpoints\Housing@housing_conditions_kihibs_primary_type_of_cooking_appliance')->name('housing_conditions_kihibs_primary_type_of_cooking_appliance');
 //Housing
 //housing_conditions_kihibs_place_for_washing_hands_near_toilet @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_place_for_washing_hands_near_toilet', 'Endpoints\Housing@housing_conditions_kihibs_place_for_washing_hands_near_toilet')->name('housing_conditions_kihibs_place_for_washing_hands_near_toilet');
+Route::get('housing/all_housing_conditions_kihibs_place_for_washing_hands_near_toilet', 'Endpoints\Housing@housing_conditions_kihibs_place_for_washing_hands_near_toilet')->name('housing_conditions_kihibs_place_for_washing_hands_near_toilet');
 
 //Housing
 //housing_conditions_kihibs_owner_occupier_dwellings @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_owner_occupier_dwellings', 'Endpoints\Housing@housing_conditions_kihibs_owner_occupier_dwellings')->name('housing_conditions_kihibs_owner_occupier_dwellings');
+Route::get('housing/all_housing_conditions_kihibs_owner_occupier_dwellings', 'Endpoints\Housing@housing_conditions_kihibs_owner_occupier_dwellings')->name('housing_conditions_kihibs_owner_occupier_dwellings');
 //Housing
 
 //housing_conditions_kihibs_methods_used_to_make_water_safer @fredrick muiruri
 
-Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
-
-
 Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+
+
+Route::get('housing/all_all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 
 //housing_conditions_kihibs_methods_used_to_make_water_safer @fredrick muiruri<<<<<<< HEAD
 
-Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+
+Route::get('housing/all_all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+
+
+
 
 Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 
 
 
 
-Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
-
-
-
-
-Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
-Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+Route::get('housing/all_all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
-Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+Route::get('housing/all_all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 // @George Muchiri
 // housing_conditions_kihibs_hholds_by_habitable_rooms
 
 
-Route::get('Housing/housing_conditions_kihibs_hholds_by_habitable_rooms', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_habitable_rooms')->name('housing_conditions_kihibs_hholds_by_habitable_rooms');
+Route::get('housing/all_housing_conditions_kihibs_hholds_by_habitable_rooms', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_habitable_rooms')->name('housing_conditions_kihibs_hholds_by_habitable_rooms');
 
 
 // @George Muchiri
 // housing_conditions_kihibs_hholds_by_housing_tenure
 
-Route::get('Housing/housing_conditions_kihibs_hholds_by_housing_tenure', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_housing_tenure')->name('housing_conditions_kihibs_hholds_by_housing_tenure');
+Route::get('housing/all_housing_conditions_kihibs_hholds_by_housing_tenure', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_housing_tenure')->name('housing_conditions_kihibs_hholds_by_housing_tenure');
 
 // @George Muchiri
 // housing_conditions_kihibs_hholds_by_type_of_housing_unit
 
-Route::get('Housing/housing_conditions_kihibs_hholds_by_type_of_housing_unit', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_type_of_housing_unit')->name('housing_conditions_kihibs_hholds_by_type_of_housing_unit');
+Route::get('housing/all_housing_conditions_kihibs_hholds_by_type_of_housing_unit', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_type_of_housing_unit')->name('housing_conditions_kihibs_hholds_by_type_of_housing_unit');
 
 
 // @George Muchiri
 // housing_conditions_kihibs_hholds_in_rented_dwellings
 
-Route::get('Housing/housing_conditions_kihibs_hholds_in_rented_dwellings', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_in_rented_dwellings')->name('housing_conditions_kihibs_hholds_in_rented_dwellings');
+Route::get('housing/all_housing_conditions_kihibs_hholds_in_rented_dwellings', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_in_rented_dwellings')->name('housing_conditions_kihibs_hholds_in_rented_dwellings');
 
 // @George Muchiri
 // housing_conditions_kihibs_main_floor_material
 
-Route::get('Housing/housing_conditions_kihibs_main_floor_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_floor_material')->name('housing_conditions_kihibs_main_floor_material');
+Route::get('housing/all_housing_conditions_kihibs_main_floor_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_floor_material')->name('housing_conditions_kihibs_main_floor_material');
 
 // @George Muchiri
 // housing_conditions_kihibs_main_roofing_material
 
-Route::get('Housing/housing_conditions_kihibs_main_roofing_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_roofing_material')->name('housing_conditions_kihibs_main_roofing_material');
+Route::get('housing/all_housing_conditions_kihibs_main_roofing_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_roofing_material')->name('housing_conditions_kihibs_main_roofing_material');
 
 // @George Muchiri
 // housing_conditions_kihibs_main_source_of_cooking_fuel
 
-Route::get('Housing/housing_conditions_kihibs_main_source_of_cooking_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_cooking_fuel')->name('housing_conditions_kihibs_main_source_of_cooking_fuel');
+Route::get('housing/all_housing_conditions_kihibs_main_source_of_cooking_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_cooking_fuel')->name('housing_conditions_kihibs_main_source_of_cooking_fuel');
 
 
 // @George Muchiri
 // housing_conditions_kihibs_main_source_of_drinking_water
 
-Route::get('Housing/housing_conditions_kihibs_main_source_of_drinking_water', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_drinking_water')->name(
+Route::get('housing/all_housing_conditions_kihibs_main_source_of_drinking_water', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_drinking_water')->name(
   'housing_conditions_kihibs_main_source_of_drinking_water');
 
 
 // @George Muchiri
 // housing_conditions_kihibs_main_source_of_lighting_fuel
 
-Route::get('Housing/housing_conditions_kihibs_main_source_of_lighting_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_lighting_fuel')->name(
+Route::get('housing/all_housing_conditions_kihibs_main_source_of_lighting_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_lighting_fuel')->name(
   'housing_conditions_kihibs_main_source_of_lighting_fuel');
 
 
 
-Route::get('Housing/housing_conditions_kihibs_hholds_by_habitable_rooms', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_habitable_rooms')->name('housing_conditions_kihibs_hholds_by_habitable_rooms');
+Route::get('housing/all_housing_conditions_kihibs_hholds_by_habitable_rooms', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_habitable_rooms')->name('housing_conditions_kihibs_hholds_by_habitable_rooms');
 // @George Muchiri
 // housing_conditions_kihibs_hholds_by_housing_tenure
-Route::get('Housing/housing_conditions_kihibs_hholds_by_housing_tenure', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_housing_tenure')->name('housing_conditions_kihibs_hholds_by_housing_tenure');
+Route::get('housing/all_housing_conditions_kihibs_hholds_by_housing_tenure', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_housing_tenure')->name('housing_conditions_kihibs_hholds_by_housing_tenure');
 // @George Muchiri
 // housing_conditions_kihibs_hholds_by_type_of_housing_unit
-Route::get('Housing/housing_conditions_kihibs_hholds_by_type_of_housing_unit', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_type_of_housing_unit')->name('housing_conditions_kihibs_hholds_by_type_of_housing_unit');
+Route::get('housing/all_housing_conditions_kihibs_hholds_by_type_of_housing_unit', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_by_type_of_housing_unit')->name('housing_conditions_kihibs_hholds_by_type_of_housing_unit');
 // @George Muchiri
 // housing_conditions_kihibs_hholds_in_rented_dwellings
-Route::get('Housing/housing_conditions_kihibs_hholds_in_rented_dwellings', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_in_rented_dwellings')->name('housing_conditions_kihibs_hholds_in_rented_dwellings');
+Route::get('housing/all_housing_conditions_kihibs_hholds_in_rented_dwellings', 'Endpoints\Housing@get_housing_conditions_kihibs_hholds_in_rented_dwellings')->name('housing_conditions_kihibs_hholds_in_rented_dwellings');
 // @George Muchiri
 // housing_conditions_kihibs_main_floor_material
-Route::get('Housing/housing_conditions_kihibs_main_floor_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_floor_material')->name('housing_conditions_kihibs_main_floor_material');
+Route::get('housing/all_housing_conditions_kihibs_main_floor_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_floor_material')->name('housing_conditions_kihibs_main_floor_material');
 // @George Muchiri
 // housing_conditions_kihibs_main_roofing_material
-Route::get('Housing/housing_conditions_kihibs_main_roofing_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_roofing_material')->name('housing_conditions_kihibs_main_roofing_material');
+Route::get('housing/all_housing_conditions_kihibs_main_roofing_material', 'Endpoints\Housing@get_housing_conditions_kihibs_main_roofing_material')->name('housing_conditions_kihibs_main_roofing_material');
 // @George Muchiri
 // housing_conditions_kihibs_main_source_of_cooking_fuel
-Route::get('Housing/housing_conditions_kihibs_main_source_of_cooking_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_cooking_fuel')->name('housing_conditions_kihibs_main_source_of_cooking_fuel');
+Route::get('housing/all_housing_conditions_kihibs_main_source_of_cooking_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_cooking_fuel')->name('housing_conditions_kihibs_main_source_of_cooking_fuel');
 // @George Muchiri
 // housing_conditions_kihibs_main_source_of_drinking_water
-Route::get('Housing/housing_conditions_kihibs_main_source_of_drinking_water', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_drinking_water')->name(
+Route::get('housing/all_housing_conditions_kihibs_main_source_of_drinking_water', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_drinking_water')->name(
   'housing_conditions_kihibs_main_source_of_drinking_water');
 // @George Muchiri
 // housing_conditions_kihibs_main_source_of_lighting_fuel
-Route::get('Housing/housing_conditions_kihibs_main_source_of_lighting_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_lighting_fuel')->name(
+Route::get('housing/all_housing_conditions_kihibs_main_source_of_lighting_fuel', 'Endpoints\Housing@get_housing_conditions_kihibs_main_source_of_lighting_fuel')->name(
   'housing_conditions_kihibs_main_source_of_lighting_fuel');
 
 // @George Muchiri
 // housing_conditions_kihibs_main_toilet_facility
-Route::get('Housing/housing_conditions_kihibs_main_toilet_facility', 
+Route::get('housing/all_housing_conditions_kihibs_main_toilet_facility', 
   'Endpoints\Housing@get_housing_conditions_kihibs_main_toilet_facility')->name(
   'housing_conditions_kihibs_main_toilet_facility');
 
 // @George Muchiri
 // housing_conditions_kihibs_main_wall_material
-Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
+Route::get('housing/all_housing_conditions_kihibs_main_wall_material', 
 
   'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
   'housing_conditions_kihibs_main_wall_material');
@@ -3116,6 +3222,7 @@ Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Fo
 
 
 
+
 //@George Muchiri
  Route::get('land_and_climate_rainfall/', 'Forms\Environment\land_and_climate_rainfall@index')->name('land_and_climate_rainfall');
    Route::get('climate/fetch/{id}', array('as' => 'fetchClimate', 'uses' => 'Forms\Environment\land_and_climate_rainfall@show'));
@@ -3328,48 +3435,48 @@ Route::get('Health/health_use_of_mosquito_nets_by_children', 'Endpoints\Health@h
 
 
 //Ict  ict_kihibs_households_owned_ict_equipment_services @david
-Route::get('Ict/ict_kihibs_households_owned_ict_equipment_services', 
+Route::get('ict/all_kihibs_households_owned_ict_equipment_services', 
   'Endpoints\Ict@get_ict_kihibs_households_owned_ict_equipment_services')->
     name('ict_kihibs_households_owned_ict_equipment_services');
 //Ict   ict_kihibs_households_without_internet_by_reason @david
-Route::get('Ict/ict_kihibs_households_without_internet_by_reason', 
+Route::get('ict/all_kihibs_households_without_internet_by_reason', 
   'Endpoints\Ict@get_ict_kihibs_households_without_internet_by_reason')->
     name('ict_kihibs_households_without_internet_by_reason');
 //Ict   ict_kihibs_households_with_internet_by_type @david
-Route::get('Ict/ict_kihibs_households_with_internet_by_type', 
+Route::get('ict/all_kihibs_households_with_internet_by_type', 
   'Endpoints\Ict@get_ict_kihibs_households_with_internet_by_type')->
     name('ict_kihibs_households_with_internet_by_type');
 //Ict   ict_kihibs_households_with_tv @david
-Route::get('Ict/ict_kihibs_households_with_tv', 
+Route::get('ict/all_kihibs_households_with_tv', 
   'Endpoints\Ict@get_ict_kihibs_households_with_tv')->
     name('ict_kihibs_households_with_tv');
     //Ict  ict_kihibs_population_above18by_reasonnothaving_phone @david
-Route::get('Ict/ict_kihibs_population_above18by_reasonnothaving_phone', 
+Route::get('ict/all_kihibs_population_above18by_reasonnothaving_phone', 
   'Endpoints\Ict@get_ict_kihibs_population_above18by_reasonnothaving_phone')->
     name('ict_kihibs_population_above18by_reasonnothaving_phone');
    //Ict  ict_kihibs_population_above18subscribed_mobilemoney @david
-Route::get('Ict/ict_kihibs_population_above18subscribed_mobilemoney', 
+Route::get('ict/all_kihibs_population_above18subscribed_mobilemoney', 
   'Endpoints\Ict@get_ict_kihibs_population_above18subscribed_mobilemoney')->
     name('ict_kihibs_population_above18subscribed_mobilemoney');
    //Ict   ict_kihibs_population_by_ictequipment_and_servicesused @david
-Route::get('Ict/ict_kihibs_population_by_ictequipment_and_servicesused', 
+Route::get('ict/all_kihibs_population_by_ictequipment_and_servicesused', 
   'Endpoints\Ict@get_ict_kihibs_population_by_ictequipment_and_servicesused')->
     name('ict_kihibs_population_by_ictequipment_and_servicesusedey');
    //Ict    ict_kihibs_population_that_didntuseinternet_by_reason @david
-Route::get('Ict/ict_kihibs_population_that_didntuseinternet_by_reason', 
+Route::get('ict/all_kihibs_population_that_didntuseinternet_by_reason', 
   'Endpoints\Ict@get_ict_kihibs_population_that_didntuseinternet_by_reason')->
     name('ict_kihibs_population_that_didntuseinternet_by_reason');
    //Ict     ict_kihibs_population_that_used_internet_by_purpose @david
-Route::get('Ict/ict_kihibs_population_that_used_internet_by_purpose', 
+Route::get('ict/all_kihibs_population_that_used_internet_by_purpose', 
   'Endpoints\Ict@get_ict_kihibs_population_that_used_internet_by_purpose')->
     name('ict_kihibs_population_that_used_internet_by_purpose');
      //Ict      ict_kihibs_population_who_used_internet_by_place @david
-Route::get('Ict/ict_kihibs_population_who_used_internet_by_place', 
+Route::get('ict/all_kihibs_population_who_used_internet_by_place', 
   'Endpoints\Ict@get_ict_kihibs_population_who_used_internet_by_place')->
     name('ict_kihibs_population_who_used_internet_by_place');
 
      //Ict     ict_kihibs_population_withmobilephone_andaveragesims @david
-Route::get('Ict/ict_kihibs_population_withmobilephone_andaveragesims', 
+Route::get('ict/all_kihibs_population_withmobilephone_andaveragesims', 
   'Endpoints\Ict@get_ict_kihibs_population_withmobilephone_andaveragesims')->
     name(' ict_kihibs_population_withmobilephone_andaveragesims');
 
@@ -3411,22 +3518,22 @@ Route::get('nutrition/all_health_nutritional_status_of_children', 'Endpoints\Nut
 Route::get('nutrition/all_health_nutritional_status_of_women', 'Endpoints\Nutrition@health_nutritional_status_of_women')->name('health_nutritional_status_of_women');
 //Housing
 //housing_conditions_kihibs_waste_disposal_method @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_waste_disposal_method', 'Endpoints\Housing@housing_conditions_kihibs_waste_disposal_method')->name('housing_conditions_kihibs_waste_disposal_method');
+Route::get('housing/all_housing_conditions_kihibs_waste_disposal_method', 'Endpoints\Housing@housing_conditions_kihibs_waste_disposal_method')->name('housing_conditions_kihibs_waste_disposal_method');
 //Housing
 //housing_conditions_kihibs_volume_of_water_used @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_volume_of_water_used', 'Endpoints\Housing@housing_conditions_kihibs_volume_of_water_used')->name('housing_conditions_kihibs_volume_of_water_used');
+Route::get('housing/all_housing_conditions_kihibs_volume_of_water_used', 'Endpoints\Housing@housing_conditions_kihibs_volume_of_water_used')->name('housing_conditions_kihibs_volume_of_water_used');
 //Housing
 //housing_conditions_kihibs_time_taken_to_fetch_drinking_water @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_time_taken_to_fetch_drinking_water', 'Endpoints\Housing@housing_conditions_kihibs_time_taken_to_fetch_drinking_water')->name('housing_conditions_kihibs_time_taken_to_fetch_drinking_water');
+Route::get('housing/all_housing_conditions_kihibs_time_taken_to_fetch_drinking_water', 'Endpoints\Housing@housing_conditions_kihibs_time_taken_to_fetch_drinking_water')->name('housing_conditions_kihibs_time_taken_to_fetch_drinking_water');
 //Housing
 //housing_conditions_kihibs_sharing_of_toilet_facility @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_sharing_of_toilet_facility', 'Endpoints\Housing@housing_conditions_kihibs_sharing_of_toilet_facility')->name('housing_conditions_kihibs_sharing_of_toilet_facility');
+Route::get('housing/all_housing_conditions_kihibs_sharing_of_toilet_facility', 'Endpoints\Housing@housing_conditions_kihibs_sharing_of_toilet_facility')->name('housing_conditions_kihibs_sharing_of_toilet_facility');
 //Housing
 //housing_conditions_kihibs_primary_type_of_cooking_appliance @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_primary_type_of_cooking_appliance', 'Endpoints\Housing@housing_conditions_kihibs_primary_type_of_cooking_appliance')->name('housing_conditions_kihibs_primary_type_of_cooking_appliance');
+Route::get('housing/all_housing_conditions_kihibs_primary_type_of_cooking_appliance', 'Endpoints\Housing@housing_conditions_kihibs_primary_type_of_cooking_appliance')->name('housing_conditions_kihibs_primary_type_of_cooking_appliance');
 //Housing
 //housing_conditions_kihibs_place_for_washing_hands_near_toilet @fredrick muiruri
-Route::get('Housing/housing_conditions_kihibs_place_for_washing_hands_near_toilet', 'Endpoints\Housing@housing_conditions_kihibs_place_for_washing_hands_near_toilet')->name('housing_conditions_kihibs_place_for_washing_hands_near_toilet');
+Route::get('housing/all_housing_conditions_kihibs_place_for_washing_hands_near_toilet', 'Endpoints\Housing@housing_conditions_kihibs_place_for_washing_hands_near_toilet')->name('housing_conditions_kihibs_place_for_washing_hands_near_toilet');
 
 //@George Muchiri
  Route::get('housing_conditions_kihibs_main_roofing_material/', 'Forms\Housing\housing_conditions_kihibs_main_roofing_material@index')->name('housing_conditions_kihibs_main_roofing_material');
@@ -3534,7 +3641,7 @@ Route::post('toilet/update', array('as' => 'updateToilet', 'uses' =>
 
 
 
-Route::get('Housing/housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
+Route::get('housing/all_housing_conditions_kihibs_methods_used_to_make_water_safer', 'Endpoints\Housing@housing_conditions_kihibs_methods_used_to_make_water_safer')->name('housing_conditions_kihibs_methods_used_to_make_water_safer');
 
 
 //@George Muchiri
@@ -3559,7 +3666,7 @@ Route::get('housing_conditions_kihibs_volume_of_water_used/',
   'Forms\Housing\housing_conditions_kihibs_volume_of_water_used@index')->name('
 housing_conditions_kihibs_volume_of_water_used');
    
-   Route::get('time/fetch/{id}', array('as' => 'fetchVolume', 'uses' => 
+   Route::get('volume/fetch/{id}', array('as' => 'fetchVolume', 'uses' => 
     'Forms\Housing\housing_conditions_kihibs_volume_of_water_used@show'));
 Route::get('volume/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>
  'Forms\Housing\housing_conditions_kihibs_volume_of_water_used@get_subcounties'));
@@ -3574,7 +3681,7 @@ Route::get('
 housing_conditions_kihibs_waste_disposal_method/', 
   'Forms\Housing\housing_conditions_kihibs_waste_disposal_method@index')->name('housing_conditions_kihibs_waste_disposal_method');
    
-   Route::get('time/fetch/{id}', array('as' => 'fetchWaste', 'uses' => 
+   Route::get('waste/fetch/{id}', array('as' => 'fetchWaste', 'uses' => 
     'Forms\Housing\housing_conditions_kihibs_waste_disposal_method@show'));
 Route::get('waste/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>
  'Forms\Housing\housing_conditions_kihibs_waste_disposal_method@get_subcounties'));
@@ -3682,7 +3789,7 @@ Route::post('supply/update', array('as' => 'updateSupply', 'uses' => 'Forms\Ener
 
 // @George Muchiri
 // housing_conditions_kihibs_main_wall_material
-Route::get('Housing/housing_conditions_kihibs_main_wall_material', 
+Route::get('housing/all_housing_conditions_kihibs_main_wall_material', 
 
 	'Endpoints\Housing@get_housing_conditions_kihibs_main_wall_material')->name(
 	'housing_conditions_kihibs_main_wall_material');
@@ -3949,7 +4056,7 @@ Route::post('pump/update', array('as' => 'updatePump', 'uses' =>
   'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@update'));
 
 //@George Muchiri
-Route::get('vital_statistics_births_and_deaths_by_sex/', 
+Route::get('vital_statistics_births_and_centres_by_sex/', 
   'Forms\Population\vital_statistics_births_and_deaths_by_sex@index')->name('vital_statistics_births_and_deaths_by_sex');
    
    Route::get('vital/fetch/{id}', array('as' => 'fetchVital', 'uses' => 
@@ -3979,7 +4086,7 @@ Route::post('death/update', array('as' => 'updateDeath', 'uses' =>
 Route::get('population_populationprojectionsbyselectedagegroup/', 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@index')->name('population_populationprojectionsbyselectedagegroup');
    
-   Route::get('death/fetch/{id}', array('as' => 'fetchSelect', 'uses' => 'Forms\Population\population_populationprojectionsbyselectedagegroup@show'));
+   Route::get('select/fetch/{id}', array('as' => 'fetchSelect', 'uses' => 'Forms\Population\population_populationprojectionsbyselectedagegroup@show'));
 Route::get('select/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Population\population_populationprojectionsbyselectedagegroup@get_subcounties'));
 Route::post('select/store', array('as' => 'storeSelect', 'uses' => 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@store'));
@@ -3987,6 +4094,160 @@ Route::post('select/update', array('as' => 'updateSelect', 'uses' =>
   'Forms\Population\population_populationprojectionsbyselectedagegroup@update'));
 
 
+
+
+
+//@George Muchiri
+Route::get('education_csa_adulteducationcentresbysubcounty/','Forms\Education\education_csa_adulteducationcentresbysubcounty@index')->name(
+  'education_csa_adulteducationcentresbysubcounty');
+   
+   Route::get('centre/fetch/{id}', array('as' => 'fetchCentre', 'uses' => 'Forms\Education\education_csa_adulteducationcentresbysubcounty@show'));
+Route::get('centre/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_adulteducationcentresbysubcounty@get_subcounties'));
+Route::post('centre/store', array('as' => 'storeCentre', 'uses' => 
+  'Forms\Education\education_csa_adulteducationcentresbysubcounty@store'));
+Route::post('centre/update', array('as' => 'updateCentre', 'uses' => 
+  'Forms\Education\education_csa_adulteducationcentresbysubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_adulteducationenrolmentbysexandsubcounty/','Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@index')->name(
+  'education_csa_adulteducationenrolmentbysexandsubcounty');
+   
+   Route::get('adult/fetch/{id}', array('as' => 'fetchAdult', 'uses' => 'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@show'));
+Route::get('adult/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@get_subcounties'));
+Route::post('adult/store', array('as' => 'storeAdult', 'uses' => 
+  'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@store'));
+Route::post('adult/update', array('as' => 'updateAdult', 'uses' => 
+  'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_adulteducationproficiencytestresults/','Forms\Education\education_csa_adulteducationproficiencytestresults@index')->name('education_csa_adulteducationproficiencytestresults');
+   
+   Route::get('proficiency/fetch/{id}', array('as' => 'fetchProficiency', 'uses' =>
+    'Forms\Education\education_csa_adulteducationproficiencytestresults@show'));
+Route::get('proficiency/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_adulteducationproficiencytestresults@get_subcounties'));
+Route::post('proficiency/store', array('as' => 'storeProficiency', 'uses' => 
+  'Forms\Education\education_csa_adulteducationproficiencytestresults@store'));
+Route::post('proficiency/update', array('as' => 'updateProficiency', 'uses' => 
+  'Forms\Education\education_csa_adulteducationproficiencytestresults@update'));
+
+//@George Muchiri
+Route::get('education_csa_ecdecentresbycategoryandsubcounty/','Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@index')->name('education_csa_ecdecentresbycategoryandsubcounty');
+   
+   Route::get('csa/fetch/{id}', array('as' => 'fetchCSA', 'uses' =>
+    'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@show'));
+Route::get('csa/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@get_subcounties'));
+Route::post('csa/store', array('as' => 'storeCSA', 'uses' => 
+  'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@store'));
+Route::post('csa/update', array('as' => 'updateCSA', 'uses' => 
+  'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_primaryschoolenrollmentbyclasssexandsubcounty/','Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@index')->name('education_csa_primaryschoolenrollmentbyclasssexandsubcounty');
+
+Route::get('primary/fetch/{id}', array('as' => 'fetchPrimary', 'uses' =>
+    'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@show'));
+Route::get('primary/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@get_subcounties'));
+Route::post('primary/store', array('as' => 'storePrimary', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@store'));
+Route::post('primary/update', array('as' => 'updatePrimary', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@update'));
+
+//@George Muchiri
+Route::get('education_csa_primaryschoolsbycategoryandsubcounty/','Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@index')->name('education_csa_primaryschoolsbycategoryandsubcounty');
+
+Route::get('category/fetch/{id}', array('as' => 'fetchCategory', 'uses' =>
+    'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@show'));
+Route::get('category/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@get_subcounties'));
+Route::post('category/store', array('as' => 'storeCategory', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@store'));
+Route::post('category/update', array('as' => 'updateCategory', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_studentenrolmentinyouthpolytechnics/','Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@index')->name('education_csa_studentenrolmentinyouthpolytechnics');
+
+Route::get('youth/fetch/{id}', array('as' => 'fetchYouth', 'uses' =>
+    'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@show'));
+Route::get('youth/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@get_subcounties'));
+Route::post('youth/store', array('as' => 'storeYouth', 'uses' => 
+  'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@store'));
+Route::post('youth/update', array('as' => 'updateYouth', 'uses' => 
+  'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_teachertrainingcolleges/','Forms\Education\education_csa_teachertrainingcolleges@index')->name('education_csa_teachertrainingcolleges');
+
+Route::get('college/fetch/{id}', array('as' => 'fetchCollege', 'uses' =>
+    'Forms\Education\education_csa_teachertrainingcolleges@show'));
+Route::get('college/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_teachertrainingcolleges@get_subcounties'));
+Route::post('college/store', array('as' => 'storeCollege', 'uses' => 
+  'Forms\Education\education_csa_teachertrainingcolleges@store'));
+Route::post('college/update', array('as' => 'updateCollege', 'uses' => 
+  'Forms\Education\education_csa_teachertrainingcolleges@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_youthpolytechnicsbycategoryandsubcounty/','Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@index')->name('education_csa_youthpolytechnicsbycategoryandsubcounty');
+
+Route::get('poly/fetch/{id}', array('as' => 'fetchPoly', 'uses' =>
+    'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@show'));
+Route::get('poly/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@get_subcounties'));
+Route::post('poly/store', array('as' => 'storePoly', 'uses' => 
+  'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@store'));
+Route::post('poly/update', array('as' => 'updatePoly', 'uses' => 
+  'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@update'));
+
+
+
+//@George Muchiri
+Route::get('education_csa_secondaryschoolenrollmentbyclasssexsubcounty/','Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@index')->name('education_csa_secondaryschoolenrollmentbyclasssexsubcounty');
+
+Route::get('secondary/fetch/{id}', array('as' => 'fetchSecondary', 'uses' =>
+    'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@show'));
+Route::get('secondary/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@get_subcounties'));
+Route::post('secondary/store', array('as' => 'storeSecondary', 'uses' => 
+  'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@store'));
+Route::post('secondary/update', array('as' => 'updateSecondary', 'uses' => 
+  'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_edstat_ecde_enrollment_and_enrollment_rates_by_county/','Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@index')->name('education_edstat_ecde_enrollment_and_enrollment_rates_by_county');
+
+Route::get('ecse/fetch/{id}', array('as' => 'fetchECDE', 'uses' =>
+    'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@show'));
+Route::get('ecse/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@get_subcounties'));
+Route::post('ecse/store', array('as' => 'storeECDE', 'uses' => 
+  'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@store'));
+Route::post('ecse/update', array('as' => 'updateECDE', 'uses' => 
+  'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@update'));
+
+//@George Muchiri
+Route::get('education_edstat_primary_enrollment_enrollment_rates_county/','Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@index')->name('education_edstat_primary_enrollment_enrollment_rates_county');
+
+Route::get('enroll/fetch/{id}', array('as' => 'fetchEnroll', 'uses' =>
+    'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@show'));
+Route::get('enroll/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@get_subcounties'));
+Route::post('enroll/store', array('as' => 'storeEnroll', 'uses' => 
+  'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@store'));
+Route::post('enroll/update', array('as' => 'updateEnroll', 'uses' => 
+  'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@update'));
+
+//@George Muchiri
+Route::get('education_edstat_secondary_enrollment_enrollment_rates_county/','Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@index')->name('education_edstat_secondary_enrollment_enrollment_rates_county');
+
+Route::get('senroll/fetch/{id}', array('as' => 'fetchSEnroll', 'uses' =>
+    'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@show'));
+Route::get('senroll/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@get_subcounties'));
+Route::post('senroll/store', array('as' => 'storeSEnroll', 'uses' => 
+  'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@store'));
+Route::post('senroll/update', array('as' => 'updateSEnroll', 'uses' => 
+  'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@update'));
 
 
 
@@ -4149,5 +4410,6 @@ Route::post('sexsecondary/update', array('as' => 'updatesexsecondary', 'uses' =>
 
 //show a specific id
 Route::get('sexsecondary/action/{id}', array('as' => 'fetchsexsecondary', 'uses' => 'Forms\Education\education_secondary_school_enrolment_by_sex@show'));
+
 
 
