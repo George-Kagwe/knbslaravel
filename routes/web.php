@@ -74,10 +74,7 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
 
-<<<<<<< HEAD
 
-=======
->>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
     //1. finance classification of revenue
 
 
@@ -2034,15 +2031,12 @@ Route::get('population/all_population_populationprojectionsbyspecialagegroups',
 
 
 
-<<<<<<< HEAD
 
-
-=======
 // @George Muchiri
 // @get_population_populationprojectionsbyselectedagegroup
 Route::get('population/all_population_populationprojectionsbyspecialagegroups', 
 'Endpoints\Population@get_population_populationprojectionsbyspecialagegroups')->name('population_populationprojectionsbyspecialagegroupsp');
->>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
+
 
 // @George Muchiri
 // @get_population_kihibs_by_broad_age_group
@@ -3226,11 +3220,7 @@ Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Fo
 
 
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 
 
 //@George Muchiri
@@ -4105,10 +4095,8 @@ Route::post('select/update', array('as' => 'updateSelect', 'uses' =>
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
+
 //@George Muchiri
 Route::get('education_csa_adulteducationcentresbysubcounty/','Forms\Education\education_csa_adulteducationcentresbysubcounty@index')->name(
   'education_csa_adulteducationcentresbysubcounty');
