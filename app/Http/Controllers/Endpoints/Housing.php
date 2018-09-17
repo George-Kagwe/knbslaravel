@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Endpoints;
 
 use Illuminate\Http\Request;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -71,8 +75,14 @@ class Housing extends Controller
 
 
 
+<<<<<<< HEAD
 
       
+=======
+      
+		
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 
 			array_push($result,$county);
 			array_push($result,$series1);
@@ -181,6 +191,10 @@ class Housing extends Controller
 			array_push($result,$series10);
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 					
 			print json_encode($result, JSON_NUMERIC_CHECK);
     }
@@ -222,10 +236,16 @@ class Housing extends Controller
 			$series6['data'][] = $row->households;							
 		}
 			 
+<<<<<<< HEAD
 
 			
 
 
+=======
+
+			$result = array();
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			
 $result = array();
 	
@@ -236,7 +256,10 @@ $result = array();
 			array_push($result,$series4);
 			array_push($result,$series5);
 			array_push($result,$series6);
+<<<<<<< HEAD
 
+=======
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 
 			
 					
@@ -301,8 +324,16 @@ $result = array();
 			}
 			 
 			$result = array();
+<<<<<<< HEAD
 
 	
+=======
+
+		
+
+	
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
@@ -312,10 +343,14 @@ $result = array();
 			array_push($result,$series6);
 
 	
+<<<<<<< HEAD
 
 
 					
 
+=======
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			print json_encode($result, JSON_NUMERIC_CHECK);
     }
     
@@ -353,7 +388,14 @@ $result = array();
 		}
 			 
 			$result = array();
+<<<<<<< HEAD
 
+=======
+
+
+	
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 
 		
 			array_push($result,$county);
@@ -549,6 +591,10 @@ $result = array();
 			array_push($result,$series4);
 			array_push($result,$series5);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
             array_push($result,$series6);
 			array_push($result,$series7);
 			array_push($result,$other);
@@ -591,7 +637,11 @@ $result = array();
 			$result = array();
 
 
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
@@ -987,6 +1037,10 @@ $result = array();
 			$result = array();
 
 
+<<<<<<< HEAD
+=======
+		
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
@@ -1181,8 +1235,12 @@ $result = array();
 			$result = array();
 
 
+<<<<<<< HEAD
 			
 
+=======
+			array_push($result,$series5);
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
@@ -1360,7 +1418,11 @@ $result = array();
 			$result = array();
 
 
+<<<<<<< HEAD
 	
+=======
+			array_push($result,$series5);
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
@@ -1470,11 +1532,25 @@ $result = array();
             array_push($result,$series6);
             array_push($result,$series7);
             array_push($result,$series8);
+<<<<<<< HEAD
 
 
 
 
 		
+=======
+
+
+			print json_encode($result, JSON_NUMERIC_CHECK);
+    
+
+
+			array_push($result,$series5);
+			array_push($result,$series6);
+			array_push($result,$series7);
+			array_push($result,$series8);
+
+>>>>>>> bbca1911fc020e0519b6eb63a51f18e8046fe88d
 			array_push($result,$series9);
 	     	array_push($result,$series10);
 			array_push($result,$series11);
