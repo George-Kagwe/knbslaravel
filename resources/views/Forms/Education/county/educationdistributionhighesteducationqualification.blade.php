@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>agriculture land potential</center></h5>
+                              <h5><center>education distribution highest education qualification</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -214,11 +214,21 @@
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>                                     
+                                           <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>none</th>
+                                           <th>cpe kcpe</th>
+                                           <th>kape</th>
+                                                <th>kjse</th> 
+                                                 <th>kce kcse</th> 
+                                                  <th>kace eaace</th> 
+                                                   <th>certificate</th> 
+                                                    <th>diploma</th> 
+                                                     <th>degree</th> 
+                                                      <th>post literacy certificate</th> 
+                                                       <th>other</th>  
+                                                         <th>not stated</th>  
+                                                           <th>number of individuals</th>                                 
                                            
                                            <th style="width:85px;">Action
                                           </th>
@@ -227,14 +237,25 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->land_id}}</td>
+                                                <td>{{$post->distribution_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->landPotential}}</td>                                             
-                                                <td>{{$post->value}}</td>                                      
+                                                <td>{{$post->none}}</td>
+                                                          <td>{{$post->cpe_kcpe}}</td>                                      
+                                                <td>{{$post->kape}}</td>
+                                                  <td>{{$post->kjse}}</td>
+                                                   <td>{{$post->kce_kcse}}</td>
+                                                    <td>{{$post->kace_eaace}}</td>
+                                                     <td>{{$post->certificate}}</td>
+                                                      <td>{{$post->diploma}}</td>
+                                                       <td>{{$post->degree}}</td>
+                                                        <td>{{$post->post_literacy_cert}}</td>
+                                                         <td>{{$post->other}}</td>
+                                                          <td>{{$post->not_stated}}</td>
+                                                           <td>{{$post->no_of_individuals}}</td>
+                                                                                         
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->land_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->distribution_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -246,11 +267,21 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>  
+                                                   <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>none</th>
+                                           <th>cpe kcpe</th>
+                                           <th>kape</th>
+                                                <th>kjse</th> 
+                                                 <th>kce kcse</th> 
+                                                  <th>kace eaace</th> 
+                                                   <th>certificate</th> 
+                                                    <th>diploma</th> 
+                                                     <th>degree</th> 
+                                                      <th>post literacy certificate</th> 
+                                                       <th>other</th>  
+                                                         <th>not stated</th>  
+                                                           <th>number of individuals</th>  
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -294,9 +325,6 @@
                             $.each(JSON.parse(data),function(key,value) {
                               
                                  select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
-
-                       
-                                
                             });
                         });
                     });
@@ -319,7 +347,7 @@
                                                 }
                                               }
                                           },
-                                          subcounty_id: {
+                                          none: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -329,7 +357,7 @@
                                                 }
                                               }
                                           },
-                                          potential_id: {
+                                          cpe_kcpe: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -339,7 +367,108 @@
                                                 }
                                               }
                                           },
-                                          value: {
+                                         kape: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                           kjse: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           kce_kcse: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           kace_eaace: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           certificate: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           diploma: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           degree: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           post_literacy_cert: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           other: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           not_stated: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           no_of_individuals: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -368,7 +497,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchlandN", ":id") }}';
+                        var url = '{{ route("fetchdistributionN", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -381,12 +510,21 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.land_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="landPotential"]').val(data.potential_id);
-                              $('[name="value"]').val(data.value);                                          
-                              $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+                              $('[name="id"]').val(data.distribution_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="none"]').val(data.none);
+                              $('[name="cpe_kcpe"]').val(data.cpe_kcpe);
+                              $('[name="kape"]').val(data.kape);                                        $('[name="kjse"]').val(data.kjse);
+                              $('[name="kce_kcse"]').val(data.kce_kcse);
+                              $('[name="kace_eaace"]').val(data.kace_eaace);
+                              $('[name="certificate"]').val(data.certificate);
+                              $('[name="diploma"]').val(data.diploma);
+                              $('[name="degree"]').val(data.degree);
+                              $('[name="post_literacy_cert"]').val(data.post_literacy_cert);
+                              $('[name="other"]').val(data.other);
+                              $('[name="not_stated"]').val(data.not_stated);
+                              $('[name="no_of_individuals"]').val(data.no_of_individuals);
+                             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
                           },
@@ -405,7 +543,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storelandN') }}";
+                            url = "{{ route('storedistributionN') }}";
 
                         }
                         else
@@ -413,7 +551,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatelandN') }}";
+                          url = "{{ route('updatedistributionN') }}";
                         }
                           
                       
@@ -480,11 +618,15 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                
+                              
+                          
+                           
+                              
+                              
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_id">
                                     <option value="">please select</option>
                                     
 
@@ -499,58 +641,94 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Sub County</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
-                                    <option value="">please select</option>
                                     
-
-                                       <?php foreach($subcounty as $subcounty){?>
-                                            
-                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
-                                </div>
-                                 </div>
-                                 <div class="form-group"  id="landdiv">
-                                <label class="control-label col-md-3">  
-                                  Land Potential</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">none</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="landPotential" name="landPotential">
-                                    <option value="">please select</option>
-                                    
-
-                                       <?php foreach($land as $land){?>
-                                            
-                                                 <option value="{{$land->potential_id}}">{{$land->landPotential}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
+                                  <input name="none"  class="form-control" type="text">
                                 </div>
-                                   </div>
-
+                              </div>
                                   <div class="form-group">
-                                <label class="control-label col-md-3">value</label>
+                                <label class="control-label col-md-3">cpe kcpe</label>
                                 <div class="col-md-9">
-                                  <input name="value"  class="form-control" type="text">
+                                  <input name="cpe_kcpe"  class="form-control" type="text">
                                 </div>
                               </div>
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">kape</label>
+                                <div class="col-md-9">
+                                  <input name="kape"  class="form-control" type="text">
+                                </div>
                               </div>
 
-                               
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">kjse</label>
+                                <div class="col-md-9">
+                                  <input name="kjse"  class="form-control" type="text">
+                                </div>
+                              </div>
 
+       <div class="form-group">
+                                <label class="control-label col-md-3">kce kcse</label>
+                                <div class="col-md-9">
+                                  <input name="kce_kcse"  class="form-control" type="text">
+                                </div>
+                              </div>
 
-
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">kace eaace</label>
+                                <div class="col-md-9">
+                                  <input name="kace_eaace"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">certificate</label>
+                                <div class="col-md-9">
+                                  <input name="certificate"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">diploma</label>
+                                <div class="col-md-9">
+                                  <input name="diploma"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">degree</label>
+                                <div class="col-md-9">
+                                  <input name="degree"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">post literacy certificate</label>
+                                <div class="col-md-9">
+                                  <input name="post_literacy_cert"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">other</label>
+                                <div class="col-md-9">
+                                  <input name="other"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">not stated</label>
+                                <div class="col-md-9">
+                                  <input name="not_stated"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                     <div class="form-group">
+                                <label class="control-label col-md-3">number of individuals</label>
+                                <div class="col-md-9">
+                                  <input name="no_of_individuals"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                    
                              
 
                               
-                             
+                              </div>
+
                             
                       </form>
                   </div>

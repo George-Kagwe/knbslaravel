@@ -117,6 +117,7 @@
                     <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
                      <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
                      <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
+                      <li><a href="{{ route('Housing/home') }}"><i class="fa fa-money"></i>Housing</a></li>
                 </ul>
               </div>
               
@@ -189,7 +190,7 @@
         <!-- /top navigation -->
 
  <!-- page content -->
-       
+    
  <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
@@ -204,22 +205,20 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Building And Construction Quarterly Residential Bulding Cost</center></h5>
+                              <h5><center>governance crimes reported to police by command stations</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
-                              <br /> 
+                              <br />
                               <br />
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>Category</th>
-                                           <th>March</th>
-                                             <th>June</th>
-                                           <th>September</th>
-                                            <th>December</th>
-                                             <th>Year</th>
+                                           <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>crimes</th>
+                                           <th>year</th>
+                                           
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -227,16 +226,14 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                               <td>{{$post->building_construction_id}}</td>
-                                                 <td>{{$post->category}}</td>
-                                                <td>{{$post->march}}</td>
-                                                   <td>{{$post->june}}</td>
-                                                      <td>{{$post->september}}</td>
-                                                         <td>{{$post->december}}</td>
-                                                <td>{{$post->year}}</td>                                      
+                                                <td>{{$post->crime_id}}</td>
+                                                <td>{{$post->county_name}}</td>
+                                                <td>{{$post->crimes}}</td>
+                                                   <td>{{$post->year}}</td>   
+                                                                                         
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->building_construction_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->crime_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -248,13 +245,10 @@
 
                                       <tfoot>
                                         <tr>
-                                           <th>ID</th>                                          
-                                           <th>Category</th>
-                                           <th>March</th>
-                                             <th>June</th>
-                                           <th>September</th>
-                                            <th>December</th>
-                                             <th>Year</th>
+                                                      <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>crimes</th>
+                                           <th>year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -282,6 +276,26 @@
             <!-- Sian starts here -->
             <script type="text/javascript">
                       $(document).ready( function () {
+                           $(function() {
+                    $('select[name=county_name]').change(function() {
+                     
+
+                        var urls = '{{ route("fetchCounties", ":id") }}'; 
+                        var id =$(this).val();
+                        var  url =urls.replace(':id', id);
+
+                        $.get(url, function(data) {
+                            var select = $('form select[name=subcounty_name]');
+                            
+                            select.empty();
+
+                            $.each(JSON.parse(data),function(key,value) {
+                              
+                                 select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
+                            });
+                        });
+                    });
+                        });
 
                         $('#form').bootstrapValidator({
                                       feedbackIcons: {
@@ -290,63 +304,27 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          category: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a letter '
-                                                  },
-                                                   alpha_dash: {                                                    
-                                                    message: 'Must be a letter'
-                                                }
-                                              }
-                                          },
-                                          march: {
+                                          county_id: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
                                                   },
-                                                   numeric : {                                                    
+                                                   numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-
-                                           june: {
+                                          crimes: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
                                                   },
-                                                   numeric : {                                                    
+                                                   numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-
-                                           september: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric : {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                          december: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric : {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-                                        
-                                        
-                                           
+                                         
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -365,7 +343,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchbuilding", ":id") }}';
+                        var url = '{{ route("fetchcrimeN", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -378,13 +356,10 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.building_construction_id);
-                              $('[name="category"]').val(data.category);
-                              $('[name="march"]').val(data.march);
-                               $('[name="june"]').val(data.june);
-                                 $('[name="september"]').val(data.september);
-                                   $('[name="december"]').val(data.december);
-                              $('[name="year"]').val(data.year);                                          
+                              $('[name="id"]').val(data.crime_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="crimes"]').val(data.crimes);
+                             $('[name="year"]').val(data.year);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -404,7 +379,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storebuilding') }}";
+                            url = "{{ route('storecrimeN') }}";
 
                         }
                         else
@@ -412,7 +387,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatebuilding') }}";
+                          url = "{{ route('updatecrimeN') }}";
                         }
                           
                       
@@ -462,6 +437,8 @@
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
+                     
+
             </script>
 
               <!-- Bootstrap modal -->
@@ -478,49 +455,36 @@
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Category</label>
-                                <div class="col-md-9">
-                                 
-                                 <input name="category" class="form-control" type="text">
-                                  @if ($errors->has('category'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('category') }}</strong>
-                                    </span>
-                                @endif
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">March</label>
-                                <div class="col-md-9">
-                                  <input name="march"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">June</label>
-                                <div class="col-md-9">
-                                  <input name="june"  class="form-control" type="text">
-                                </div>
-                              </div>
-                                <div class="form-group">
-                                <label class="control-label col-md-3">September</label>
-                                <div class="col-md-9">
-                                  <input name="september"  class="form-control" type="text">
-                                </div>
-                              </div>
-                                <div class="form-group">
-                                <label class="control-label col-md-3">December</label>
-                                <div class="col-md-9">
-                                  <input name="december"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              </div>
-                                  
-                            
-                              
+                          
+                           
                               
                               
                               <div class="form-group">
+                                <label class="control-label col-md-3">County</label>
+                                <div class="col-md-9">
+                                  <select class="form-control" id="county_id" name="county_id">
+                                    <option value="">please select</option>
+                                    
+
+                                       <?php foreach($counties as $counties){?>
+                                            
+                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+                                               
+                                               
+                                            
+                                             <?php }?>
+                                  </select>
+                                </div>
+                              </div>
+
+                                    
+                              <div class="form-group">
+                                <label class="control-label col-md-3">crimes</label>
+                                <div class="col-md-9">
+                                  <input name="crimes"  class="form-control" type="text">
+                                </div>
+                              </div>
+                             <div class="form-group">
                                 <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
                                   <select class="form-control" id="year" name="year">
@@ -532,7 +496,7 @@
                                     <option value="2012">2012</option>
                                     <option value="2013">2013</option>
                                     <option value="2014">2014</option>
-                                    <option value="2015">2015</option
+                                    <option value="2015">2015</option>
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
                                     <option value="2018">2018</option>
@@ -544,15 +508,17 @@
                                   </select>
                                 </div>
                               </div>
+                                 
+
+
+                             
 
                               
-
-                              
+                              </div>
 
                             
                       </form>
-                  
-
+                  </div>
                       <div class="modal-footer">
                         <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -565,7 +531,8 @@
             <!-- Siana ends here -->
         
    </div>
-  <!-- page content -->
+  <!-- page content -->   
+
   <!-- page content -->
    
 

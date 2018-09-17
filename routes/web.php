@@ -75,11 +75,111 @@ Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\
 // Begin loading various forms here as per the menu of the admin page
     //1. finance classification of revenue
 
+Route::get('education_distribution_abovefifteen_ability_readwrite/', 'Forms\Education\education_distribution_abovefifteen_ability_readwrite@index')->name('education_distribution_abovefifteen_ability_readwrite');
+   Route::get('stated/fetch/{id}', array('as' => 'fetchstated', 'uses' => 'Forms\Education\education_distribution_abovefifteen_ability_readwrite@show'));
+    Route::get('stated/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_abovefifteen_ability_readwrite@get_subcounties'));
+
+    Route::post('stated/store', array('as' => 'storestated', 'uses' => 
+  'Forms\Education\education_distribution_abovefifteen_ability_readwrite@store'));
+Route::post('stated/update', array('as' => 'updatestated', 'uses' => 
+  'Forms\Education\education_distribution_abovefifteen_ability_readwrite@update'));
+
+
+Route::get('education_distribution_abovethreeyears_highestlevel_reached/', 'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@index')->name('education_distribution_abovethreeyears_highestlevel_reached');
+   Route::get('duksi/fetch/{id}', array('as' => 'fetchduksi', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@show'));
+    Route::get('duksi/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@get_subcounties'));
+
+    Route::post('duksi/store', array('as' => 'storeduksi', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@store'));
+Route::post('duksi/update', array('as' => 'updateduksi', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_highestlevel_reached@update'));
+
+
+Route::get('education_distribution_abovethreeyears_training/', 'Forms\Education\education_distribution_abovethreeyears_training@index')->name('education_distribution_abovethreeyears_training');
+   Route::get('attended/fetch/{id}', array('as' => 'fetchattended', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_training@show'));
+    Route::get('attended/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_abovethreeyears_training@get_subcounties'));
+
+    Route::post('attended/store', array('as' => 'storeattended', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_training@store'));
+Route::post('attended/update', array('as' => 'updateattended', 'uses' => 
+  'Forms\Education\education_distribution_abovethreeyears_training@update'));
+
+
+Route::get('education_distribution_highest_education_qualification/', 'Forms\Education\education_distribution_highest_education_qualification@index')->name('education_distribution_highest_education_qualification');
+   Route::get('distributionN/fetch/{id}', array('as' => 'fetchdistributionN', 'uses' => 'Forms\Education\education_distribution_highest_education_qualification@show'));
+    Route::get('distributionN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Education\education_distribution_highest_education_qualification@get_subcounties'));
+
+    Route::post('distributionN/store', array('as' => 'storedistributionN', 'uses' => 
+  'Forms\Education\education_distribution_highest_education_qualification@store'));
+Route::post('distributionN/update', array('as' => 'updatedistributionN', 'uses' => 
+  'Forms\Education\education_distribution_highest_education_qualification@update'));
+
+
+
+Route::get('governance_registered_voters_by_county_and_by_sex/', 'Forms\Governance\governance_registered_voters_by_county_and_by_sex@index')->name('governance_offence_by_sex_and_command_stations');
+   Route::get('votersN/fetch/{id}', array('as' => 'fetchvotersN', 'uses' => 'Forms\Governance\governance_registered_voters_by_county_and_by_sex@show'));
+    Route::get('votersN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\governance_registered_voters_by_county_and_by_sex@get_subcounties'));
+
+    Route::post('votersN/store', array('as' => 'storevotersN', 'uses' => 
+  'Forms\Governance\governance_registered_voters_by_county_and_by_sex@store'));
+Route::post('votersN/update', array('as' => 'updatevotersN', 'uses' => 
+  'Forms\Governance\governance_registered_voters_by_county_and_by_sex@update'));
+
+
+Route::get('governance_offence_by_sex_and_command_stations/', 'Forms\Governance\governance_offence_by_sex_and_command_stations@index')->name('governance_offence_by_sex_and_command_stations');
+   Route::get('offenceN/fetch/{id}', array('as' => 'fetchoffenceN', 'uses' => 'Forms\Governance\governance_offence_by_sex_and_command_stations@show'));
+    Route::get('offenceN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\governance_offence_by_sex_and_command_stations@get_subcounties'));
+
+    Route::post('offenceN/store', array('as' => 'storeoffenceN', 'uses' => 
+  'Forms\Governance\governance_offence_by_sex_and_command_stations@store'));
+Route::post('offenceN/update', array('as' => 'updateoffenceN', 'uses' => 
+  'Forms\Governance\governance_offence_by_sex_and_command_stations@update'));
+
+Route::get('governance_identity_cards_made_processed_and_collected/', 'Forms\Governance\governance_identity_cards_made_processed_and_collected@index')->name('governance_identity_cards_made_processed_and_collected');
+   Route::get('nprs/fetch/{id}', array('as' => 'fetchnprs', 'uses' => 'Forms\Governance\governance_identity_cards_made_processed_and_collected@show'));
+    Route::get('nprs/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\governance_identity_cards_made_processed_and_collected@get_subcounties'));
+
+    Route::post('nprs/store', array('as' => 'storenprs', 'uses' => 
+  'Forms\Governance\governance_identity_cards_made_processed_and_collected@store'));
+Route::post('nprs/update', array('as' => 'updatenprs', 'uses' => 
+  'Forms\Governance\governance_identity_cards_made_processed_and_collected@update'));
+
+
+Route::get('agriculture_categories_of_agricultural_land/', 'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@index')->name('agriculture_categories_of_agricultural_land');
+   Route::get('potential/fetch/{id}', array('as' => 'fetchpotential', 'uses' => 'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@show'));
+    Route::get('potential/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@get_subcounties'));
+
+    Route::post('potential/store', array('as' => 'storepotential', 'uses' => 
+  'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@store'));
+Route::post('potential/update', array('as' => 'updatepotential', 'uses' => 
+  'Forms\Agriculture\AgricultureCategoriesOfAgriculturalLand@update'));
+
+Route::get('governance_crimes_reported_to_police_by_command_stations/', 'Forms\Governance
+  \crimes_reported_to_police_by_command_stations@index')->name('governance_crimes_reported_to_police_by_command_stations');
+   Route::get('crimeN/fetch/{id}', array('as' => 'fetchcrimeN', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@show'));
+    Route::get('crimeN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Governance\crimes_reported_to_police_by_command_stations@get_subcounties'));
+
+
+Route::post('crimeN/store', array('as' => 'storecrimeN', 'uses' => 
+  'Forms\Governance\crimes_reported_to_police_by_command_stations@store'));
+Route::post('crimeN/update', array('as' => 'updatecrimeN', 'uses' => 
+  'Forms\Governance\crimes_reported_to_police_by_command_stations@update'));
+
+Route::get('agriculture_land_potential/', 'Forms\Agriculture\AgricultureLandPotential@index')->name('agriculture_land_potential');
+   Route::get('landN/fetch/{id}', array('as' => 'fetchlandN', 'uses' => 'Forms\Agriculture\AgricultureLandPotential@show'));
+    Route::get('landN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Agriculture\AgricultureLandPotential@get_subcounties'));
+
+Route::post('landN/store', array('as' => 'storelandN', 'uses' => 
+  'Forms\Agriculture\AgricultureLandPotential@store'));
+Route::post('landN/update', array('as' => 'updatelandN', 'uses' => 
+  'Forms\Agriculture\AgricultureLandPotential@update'));
+
+
 Route::get('health_registered_active_nhif_members_by_county/', 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@index')->name('health_registered_active_nhif_members_by_county');
    Route::get('memberN/fetch/{id}', array('as' => 'fetchmemberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@show'));
     Route::get('memberN/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@get_subcounties'));
 Route::post('memberN/store', array('as' => 'storememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@store'));
-Route::post('memberN/update', array('as' => 'updatememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@update'));
+Route::post('memberN/update', array('as' => 'updatememberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty @update'));
 
 Route::get('health_insurance_coverage_by_counties_and_types/', 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@index')->name('health_insurance_coverage_by_counties_and_types');
    Route::get('insuranceN/fetch/{id}', array('as' => 'fetchinsuranceN', 'uses' => 'Forms\Health\HealthInsuranceCoverageByCountiesAndTypes@show'));

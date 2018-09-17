@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>agriculture land potential</center></h5>
+                              <h5><center>governance identity cards made processed and collected</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -214,11 +214,13 @@
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>                                     
+                                           <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>npr apps made</th>
+                                           <th>npr ids prod</th>
+                                           <th>npr ids collected</th>
+                                          
+                                           <th>year</th>
                                            
                                            <th style="width:85px;">Action
                                           </th>
@@ -227,14 +229,16 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->land_id}}</td>
+                                                <td>{{$post->nprs_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->landPotential}}</td>                                             
-                                                <td>{{$post->value}}</td>                                      
+                                                <td>{{$post->npr_apps_made}}</td>
+                                                 <td>{{$post->npr_ids_prod}}</td>
+                                                  <td>{{$post->npr_ids_collected}}</td>
+                                                   <td>{{$post->year}}</td>   
+                                                                                         
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->land_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->nprs_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -246,11 +250,13 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>  
+                                                     <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>npr apps made</th>
+                                           <th>npr ids prod</th>
+                                           <th>npr ids collected</th>
+                                          
+                                           <th>year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -294,9 +300,6 @@
                             $.each(JSON.parse(data),function(key,value) {
                               
                                  select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
-
-                       
-                                
                             });
                         });
                     });
@@ -319,7 +322,7 @@
                                                 }
                                               }
                                           },
-                                          subcounty_id: {
+                                          npr_apps_made: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -329,7 +332,7 @@
                                                 }
                                               }
                                           },
-                                          potential_id: {
+                                          npr_ids_prod: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -339,7 +342,7 @@
                                                 }
                                               }
                                           },
-                                          value: {
+                                          npr_ids_collected: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -349,7 +352,7 @@
                                                 }
                                               }
                                           },
-                                          
+                                         
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -368,7 +371,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchlandN", ":id") }}';
+                        var url = '{{ route("fetchnprs", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -381,11 +384,12 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.land_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="landPotential"]').val(data.potential_id);
-                              $('[name="value"]').val(data.value);                                          
+                              $('[name="id"]').val(data.nprs_id);
+                                $('[name="county_id"]').val(data.county_id);
+                              $('[name="npr_apps_made"]').val(data.npr_apps_made);
+                              $('[name="npr_ids_prod"]').val(data.npr_ids_prod);
+                                 $('[name="npr_ids_collected"]').val(data.npr_ids_collected);
+                             $('[name="year"]').val(data.year);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -405,7 +409,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storelandN') }}";
+                            url = "{{ route('storenprs') }}";
 
                         }
                         else
@@ -413,7 +417,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatelandN') }}";
+                          url = "{{ route('updatenprs') }}";
                         }
                           
                       
@@ -480,11 +484,15 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                
+                              
+                          
+                           
+                              
+                              
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_id">
                                     <option value="">please select</option>
                                     
 
@@ -499,58 +507,58 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Sub County</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
-                                    <option value="">please select</option>
                                     
-
-                                       <?php foreach($subcounty as $subcounty){?>
-                                            
-                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
-                                </div>
-                                 </div>
-                                 <div class="form-group"  id="landdiv">
-                                <label class="control-label col-md-3">  
-                                  Land Potential</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">npr apps made</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="landPotential" name="landPotential">
-                                    <option value="">please select</option>
-                                    
-
-                                       <?php foreach($land as $land){?>
-                                            
-                                                 <option value="{{$land->potential_id}}">{{$land->landPotential}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
-                                </div>
-                                   </div>
-
-                                  <div class="form-group">
-                                <label class="control-label col-md-3">value</label>
-                                <div class="col-md-9">
-                                  <input name="value"  class="form-control" type="text">
+                                  <input name="npr_apps_made"  class="form-control" type="text">
                                 </div>
                               </div>
+                                <div class="form-group">
+                                <label class="control-label col-md-3">npr ids prod</label>
+                                <div class="col-md-9">
+                                  <input name="npr_ids_prod"  class="form-control" type="text">
+                                </div>
                               </div>
-
-                               
-
+                                <div class="form-group">
+                                <label class="control-label col-md-3">npr ids collected</label>
+                                <div class="col-md-9">
+                                  <input name="npr_ids_collected"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+                             <div class="form-group">
+                                <label class="control-label col-md-3">Year</label>
+                                <div class="col-md-9">
+                                  <select class="form-control" id="year" name="year">
+                                    <option value="">please select</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                  </select>
+                                </div>
+                              </div>
+                                 
 
 
                              
 
                               
-                             
+                              </div>
+
                             
                       </form>
                   </div>

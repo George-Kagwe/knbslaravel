@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>agriculture land potential</center></h5>
+                              <h5><center>governance registered voters by county and by sex</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -217,9 +217,8 @@
                                            <th>ID</th>                                          
                                            <th>County Name</th>
                                            <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>                                     
-                                           
+                                           <th>registered voters</th>                                        
+                                           <th>gender</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -227,14 +226,14 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->land_id}}</td>
+                                                <td>{{$post->voters_id}}</td>
                                                 <td>{{$post->county_name}}</td>
                                                 <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->landPotential}}</td>                                             
-                                                <td>{{$post->value}}</td>                                      
+                                                <td>{{$post->reg_voters}}</td>                                             
+                                                <td>{{$post->gender}}</td>                                      
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->land_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->voters_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -246,11 +245,11 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
+                                             <th>ID</th>                                          
                                            <th>County Name</th>
                                            <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>  
+                                           <th>registered voters</th>                                        
+                                           <th>gender</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -294,9 +293,6 @@
                             $.each(JSON.parse(data),function(key,value) {
                               
                                  select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
-
-                       
-                                
                             });
                         });
                     });
@@ -329,7 +325,7 @@
                                                 }
                                               }
                                           },
-                                          potential_id: {
+                                          reg_voters: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -339,17 +335,17 @@
                                                 }
                                               }
                                           },
-                                          value: {
+                                          gender: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
                                                   },
-                                                   numeric: {                                                    
+                                                   alpha: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          
+                                           
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -368,7 +364,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchlandN", ":id") }}';
+                        var url = '{{ route("fetchvotersN", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -381,11 +377,11 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.land_id);
+                              $('[name="id"]').val(data.voters_id);
                               $('[name="county_name"]').val(data.county_id);
                               $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="landPotential"]').val(data.potential_id);
-                              $('[name="value"]').val(data.value);                                          
+                              $('[name="reg_voters"]').val(data.reg_voters);
+                              $('[name="gender"]').val(data.gender);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -405,7 +401,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storelandN') }}";
+                            url = "{{ route('storevotersN') }}";
 
                         }
                         else
@@ -413,7 +409,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatelandN') }}";
+                          url = "{{ route('updatevotersN') }}";
                         }
                           
                       
@@ -480,7 +476,12 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                
+                              
+                             
+                             
+                           
+                              
+                              
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
@@ -515,34 +516,20 @@
                                              <?php }?>
                                   </select>
                                 </div>
-                                 </div>
-                                 <div class="form-group"  id="landdiv">
-                                <label class="control-label col-md-3">  
-                                  Land Potential</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="landPotential" name="landPotential">
-                                    <option value="">please select</option>
-                                    
-
-                                       <?php foreach($land as $land){?>
-                                            
-                                                 <option value="{{$land->potential_id}}">{{$land->landPotential}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
-                                </div>
-                                   </div>
+                              </div>
 
                                   <div class="form-group">
-                                <label class="control-label col-md-3">value</label>
+                                <label class="control-label col-md-3">registered voters</label>
                                 <div class="col-md-9">
-                                  <input name="value"  class="form-control" type="text">
+                                  <input name="reg_voters"  class="form-control" type="text">
                                 </div>
                               </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">gender</label>
+                                <div class="col-md-9">
+                                  <input name="gender"  class="form-control" type="text">
+                                </div>
                               </div>
-
                                
 
 
@@ -550,7 +537,8 @@
                              
 
                               
-                             
+                              </div>
+
                             
                       </form>
                   </div>

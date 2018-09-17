@@ -205,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>agriculture land potential</center></h5>
+                              <h5><center>education distribution abovethreeyears highestlevel reached</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -214,11 +214,18 @@
                                       <thead>
                                         <tr>
                                          
-                                           <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>                                     
+                                           <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>pre primary</th>
+                                           <th>primary</th>
+                                           <th>post primary</th>
+                                         <th>secondary</th> 
+                                           <th>college</th>     
+                                          <th>university</th>   
+                                            <th>madrassa duksi</th>
+                                            <th>other</th>     
+                                            <th>not stated</th> 
+                                              <th>number of individuals</th>                                
                                            
                                            <th style="width:85px;">Action
                                           </th>
@@ -227,14 +234,24 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->land_id}}</td>
+                                                <td>{{$post->distribution_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->subcounty_name}}</td>
-                                                <td>{{$post->landPotential}}</td>                                             
-                                                <td>{{$post->value}}</td>                                      
+                                                <td>{{$post->pre_primary}}</td>
+                                                <td>{{$post->primary}}</td>
+                                                          <td>{{$post->post_primary}}</td>                                      
+                                                <td>{{$post->secondary}}</td>
+                                                  <td>{{$post->college}}</td>
+                                                  <td>{{$post->university}}</td>
+                                                  <td>{{$post->madrassa_duksi}}</td>
+                                                  <td>{{$post->other}}</td>
+                                                  <td>{{$post->not_stated}}</td>
+                                                  <td>{{$post->no_of_individuals}}</td>
+                                                  
+                                                  
+                                                                                         
 
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->land_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->distribution_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -246,11 +263,18 @@
 
                                       <tfoot>
                                         <tr>
-                                          <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Sub County Name</th>
-                                           <th>land potential</th>   
-                                              <th>value</th>  
+                                                      <th>ID</th>  
+                                               <th>County Name</th>                                         
+                                           <th>pre primary</th>
+                                           <th>primary</th>
+                                           <th>post primary</th>
+                                         <th>secondary</th> 
+                                           <th>college</th>     
+                                          <th>university</th>   
+                                            <th>madrassa duksi</th>
+                                            <th>other</th>     
+                                            <th>not stated</th> 
+                                              <th>number of individuals</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -294,9 +318,6 @@
                             $.each(JSON.parse(data),function(key,value) {
                               
                                  select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
-
-                       
-                                
                             });
                         });
                     });
@@ -319,7 +340,7 @@
                                                 }
                                               }
                                           },
-                                          subcounty_id: {
+                                          pre_primary: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -329,7 +350,7 @@
                                                 }
                                               }
                                           },
-                                          potential_id: {
+                                          primary: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -339,7 +360,58 @@
                                                 }
                                               }
                                           },
-                                          value: {
+                                         post_primary: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+
+                                           secondary: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          college: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          university: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          madrassa_duksi: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          other: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -350,6 +422,26 @@
                                               }
                                           },
                                           
+                                          not_stated: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          no_of_individuals: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -368,7 +460,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchlandN", ":id") }}';
+                        var url = '{{ route("fetchduksi", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -381,12 +473,18 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.land_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="subcounty_name"]').val(data.subcounty_id);
-                              $('[name="landPotential"]').val(data.potential_id);
-                              $('[name="value"]').val(data.value);                                          
-                              $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+                              $('[name="id"]').val(data.distribution_id);
+                              $('[name="county_id"]').val(data.county_id);
+                              $('[name="pre_primary"]').val(data.pre_primary);
+                              $('[name="primary"]').val(data.primary);
+                              $('[name="post_primary"]').val(data.post_primary);                        $('[name="secondary"]').val(data.secondary);
+                              $('[name="college"]').val(data.college);
+                              $('[name="university"]').val(data.university);
+                              $('[name="madrassa_duksi"]').val(data.madrassa_duksi);
+                              $('[name="other"]').val(data.other);
+                              $('[name="not_stated"]').val(data.not_stated);
+                              $('[name="no_of_individuals"]').val(data.no_of_individuals);
+                             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
                           },
@@ -405,7 +503,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storelandN') }}";
+                            url = "{{ route('storeduksi') }}";
 
                         }
                         else
@@ -413,7 +511,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatelandN') }}";
+                          url = "{{ route('updateduksi') }}";
                         }
                           
                       
@@ -480,11 +578,15 @@
                         <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                
+                              
+                          
+                           
+                              
+                              
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <select class="form-control" id="county_id" name="county_id">
                                     <option value="">please select</option>
                                     
 
@@ -499,58 +601,73 @@
                                 </div>
                               </div>
 
-                                  <div class="form-group"  id="subcountydiv">
-                                <label class="control-label col-md-3">Sub County</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
-                                    <option value="">please select</option>
                                     
-
-                                       <?php foreach($subcounty as $subcounty){?>
-                                            
-                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
-                                </div>
-                                 </div>
-                                 <div class="form-group"  id="landdiv">
-                                <label class="control-label col-md-3">  
-                                  Land Potential</label>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">pre primary</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="landPotential" name="landPotential">
-                                    <option value="">please select</option>
-                                    
-
-                                       <?php foreach($land as $land){?>
-                                            
-                                                 <option value="{{$land->potential_id}}">{{$land->landPotential}}</option>
-                                               
-                                               
-                                            
-                                             <?php }?>
-                                  </select>
+                                  <input name="pre_primary"  class="form-control" type="text">
                                 </div>
-                                   </div>
-
+                              </div>
                                   <div class="form-group">
-                                <label class="control-label col-md-3">value</label>
+                                <label class="control-label col-md-3">primary</label>
                                 <div class="col-md-9">
-                                  <input name="value"  class="form-control" type="text">
+                                  <input name="primary"  class="form-control" type="text">
                                 </div>
                               </div>
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">post primary</label>
+                                <div class="col-md-9">
+                                  <input name="post_primary"  class="form-control" type="text">
+                                </div>
                               </div>
 
-                               
+                                    <div class="form-group">
+                                <label class="control-label col-md-3">secondary</label>
+                                <div class="col-md-9">
+                                  <input name="secondary"  class="form-control" type="text">
+                                </div>
+                              </div>
 
-
-
-                             
+          <div class="form-group">
+                                <label class="control-label col-md-3">college</label>
+                                <div class="col-md-9">
+                                  <input name="college"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">university</label>
+                                <div class="col-md-9">
+                                  <input name="university"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">madrassa duksi</label>
+                                <div class="col-md-9">
+                                  <input name="madrassa_duksi"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">other</label>
+                                <div class="col-md-9">
+                                  <input name="other"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">not stated</label>
+                                <div class="col-md-9">
+                                  <input name="not_stated"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">number of individuals</label>
+                                <div class="col-md-9">
+                                  <input name="no_of_individuals"  class="form-control" type="text">
+                                </div>
+                              </div>
 
                               
-                             
+                              </div>
+
                             
                       </form>
                   </div>
