@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Endpoints;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-he
-=======
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -71,17 +69,12 @@ class Housing extends Controller
 			 
 			 
 			$result = array();
-<<<<<<< HEAD
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
-class Housing extends Controller
-{
+
       
-=======
 		
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 
 			array_push($result,$county);
 			array_push($result,$series1);
@@ -189,10 +182,8 @@ class Housing extends Controller
 			array_push($result,$series9);
 			array_push($result,$series10);
 
-<<<<<<< HEAD
-			array_push($result,$series11);
-=======
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
+
 					
 			print json_encode($result, JSON_NUMERIC_CHECK);
     }
@@ -234,10 +225,9 @@ class Housing extends Controller
 			$series6['data'][] = $row->households;							
 		}
 			 
-<<<<<<< HEAD
+
 			$result = array();
 
-=======
 			
 $result = array();
 	
@@ -248,7 +238,6 @@ $result = array();
 			array_push($result,$series4);
 			array_push($result,$series5);
 			array_push($result,$series6);
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
 
 			
 					
@@ -313,12 +302,11 @@ $result = array();
 			}
 			 
 			$result = array();
-<<<<<<< HEAD
+
 		
 
-=======
 	
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
@@ -326,12 +314,9 @@ $result = array();
 			array_push($result,$series4);
 			array_push($result,$series5);
 			array_push($result,$series6);
-<<<<<<< HEAD
-	
-=======
 
-					
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+	
+
 			print json_encode($result, JSON_NUMERIC_CHECK);
     }
     
@@ -369,11 +354,10 @@ $result = array();
 		}
 			 
 			$result = array();
-<<<<<<< HEAD
+
 
 	
-=======
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 
 		
 			array_push($result,$county);
@@ -568,15 +552,14 @@ $result = array();
 			array_push($result,$series3);
 			array_push($result,$series4);
 			array_push($result,$series5);
-<<<<<<< HEAD
 
-=======
+
             array_push($result,$series6);
 			array_push($result,$series7);
 			array_push($result,$other);
 			array_push($result,$series8);
 			array_push($result,$series9);
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 					
 			print json_encode($result, JSON_NUMERIC_CHECK);
     }
@@ -612,19 +595,14 @@ $result = array();
 			 
 			$result = array();
 
-<<<<<<< HEAD
-			array_push($result,$series6);
-			array_push($result,$series7);
-			array_push($result,$other);
-			array_push($result,$series8);
-			array_push($result,$series9);
-=======
+
+		
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
 			array_push($result,$series3);
 			array_push($result,$series4);
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 	     
 			
 					
@@ -863,14 +841,13 @@ $result = array();
 			 
 			$result = array();
 
-<<<<<<< HEAD
-=======
+
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
 			array_push($result,$series3);
 			array_push($result,$series4);
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 			array_push($result,$series5);
 			array_push($result,$series6);
 			array_push($result,$series7);
@@ -1014,21 +991,14 @@ $result = array();
 		}
 			$result = array();
 
-<<<<<<< HEAD
-			array_push($result,$series5);
-			array_push($result,$series6);
-			array_push($result,$series7);
-			array_push($result,$series8);
-			array_push($result,$series9);
-	     	array_push($result,$series10);
-			array_push($result,$series11);
-=======
+
+		
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
 			array_push($result,$series3);
 			array_push($result,$series4);
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 			
 					
 			print json_encode($result, JSON_NUMERIC_CHECK);
@@ -1216,16 +1186,15 @@ $result = array();
 			 
 			$result = array();
 
-<<<<<<< HEAD
+
 			array_push($result,$series5);
-=======
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
 			array_push($result,$series3);
 			array_push($result,$series4);
 	     	array_push($result,$series5);
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 			array_push($result,$series6);
 			array_push($result,$series7);
 			array_push($result,$series8);
@@ -1395,16 +1364,15 @@ $result = array();
 		} 
 			$result = array();
 
-<<<<<<< HEAD
+
 			array_push($result,$series5);
-=======
 			array_push($result,$county);
 			array_push($result,$series1);
 			array_push($result,$series2);
 			array_push($result,$series3);
 			array_push($result,$series4);
 	     	array_push($result,$series5);
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 			array_push($result,$series6);
 			array_push($result,$series7);
 			array_push($result,$series8);
@@ -1507,18 +1475,17 @@ $result = array();
             array_push($result,$series6);
             array_push($result,$series7);
             array_push($result,$series8);
-<<<<<<< HEAD
+
 
 			print json_encode($result, JSON_NUMERIC_CHECK);
-    }
+    
 
 
 			array_push($result,$series5);
 			array_push($result,$series6);
 			array_push($result,$series7);
 			array_push($result,$series8);
-=======
->>>>>>> dc59ea36d2a98c8d256ea9ebd284bd28fc7ef5eb
+
 			array_push($result,$series9);
 	     	array_push($result,$series10);
 			array_push($result,$series11);
