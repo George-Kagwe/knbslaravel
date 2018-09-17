@@ -117,9 +117,7 @@
                     <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
                      <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
                      <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
-                          <li><a href="{{ route('Housing/home') }}"><i class="fa fa-money"></i>Housing</a></li>
-
-
+                      <li><a href="{{ route('Housing/home') }}"><i class="fa fa-money"></i>Housing</a></li>
                 </ul>
               </div>
               
@@ -129,16 +127,16 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-plaelectricity="top" title="Settings">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-plaelectricity="top" title="FullScreen">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-plaelectricity="top" title="Lock">
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-plaelectricity="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -207,7 +205,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Owner Occupier Dwellings</center></h5>
+                              <h5><center>Primary School Enrollement by Class,Sex and Subcounty</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -218,19 +216,17 @@
                                          
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                 
-                                            <th>Purchased Cash</th>                                        
-                                            <th>Purchased Loan</th>
-                                            <th>Purchased Cash Loan</th>
-                                            <th>Constructed Cash</th>
-                                            <th>Constructed Loan</th>
-                                            <th>Constructed Cash Loan</th>
-                                            <th>Inherited</th> 
-                                            <th>Gift</th>
-                                              <th>Bartered</th>
-                                            <th>Other</th>
-                                            <th>Households</th>
-                             
+                                           <th>Subcounty Name</th>
+                                           <th>Class 1</th>
+                                           <th>Class 2</th>  
+                                           <th>Class 3</th>  
+                                           <th>Class 4</th>  
+                                           <th>Class 5</th>  
+                                           <th>Class 6</th>  
+                                           <th>Class 7</th>
+                                           <th>Class 8</th> 
+                                           <th>Gender</th>                                      
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
@@ -238,22 +234,22 @@
                                       <tbody>
                                       <?php foreach($post as $post){?>
                                              <tr>
-                                                <td>{{$post->dwelling_id}}</td>
+                                                <td>{{$post->primary_enrollment_id}}</td>
                                                 <td>{{$post->county_name}}</td>
-                                                <td>{{$post->purchased_cash}}</td>
-                                                <td>{{$post->purchased_loan}}</td>
-                                                <td>{{$post->purchased_cash_loan}}</td>
-                                                <td>{{$post->constructed_cash}}</td>
-                                                <td>{{$post->constructed_loan}}</td>                                            
-                                                <td>{{$post->constructed_cash_loan}}</td>
-                                                <td>{{$post->inherited}}</td>
-                                                <td>{{$post->gift}}</td>  
-                                                <td>{{$post->bartered}}</td>
-                                                <td>{{$post->other}}</td>  
-                                                <td>{{$post->households}}</td>  
-                                                
+                                                <td>{{$post->subcounty_name}}</td>
+                                                <td>{{$post->class_1}}</td>      
+                                                <td>{{$post->class_2}}</td> 
+                                                <td>{{$post->class_3}}</td>                                      
+                                                <td>{{$post->class_4}}</td> 
+                                                <td>{{$post->class_5}}</td> 
+                                                <td>{{$post->class_6}}</td> 
+                                                <td>{{$post->class_7}}</td> 
+                                                <td>{{$post->class_8}}</td> 
+                                                <td>{{$post->gender}}</td> 
+                                                <td>{{$post->year}}</td>                                      
+
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->dwelling_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $post->primary_enrollment_id;?>)">Update Record</button>
                                                
                                                 </td>
                                               </tr>
@@ -267,18 +263,17 @@
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                 
-                                            <th>Purchased Cash</th>                                        
-                                            <th>Purchased Loan</th>
-                                            <th>Purchased Cash Loan</th>
-                                            <th>Constructed Cash</th>
-                                            <th>Constructed Loan</th>
-                                            <th>Constructed Cash Loan</th>
-                                            <th>Inherited</th> 
-                                            <th>Gift</th>
-                                            <th>Bartered</th>
-                                            <th>Other</th>
-                                            <th>Households</th>
+                                           <th>Subcounty Name</th>
+                                           <th>Class 1</th>
+                                           <th>Class 2</th>  
+                                           <th>Class 3</th>  
+                                           <th>Class 4</th>  
+                                           <th>Class 5</th>  
+                                           <th>Class 6</th>  
+                                           <th>Class 7</th>
+                                           <th>Class 8</th> 
+                                           <th>Gender</th>                                     
+                                           <th>Year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -315,13 +310,13 @@
                         var  url =urls.replace(':id', id);
 
                         $.get(url, function(data) {
-                            var select = $('form select[name=temperatures]');
+                            var select = $('form select[name=subcounty_name]');
                             
                             select.empty();
 
                             $.each(JSON.parse(data),function(key,value) {
                               
-                                 select.append('<option value=' + value.temperature_id + '>' +value.temperatures+ '</option>');
+                                 select.append('<option value=' + value.subcounty_id + '>' +value.subcounty_name+ '</option>');
                             });
                         });
                     });
@@ -334,15 +329,23 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                           county_name: {
+                                          county_name: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please Select a County '
+                                                      message: 'Please enter County '
                                                   },
                                                
                                               }
                                           },
-                                          purchased_cash: {
+                                          subcounty_name: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter a number '
+                                                  },
+                                               
+                                              }
+                                          },
+                                          class_1: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -352,8 +355,7 @@
                                                 }
                                               }
                                           },
-                                      
-                                          purchased_loan: {
+                                          class_2: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -363,7 +365,7 @@
                                                 }
                                               }
                                           },
-                                          purchased_cash_loan: {
+                                                 class_3: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -373,7 +375,7 @@
                                                 }
                                               }
                                           },
-                                           constructed_cash: {
+                                                 class_4: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -383,7 +385,7 @@
                                                 }
                                               }
                                           },
-                                            constructed_loan: {
+                                                 class_5: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -393,8 +395,7 @@
                                                 }
                                               }
                                           },
-                                          
-                                              constructed_cash_loan: {
+                                                 class_6: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -404,7 +405,7 @@
                                                 }
                                               }
                                           },
-                                              inherited : {
+                                                 class_7: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -414,9 +415,7 @@
                                                 }
                                               }
                                           },
-
-                                            
-                                             bartered : {
+                                                 class_8: {
                                               validators: {
                                                   notEmpty: {
                                                       message: 'Please enter a number '
@@ -426,41 +425,16 @@
                                                 }
                                               }
                                           },
-
-                                               gift : {
+                                           gender: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number '
+                                                      message: 'Please enter 0 text '
                                                   },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-
-
-                                                other : {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           
-                                               households : {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter a number '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
+                                                   alpha: {                                                    
+                                                    message: 'Must be a text'
                                                 }
                                               }
                                           }
-
                                       }
                                   });
                           $('#table_id').DataTable();
@@ -479,7 +453,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchOccupier", ":id") }}';
+                        var url = '{{ route("fetchPrimary", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -492,25 +466,19 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.dwelling_id);
-                              $('[name="county_id"]').val(data.county_id);
-                              $('[name="purchased_cash"]').val(data.purchased_cash);
-                     
-                              $('[name="purchased_loan"]').val(data.purchased_loan);   
-                              $('[name="purchased_cash_loan"]').val(data.purchased_cash_loan);
-                              $('[name="constructed_cash"]').val(data.constructed_cash);
-                        
-                              $('[name="constructed_loan"]').val(data.constructed_loan);
-                          
-                              $('[name="constructed_cash_loan"]').val(data.constructed_cash_loan);    
-                              $('[name="inherited"]').val(data.inherited);
-                          
-                          
-                              $('[name="bartered"]').val(data.bartered);
-                              $('[name="gift"]').val(data.gift);
-                              $('[name="other"]').val(data.other);
-                          
-                              $('[name="households"]').val(data.households);
+                              $('[name="id"]').val(data.primary_enrollment_id);
+                              $('[name="county_name"]').val(data.county_id);
+                              $('[name="subcounty_name"]').val(data.subcounty_id);
+                              $('[name="class_1"]').val(data.class_1);
+                              $('[name="class_2"]').val(data.class_2);
+                              $('[name="class_3"]').val(data.class_3);
+                              $('[name="class_4"]').val(data.class_4);
+                              $('[name="class_5"]').val(data.class_5);
+                              $('[name="class_6"]').val(data.class_6);
+                              $('[name="class_7"]').val(data.class_7);
+                              $('[name="class_8"]').val(data.class_8);
+                               $('[name="gender"]').val(data.gender);
+                              $('[name="year"]').val(data.year);                                          
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -530,7 +498,7 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeOccupier') }}";
+                            url = "{{ route('storePrimary') }}";
 
                         }
                         else
@@ -538,7 +506,7 @@
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updateOccupier') }}";
+                          url = "{{ route('updatePrimary') }}";
                         }
                           
                       
@@ -606,14 +574,15 @@
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
                               
-                       
+                             
+                          
                            
                               
                               
                               <div class="form-group">
                                 <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_id" name="county_id">
+                                  <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
                                     
 
@@ -627,80 +596,114 @@
                                   </select>
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Purchased Cash</label>
+
+                                  <div class="form-group"  id="subcountydiv">
+                                <label class="control-label col-md-3">Sub County</label>
                                 <div class="col-md-9">
-                                  <input name="purchased_cash"  class="form-control" type="text">
+                                  <select class="form-control" id="subcounty_name" name="subcounty_name">
+                                    <option value="">please select</option>
+                                    
+
+                                       <?php foreach($subcounty as $subcounty){?>
+                                            
+                                                 <option value="{{$subcounty->subcounty_id}}">{{$subcounty->subcounty_name}}</option>
+                                               
+                                               
+                                            
+                                             <?php }?>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Class 1</label>
+                                <div class="col-md-9">
+                                  <input name="class_1"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                <div class="form-group">
+                                <label class="control-label col-md-3">Class 2</label>
+                                <div class="col-md-9">
+                                  <input name="class_2"  class="form-control" type="text">
                                 </div>
                               </div>
 
-
-                       
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Purchased Loan</label>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Class 3</label>
                                 <div class="col-md-9">
-                                  <input name="purchased_loan"  class="form-control" type="text">
+                                  <input name="class_3"  class="form-control" type="text">
                                 </div>
                               </div>
 
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Class 4</label>
+                                <div class="col-md-9">
+                                  <input name="class_4"  class="form-control" type="text">
+                                </div>
+                              </div>
 
                               <div class="form-group">
-                                <label class="control-label col-md-3">Purchased Cash Loan</label>
+                                <label class="control-label col-md-3">Class 5</label>
                                 <div class="col-md-9">
-                                  <input name="purchased_cash_loan"  class="form-control" type="text">
+                                  <input name="class_5"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">Class 6</label>
+                                <div class="col-md-9">
+                                  <input name="class_6"  class="form-control" type="text">
                                 </div>
                               </div>
 
                                  <div class="form-group">
-                                <label class="control-label col-md-3">Constructed Cash</label>
+                                <label class="control-label col-md-3">Class 7</label>
                                 <div class="col-md-9">
-                                  <input name="constructed_cash"  class="form-control" type="text">
+                                  <input name="class_7"  class="form-control" type="text">
+                                </div>
+                              </div>
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">Class 8</label>
+                                <div class="col-md-9">
+                                  <input name="class_8"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Constructed Loan</label>
+
+                                  <div class="form-group">
+                                <label class="control-label col-md-3">Gender</label>
                                 <div class="col-md-9">
-                                  <input name="constructed_loan"  class="form-control" type="text">
+                                  <input name="gender"  class="form-control" type="text">
                                 </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Constructed Cash Loan</label>
+
+
+                                 <div class="form-group">
+                                <label class="control-label col-md-3">Year</label>
                                 <div class="col-md-9">
-                                  <input name="constructed_cash_loan"  class="form-control" type="text">
+                                  <select class="form-control" id="year" name="year">
+                                    <option value="">please select</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                  </select>
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Inherited</label>
-                                <div class="col-md-9">
-                                  <input name="inherited"  class="form-control" type="text">
-                                </div>
-                              </div>
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Gift</label>
-                                <div class="col-md-9">
-                                  <input name="gift"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Bartered</label>
-                                <div class="col-md-9">
-                                  <input name="bartered"  class="form-control" type="text">
-                                </div>
-                              </div>
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Other</label>
-                                <div class="col-md-9">
-                                  <input name="other"  class="form-control" type="text">
-                                </div>
-                              </div>                         
-                                <div class="form-group">
-                                <label class="control-label col-md-3">Households</label>
-                                <div class="col-md-9">
-                                  <input name="households"  class="form-control" type="text">
-                                </div>
-                              </div>
+
+
 
                              
 

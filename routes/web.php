@@ -73,9 +73,7 @@ Route::post('agriculture/store', array('as' => 'storeSugar', 'uses' => 'Forms\Ag
 Route::post('agriculture/update', array('as' => 'updateSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@update'));
 //End of loading various sectors
 // Begin loading various forms here as per the menu of the admin page
-    //1. finance classification of revenue
-<<<<<<< HEAD
-=======
+
 
 Route::get('health_registered_active_nhif_members_by_county/', 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@index')->name('health_registered_active_nhif_members_by_county');
    Route::get('memberN/fetch/{id}', array('as' => 'fetchmemberN', 'uses' => 'Forms\Health\HealthRegisteredActiveNHIFMembersByCounty@show'));
@@ -160,7 +158,7 @@ Route::post('medical/store', array('as' => 'storemedical', 'uses' => 'Forms\Heal
 Route::post('medical/update', array('as' => 'updatemedical', 'uses' => 'Forms\Health\HealthRegisteredMedicalPersonnel@update'));
 
 
->>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
+
 
 Route::get('finance_economic_classification_revenue/', 'Forms\Finance\ClassifficationOfRevenue@index')->name('ClassifficationOfRevenue');
 
@@ -174,12 +172,6 @@ Route::post('cdf/update', array('as' => 'updateCDF', 'uses' => 'Forms\Finance\CD
 
 
 
-<<<<<<< HEAD
-
-      
-
-=======
->>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
 
 Route::get('agriculture_area_under_sugarcane_harvested_production_avg_yield/', 'Forms\Agriculture\Agriculture_Sugar@index')->name('agriculture_area_under_sugarcane_harvested_production_avg_yield');
 Route::get('agriculture/sugar_yield/{id}', array('as' => 'fetchSugar', 'uses' => 'Forms\Agriculture\Agriculture_Sugar@show'));
@@ -2656,8 +2648,6 @@ Route::post('irrigation/store', array('as' => 'storeIrrigation', 'uses' => 'Form
 //post to update
 Route::post('irrigation/update', array('as' => 'updateIrrigation', 'uses' => 'Forms\Agriculture\agriculture_irrigation_schemes@update'));
 
-<<<<<<< HEAD
-
 
 
 //@George Muchiri
@@ -3021,7 +3011,7 @@ Route::post('pump/update', array('as' => 'updatePump', 'uses' =>
   'Forms\Energy\energy_averagemonthlypumppricesforfuelbycategory@update'));
 
 //@George Muchiri
-Route::get('vital_statistics_births_and_deaths_by_sex/', 
+Route::get('vital_statistics_births_and_centres_by_sex/', 
   'Forms\Population\vital_statistics_births_and_deaths_by_sex@index')->name('vital_statistics_births_and_deaths_by_sex');
    
    Route::get('vital/fetch/{id}', array('as' => 'fetchVital', 'uses' => 
@@ -3051,13 +3041,164 @@ Route::post('death/update', array('as' => 'updateDeath', 'uses' =>
 Route::get('population_populationprojectionsbyselectedagegroup/', 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@index')->name('population_populationprojectionsbyselectedagegroup');
    
-   Route::get('death/fetch/{id}', array('as' => 'fetchSelect', 'uses' => 'Forms\Population\population_populationprojectionsbyselectedagegroup@show'));
+   Route::get('select/fetch/{id}', array('as' => 'fetchSelect', 'uses' => 'Forms\Population\population_populationprojectionsbyselectedagegroup@show'));
 Route::get('select/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Population\population_populationprojectionsbyselectedagegroup@get_subcounties'));
 Route::post('select/store', array('as' => 'storeSelect', 'uses' => 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@store'));
 Route::post('select/update', array('as' => 'updateSelect', 'uses' => 
   'Forms\Population\population_populationprojectionsbyselectedagegroup@update'));
-=======
-	
->>>>>>> 6681263a3204de737dbe429df00444f0928e1a39
+
+
+
+//@George Muchiri
+Route::get('education_csa_adulteducationcentresbysubcounty/','Forms\Education\education_csa_adulteducationcentresbysubcounty@index')->name(
+  'education_csa_adulteducationcentresbysubcounty');
+   
+   Route::get('centre/fetch/{id}', array('as' => 'fetchCentre', 'uses' => 'Forms\Education\education_csa_adulteducationcentresbysubcounty@show'));
+Route::get('centre/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_adulteducationcentresbysubcounty@get_subcounties'));
+Route::post('centre/store', array('as' => 'storeCentre', 'uses' => 
+  'Forms\Education\education_csa_adulteducationcentresbysubcounty@store'));
+Route::post('centre/update', array('as' => 'updateCentre', 'uses' => 
+  'Forms\Education\education_csa_adulteducationcentresbysubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_adulteducationenrolmentbysexandsubcounty/','Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@index')->name(
+  'education_csa_adulteducationenrolmentbysexandsubcounty');
+   
+   Route::get('adult/fetch/{id}', array('as' => 'fetchAdult', 'uses' => 'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@show'));
+Route::get('adult/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@get_subcounties'));
+Route::post('adult/store', array('as' => 'storeAdult', 'uses' => 
+  'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@store'));
+Route::post('adult/update', array('as' => 'updateAdult', 'uses' => 
+  'Forms\Education\education_csa_adulteducationenrolmentbysexandsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_adulteducationproficiencytestresults/','Forms\Education\education_csa_adulteducationproficiencytestresults@index')->name('education_csa_adulteducationproficiencytestresults');
+   
+   Route::get('proficiency/fetch/{id}', array('as' => 'fetchProficiency', 'uses' =>
+    'Forms\Education\education_csa_adulteducationproficiencytestresults@show'));
+Route::get('proficiency/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_adulteducationproficiencytestresults@get_subcounties'));
+Route::post('proficiency/store', array('as' => 'storeProficiency', 'uses' => 
+  'Forms\Education\education_csa_adulteducationproficiencytestresults@store'));
+Route::post('proficiency/update', array('as' => 'updateProficiency', 'uses' => 
+  'Forms\Education\education_csa_adulteducationproficiencytestresults@update'));
+
+//@George Muchiri
+Route::get('education_csa_ecdecentresbycategoryandsubcounty/','Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@index')->name('education_csa_ecdecentresbycategoryandsubcounty');
+   
+   Route::get('csa/fetch/{id}', array('as' => 'fetchCSA', 'uses' =>
+    'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@show'));
+Route::get('csa/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@get_subcounties'));
+Route::post('csa/store', array('as' => 'storeCSA', 'uses' => 
+  'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@store'));
+Route::post('csa/update', array('as' => 'updateCSA', 'uses' => 
+  'Forms\Education\education_csa_ecdecentresbycategoryandsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_primaryschoolenrollmentbyclasssexandsubcounty/','Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@index')->name('education_csa_primaryschoolenrollmentbyclasssexandsubcounty');
+
+Route::get('primary/fetch/{id}', array('as' => 'fetchPrimary', 'uses' =>
+    'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@show'));
+Route::get('primary/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@get_subcounties'));
+Route::post('primary/store', array('as' => 'storePrimary', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@store'));
+Route::post('primary/update', array('as' => 'updatePrimary', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolenrollmentbyclasssexandsubcounty@update'));
+
+//@George Muchiri
+Route::get('education_csa_primaryschoolsbycategoryandsubcounty/','Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@index')->name('education_csa_primaryschoolsbycategoryandsubcounty');
+
+Route::get('category/fetch/{id}', array('as' => 'fetchCategory', 'uses' =>
+    'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@show'));
+Route::get('category/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@get_subcounties'));
+Route::post('category/store', array('as' => 'storeCategory', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@store'));
+Route::post('category/update', array('as' => 'updateCategory', 'uses' => 
+  'Forms\Education\education_csa_primaryschoolsbycategoryandsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_studentenrolmentinyouthpolytechnics/','Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@index')->name('education_csa_studentenrolmentinyouthpolytechnics');
+
+Route::get('youth/fetch/{id}', array('as' => 'fetchYouth', 'uses' =>
+    'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@show'));
+Route::get('youth/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@get_subcounties'));
+Route::post('youth/store', array('as' => 'storeYouth', 'uses' => 
+  'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@store'));
+Route::post('youth/update', array('as' => 'updateYouth', 'uses' => 
+  'Forms\Education\education_csa_studentenrolmentinyouthpolytechnics@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_teachertrainingcolleges/','Forms\Education\education_csa_teachertrainingcolleges@index')->name('education_csa_teachertrainingcolleges');
+
+Route::get('college/fetch/{id}', array('as' => 'fetchCollege', 'uses' =>
+    'Forms\Education\education_csa_teachertrainingcolleges@show'));
+Route::get('college/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_teachertrainingcolleges@get_subcounties'));
+Route::post('college/store', array('as' => 'storeCollege', 'uses' => 
+  'Forms\Education\education_csa_teachertrainingcolleges@store'));
+Route::post('college/update', array('as' => 'updateCollege', 'uses' => 
+  'Forms\Education\education_csa_teachertrainingcolleges@update'));
+
+
+//@George Muchiri
+Route::get('education_csa_youthpolytechnicsbycategoryandsubcounty/','Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@index')->name('education_csa_youthpolytechnicsbycategoryandsubcounty');
+
+Route::get('poly/fetch/{id}', array('as' => 'fetchPoly', 'uses' =>
+    'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@show'));
+Route::get('poly/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@get_subcounties'));
+Route::post('poly/store', array('as' => 'storePoly', 'uses' => 
+  'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@store'));
+Route::post('poly/update', array('as' => 'updatePoly', 'uses' => 
+  'Forms\Education\education_csa_youthpolytechnicsbycategoryandsubcounty@update'));
+
+
+
+//@George Muchiri
+Route::get('education_csa_secondaryschoolenrollmentbyclasssexsubcounty/','Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@index')->name('education_csa_secondaryschoolenrollmentbyclasssexsubcounty');
+
+Route::get('secondary/fetch/{id}', array('as' => 'fetchSecondary', 'uses' =>
+    'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@show'));
+Route::get('secondary/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@get_subcounties'));
+Route::post('secondary/store', array('as' => 'storeSecondary', 'uses' => 
+  'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@store'));
+Route::post('secondary/update', array('as' => 'updateSecondary', 'uses' => 
+  'Forms\Education\education_csa_secondaryschoolenrollmentbyclasssexsubcounty@update'));
+
+
+//@George Muchiri
+Route::get('education_edstat_ecde_enrollment_and_enrollment_rates_by_county/','Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@index')->name('education_edstat_ecde_enrollment_and_enrollment_rates_by_county');
+
+Route::get('ecse/fetch/{id}', array('as' => 'fetchECDE', 'uses' =>
+    'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@show'));
+Route::get('ecse/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@get_subcounties'));
+Route::post('ecse/store', array('as' => 'storeECDE', 'uses' => 
+  'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@store'));
+Route::post('ecse/update', array('as' => 'updateECDE', 'uses' => 
+  'Forms\Education\education_edstat_ecde_enrollment_and_enrollment_rates_by_county@update'));
+
+//@George Muchiri
+Route::get('education_edstat_primary_enrollment_enrollment_rates_county/','Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@index')->name('education_edstat_primary_enrollment_enrollment_rates_county');
+
+Route::get('enroll/fetch/{id}', array('as' => 'fetchEnroll', 'uses' =>
+    'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@show'));
+Route::get('enroll/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@get_subcounties'));
+Route::post('enroll/store', array('as' => 'storeEnroll', 'uses' => 
+  'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@store'));
+Route::post('enroll/update', array('as' => 'updateEnroll', 'uses' => 
+  'Forms\Education\education_edstat_primary_enrollment_enrollment_rates_county@update'));
+
+//@George Muchiri
+Route::get('education_edstat_secondary_enrollment_enrollment_rates_county/','Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@index')->name('education_edstat_secondary_enrollment_enrollment_rates_county');
+
+Route::get('senroll/fetch/{id}', array('as' => 'fetchSEnroll', 'uses' =>
+    'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@show'));
+Route::get('senroll/fetchcounties/{id}', array('as' => 'fetchCounties', 'uses' =>'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@get_subcounties'));
+Route::post('senroll/store', array('as' => 'storeSEnroll', 'uses' => 
+  'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@store'));
+Route::post('senroll/update', array('as' => 'updateSEnroll', 'uses' => 
+  'Forms\Education\education_edstat_secondary_enrollment_enrollment_rates_county@update'));
 

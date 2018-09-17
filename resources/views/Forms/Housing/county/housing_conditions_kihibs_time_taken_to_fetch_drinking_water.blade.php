@@ -117,6 +117,7 @@
                     <li><a href="{{ route('Money/home') }}"><i class="fa fa-money"></i>Money and Banking</a></li>
                      <li><a href="{{ route('Transport/home') }}"><i class="fa fa-money"></i>Transport</a></li>
                      <li><a href="{{ route('Poverty/home') }}"><i class="fa fa-money"></i>Poverty</a></li>
+                    <li><a href="{{ route('Housing/home') }}"><i class="fa fa-money"></i>Housing</a></li>
 
 
                 </ul>
