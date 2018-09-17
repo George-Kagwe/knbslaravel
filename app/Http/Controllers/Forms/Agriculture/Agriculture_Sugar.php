@@ -150,7 +150,8 @@ class Agriculture_Sugar extends Controller
              return response()->json($sugar);
            echo json_encode(array("status" => TRUE));
 
-        }    }
+        }    
+    }
 
     /**
      * Remove the specified resource from storage.

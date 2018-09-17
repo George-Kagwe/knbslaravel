@@ -32,11 +32,12 @@ class trade_and_commerce_trading_centres extends Controller
     public function index()
     {
         $trading_centers = DB::table('trade_and_commerce_trading_centres')
-               ->join('health_counties', 'trade_and_commerce_trading_centres.county_id', '=', 'health_counties.county_id')->orderBy('tradeandcommerce_centre_id', 'ASC')->get();
+               ->join('health_counties', 'trade_and_commerce_trading_centres.county_id', '=', 'health_counties.county_id') 
+                ->join('trade_and_commerce_trading_centres_ids', 'trade_and_commerce_trading_centres.trading_centre_id', '=', 'trade_and_commerce_trading_centres_ids.trading_centre_id')->orderBy('tradeandcommerce_centre_id', 'ASC')->get();
 
         $counties = DB::table('health_counties')->get();
-        
-        return view('Forms.Trade.trade_and_commerce_trading_centres', ['trading_centers' =>$trading_centers,'counties' =>$counties]);
+        $trading_ctr = DB::table('trade_and_commerce_trading_centres_ids')->get();
+        return view('Forms.Trade.county.trade_and_commerce_trading_centres', ['trading_centers' =>$trading_centers,'counties' =>$counties,'trading_ctr' =>$trading_ctr]);
     }
 
     /**
@@ -58,8 +59,8 @@ class trade_and_commerce_trading_centres extends Controller
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                            'county_id'=>'required',
-                            'trading_centre_id'=>'required|numeric',
+                            'county_name'=>'required',
+                            'trading_centre'=>'required|numeric',
                             'number'=>'required|numeric',
                             'year'=>'required|numeric',
         ]);
@@ -71,7 +72,7 @@ class trade_and_commerce_trading_centres extends Controller
         else{
             $trading_centers = new trade_and_commerce_trading_centres_model();
             $trading_centers->county_id =$request->county_name;
-            $trading_centers->trading_centers=$request->trading_centre_id;
+            $trading_centers->trading_centre_id=$request->trading_centre;
             $trading_centers->number=$request->number;         
             $trading_centers->year=$request->year;
             $trading_centers->save();
@@ -117,8 +118,8 @@ class trade_and_commerce_trading_centres extends Controller
     public function update(Request $request)
     {
          $validator = \Validator::make($request->all(), [
-                          'county_id'=>'required',
-                          'trading_centre_id'=>'required|numeric',
+                          'county_name'=>'required',
+                          'trading_centre'=>'required|numeric',
                           'number'=>'required|numeric',
                           'year'=>'required|numeric',
         ]);
@@ -130,7 +131,7 @@ class trade_and_commerce_trading_centres extends Controller
         else{
             $trading_ctr =trade_and_commerce_trading_centres_model::find($request->id);
             $trading_ctr->county_id =$request->county_name;
-            $trading_ctr->trading_centers=$request->trading_centre_id;
+            $trading_ctr->trading_centre_id=$request->trading_centre;
             $trading_ctr->number=$request->number;         
             $trading_ctr->year=$request->year;
             $trading_ctr->save();

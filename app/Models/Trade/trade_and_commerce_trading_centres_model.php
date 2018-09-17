@@ -17,3 +17,4 @@ class trade_and_commerce_trading_centres_model extends Model
     		'year'
     ]; 
 }
+ 
