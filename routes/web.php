@@ -1102,6 +1102,7 @@ Route::get('population_populationbysexhouseholdsdensityandcensusyears/approved/{
 //fetch
 Route::get('population_distribution_sex_number_households_area_density/', 'Forms\Population\population_distribution_sex_number_households_area_density@index')->name('population_distribution_sex_number_households_area_density');
 
+
 //@Charles
 //post to save
 Route::post('population_distribution_sex_number_households_area_density/store', array('as' => 'storePopDistHseArea', 'uses' => 'Forms\Population\population_distribution_sex_number_households_area_density@store'));
@@ -1113,6 +1114,25 @@ Route::post('population_distribution_sex_number_households_area_density/update',
 //@Charles
 //show a specific id
 Route::get('population_distribution_sex_number_households_area_density/approved/{id}', array('as' => 'fetchPopDistHseArea', 'uses' => 'Forms\Population\population_distribution_sex_number_households_area_density@show'));
+
+
+
+
+//@Charles
+//fetch
+Route::get('population_populationprojectionsbyspecialagegroups/', 'Forms\Population\population_populationprojectionsbyspecialagegroups@index')->name('population_populationprojectionsbyspecialagegroups');
+
+//@Charles
+//post to save
+Route::post('population_populationprojectionsbyspecialagegroups/store', array('as' => 'storePopSpecialAge', 'uses' => 'Forms\Population\population_populationprojectionsbyspecialagegroups@store'));
+
+//@Charles 
+//post to update
+Route::post('population_populationprojectionsbyspecialagegroups/update', array('as' => 'updatePopSpecialAge', 'uses' => 'Forms\Population\population_populationprojectionsbyspecialagegroups@update'));
+
+//@Charles
+//show a specific id
+Route::get('population_populationprojectionsbyspecialagegroups/approved/{id}', array('as' => 'fetchPopSpecialAge', 'uses' => 'Forms\Population\population_populationprojectionsbyspecialagegroups@show'));
 
 
 //@Charles 

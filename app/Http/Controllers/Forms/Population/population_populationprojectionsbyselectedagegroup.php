@@ -7,9 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
-use App\models\Population\population_populationprojectionsbyselectedagegroup_model;
+use App\Models\Population\population_populationprojectionsbyselectedagegroup_model;
 use View;
 use Illuminate\Support\Facades\DB;
+
+//@Charles Ndirangu
+//Population projections by selected age group
 
 class population_populationprojectionsbyselectedagegroup extends Controller
 {
@@ -20,27 +23,27 @@ class population_populationprojectionsbyselectedagegroup extends Controller
 
      */
 
-     protected $rules = [      'county_id'=>'required',
-                          'range_0_4'=>'required',
-                          'range_5_9'=>'required|numeric',
-                          'range_10_14'=>'required|numeric',
-                          'range_15_19'=>'required|numeric',
-                          'range_20_24'=>'required|numeric',
-                          'range_25_29'=>'required|numeric',
-                         'range_30_34'=>'required|numeric',
-                          'range_35_39'=>'required|numeric',
-                         
-                         'range_40_44'=>'required|numeric',
-                         'range_45_49'=>'required|numeric',
-                         'range_50_54'=>'required|numeric',
-                         'range_55_59'=>'required|numeric',
-                         'range_60_64'=>'required|numeric',
-                         'range_65_69'=>'required|numeric',
-                          'range_70_74'=>'required|numeric',
-                          'range_75_79'=>'required|numeric',
-                          'range_80_plus'=>'required|numeric',
-                             'gender'=>'required|alpha',
-                            'year'=>'required|numeric',
+     protected $rules = [ 
+        'county_id'=>'required',
+        'range_0_4'=>'required',
+        'range_5_9'=>'required|numeric',
+        'range_10_14'=>'required|numeric',
+        'range_15_19'=>'required|numeric',
+        'range_20_24'=>'required|numeric',
+        'range_25_29'=>'required|numeric',
+        'range_30_34'=>'required|numeric',
+        'range_35_39'=>'required|numeric',
+        'range_40_44'=>'required|numeric',
+        'range_45_49'=>'required|numeric',
+        'range_50_54'=>'required|numeric',
+        'range_55_59'=>'required|numeric',
+        'range_60_64'=>'required|numeric',
+        'range_65_69'=>'required|numeric',
+        'range_70_74'=>'required|numeric',
+        'range_75_79'=>'required|numeric',
+        'range_80_plus'=>'required|numeric',
+        'gender'=>'required|alpha',
+        'year'=>'required|numeric',
                     
 
                          ];
@@ -56,7 +59,7 @@ class population_populationprojectionsbyselectedagegroup extends Controller
 
 
       
-        return view('forms.population.county.population_populationprojectionsbyselectedagegroup',
+        return view('Forms.Population.county.population_populationprojectionsbyselectedagegroup',
                  
                    ['post' =>$data,'counties' =>$counties]);
     }
@@ -83,27 +86,26 @@ class population_populationprojectionsbyselectedagegroup extends Controller
     {
         
         $validator = \Validator::make($request->all(), [
-                          'county_id'=>'required',
-                          'range_0_4'=>'required',
-                          'range_5_9'=>'required|numeric',
-                          'range_10_14'=>'required|numeric',
-                          'range_15_19'=>'required|numeric',
-                          'range_20_24'=>'required|numeric',
-                          'range_25_29'=>'required|numeric',
-                         'range_30_34'=>'required|numeric',
-                          'range_35_39'=>'required|numeric',
-                         
-                         'range_40_44'=>'required|numeric',
-                         'range_45_49'=>'required|numeric',
-                         'range_50_54'=>'required|numeric',
-                         'range_55_59'=>'required|numeric',
-                         'range_60_64'=>'required|numeric',
-                         'range_65_69'=>'required|numeric',
-                          'range_70_74'=>'required|numeric',
-                          'range_75_79'=>'required|numeric',
-                          'range_80_plus'=>'required|numeric',
-                             'gender'=>'required|alpha',
-                            'year'=>'required|numeric',
+            'county_id'=>'required',
+            'range_0_4'=>'required',
+            'range_5_9'=>'required|numeric',
+            'range_10_14'=>'required|numeric',
+            'range_15_19'=>'required|numeric',
+            'range_20_24'=>'required|numeric',
+            'range_25_29'=>'required|numeric',
+            'range_30_34'=>'required|numeric',
+            'range_35_39'=>'required|numeric',
+            'range_40_44'=>'required|numeric',
+            'range_45_49'=>'required|numeric',
+            'range_50_54'=>'required|numeric',
+            'range_55_59'=>'required|numeric',
+            'range_60_64'=>'required|numeric',
+            'range_65_69'=>'required|numeric',
+            'range_70_74'=>'required|numeric',
+            'range_75_79'=>'required|numeric',
+            'range_80_plus'=>'required|numeric',
+            'gender'=>'required|alpha',
+            'year'=>'required|numeric',
 
         ]);
         
@@ -117,14 +119,11 @@ class population_populationprojectionsbyselectedagegroup extends Controller
             $select->range_0_4=$request->range_0_4;
             $select->range_5_9=$request->range_5_9;         
             $select->range_10_14=$request->range_10_14;
-
             $select->range_15_19=$request->range_15_19;
             $select->range_20_24=$request->range_20_24;         
             $select->range_25_29=$request->range_25_29;
-
             $select->range_30_34=$request->range_30_34;
             $select->range_35_39=$request->range_35_39;
-       
             $select->range_40_44=$request->range_40_44;
             $select->range_45_49=$request->range_45_49;
             $select->range_50_54=$request->range_50_54;
@@ -152,10 +151,10 @@ class population_populationprojectionsbyselectedagegroup extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($population_projection_id)
     {
       
-          $select = population_populationprojectionsbyselectedagegroup_model::findOrfail($id);
+          $select = population_populationprojectionsbyselectedagegroup_model::findOrfail($population_projection_id);
      
       
          echo json_encode($select);
@@ -183,27 +182,26 @@ class population_populationprojectionsbyselectedagegroup extends Controller
     {
          
         $validator = \Validator::make($request->all(), [
-                       'county_id'=>'required',
-                          'range_0_4'=>'required',
-                          'range_5_9'=>'required|numeric',
-                          'range_10_14'=>'required|numeric',
-                          'range_15_19'=>'required|numeric',
-                          'range_20_24'=>'required|numeric',
-                          'range_25_29'=>'required|numeric',
-                         'range_30_34'=>'required|numeric',
-                          'range_35_39'=>'required|numeric',
-                         
-                         'range_40_44'=>'required|numeric',
-                         'range_45_49'=>'required|numeric',
-                         'range_50_54'=>'required|numeric',
-                         'range_55_59'=>'required|numeric',
-                         'range_60_64'=>'required|numeric',
-                         'range_65_69'=>'required|numeric',
-                          'range_70_74'=>'required|numeric',
-                          'range_75_79'=>'required|numeric',
-                          'range_80_plus'=>'required|numeric',
-                             'gender'=>'required|alpha',
-                            'year'=>'required|numeric',
+            'county_id'=>'required',
+            'range_0_4'=>'required',
+            'range_5_9'=>'required|numeric',
+            'range_10_14'=>'required|numeric',
+            'range_15_19'=>'required|numeric',
+            'range_20_24'=>'required|numeric',
+            'range_25_29'=>'required|numeric',
+            'range_30_34'=>'required|numeric',
+            'range_35_39'=>'required|numeric',
+            'range_40_44'=>'required|numeric',
+            'range_45_49'=>'required|numeric',
+            'range_50_54'=>'required|numeric',
+            'range_55_59'=>'required|numeric',
+            'range_60_64'=>'required|numeric',
+            'range_65_69'=>'required|numeric',
+            'range_70_74'=>'required|numeric',
+            'range_75_79'=>'required|numeric',
+            'range_80_plus'=>'required|numeric',
+            'gender'=>'required|alpha',
+            'year'=>'required|numeric',
 
 
         ]);
@@ -218,14 +216,11 @@ class population_populationprojectionsbyselectedagegroup extends Controller
             $select->range_0_4=$request->range_0_4;
             $select->range_5_9=$request->range_5_9;         
             $select->range_10_14=$request->range_10_14;
-
             $select->range_15_19=$request->range_15_19;
             $select->range_20_24=$request->range_20_24;         
             $select->range_25_29=$request->range_25_29;
-
             $select->range_30_34=$request->range_30_34;
             $select->range_35_39=$request->range_35_39;
-       
             $select->range_40_44=$request->range_40_44;
             $select->range_45_49=$request->range_45_49;
             $select->range_50_54=$request->range_50_54;
