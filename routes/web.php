@@ -31,7 +31,7 @@ Route::get('Building/home', 'Forms\AllFormsController@building')->name('Building
 Route::get('Money/home', 'Forms\AllFormsController@money')->name('Money/home');
 Route::get('Transport/home', 'Forms\AllFormsController@transport')->name('Transport/home');
 Route::get('Manufacturing/home', 'Forms\AllFormsController@manufacturing')->name('Manufacturing/home');
-Route::get('housing/all_home', 'Forms\AllFormsController@housing')->name('housing/all_home');
+Route::get('Housing/home', 'Forms\AllFormsController@housing')->name('Housing/home');
 
 //Begining of crud functions
 //Route::get('Agriculture/sugar_yield/{id}', array('as' => 'search_id', 'uses' =>'Forms\Agriculture@show'));
