@@ -1,4 +1,4 @@
-<?php
+  <?php
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -1097,6 +1097,24 @@ Route::post('population_populationbysexhouseholdsdensityandcensusyears/update', 
 //show a specific id
 Route::get('population_populationbysexhouseholdsdensityandcensusyears/approved/{id}', array('as' => 'fetchPopulationByPopDensityCensus', 'uses' => 'Forms\Population\population_populationbysexhouseholdsdensityandcensusyears@show'));
 
+
+//@Charles
+//fetch
+Route::get('population_distribution_sex_number_households_area_density/', 'Forms\Population\population_distribution_sex_number_households_area_density@index')->name('population_distribution_sex_number_households_area_density');
+
+//@Charles
+//post to save
+Route::post('population_distribution_sex_number_households_area_density/store', array('as' => 'storePopDistHseArea', 'uses' => 'Forms\Population\population_distribution_sex_number_households_area_density@store'));
+
+//@Charles 
+//post to update
+Route::post('population_distribution_sex_number_households_area_density/update', array('as' => 'updatePopDistHseArea', 'uses' => 'Forms\Population\population_distribution_sex_number_households_area_density@update'));
+
+//@Charles
+//show a specific id
+Route::get('population_distribution_sex_number_households_area_density/approved/{id}', array('as' => 'fetchPopDistHseArea', 'uses' => 'Forms\Population\population_distribution_sex_number_households_area_density@show'));
+
+
 //@Charles 
 //Energy County Datasets 
  
@@ -1315,6 +1333,22 @@ Route::post('ict_kihibs_population_withmobilephone_andaveragesims/update', array
 //@Charles
 //show a specific id
 Route::get('ict_kihibs_population_withmobilephone_andaveragesims/approved/{id}', array('as' => 'fetchPopAVGPhoneSims', 'uses' => 'Forms\ICT\ict_kihibs_population_withmobilephone_andaveragesims@show'));
+
+ //@Charles
+//fetch
+Route::get('ict_kihibs_population_that_used_internet_by_purpose/', 'Forms\ICT\ict_kihibs_population_that_used_internet_by_purpose@index')->name('ict_kihibs_population_that_used_internet_by_purpose');
+
+//@Charles
+//post to save
+Route::post('ict_kihibs_population_that_used_internet_by_purpose/store', array('as' => 'storePopNoNetByPurpose', 'uses' => 'Forms\ICT\ict_kihibs_population_that_used_internet_by_purpose@store'));
+
+//@Charles 
+//post to update
+Route::post('ict_kihibs_population_that_used_internet_by_purpose/update', array('as' => 'updatePopNoNetByPurpose', 'uses' => 'Forms\ICT\ict_kihibs_population_that_used_internet_by_purpose@update'));
+
+//@Charles
+//show a specific id
+Route::get('ict_kihibs_population_that_used_internet_by_purpose/approved/{id}', array('as' => 'fetchPopNoNetByPurpose', 'uses' => 'Forms\ICT\ict_kihibs_population_that_used_internet_by_purpose@show'));
 
 
 

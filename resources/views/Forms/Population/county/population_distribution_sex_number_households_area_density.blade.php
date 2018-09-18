@@ -204,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>population that did not use internet and their reason</center></h5>
+                              <h5><center>Population by ICT Equipments and Services Used</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -212,75 +212,49 @@
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
+                                         
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Too Young</th>                     
-                                           <th>Make App</th>
-                                           <th>get Info</th>
-                                           <th>newspaper</th>
-                                           <th>selling</th>
-                                           <th>banking</th>
-                                           <th>voip</th>
-                                           <th>ordering</th>
-                                           <th>other</th>
-                                           <th>course</th>
-                                           <th>informative</th>
-                                           <th>social net</th>
-                                           <th>movie</th>
-                                           <th>search work</th>
-                                           <th>write article</th>
-                                           <th>Population</th>
+                                           <th>female</th>
+                                           <th>male</th>                                        
+                                           <th>area in square km</th>
+                                           <th>no of houseHolds</th>
+                                           <th>total population</th>
+                                            <th>density</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($net_purposes as $net){?>
+                                      <?php foreach($pop_density as $pop_density){?>
                                              <tr>
-                                                <td>{{$net->distribution_id}}</td>
-                                                <td>{{$net->county_name}}</td>
-                                                <td>{{$net->seek_info}}</td>
-                                                <td>{{$net->make_app}}</td>
-                                                <td>{{$net->get_info}}</td>
-                                                <td>{{$net->newspaper}}</td>
-                                                <td>{{$net->selling}}</td>
-                                                <td>{{$net->banking}}</td>
-                                                <td>{{$net->voip}}</td>
-                                                <td>{{$net->ordering}}</td>
-                                                <td>{{$net->other}}</td>
-                                                <td>{{$net->course}}</td>
-                                                <td>{{$net->informative}}</td>
-                                                <td>{{$net->social_nets}}</td>
-                                                <td>{{$net->movie}}</td>
-                                                <td>{{$net->search_work}}</td>
-                                                <td>{{$net->write_article}}</td>
-                                                <td>{{$net->population}}</td>
+                                                <td>{{$pop_density->distribution_id}}</td>
+                                                <td>{{$pop_density->county_name}}</td>
+                                                <td>{{$pop_density->female}}</td>
+                                                <td>{{$pop_density->male}}</td>
+                                                <td>{{$pop_density->area_in_square_km}}</td>
+                                                <td>{{$pop_density->no_of_houseHolds}}</td>
+                                                <td>{{$pop_density->total_population}}</td>
+                                                 <td>{{$pop_density->density}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $net->distribution_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $pop_density->distribution_id;?>)">Update Record</button>
+                                               
                                                 </td>
                                               </tr>
                                              <?php }?>
-                                       </tbody>
+
+                                      </tbody>
+
                                       <tfoot>
                                         <tr>
                                            <th>ID</th>                                          
                                            <th>County Name</th>
-                                           <th>Too Young</th>                      
-                                           <th>Make App</th>
-                                           <th>get Info</th>
-                                           <th>newspaper</th>
-                                           <th>selling</th>
-                                           <th>banking</th>
-                                           <th>voip</th>
-                                           <th>ordering</th>
-                                           <th>other</th>
-                                           <th>course</th>
-                                           <th>informative</th>
-                                           <th>social net</th>
-                                           <th>movie</th>
-                                           <th>search work</th>
-                                           <th>write article</th>
-                                           <th>Population</th>
+                                           <th>female</th>
+                                           <th>male</th>                                        
+                                           <th>area in square km</th>
+                                           <th>no of houseHolds</th>
+                                           <th>total population</th>
+                                           <th>density</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -317,13 +291,13 @@
                         //var  url =urls.replace(':id', id);
 
 //                        $.get(url, function(data) {
-  //                          var select = $('form select[name=seek_info]');
+  //                          var select = $('form select[name=male]');
                             
     //                        select.empty();
 
       //                      $.each(JSON.parse(data),function(key,value) {
                               
-        //                         select.append('<option value=' + value.subcounty_id + '>' +value.seek_info+ '</option>');
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.male+ '</option>');
           //                  });
             //            });
               //      });
@@ -336,183 +310,70 @@ $(document).ready( function () {
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                       fields: {
-                                          research: {
+                                          female: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of research '
+                                                      message: 'Please enter number of tv users '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          seek_info: {
+                                          male: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of those that seek info'
+                                                      message: 'Please enter a number of male users'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          make_app: {
+                                          area_in_square_km: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of those that Make App'
+                                                      message: 'Please enter a number of area in square km '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          get_info: {
+                                          no_of_houseHolds: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please count of those that get info '
+                                                      message: 'Please count of no of houseHolds '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          newspaper: {
+                                           total_population: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please count of those that cite its newspaper '
+                                                      message: 'Please enter count of total population '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           selling: {
+                                           density: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of those that cite selling '
+                                                      message: 'Please enter count of total density '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          },
-                                          banking: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that banking '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          voip: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that say voip '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          ordering: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that cite ordering '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                         
-                                          other: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that cite other reasons '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           course: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that have no reasons '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           population: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of Population '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           
-                                            informative: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that say informative '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          social_nets: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that cite social nets '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                         
-                                          write_article: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that cite write article  '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           movie: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that cite movie '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           search_work: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of search work '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
+                                          },                                          
                                       }
                                   });
                           $('#table_id').DataTable();
-                      });
+                      } );
                       var save_method; //for save method string
                       var table;
 
@@ -527,7 +388,7 @@ $(document).ready( function () {
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchPopNoNetByPurpose", ":id") }}';
+                        var url = '{{ route("fetchPopDistHseArea", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -542,23 +403,13 @@ $(document).ready( function () {
 
                               $('[name="id"]').val(data.distribution_id);
                               $('[name="county_name"]').val(data.county_id);
-                              $('[name="research"]').val(data.research);
-                              $('[name="seek_info"]').val(data.seek_info);  
-                              $('[name="make_app"]').val(data.make_app);
-                              $('[name="get_info"]').val(data.get_info);
-                              $('[name="newspaper"]').val(data.newspaper);
-                              $('[name="selling"]').val(data.selling);
-                              $('[name="banking"]').val(data.banking);
-                              $('[name="voip"]').val(data.voip);
-                              $('[name="ordering"]').val(data.ordering);
-                              $('[name="other"]').val(data.other);
-                              $('[name="course"]').val(data.course);
-                              $('[name="population"]').val(data.population);
-                              $('[name="informative"]').val(data.informative);
-                              $('[name="write_article"]').val(data.write_article);
-                              $('[name="social_nets"]').val(data.social_nets);
-                              $('[name="movie"]').val(data.movie);
-                              $('[name="search_work"]').val(data.search_work);
+                              $('[name="female"]').val(data.female);
+                              $('[name="male"]').val(data.male);  
+                               $('[name="county_name"]').val(data.county_name);  
+                              $('[name="area_in_square_km"]').val(data.area_in_square_km);
+                              $('[name="no_of_houseHolds"]').val(data.no_of_houseHolds);
+                              $('[name="total_population"]').val(data.total_population);
+                               $('[name="density"]').val(data.density);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -570,15 +421,15 @@ $(document).ready( function () {
                       });
                       }
 
- 
- 
+
+
                       function save()
                       {
                         var url;
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storePopNoNetByPurpose') }}";
+                            url = "{{ route('storePopDistHseArea') }}";
 
                         }
                         else
@@ -586,7 +437,7 @@ $(document).ready( function () {
                            
                           //  url = '{{ route("updateSugar", ":id") }}';
                           // url=url.replace(':id', $('[name="id"]').val(data.area_id));
-                          url = "{{ route('updatePopNoNetByPurpose') }}";
+                          url = "{{ route('updatePopDistHseArea') }}";
                         }
                           
                       
@@ -636,6 +487,8 @@ $(document).ready( function () {
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
+                     
+
             </script>
 
               <!-- Bootstrap modal -->
@@ -648,7 +501,7 @@ $(document).ready( function () {
                   </div>
                   <div class="modal-body form">
                       <form action="#" id="form" class="form-horizontal">
-                        <div class="alert alert-danger" style="display:none;"></div>
+                        <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
 
@@ -664,114 +517,54 @@ $(document).ready( function () {
                                 </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-md-3">research</label>
+                               <div class="form-group">
+                               
                                 <div class="col-md-9">
-                                  <input name="research"  class="form-control" type="text">
+                                  <input name="county"  class="form-control" type="hidden">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">female</label>
+                                <div class="col-md-9">
+                                  <input name="female"  class="form-control" type="text">
                                 </div>
                               </div>
                            
                               <div class="form-group">
-                                <label class="control-label col-md-3">Seek Info</label>
+                                <label class="control-label col-md-3">male</label>
                                 <div class="col-md-9">
-                                  <input name="seek_info"  class="form-control" type="text">
+                                  <input name="male"  class="form-control" type="text">
                                 </div>
                               </div>
                               
                               <div class="form-group">
-                                <label class="control-label col-md-3">Make App</label>
+                                <label class="control-label col-md-3">area in square km</label>
                                 <div class="col-md-9">
-                                  <input name="make_app"  class="form-control" type="text">
+                                  <input name="area_in_square_km"  class="form-control" type="text">
                                 </div>
                               </div>
                                <div class="form-group">
-                                <label class="control-label col-md-3">get Info</label>
+                                <label class="control-label col-md-3">no of houseHolds</label>
                                 <div class="col-md-9">
-                                  <input name="get_info"  class="form-control" type="text">
+                                  <input name="no_of_houseHolds"  class="form-control" type="text">
                                 </div>
                               </div>
                                <div class="form-group">
-                                <label class="control-label col-md-3">newspaper</label>
+                                <label class="control-label col-md-3">total population</label>
                                 <div class="col-md-9">
-                                  <input name="newspaper"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">banking</label>
-                                <div class="col-md-9">
-                                  <input name="banking"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">selling</label>
-                                <div class="col-md-9">
-                                  <input name="selling"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">voip</label>
-                                <div class="col-md-9">
-                                  <input name="voip"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">ordering</label>
-                                <div class="col-md-9">
-                                  <input name="ordering"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">other</label>
-                                <div class="col-md-9">
-                                  <input name="other"  class="form-control" type="text">
+                                  <input name="total_population"  class="form-control" type="text">
                                 </div>
                               </div>
                                <div class="form-group">
-                                <label class="control-label col-md-3">course</label>
+                                <label class="control-label col-md-3">density</label>
                                 <div class="col-md-9">
-                                  <input name="course"  class="form-control" type="text">
+                                  <input name="density"  class="form-control" type="text">
                                 </div>
                               </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Population</label>
-                                <div class="col-md-9">
-                                  <input name="population"  class="form-control" type="text">
-                                </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-md-3">informative</label>
-                                <div class="col-md-9">
-                                  <input name="informative"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">write_article</label>
-                                <div class="col-md-9">
-                                  <input name="write_article"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">social_nets</label>
-                                <div class="col-md-9">
-                                  <input name="social_nets"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                               <div class="form-group">
-                                <label class="control-label col-md-3">search_work</label>
-                                <div class="col-md-9">
-                                  <input name="search_work"  class="form-control" type="text">
-                                </div>
-                              </div>
-
-                               <div class="form-group">
-                                <label class="control-label col-md-3">movie</label>
-                                <div class="col-md-9">
-                                  <input name="movie"  class="form-control" type="text">
-                                </div>
+                            
                       </form>
                   </div>
                       <div class="modal-footer">

@@ -14,6 +14,7 @@ class population_populationbysexhouseholdsdensityandcensusyears_model extends Mo
     		'male',
     		'female',
     		'total',
+            'hhs',
     		'av_hh_size',
     		'approx_area',
     		'density',
