@@ -54,7 +54,8 @@ class tourism_hotel_occupancy_by_residence extends Controller
             'total_occupied'=>'required|numeric',
             'total_available'=>'required|numeric',
             'occupancy_percentage_rate'=>'required|numeric',
-            'year'=>'required|numeric'
+            'year'=>'required|numeric',
+            
     ];
     public function index()
     {
@@ -115,7 +116,7 @@ class tourism_hotel_occupancy_by_residence extends Controller
                 'total_occupied'=>'required|numeric',
                 'total_available'=>'required|numeric',
                 'occupancy_percentage_rate'=>'required|numeric',
-                'year'=>'required|numeric'
+                'year'=>'required|numeric',
             ]
         );
 
@@ -229,7 +230,7 @@ class tourism_hotel_occupancy_by_residence extends Controller
                 'total_occupied'=>'required|numeric',
                 'total_available'=>'required|numeric',
                 'occupancy_percentage_rate'=>'required|numeric',
-                'year'=>'required|numeric'
+                'year'=>'required|numeric',
             ]
         );
 

@@ -313,7 +313,7 @@ $(document).ready( function () {
                                           female: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter number of tv users '
+                                                      message: 'Please enter number of female '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
@@ -323,7 +323,7 @@ $(document).ready( function () {
                                           male: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter a number of male users'
+                                                      message: 'Please enter a number of male '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'

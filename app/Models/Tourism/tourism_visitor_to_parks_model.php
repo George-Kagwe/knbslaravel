@@ -8,7 +8,7 @@ class tourism_visitor_to_parks_model extends Model
 {
     //@Charles Ndirangu
     //Tourism visitor to parks Model
-    protected $primaryKey = "id";
+    protected $primaryKey = "visitor_parks_id";
     protected $table = "tourism_visitor_to_parks";
     protected $fillable = [
     		'nairobi',

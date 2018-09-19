@@ -29,7 +29,6 @@ class tourism_visitor_to_parks extends Controller
                 'tsavo_east'=>'required|numeric',
                 'aberdare'=>'required|numeric',
                 'lake_nakuru'=>'required|numeric',
-                'europe'=>'required|numeric',
                 'masai_mara'=>'required|numeric',
                 'hallers_park'=>'required|numeric',
                 'malindi_marine'=>'required|numeric',
@@ -82,7 +81,6 @@ class tourism_visitor_to_parks extends Controller
                 'tsavo_east'=>'required|numeric',
                 'aberdare'=>'required|numeric',
                 'lake_nakuru'=>'required|numeric',
-                'europe'=>'required|numeric',
                 'masai_mara'=>'required|numeric',
                 'hallers_park'=>'required|numeric',
                 'malindi_marine'=>'required|numeric',
@@ -114,7 +112,6 @@ class tourism_visitor_to_parks extends Controller
             $visitors->tsavo_west=$request->tsavo_west;
             $visitors->tsavo_east=$request->tsavo_east;
             $visitors->aberdare=$request->aberdare;
-            $visitors->other_europe=$request->other_europe;
             $visitors->lake_nakuru=$request->lake_nakuru;
             $visitors->masai_mara=$request->masai_mara;
             $visitors->hallers_park=$request->hallers_park;
@@ -180,7 +177,6 @@ class tourism_visitor_to_parks extends Controller
                 'tsavo_east'=>'required|numeric',
                 'aberdare'=>'required|numeric',
                 'lake_nakuru'=>'required|numeric',
-                'europe'=>'required|numeric',
                 'masai_mara'=>'required|numeric',
                 'hallers_park'=>'required|numeric',
                 'malindi_marine'=>'required|numeric',
@@ -211,7 +207,6 @@ class tourism_visitor_to_parks extends Controller
             $visitors->tsavo_west=$request->tsavo_west;
             $visitors->tsavo_east=$request->tsavo_east;
             $visitors->aberdare=$request->aberdare;
-            $visitors->other_europe=$request->other_europe;
             $visitors->lake_nakuru=$request->lake_nakuru;
             $visitors->masai_mara=$request->masai_mara;
             $visitors->hallers_park=$request->hallers_park;

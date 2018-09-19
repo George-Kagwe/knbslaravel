@@ -43,6 +43,8 @@ class tourism_hotel_occupancy_by_residence_model extends Model
     		'total_occupied',
     		'total_available',
     		'occupancy_percentage_rate',
-    		'year'
+            'year'
+    		
     ]; 
 }
+ 

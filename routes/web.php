@@ -803,6 +803,87 @@ Route::post('tourism_earnings/update', array('as' => 'updateTouristEarnings', 'u
 Route::get('tourism_earnings/approved/{id}', array('as' => 'fetchTouristEarnings', 'uses' => 'Forms\Tourism\tourism_earnings@show'));
 
 
+//@Charles
+//fetch
+Route::get('tourism_population_proportion_that_took_trip/', 'Forms\Tourism\tourism_population_proportion_that_took_trip@index')->name('tourism_tourist_arrivals');
+
+//@Charles
+//post to save
+Route::post('tourism_population_proportion_that_took_trip/store', array('as' => 'storePopTookTrip', 'uses' => 'Forms\Tourism\tourism_population_proportion_that_took_trip@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_population_proportion_that_took_trip/update', array('as' => 'updatePopTookTrip', 'uses' => 'Forms\Tourism\tourism_population_proportion_that_took_trip@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_population_proportion_that_took_trip/approved/{id}', array('as' => 'fetchPopTookTrip', 'uses' => 'Forms\Tourism\tourism_population_proportion_that_took_trip@show'));
+
+//@Charles
+//fetch
+Route::get('tourism_hotel_occupancy_by_residence/', 'Forms\Tourism\tourism_hotel_occupancy_by_residence@index')->name('tourism_hotel_occupancy_by_residence');
+
+//@Charles
+//post to save
+Route::post('tourism_hotel_occupancy_by_residence/store', array('as' => 'storeOccupancyByResidence', 'uses' => 'Forms\Tourism\tourism_hotel_occupancy_by_residence@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_hotel_occupancy_by_residence/update', array('as' => 'updateOccupancyByResidence', 'uses' => 'Forms\Tourism\tourism_hotel_occupancy_by_residence@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_hotel_occupancy_by_residence/approved/{id}', array('as' => 'fetchOccupancyByResidence', 'uses' => 'Forms\Tourism\tourism_hotel_occupancy_by_residence@show'));
+
+//@Charles
+//fetch
+Route::get('tourism_hotel_occupancy_by_zone/', 'Forms\Tourism\tourism_hotel_occupancy_by_zone@index')->name('tourism_hotel_occupancy_by_zone');
+
+//@Charles
+//post to save
+Route::post('tourism_hotel_occupancy_by_zone/store', array('as' => 'storeOccupancyByZone', 'uses' => 'Forms\Tourism\tourism_hotel_occupancy_by_zone@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_hotel_occupancy_by_zone/update', array('as' => 'updateOccupancyByZone', 'uses' => 'Forms\Tourism\tourism_hotel_occupancy_by_zone@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_hotel_occupancy_by_zone/approved/{id}', array('as' => 'fetchOccupancyByZone', 'uses' => 'Forms\Tourism\tourism_hotel_occupancy_by_zone@show'));
+ 
+//@Charles
+//fetch
+Route::get('tourism_visitors_to_parks/', 'Forms\Tourism\tourism_visitor_to_parks@index')->name('tourism_visitor_to_parks');
+
+//@Charles
+//post to save
+Route::post('tourism_visitors_to_parks/store', array('as' => 'storeVisitorToPark', 'uses' => 'Forms\Tourism\tourism_visitor_to_parks@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_visitors_to_parks/update', array('as' => 'updateVisitorToPark', 'uses' => 'Forms\Tourism\tourism_visitor_to_parks@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_visitors_to_parks/approved/{id}', array('as' => 'fetchVisitorToPark', 'uses' => 'Forms\Tourism\tourism_visitor_to_parks@show'));
+
+//@Charles
+//fetch
+Route::get('tourism_visitors_to_museums/', 'Forms\Tourism\tourism_visitors_to_museums@index')->name('tourism_visitors_to_museums');
+
+//@Charles
+//post to save
+Route::post('tourism_visitors_to_museums/store', array('as' => 'storeVisitorToMuseum', 'uses' => 'Forms\Tourism\tourism_visitors_to_museums@store'));
+
+//@Charles
+//post to update
+Route::post('tourism_visitors_to_museums/update', array('as' => 'updateVisitorToMuseum', 'uses' => 'Forms\Tourism\tourism_visitors_to_museums@update'));
+
+//@Charles
+//show a specific id
+Route::get('tourism_visitors_to_museums/approved/{id}', array('as' => 'fetchVisitorToMuseum', 'uses' => 'Forms\Tourism\tourism_visitors_to_museums@show'));
+
+
 //@Charles Ndirangu
 //Trade and Commerce Sector
 //fetch

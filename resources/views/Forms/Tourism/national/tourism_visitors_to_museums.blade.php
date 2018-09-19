@@ -201,7 +201,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>population who used by internet</center></h5>
+                              <h5><center>Tourism visitors to the Museums</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -210,50 +210,84 @@
                                       <thead>
                                         <tr>
                                            <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Mobility</th>                      
-                                           <th>Cyber</th>
-                                           <th>Education Center</th>
-                                           <th>Communication Center</th>
-                                           <th>Another Home</th>
-                                           <th>At Home</th>
-                                           <th>other</th>
-                                           <th>Population</th>
+                                           <th>Nairobi Snake Park</th>                      
+                                           <th>Fort Jesus</th>
+                                           <th>kisumu</th>
+                                           <th>Gede</th>
+                                           <th>Kitale</th>
+                                           <th>Lamu</th>
+                                           <th>Jumba La Mtwana</th>
+                                           <th>Kariandusi</th>
+                                           <th>Hyrax Hill</th>
+                                           <th>Karen Blixen</th>
+                                           <th>Malindi</th>                      
+                                           <th>Kilifi Mnarani</th>
+                                           <th>Meru</th>
+                                           <th>Kapenguria</th>
+                                           <th>Swahili House</th>
+                                           <th>Narok</th>
+                                           <th>German Post</th>
+                                           <th>Takwa Ruins</th>
+                                           <th>Kabarnet</th>                      
+                                           <th>year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($usage as $usage){?>
+                                      <?php foreach($visitors as $visit){?>
                                              <tr>
-                                                <td>{{$usage->proportion_id}}</td>
-                                                <td>{{$usage->county_name}}</td>
-                                                <td>{{$usage->mobility}}</td>
-                                                <td>{{$usage->cyber}}</td>
-                                                <td>{{$usage->ed_centre}}</td>
-                                                <td>{{$usage->comm_centre}}</td>
-                                                <td>{{$usage->another_home}}</td>
-                                                <td>{{$usage->at_home}}</td>
-                                                <td>{{$usage->other}}</td>
-                                                <td>{{$usage->population}}</td>
+                                                <td>{{$visit->visitor_museums_id}}</td>
+                                                <td>{{$visit->nairobi_snake_park}}</td>
+                                                <td>{{$visit->fort_jesus}}</td>
+                                                <td>{{$visit->kisumu}}</td>
+                                                <td>{{$visit->gede}}</td>
+                                                <td>{{$visit->kitale}}</td>
+                                                
+                                                <td>{{$visit->lamu}}</td>
+                                                <td>{{$visit->jumba_la_mtwana}}</td>
+                                                <td>{{$visit->kariandusi}}</td>
+                                                <td>{{$visit->hyrax_hill}}</td>
+                                                <td>{{$visit->karen_blixen}}</td>
+                                                <td>{{$visit->malindi}}</td>
+                                                <td>{{$visit->kilifi_mnarani}}</td>
+                                                <td>{{$visit->meru}}</td>
+                                                <td>{{$visit->kapenguria}}</td>
+                                                <td>{{$visit->swahili_house}}</td>
+                                                <td>{{$visit->narok}}</td>
+                                                <td>{{$visit->german_post}}</td>
+                                                <td>{{$visit->takwa_ruins}}</td>
+                                                <td>{{$visit->kabarnet}}</td>
+                                                <td>{{$visit->year}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $usage->proportion_id;?>)">Update Record</button>
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $visit->visitor_museums_id;?>)">Update Record</button>
                                                 </td> 
                                               </tr>
                                              <?php }?>
                                        </tbody>
-                                      <tfoot>
+                                      <tfoot> 
                                         <tr>
                                            <th>ID</th>                                          
-                                           <th>County Name</th>
-                                           <th>Mobility</th>                       
-                                           <th>Cyber</th>
-                                           <th>Education Center</th>
-                                           <th>Expensive</th>
-                                           <th>Another Home</th>
-                                           <th>At Home</th>
-                                           <th>other</th>
-                                           <th>Population</th>
+                                           <th>Nairobi Snake Park</th>                      
+                                           <th>Fort Jesus</th>
+                                           <th>kisumu</th>
+                                           <th>Gede</th>
+                                           <th>Kitale</th>
+                                           <th>Lamu</th>
+                                           <th>Jumba La Mtwana</th>
+                                           <th>Kariandusi</th>
+                                           <th>Hyrax Hill</th>
+                                           <th>Karen Blixen</th>
+                                           <th>Malindi</th>                      
+                                           <th>Kilifi Mnarani</th>
+                                           <th>Meru</th>
+                                           <th>Kapenguria</th>
+                                           <th>Swahili House</th>
+                                           <th>narok</th>
+                                           <th>German Post</th>
+                                           <th>Takwa Ruins</th>
+                                           <th>Kabarnet</th>                      
+                                           <th>year</th>
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -291,86 +325,232 @@
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
                                          fields: {
-                                          population: {
+                                          kariandusi: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of population '
+                                                      message: 'Please enter count of Kariandusi '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          mobility: {
+                                         
+                                           nairobi_snake_park: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of that cite mobility'
+                                                      message: 'Please enter count of trip to nairobi Snake Park'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          cyber: {
+                                          fort_jesus: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of those that cite Cyber'
+                                                      message: 'Please enter count of those trip to fort Jesus'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          ed_centre: {
+                                          kisumu: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please count of those that education centre '
+                                                      message: 'Please count of trip to kisumu '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          comm_centre: {
+                                          kitale: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please count of those that cite its communication centre '
+                                                      message: 'Please count of those trip to its kitale '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           another_home: {
+                                           gede: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of those that access from other home'
+                                                      message: 'Please enter count of those from gede'
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          at_home: {
+                                          lamu: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of those that say  Home '
+                                                      message: 'Please enter count of those that took trip to Lamu '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          other: {
+                                          jumba_la_mtwana: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of those that say other '
+                                                      message: 'Please enter count of those that say Jumba La Mtwana '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
-                                          }
+                                          },
+                                          
+                                         
+                                         
+                                           hyrax_hill: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of trip to hyrax_hill'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          karen_blixen: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those trip to Karen Blixen'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          malindi: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please count of those that East and central narok '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          kilifi_mnarani: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please count of those trip to its Kilifi Mnarani '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           meru: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those from Meru'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          kapenguria: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of trip to Kapenguria '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          swahili_house: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of trip to Swahili House '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          narok: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those that say narok '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          
+                                          german_post: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of German Post '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          takwa_ruins: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of trip to Takwa Ruins'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                           watamu_marine: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of trip to Watamu Marine'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          hells_gate: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please enter count of those trip to hells_gate'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          kabarnet: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please count of those that trip to Kabarnet '
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
+                                          
+                                          year: {
+                                              validators: {
+                                                  notEmpty: {
+                                                      message: 'Please choose year'
+                                                  },
+                                                   numeric: {                                                    
+                                                    message: 'Must be a number'
+                                                }
+                                              }
+                                          },
                                           
                                       }
                                   });
@@ -390,7 +570,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchPopNoNetPlace", ":id") }}';
+                        var url = '{{ route("fetchVisitorToMuseum", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -403,17 +583,27 @@
                           success: function(data)
                           {
 
-                               $('[name="id"]').val(data.proportion_id);
-                              $('[name="county_name"]').val(data.county_id);
-                              $('[name="population"]').val(data.population);
-                              $('[name="mobility"]').val(data.mobility);  
-                              $('[name="cyber"]').val(data.cyber);
-                              $('[name="ed_centre"]').val(data.ed_centre);
-                              $('[name="comm_centre"]').val(data.comm_centre);
-                              $('[name="another_home"]').val(data.another_home);
-                              $('[name="at_home"]').val(data.at_home);
-                              $('[name="other"]').val(data.other);
-                              $('[name="population"]').val(data.population);         
+                              $('[name="id"]').val(data.visitor_museums_id);
+                              $('[name="nairobi_snake_park"]').val(data.nairobi_snake_park);  
+                              $('[name="fort_jesus"]').val(data.fort_jesus);
+                              $('[name="kisumu"]').val(data.kisumu);
+                              $('[name="kitale"]').val(data.kitale);
+                              $('[name="gede"]').val(data.gede);
+                              $('[name="lamu"]').val(data.lamu);
+                              $('[name="jumba_la_mtwana"]').val(data.jumba_la_mtwana);
+                              $('[name="kariandusi"]').val(data.kariandusi);
+                              $('[name="hyrax_hill"]').val(data.hyrax_hill);
+                              $('[name="karen_blixen"]').val(data.karen_blixen);  
+                              $('[name="malindi"]').val(data.malindi);  
+                              $('[name="kilifi_mnarani"]').val(data.kilifi_mnarani);
+                              $('[name="meru"]').val(data.meru);
+                              $('[name="kapenguria"]').val(data.kapenguria);
+                              $('[name="swahili_house"]').val(data.swahili_house);
+                              $('[name="narok"]').val(data.narok);
+                              $('[name="german_post"]').val(data.german_post);
+                              $('[name="takwa_ruins"]').val(data.takwa_ruins);     
+                              $('[name="kabarnet"]').val(data.kabarnet);  
+                              $('[name="year"]').val(data.year);
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -435,13 +625,13 @@
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storePopNoNetPlace') }}";
+                            url = "{{ route('storeVisitorToMuseum') }}";
 
                         }
                         else
                         {
                            
-                         url = "{{ route('updatePopNoNetPlace') }}";
+                         url = "{{ route('updateVisitorToMuseum') }}";
                         
                         }
                           
@@ -492,7 +682,7 @@
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
-             //////////////////////////////////////        
+                    
 
                   
 
@@ -512,94 +702,164 @@
                         <div class="alert alert-danger" style="display:none;"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
+                              <div class="form-group">
+                                <label class="control-label col-md-3">nairobi snake park</label>
+                                <div class="col-md-9">
+                                  <input name="nairobi_snake_park"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">fort Jesus</label>
+                                <div class="col-md-9">
+                                  <input name="fort_jesus"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">kisumu</label>
+                                <div class="col-md-9">
+                                  <input name="kisumu"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Nairobi Mini Orphanage</label>
+                                <div class="col-md-9">
+                                  <input name="kitale"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Lamu</label>
+                                <div class="col-md-9">
+                                  <input name="lamu"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">gede</label>
+                                <div class="col-md-9">
+                                  <input name="gede"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Jumba La Mtwana</label>
+                                <div class="col-md-9">
+                                  <input name="jumba_la_mtwana"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Kariandusi</label>
+                                <div class="col-md-9">
+                                  <input name="kariandusi"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                               
+
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Hyrax Hill</label>
+                                <div class="col-md-9">
+                                  <input name="hyrax_hill"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Karen Blixen</label>
+                                <div class="col-md-9">
+                                  <input name="karen_blixen"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Malindi</label>
+                                <div class="col-md-9">
+                                  <input name="malindi"  class="form-control" type="text">
+                                </div>
+                              </div>
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Kilifi Mnarani</label>
+                                <div class="col-md-9">
+                                  <input name="kilifi_mnarani"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Meru</label>
+                                <div class="col-md-9">
+                                  <input name="meru"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Kapenguria</label>
+                                <div class="col-md-9">
+                                  <input name="kapenguria"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Swahili House</label>
+                                <div class="col-md-9">
+                                  <input name="swahili_house"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="control-label col-md-3">narok</label>
+                                <div class="col-md-9">
+                                  <input name="narok"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+
 
                               <div class="form-group">
-                                <label class="control-label col-md-3">County</label>
+                                <label class="control-label col-md-3">German Post</label>
                                 <div class="col-md-9">
-                                  <select class="form-control" id="county_name" name="county_name">
+                                  <input name="german_post"  class="form-control" type="text">
+                                </div>
+                              </div>
+
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Takwa Ruins</label>
+                                <div class="col-md-9">
+                                  <input name="takwa_ruins"  class="form-control" type="text">
+                                </div>
+                              </div>
+                             
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Kilifi Mnarani</label>
+                                <div class="col-md-9">
+                                  <input name="kilifi_mnarani"  class="form-control" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Kabarnet</label>
+                                <div class="col-md-9">
+                                  <input name="kabarnet"  class="form-control" type="text">
+                                </div>
+                              </div>
+                             
+                               <div class="form-group">
+                                <label class="control-label col-md-3">Year</label>
+                                <div class="col-md-9">
+                                  <select class="form-control" id="year" name="year">
                                     <option value="">please select</option>
-                                        <?php foreach($counties as $counties){?>
-                                            <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
-                                        <?php }?>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
                                   </select>
                                 </div>
                               </div>
-
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Population</label>
-                                <div class="col-md-9">
-                                  <input name="population"  class="form-control" type="text">
-                                </div>
-                              </div>
-                           
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Mobility</label>
-                                <div class="col-md-9">
-                                  <input name="mobility"  class="form-control" type="text">
-                                </div>
-                              </div>
                               
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Cyber</label>
-                                <div class="col-md-9">
-                                  <input name="cyber"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Education Center</label>
-                                <div class="col-md-9">
-                                  <input name="ed_centre"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">communication centre</label>
-                                <div class="col-md-9">
-                                  <input name="comm_centre"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">At Home</label>
-                                <div class="col-md-9">
-                                  <input name="at_home"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Another Home</label>
-                                <div class="col-md-9">
-                                  <input name="another_home"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">other</label>
-                                <div class="col-md-9">
-                                  <input name="other"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Security</label>
-                                <div class="col-md-9">
-                                  <input name="security"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">others</label>
-                                <div class="col-md-9">
-                                  <input name="others"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Not Stated</label>
-                                <div class="col-md-9">
-                                  <input name="not_stated"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Population</label>
-                                <div class="col-md-9">
-                                  <input name="population"  class="form-control" type="text">
-                                </div>
-                              </div>
+                             
+                            </div>
                       </form>
                   </div>
                       <div class="modal-footer">

@@ -193,7 +193,10 @@
  <!-- page content -->
     <div class="right_col" role="main">
             <div class="container main"> 
+              
 
+                                
+                                
                 <div class="container" style="background:#ffffff">
                   <div id="snackbar">Success</div>
 
@@ -201,7 +204,7 @@
                      <div class="col-lg-12">
                        
      
-                              <h5><center>Tourism hotel occupancy by zone</center></h5>
+                              <h5><center>Tourism Population proportion that took a trip</center></h5>
                               <br />
                               <button class="btn btn-danger" onclick="add()"><i class="glyphicon glyphicon-plus"></i> Add New Record</button>
                               <br />
@@ -209,63 +212,35 @@
                               <table id="table_id" class="table table-striped table-bordered" cellspacing="0"       width="100%">
                                       <thead>
                                         <tr>
+                                         
                                            <th>ID</th>                                          
-                                           <th>Coastal Beach</th>
-                                           <th>Coastal Other</th>
-                                           <th>central</th>                      
-                                           <th>masailand</th>
-                                           <th>western</th>
-                                           <th>northern</th>
-                                           <th>Nyanza basin</th>
-                                           <th>Coastal Hinterland</th>
-                                           <th>Nairobi High Class</th>
-                                           <th>Nairobi Other</th>
-                                           <th>Total Occupied</th>
-                                            <th>Total Available</th>
-                                           <th>Year</th>
+                                           <th>County Name</th>
+                                           <th>proportion</th>
+                                           <th>No of individuals</th>                    
                                            <th style="width:85px;">Action
                                           </th>
                                         </tr>
                                       </thead>
                                       <tbody>
-                                      <?php foreach($occupancy as $occupy){?>
+                                      <?php foreach($pops as $pop){?>
                                              <tr>
-                                                <td>{{$occupy->id}}</td>
-                                                <td>{{$occupy->coastal_beach}}</td>
-                                                <td>{{$occupy->coastal_other}}</td>
-                                                <td>{{$occupy->central}}</td>
-                                                <td>{{$occupy->masailand}}</td>
-                                                <td>{{$occupy->western}}</td>
-                                                <td>{{$occupy->northern}}</td>
-                                                <td>{{$occupy->nyanza_basin}}</td>
-                                                <td>{{$occupy->coastal_hinterland}}</td>
-                                                <td>{{$occupy->nairobi_high_class}}</td>
-                                                <td>{{$occupy->nairobi_other}}</td>
-                                                <td>{{$occupy->total_occupied}}</td>
-                                                <td>{{$occupy->total_available}}</td>
-                                                <td>{{$occupy->year}}</td>
+                                                <td>{{$pop->population_id}}</td>
+                                                <td>{{$pop->county_name}}</td>
+                                                <td>{{$pop->proportion}}</td>
+                                                <td>{{$pop->no_of_individuals}}</td>
                                                 <td>
-                                                  <button class="btn btn-success" onclick="edit(<?php echo $occupy->id;?>)">Update Record</button>
-                                                </td> 
+                                                  <button class="btn btn-success" onclick="edit(<?php echo $pop->population_id;?>)">Update Record</button>
+                                               
+                                                </td>
                                               </tr>
                                              <?php }?>
-                                       </tbody>
-                                      <tfoot> 
+                                      </tbody>
+                                      <tfoot>
                                         <tr>
                                            <th>ID</th>                                          
-                                           <th>Coastal Beach</th>
-                                           <th>Coastal Other</th>
-                                           <th>Central</th>                      
-                                           <th>Masailand</th>
-                                           <th>Western</th>
-                                           <th>Northern</th>
-                                           <th>Nyanza basin</th>
-                                           <th>Coastal Hinterland</th>
-                                           <th>Nairobi High Class</th>
-                                           <th>Nairobi Other</th>
-                                           <th>Total Occupied</th>
-                                           <th>Total Available</th>
-                                           <th>Year</th>
+                                           <th>County Name</th>
+                                           <th>proportion</th>
+                                           <th>No of individuals</th>                    
                                            <th style="width:85px;">Action
                                           </th>
                                          
@@ -290,155 +265,60 @@
                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 
-
             <!-- Sian starts here -->
             <script type="text/javascript">
+                      //$(document).ready( function () {
+                     //      $(function() {
+                    //$('select[name=counties]').change(function() {
+                     
 
-              $(document).ready(function () {
+                     //   var urls = '{{ route("fetchCounties", ":id") }}'; 
+                       // var id =$(this).val();
+                        //var  url =urls.replace(':id', id);
 
-                $('#form').bootstrapValidator({
+//                        $.get(url, function(data) {
+  //                          var select = $('form select[name=no_of_individuals]');
+                            
+    //                        select.empty();
+
+      //                      $.each(JSON.parse(data),function(key,value) {
+                              
+        //                         select.append('<option value=' + value.subcounty_id + '>' +value.no_of_individuals+ '</option>');
+          //                  });
+            //            });
+              //      });
+                //        });
+$(document).ready( function () {
+                        $('#form').bootstrapValidator({
                                       feedbackIcons: {
                                           valid: 'glyphicon glyphicon-ok',
                                           invalid: 'glyphicon glyphicon-remove',
                                           validating: 'glyphicon glyphicon-refresh'
                                       },
-                                         fields: {
-                                          coastal_beach: {
+                                      fields: {
+                                          proportion: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of coastal beach '
+                                                      message: 'Please enter a number '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                          coastal_other: {
+                                          no_of_individuals: {
                                               validators: {
                                                   notEmpty: {
-                                                      message: 'Please enter count of trip to coastal_other'
+                                                      message: 'Please enter a number '
                                                   },
                                                    numeric: {                                                    
                                                     message: 'Must be a number'
                                                 }
                                               }
                                           },
-                                           central: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of trip to central'
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          masailand: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those trip to masailand'
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          western: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please count of those that education centre '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          northern: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please count of those trip to its northern '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                           coastal_hinterland: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those from coastal_hinterland'
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          nairobi_high_class: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that say  Home '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          nairobi_other: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those that say nairobi_other '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          
                                          
-                                          
-                                          total_occupied: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please enter count of those trip to total occupied'
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          total_available: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please count of those  total occupied '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          nyanza_basin: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please count of those  nyanza basin '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          },
-                                          year: {
-                                              validators: {
-                                                  notEmpty: {
-                                                      message: 'Please choose year '
-                                                  },
-                                                   numeric: {                                                    
-                                                    message: 'Must be a number'
-                                                }
-                                              }
-                                          }, 
-                                          
-                                      }
-                                  });
+                                       }   
+                                        });
                           $('#table_id').DataTable();
                       });
                       var save_method; //for save method string
@@ -455,7 +335,7 @@
 
                       function edit(id)
                       {
-                        var url = '{{ route("fetchOccupancyByZone", ":id") }}';
+                        var url = '{{ route("fetchPopTookTrip", ":id") }}';
                         
                         save_method = 'update';
                         $('#form')[0].reset(); // reset form on modals
@@ -468,21 +348,10 @@
                           success: function(data)
                           {
 
-                              $('[name="id"]').val(data.id);
-                              $('[name="coastal_beach"]').val(data.coastal_beach);
-                              $('[name="coastal_other"]').val(data.coastal_other);  
-                              $('[name="central"]').val(data.central);  
-                              $('[name="masailand"]').val(data.masailand);
-                              $('[name="western"]').val(data.western);
-                              $('[name="nyanza_basin"]').val(data.nyanza_basin);
-                              $('[name="northern"]').val(data.northern);
-                              $('[name="coastal_hinterland"]').val(data.coastal_hinterland);
-                              $('[name="nairobi_high_class"]').val(data.nairobi_high_class);
-                              $('[name="nairobi_other"]').val(data.nairobi_other);
-                              $('[name="total_occupied"]').val(data.total_occupied);     
-                              $('[name="total_available"]').val(data.total_available);
-                              $('[name="coastal_other"]').val(data.coastal_other);  
-                              $('[name="year"]').val(data.year);                                      
+                              $('[name="id"]').val(data.population_id);
+                              $('[name="county_name"]').val(data.county_id);
+                              $('[name="proportion"]').val(data.proportion);
+                              $('[name="no_of_individuals"]').val(data.no_of_individuals);  
                               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                               $('.modal-title').text('Edit  details'); // Set title to Bootstrap modal title
 
@@ -496,22 +365,21 @@
 
 
 
-
- 
                       function save()
                       {
                         var url;
 
                         if(save_method == 'add')
                         {
-                            url = "{{ route('storeOccupancyByZone') }}";
+                            url = "{{ route('storePopTookTrip') }}";
 
                         }
                         else
                         {
                            
-                         url = "{{ route('updateOccupancyByZone') }}";
-                        
+                          //  url = '{{ route("updateSugar", ":id") }}';
+                          // url=url.replace(':id', $('[name="id"]').val(data.area_id));
+                          url = "{{ route('updatePopTookTrip') }}";
                         }
                           
                       
@@ -561,10 +429,7 @@
                               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                        }
 
-                    
-
-                  
-
+                     
 
             </script>
 
@@ -578,107 +443,37 @@
                   </div>
                   <div class="modal-body form">
                       <form action="#" id="form" class="form-horizontal">
-                        <div class="alert alert-danger" style="display:none;"></div>
+                        <div class="alert alert-danger" style="display:none"></div>
                             <input type="hidden" value="" name="id"/>
                             <div class="form-body">
-                                           
+
                               <div class="form-group">
-                                <label class="control-label col-md-3">Coastal Other</label>
+                                <label class="control-label col-md-3">County</label>
                                 <div class="col-md-9">
-                                  <input name="coastal_other"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Coastal beach</label>
-                                <div class="col-md-9">
-                                  <input name="coastal_beach"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Nyanza Basin</label>
-                                <div class="col-md-9">
-                                  <input name="nyanza_basin"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Central</label>
-                                <div class="col-md-9">
-                                  <input name="central"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Masailand</label>
-                                <div class="col-md-9">
-                                  <input name="masailand"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Western</label>
-                                <div class="col-md-9">
-                                  <input name="western"  class="form-control" type="text">
-                                </div>
-                              </div>
-                               <div class="form-group">
-                                <label class="control-label col-md-3">Northern</label>
-                                <div class="col-md-9">
-                                  <input name="northern"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Nairobi High Class</label>
-                                <div class="col-md-9">
-                                  <input name="nairobi_high_class"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Coastal Hinterland</label>
-                                <div class="col-md-9">
-                                  <input name="coastal_hinterland"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Nairobi Other</label>
-                                <div class="col-md-9">
-                                  <input name="nairobi_other"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Total Occupied</label>
-                                <div class="col-md-9">
-                                  <input name="total_occupied"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Total Available</label>
-                                <div class="col-md-9">
-                                  <input name="total_available"  class="form-control" type="text">
-                                </div>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label class="control-label col-md-3">Year</label>
-                                <div class="col-md-9">
-                                  <select class="form-control" id="year" name="year">
+                                  <select class="form-control" id="county_name" name="county_name">
                                     <option value="">please select</option>
-                                    <option value="2008">2008</option>
-                                    <option value="2009">2009</option>
-                                    <option value="2010">2010</option>
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
+                                    
+
+                                       <?php foreach($counties as $counties){?>
+                                            
+                                                 <option value="{{$counties->county_id}}">{{$counties->county_name}}</option>
+   
+                                       <?php }?>
                                   </select>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="control-label col-md-3">proportion</label>
+                                <div class="col-md-9">
+                                  <input name="proportion"  class="form-control" type="text">
+                                </div>
+                              </div>
+                           
+                              <div class="form-group">
+                                <label class="control-label col-md-3">No of individuals</label>
+                                <div class="col-md-9">
+                                  <input name="no_of_individuals"  class="form-control" type="text">
                                 </div>
                               </div>
                             </div>
@@ -744,4 +539,4 @@
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>
   </body>
-</html>   
+</html>
